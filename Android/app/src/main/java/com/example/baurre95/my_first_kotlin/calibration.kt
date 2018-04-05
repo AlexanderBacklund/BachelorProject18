@@ -62,7 +62,7 @@ class calibration : AppCompatActivity() {
 
         Handler().postDelayed({
             this.stopScanning()
-        }, 10000)
+        }, 5000)
     }
 
     fun stopScanning() {

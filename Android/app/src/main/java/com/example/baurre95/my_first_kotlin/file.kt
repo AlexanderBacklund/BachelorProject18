@@ -22,22 +22,31 @@ class file : AppCompatActivity() {
         const val REQUEST_PERMISSION = 1
     }
 
-    var FILENAME = "test.txt"
+    val FILENAME = "test"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_file)
         save.setOnClickListener{}
 
-        var lalal = intent.getStringArrayListExtra("array_list")
-        Log.d("AlexanderBacklund", lalal.toString())
+        var wifiListCSV = intent.getStringArrayListExtra("array_list")
+        Log.d("AlexanderBacklund", wifiListCSV.toString())
 
-        //val myValue = intent.getStringExtra("array_list")
-        if(lalal != null) {
-          //  tv.setOnClickListener {
-        tv.text = lalal[1].toString()
+        if(wifiListCSV != null) {
+            tv.text = wifiListCSV[1].toString()
         }
         else{
             tv.text = "null"
+        }
+        save.setOnClickListener{
+            val path = getExternalFilesDir(null)
+            val letDirectory = File(path,"LET")
+            letDirectory.mkdirs()
+            val file = File(letDirectory, "records.txt")
+            FileOutputStream(file).use {
+                it.write(wifiListCSV.toString().toByteArray())
+            }
+
+            Toast.makeText(this, path.toString(),Toast.LENGTH_SHORT).show()
         }
     }
 }
