@@ -22,6 +22,7 @@ class calibration : AppCompatActivity() {
 
     val REQUEST_FINE_LOCATION: Int=0
     var resultList = ArrayList<ScanResult>()
+    val axisList = ArrayList<String>()
     lateinit var wifiManager: WifiManager
 
     val broadcastReceiver = object : BroadcastReceiver() {
@@ -39,6 +40,14 @@ class calibration : AppCompatActivity() {
 
         scan.setOnClickListener {
             startScanning()
+        }
+
+        export.setOnClickListener{
+            val intent = Intent(this, file::class.java)
+
+            intent.putExtra("array_list", axisList)
+            //Log.d("AlexanderBacklund", axisList.toString())
+            startActivity(intent)
         }
 
     }
@@ -59,8 +68,6 @@ class calibration : AppCompatActivity() {
     fun stopScanning() {
         unregisterReceiver(broadcastReceiver)
         resultList.sortedWith(compareBy({ it.level }))
-        val axisList = ArrayList<String>()
-        var i: Int = 0
         for (i in 0..resultList.size) {
             axisList.add(resultList[i].SSID+" "+resultList[i].BSSID+" "+resultList[i].level)
             if(i == 10) {
