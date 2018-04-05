@@ -60,10 +60,12 @@ class calibration : AppCompatActivity() {
         unregisterReceiver(broadcastReceiver)
         resultList.sortedWith(compareBy({ it.level }))
         val axisList = ArrayList<String>()
-
-        for (i in 0..10) {
+        var i: Int = 0
+        for (i in 0..resultList.size) {
             axisList.add(resultList[i].SSID+" "+resultList[i].BSSID+" "+resultList[i].level)
-
+            if(i == 10) {
+                break
+            }
         }
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, axisList)
         listView_bssid.adapter = adapter
