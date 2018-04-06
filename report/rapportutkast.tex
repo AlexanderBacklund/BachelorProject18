@@ -167,7 +167,12 @@ Det är detta problem som det här projektet syftar till att lösa.
 	\subsection{Skype for Business}
     Skype for Business är ett kommunikationsmedel som används av många företag och organisationer. Skype for Business erbjuder funktionalitet såsom realtidssamtal %NOTE referens? och vidare funktionalitet
     videomöten mm. SfB kommer med en möjlighet att konfigurera en egen platsdatabas på SfB´s server. Det är denna funktionalitet som vi ämnar utnyttja. När denna databas är populerad med nätverksinformation för varje område på företagets/organisationens arbetsplatser kommer en medarbetares position kunna bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i Skypes användargranssnitt och är då synlig för andra Skypeanvändare i samma SfB-organisation. Detta gör att användare i SfB enkelt kan lokalisera varandra.
-	\subsection{Inomhuspossionering}
+	\subsection{Inomhuspositionering}
+    Inomhuspositionering är jämfört med utomhuspositionering ett problem med fler komplikationer. GPS-tekniken som ger en mycket liten felmarginal vid utomhuspositionering är sällan avnändbar för inomhuspositionering. Anledningen är att \cite{GPS_US} %NOTE referens och blah blah blah
+
+    I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. En av skillnaderna är att det vid positionsbetsämning inomhus tillkommer en faktor som komlicerar positionsbestämnignen. Problemet är att man vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt kordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
+
+
 
 
 
@@ -296,14 +301,14 @@ Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och fö
 Här beskriver ni potentiella framtida utvecklingar av systemet. Var finns förbättrings\-poten\-tial och vad kan man bygga vidare på? Vilka intressanta utvidgningar hann ni inte med?
 
 Observera att risk\-be\-döm\-ning, tids\-planering, relation till kursmål \emph{inte} hör hemma i slutrapporten.
-
+\newpage
 % Here comes the bibliography/references.
 \bibliography{refs}
 % Use one of these:
 %   IEEEtranS gives numbered references like [42] sorted by author,
 %   IEEEtranSA gives ``alpha''-style references like [Lam81] (also sorted by author)
 %\bibliographystyle{IEEEtranSA}
-\bibliographystyle{IEEEtranSA}
+\bibliographystyle{plain}
 
 \newpage
 \appendix %%%% markerar att resten är appendixar
@@ -439,5 +444,7 @@ Använd vettigt latex-bibliotek för kod, t.ex. \texttt{listings}.
 
 \item    De av er som skriver på engelska: ni MÅSTE använda korrekta verbformer beroende på om subjektet är en eller flera saker (``it has'' men ``they have'').
 \end{itemize}
+
+
 
 \end{document}
