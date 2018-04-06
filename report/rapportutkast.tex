@@ -262,7 +262,7 @@ ses systemet i sin helhet. Det interna systemet består av två android applikat
 Det externa systemet består av SfB's plats-databas och Skype's Web-API. %NOTE referenser??
 Plats-databasen skall populeras av de interna systemet som konstruerats i form av android appolikation och populerings-skript. Detta system använder därefter datan för att integrerat i Skype visa platsinformation om kollegor för andra i verksamheten. Det andra systemet är Skype's Web-API. Det ska tillhandahålla platsinformation till belägrings-systemet.
 
-De interna systemen kommer kommunicera på olika sätt. Mellan systemet som mappar anslutningsinformation med plats och SfB-admin maskinen så måste datan förflyttas manuellt, eftersom tillgången till den maskinen är begränsad. Från SfB's databas kommer datan att mottas genom anrop till Skype's API. %NOTE kan inte säga att jag har full koll på protokoll här    
+De interna systemen kommer kommunicera på olika sätt. Mellan systemet som mappar anslutningsinformation med plats och SfB-admin maskinen så måste datan förflyttas manuellt, eftersom tillgången till den maskinen är begränsad. Från SfB's databas kommer datan att mottas genom anrop till Skype's API. %NOTE kan inte säga att jag har full koll på protokoll här
 
 \begin{figure}
 	\includegraphics[width=15cm]{media/systemStruktur.png}
@@ -270,14 +270,6 @@ De interna systemen kommer kommunicera på olika sätt. Mellan systemet som mapp
 	\label{}
 \end{figure}
 
-Beskriv strukturen både internt (hur ert eget system är uppbyggt) och externt (vilka andra system ert system kommunicerar med). \textbf{Använd figurer} (och text)!
-\begin{itemize}
-\item Vilka delar består systemet av? (T.ex. databas, webbinterface, AI-modul, grafik...) Vilka kommunicerar med vilka, beror av vilka, innehåller vilka andra?
-\item Vilka delar fanns färdiga att använda/anpassa, vilka utvecklade ni själva? Visa tydligt, gärna grafiskt.
-\item Finns olika alternativa byggblock eller designval? Vilka är argumenten för/emot valen?
-\item Hur kommunicerar delarna, vilka protokoll och/eller dataformat används? (Beskriv mer detaljerat i senare, i Huvuddelen.)
-\item Finns det olika typer av användare/motsv? (T.ex. administratörer resp slut\-an\-vän\-dare?)
-\end{itemize}
 
 \subsection{Tänk på följande}
 
