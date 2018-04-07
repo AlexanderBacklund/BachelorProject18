@@ -24,10 +24,10 @@ class data : AppCompatActivity() {
     }
 
     fun writeToFile(file: File,text: String) {
-        file.appendText(text)
-        //FileOutputStream(file).use {
-        //    it.write(text.toByteArray())
-        //}
+        //file.appendText(text)
+        FileOutputStream(file).use {
+            it.write(text.toByteArray())
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
