@@ -44,9 +44,9 @@ class calibration : AppCompatActivity() {
 
         export.setOnClickListener{
             val intent = Intent(this, file::class.java)
-
-            intent.putExtra("array_list", axisList)
-            //Log.d("AlexanderBacklund", axisList.toString())
+            if(axisList.size != 0) {
+                intent.putExtra("array_list", axisList)
+            }
             startActivity(intent)
         }
 

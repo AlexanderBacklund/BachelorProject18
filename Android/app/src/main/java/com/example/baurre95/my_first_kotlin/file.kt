@@ -2,7 +2,6 @@ package com.example.baurre95.my_first_kotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_file.*
 import java.io.*

@@ -3,7 +3,6 @@ package com.example.baurre95.my_first_kotlin
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.baurre95.my_first_kotlin.R.id.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +17,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(calintent)
         }
 
-        databtn.setOnClickListener{
+        APbtn.setOnClickListener{
             val dataintent = Intent(this, data::class.java)
             startActivity(dataintent)
         }
