@@ -274,12 +274,12 @@ ska \emph{inte} innehålla information om hur gruppen organiserat arbetet (githu
 
 \section{Systemstruktur / System structure}
 I denna delen av rapporten beskriver vi våra system och hur de arbetar tillsammans sinsemellan och med det externa systemet.
-Systemet som vi konstruerat kan delas in i tre delsystem. Ett system där man mappar anslutningsinformation till en plats, ett system som automatiserar populeringen av SfB's databas som skall mappa anslutningsinformation med plats, men åt andra hållet, och ett system där man enkelt kan se belägring i olika områden i verksamheten, historik mm.
+Systemet som vi konstruerat kan delas in i tre delsystem. Ett system där man mappar anslutningsinformation till en plats, ett system som automatiserar populeringen av SfB's databas som skall mappa anslutningsinformation med plats, men åt andra hållet, och ett system där man enkelt kan se beläggning i olika områden i verksamheten, historik mm.
 
 I följande figur (1) %NOTE REFERENS TILL BILDEN
-ses systemet i sin helhet. Det interna systemet består av två android applikationer. Den ena som enligt schemat skall skicka sin information till SfB-admin maskinen, är det system som används för att mappa anslutningsinformation med plats. På SfB-admin maskinen ska skriptet som automatiserar populeringen av databasen finnas. Den andra android applikationen skall vara den som arbetare i verksamheten nyttjar för att se belägring i olika områden.
+ses systemet i sin helhet. Det interna systemet består av två android applikationer. Den ena som enligt schemat skall skicka sin information till SfB-admin maskinen, är det system som används för att mappa anslutningsinformation med plats. På SfB-admin maskinen ska skriptet som automatiserar populeringen av databasen finnas. Den andra android applikationen skall vara den som arbetare i verksamheten nyttjar för att se beläggningen i olika områden.
 Det externa systemet består av SfB's plats-databas och Skype's Web-API. %NOTE referenser??
-Plats-databasen skall populeras av de interna systemet som konstruerats i form av android appolikation och populerings-skript. Detta system använder därefter datan för att integrerat i Skype visa platsinformation om kollegor för andra i verksamheten. Det andra systemet är Skype's Web-API. Det ska tillhandahålla platsinformation till belägrings-systemet.
+Plats-databasen skall populeras av de interna systemet som konstruerats i form av android appolikation och populerings-skript. Detta system använder därefter datan för att integrerat i Skype visa platsinformation om kollegor för andra i verksamheten. Det andra systemet är Skype's Web-API. Det ska tillhandahålla platsinformation till beläggnings-systemet.
 
 De interna systemen kommer kommunicera på olika sätt. Mellan systemet som mappar anslutningsinformation med plats och SfB-admin maskinen så måste datan förflyttas manuellt, eftersom tillgången till den maskinen är begränsad. Från SfB's databas kommer datan att mottas genom anrop till Skype's API. %NOTE kan inte säga att jag har full koll på protokoll här
 
