@@ -227,18 +227,43 @@ Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er
 
 \section{Relaterat arbete / Related work}
 Det generella problemet med inomhuspositionering har lösts på olika sätt.
-Beroende på vilket specifikt problem som gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat.
-Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en posistion med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
+Beroende på vilket specifikt problem som gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice(IPS)\cite{IP1}.
+En av de vanligaste teknikerna vid IPS är Trilateration. Vid trilateration uppsakattas minst tre avstånd till basstationer med kända kordinater och med hjälp av geometriska beräkningar uppskattas sedan en position. Trilateration beskrivs utförligare i sektion 4.2 nedan. En annan teknik som är vanligt förekommande i befinntliga system för IPS är fingerprinting. Fingerprintingtekniken bygger i korthet på att den enhet som ska positionsbestämas mäter signalstyrkor i närheten och jämför med en databas. Fingerprinting beskrivs utförligare i sektion 4.3.
+
+Binghao Li m. fl. analyserade i en studie \cite{IP1} olika tekniker som utgår från Wifi  för IP och kom fram till att fingerprint var en av de metoder som enskilt genererade mest precisa resultat.
+
 
 \subsection{Problem med GPS-tekniken}
+Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en posistion med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
 Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USA´s flygvapen. GPS är ett system bestående av 24 sateliter som kretsar kring Jorden. Sateliterna sänder ut radiosignaler med information om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de sateliterna som befinner sig inom räckhåll och använder sig av sateliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig.\cite{GPS_US_HOW}
 
 Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från sateliterna reflekteras när de kommer i kontakt med byggnader och de anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord.\cite{GPS_US_ACCURACY} Detta gör att andra tekniker måste användas för inomhuspositionering.
-\subsection{Alternativa lösningar}
-\subsubsection{Trilateration}
-\subsubsection{bluetooth beacons}
 
+\subsection{Trilateration}
+Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enl. B Cook m. lf.\cite{cook2005indoor}
+\newline
+$$ P_r = P_t + 20log(\frac{\lambda}{4\pi}) + 10nlog(\frac{1}{d})$$
+där
+$  P_r $ = signalstyrkan hos mottagaren (dBm)\newline $P_t$ = styrkan hos sändaren\newline
+$\lambda$ = våglängden\newline
+$ n $ = 2 i fria utrymmen\newline
+$ d $ = avsåtndet mellan mottagare och sändare
+\bigskip
+\newline
+En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. Se fig %TODO % fixa figur.. kan man sno?
+Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i oexaktheter i positionsbestämmningen.
+
+I detta projekt är trilateration en teknik som vi inte kommer ha möjlighet att utnyttja. Eftersom vi är begränsade till att relatera en åtkomstpunkt till ett arbetsområde kommer inte clientenheten ha möjlighet att utföra några positionsberäkningar i realtid. Istället kommer clientenheten matcha MAC-adresen som den är ansluten till med positionsdatabasen. I och med denna begränsning kommer den största delen av analysen av områdenas nätverksmiljö ske i en lärandefas innan databasen populeras.
+\subsection{Fingerprinting}
+Fingerprinting bygger precis som trilateration på positionsbestämmning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalerns planritning. Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas.%TODO% fixa en bild
+Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värderna för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten.\cite{IP1}\cite{jun2018low}
+Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och accepterad metod i system för inomhuspositionering finns det vissa problem .\cite{IP1}
+Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för clientenheten.\cite{IP1}
+
+Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det här projektet. Den första delen av vårat system kommer bygga på fingerprinttekniken. Skillnaden mellan vårat projekt 
 \subsection{Förra årets projekt}
+\subsection{AnyPlace}
+
 
 
 
@@ -305,20 +330,31 @@ Beskriv strukturen både internt (hur ert eget system är uppbyggt) och externt 
 
 Var inte för tekniskt detaljerade här.  Tanken är att ge en översikt över systemet.  Ni behöver inte beskriva objektmetoder etc. i detalj (om de inte är nya och avgörande för resultatet). Tekniska detaljer och implementation beskriver ni snarare i Huvudddelen.
 
+
 Se till att ni använder \emph{samma terminologi} i figurer som visar systemet som i texten.
 
 Anknyt figurerna till texten på ett tydligt sätt. Om ni t.ex. har separata underrubriker som beskriver olika delar/aspekter av systemstrukturen med tillhörande figur, välj antingen en underrubrik per del i figuren eller använd helt andra underrubriker.  Annars kommer läsaren att undra var underrubriken som beskriver del X är, när det finns underrubriker för alla andra delar.
 
 \section{Krav och utvärderingsmetoder / Requirements and evaluation methods}\label{sec:krav}
 
-För de olika funktionaliteterna (och/eller motsv) i ert system, hur ska ni avgöra om de är tillräckligt bra utförda/implementerade? Var går gränsen för ``tillräckligt bra''? (Eller när är de ``för dåliga''?)
+% Vilka krav ställer ni/andra på ert resultat?
+%
+% hur snabbt? hur många användare? hur strömsnålt? eller vad som är relevant
+% Hur ska ni utvärdera ert arbete/system (så att ni vet om/hur bra ni lyckats)?
+%
+% För de olika funktionaliteterna (och/eller motsv) i ert system, hur ska ni avgöra om de är tillräckligt bra utförda/implementerade? Var går gränsen för ``tillräckligt bra''? (Eller när är de ``för dåliga''?)
+%
+% Skilj på krav och funktionalitet. Själva funktionaliteterna har ni redan beskrivit i systemstrukturen eller huvuddelen nedan. (Har ni krav på saker ni beskriver först i huvuddelen kan ni lägga det här avsnittet efter huvuddelen.)
+%
+% Skriv tydliga krav \emph{som går att utvärdera}.  (Hur snabbt? Hur många användare? Hur strömsnålt? eller vad som är relevant).
+%
+% Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, en\-käter, fokusgrupper\ldots).
+% Beskriv hur externa intressenter involveras i utvärderingen.
+Kraven för det här projektet är något som vi tillsammans med kommunen har kommit fram till. Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till aktivitets. Det kommer vi kunna utvärdera genom att låta en utomstående få göra mappningen och sedan återkoppla om dennes upplevelse av applikationen.
 
-Skilj på krav och funktionalitet. Själva funktionaliteterna har ni redan beskrivit i systemstrukturen eller huvuddelen nedan. (Har ni krav på saker ni beskriver först i huvuddelen kan ni lägga det här avsnittet efter huvuddelen.)
+Kraven på presentationen av medarbetares position är att det ska visas vilket kontor, vilken våning samt en radie på 10 meter. Detta kommer utvärderas genom ett utförligt test, med olika försvårande förhållanden.
 
-Skriv tydliga krav \emph{som går att utvärdera}.  (Hur snabbt? Hur många användare? Hur strömsnålt? eller vad som är relevant).
 
-Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, en\-käter, fokusgrupper\ldots).
-Beskriv hur externa intressenter involveras i utvärderingen.
 
 \section{DEL x}\label{sec:delX}
 Mellan introduktion och avslutning finns ett eller sannolikt \emph{flera} avsnitt (``huvuddelen'') som innehåller själva bidraget.  Ni får själva välja passande rubriker (INTE ``Huvuddel'' eller ``Bidrag'').  Rubrikerna i huvuddelen ska tillsammans med titeln ge en idé om vad som berättas, en ``berättelse''. (Exempel: ``Algoritm för automatisk igenkänning av stora fötter'', ``Design av databasen för användardata'', ``Optimering av minnesanvändning'', ``Implementation av djupinlärningssystemet'' etc.)
