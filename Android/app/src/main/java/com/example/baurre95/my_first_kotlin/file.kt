@@ -34,6 +34,10 @@ class file : AppCompatActivity() {
                     it.write(wifiListCSV.toString().toByteArray())
                 }
             }
+            else {
+                Toast.makeText(this, "WifiListCSV in null",Toast.LENGTH_SHORT).show()
+
+            }
 
             Toast.makeText(this, path.toString(),Toast.LENGTH_SHORT).show()
         }

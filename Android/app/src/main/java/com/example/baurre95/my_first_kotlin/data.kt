@@ -2,6 +2,7 @@ package com.example.baurre95.my_first_kotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_data.*
@@ -24,10 +25,10 @@ class data : AppCompatActivity() {
     }
 
     fun writeToFile(file: File,text: String) {
-        //file.appendText(text)
-        FileOutputStream(file).use {
-            it.write(text.toByteArray())
-        }
+        file.appendText(text)
+       // FileOutputStream(file).use {
+       //     it.write(text.toByteArray())
+       // }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +55,8 @@ class data : AppCompatActivity() {
             FileOutputStream(filecheck).use {
                 var textFromET = APet.text.toString()
                 writeToFile(filecheck, textFromET)
+                Handler().postDelayed({
+                }, 500)
                 printFromFile()
             }
         }
