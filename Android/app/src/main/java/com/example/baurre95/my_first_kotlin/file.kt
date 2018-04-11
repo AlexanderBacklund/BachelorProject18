@@ -29,8 +29,10 @@ class file : AppCompatActivity() {
             val letDirectory = File(path,"Saved Files")
             letDirectory.mkdirs()
             val file = File(letDirectory, "records.csv")
-            FileOutputStream(file).use {
-                it.write(wifiListCSV.toString().toByteArray())
+            if(wifiListCSV != null) {
+                FileOutputStream(file).use {
+                    it.write(wifiListCSV.toString().toByteArray())
+                }
             }
 
             Toast.makeText(this, path.toString(),Toast.LENGTH_SHORT).show()
