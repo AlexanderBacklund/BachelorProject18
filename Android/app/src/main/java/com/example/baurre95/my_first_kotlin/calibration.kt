@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_calibration.*
 
 
@@ -67,16 +68,23 @@ class calibration : AppCompatActivity() {
 
     fun stopScanning() {
         unregisterReceiver(broadcastReceiver)
-        resultList.sortedWith(compareBy({ it.level }))
-        for (i in 0..resultList.size) {
-            axisList.add(resultList[i].SSID+" "+resultList[i].BSSID+" "+resultList[i].level)
-            if(i == 10) {
-                break
+        try {
+            resultList.sortedWith(compareBy({ it.level }))
+            for (i in 0..resultList.size) {
+                axisList.add(resultList[i].SSID+" "+resultList[i].BSSID+" "+resultList[i].level)
+                if(i == 10) {
+                    break
+                }
             }
+            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, axisList)
+            listView_bssid.adapter = adapter
+            Log.d("TESTING", axisList.toString())
+
+        } catch (e: IndexOutOfBoundsException) {
+            Toast.makeText(this, "Scan Failed", Toast.LENGTH_SHORT).show()
+
         }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, axisList)
-        listView_bssid.adapter = adapter
-        Log.d("TESTING", axisList.toString())
+
 
     }
     private fun mayRequestLocation(): Boolean {
