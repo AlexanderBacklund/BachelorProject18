@@ -55,10 +55,11 @@ class calibration : AppCompatActivity() {
 
 
     fun startScanning(){
-        Log.d("ALEXANDERBACKLUND", resultList.size.toString())
-        if (resultList.size > 0) {
+        if (resultList.size > 0 || axisList.size > 0) {
             resultList.clear()
+            axisList.clear()
         }
+
         wifiManager.setWifiEnabled(true)
         registerReceiver(broadcastReceiver, IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
         val enabled: Boolean = wifiManager.isWifiEnabled()
@@ -80,9 +81,6 @@ class calibration : AppCompatActivity() {
                     break
                 }
             }
-            val dummyList = ArrayList<String>()
-            val dummy_adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, dummyList)
-            listView_bssid.adapter = dummy_adapter
 
             val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, axisList)
             listView_bssid.adapter = adapter
@@ -110,21 +108,6 @@ class calibration : AppCompatActivity() {
         }
         return false
     }
-//    private fun sortScanResultsAfterSignal(scn: ArrayList<ScanResult>): ArrayList<ScanResult> {
-//        val newlist= ArrayList<ScanResult>()
-//        var r = scn[0]
-//        var i: Int = 0
-//        for (res in scn){
-//            if (res.level > r.level && i < 3) {
-//                r = res
-//                i++
-//            }
-//        }
-//        newlist.add(r)
-//
-//
-//        return newlist
-//    }
 
 
 }

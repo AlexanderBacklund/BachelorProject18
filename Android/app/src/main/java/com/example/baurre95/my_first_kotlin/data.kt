@@ -3,6 +3,7 @@ package com.example.baurre95.my_first_kotlin
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_data.*
@@ -13,22 +14,16 @@ class data : AppCompatActivity() {
     val FILENAME = "accesspoints.txt"
     var myList =  listOf<String>()
 
-    fun printFromFile() {
-        val path = getExternalFilesDir(null)
-        val file = File(path, "Saved Files/" + FILENAME)
-
+    fun printFromFile(file: File) {
         myList = file.readLines()
-        //file.useLines { lines -> myList.addAll(lines) }
-
+        Log.d("TESTING", myList.toString())
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, myList)
         APlv.adapter = adapter
     }
 
     fun writeToFile(file: File,text: String) {
         file.appendText(text)
-       // FileOutputStream(file).use {
-       //     it.write(text.toByteArray())
-       // }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +32,7 @@ class data : AppCompatActivity() {
         val path = getExternalFilesDir(null)
 
         val filecheck = File(path.toString() +  "/" + "Saved Files"+ "/" + FILENAME)
+
         if (filecheck.exists()) {
             Toast.makeText(this, "File exists", Toast.LENGTH_SHORT).show()
 
@@ -47,7 +43,7 @@ class data : AppCompatActivity() {
             val file = File(letDirectory, FILENAME)
             writeToFile(file, "a")
         }
-        printFromFile()
+        printFromFile(filecheck)
 
 
 
@@ -57,7 +53,7 @@ class data : AppCompatActivity() {
                 writeToFile(filecheck, textFromET)
                 Handler().postDelayed({
                 }, 500)
-                printFromFile()
+                printFromFile(filecheck)
             }
         }
     }
