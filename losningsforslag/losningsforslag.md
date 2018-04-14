@@ -28,11 +28,11 @@ referenspunkter som redan är definierade (detta ska ske med 5-10minuters mellan
 ## Intressant information:
 Bygga windows paketerad executable:
 ![alt text](pyinstaller.png)
-<!-- https://stackoverflow.com/questions/5458048/how-to-make-a-python-script-standalone-executable-to-run-without-any-dependency#5458807 -->
+https://stackoverflow.com/questions/5458048/how-to-make-a-python-script-standalone-executable-to-run-without-any-dependency#5458807
 
 Öppna en hemsida från ett script:
 ![alt text](openwebpage.png)
 
 Skanna wifi info från python på windows(kanske vore bra med stöd både på windows och ubuntu, men viktigt med WINDOWS):
 ![alt text](windowswifiscan.png)
-<!-- https://stackoverflow.com/questions/31868486/list-all-wireless-networks-python-for-pc -->
+https://stackoverflow.com/questions/31868486/list-all-wireless-networks-python-for-pc
