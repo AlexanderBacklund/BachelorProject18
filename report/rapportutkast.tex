@@ -86,7 +86,7 @@
 % \item How good are the results, how useful are they?
 % \end{enumerate}
 % The abstract should be understandable without reading the whole report (and the rest of the report should be understandable without reading the abstract). You can reuse text/phrases from the Introduction.
-Many companies and organisations nowadays chose to transfer from having offices into having an office free operation. With that comes some difficulties finding coworkers to discuss work related concerns. Beacause of this, employees looses productivity and spends too much time and energy on locating coworkers. This project's' intent is to make this transition easy, non time consuming and available only using existing information and technology.
+Many companies and organisations nowadays chose to transfer from having offices into having an more office free operation. With that comes some difficulties finding coworkers to discuss work related concerns. Beacause of this, employees looses productivity and spends too much time and energy on locating coworkers. This project's' intent is to make this transition easy, non time consuming and available only using existing information and technology. Which is provided via a location platform that users can locate their co-workers.
 \end{abstract}
 \begin{sammanfattning}
 % Sammanfattning på svenska. Se till att det står samma saker i det svenska och det engelska abstractet.
@@ -100,7 +100,7 @@ Many companies and organisations nowadays chose to transfer from having offices 
 % Ca 10-20 rader. Använd inte referenser; ej heller formler om det går att undvika.
 %
 % Abstract ska vara förståeligt utan att läsa resten av rapporten, och resten av rapporten ska kunna läsas utan att läsa abstract. Man kan återanvända text från introduktionen.
-Många företag och organisationer nuförtiden väljer att förlytta deras verksamhet från kontorsbaserad till kontorsfri. Med den övergången tillkommer vissa problem med att hitta medarbetare för att kunna diskutera arbetsrelaterade saker. På grund av det här tappar de anställda i produktivitet, eftersom de behöver spendera för mycket tid på att lokalisera sina kollegor. Detta projektets intention är att göra övergången enkel, icke tidskrävande och möjlig genom att endast använda befinntlig information och teknik.
+Många företag och organisationer nuförtiden väljer att förlytta deras verksamhet från kontorsbaserad till en mer kontorsfri miljö. Med den övergången tillkommer vissa problem med att hitta medarbetare för att kunna diskutera arbetsrelaterade saker. På grund av det här tappar de anställda i produktivitet, eftersom de behöver spendera för mycket tid på att lokalisera sina kollegor. Detta projektets intention är att göra övergången enkel, icke tidskrävande och möjlig genom att endast använda befinntlig information och teknik. Vilket ges via en lokaliserings plattform som användare kan lokalisera sina medarbetare.
 \end{sammanfattning}
 
 % Innehållsförteckningen här.
@@ -141,7 +141,7 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
 
 
 \section*{Att göra}
-En sektion som beskriver läget för rapporten kan vara användbart i ``veckans inlämning'' för att underlätta feedbacken.
+Andra utkast: Bakgrund, relaterat arbete och referenser.
 
 \newpage %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen (men inte \mainmatter)
 
@@ -180,7 +180,15 @@ Det är detta problem som det här projektet syftar till att lösa.
 
     I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. En av skillnaderna är att det vid positionsbetsämning inomhus tillkommer en faktor som komlicerar positionsbestämnignen. Problemet är att man vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt kordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
 
+	\subsection{Aktivitetsbaserad verksamhet (ABW)}
+	Aktivitetsbaserade arbetsplatser erbjuder arbetarna en variation av arbetsmiljöer. Kärnan i ABW är att arbetarna inte ska vara bundna till ett skrivbord utan istället skapa den mest ändamålsenliga variationen för den individa arbetaren. Utifrån resultatet från en aktivitetsanalys delas arbetsplatsen in i olika miljöer som stödjer de olika arbeten som ska utföras såväl som individuella till grupparbeten. Det är vanligt att dela upp arbetsplatsen i olika zoner som bland annat en tyst zon och en mötes zon. Arbetarna kan därefter söka sig till den zon de tycker passar för dagens arbete. \cite{ABW}
 
+	\iffalse
+	\bibitem{ABW}
+	J.~Hort, F.~Krause ``Aktivitetsbaserade arbetsplatser i offentlig sektor''
+	  \url{https://webbutik.skl.se/bilder/artiklar/pdf/7585-208-9.pdf?issuusl=ignore}
+	  accessed: 2018-04-15.
+\fi
 
 
 
@@ -310,7 +318,7 @@ I tillvägagångsdelen av rapporten redogörs vilka tekniker och metoder som anv
 I början av projektplanneringen togs en gemensam beskrivning över systemt fram så att alla parter hade samma bild. I denna beskrivning gjordes tydliga separationer mellan de olika delsystem samt en prioriteringslista över vilka delsystem som var tvungen att fungera först. När denna beskrivning var klar togs en tidsplannering fram och tilldelning av arbetsuppgifter sinsemellan alla gruppmedlemmar.
 
 \subsection{Android}
-Systemet är uppbyggd av bland annat två android program. Ena programmet används för att mappa internet information till position i en byggnad. Det andra programmet används till att visualisera arbetsplatsen och få ut data angående positionering i arbetsplatsen. I utvekling av båda programmen används "Android Studios" vilket är en "integrerad utvecklingsmiljö" för att utveckla android applikationer. Alternativ till androida applikationer är applikationer till iOS samt windows telefoner. En anledning till att utveckla programmen i android är då programmeringsspråket "kotlin" är enkelt och väldigt likt java, vilket alla i gruppen behärskar. En annan anledning till android är pga att alla i gruppen hade android telefoner vilket underlättar testning av programmen. Istället för att utveckla en webbaserad visualisering av arbetsplatsen så valdes det att göras i android då vi kommer att ha mer kontroll över inomhuspositioneringen då. % TODO ANLEDNING till android och inte till någon annnan? är det pga enkelheten av testning samt enkelheten av webb koden?
+Systemet är uppbyggd av bland annat två android program. Ena programmet används för att kartlägga internet information med position i en byggnad. Det andra programmet används till att visualisera arbetsplatsen och få ut data angående positionering i arbetsplatsen. I utvekling av båda programmen används "Android Studios" vilket är en "integrerad utvecklingsmiljö" för att utveckla android applikationer. Alternativ till androida applikationer är applikationer till iOS samt windows telefoner. En anledning till att utveckla programmen i android är då programmeringsspråket "kotlin" är enkelt och väldigt likt java, vilket alla i gruppen behärskar. En annan anledning till android är då kommunen använder sig av android telefoner. Istället för att utveckla en webbaserad visualisering av arbetsplatsen så valdes det att göras i android då vi kommer att ha mer kontroll över inomhuspositioneringen då.
 
 \subsection{Python}
 Systemt består även av ett skript som automatiskt populerara SfB's databasen. Detta skript programmeras i python då alla i gruppen behärskar python. Det finns många alternativ till detta språk men då gruppen redan är familjär med python och att denna del av systemet är så relativt liten så underlättar det att använda python.
@@ -593,5 +601,13 @@ Vi har delat upp våra milstolpar i två delar. En för systemt och en för rapp
 	\item 28/5 Ett fungerande system. Programmerings stop.
 \end{itemize}
 
-
+%TODO : 1) Hur ska vi kunna separera AP via våningar? (Vart ska det stå?)
+%TODO : 2) Fingerprinting varför bara en del? (Kommer inte ihåg vad jag menade med ni kanske gör)
+%TODO : 3) Kommunen hur ser det ut?
+%TODO : 4) Skype 4 Buisness, Skriva att vi skiter i det och varför vi skiter i det? (Vart ska det stå?)
+%TODO : 5) Kontor till ABW vilka motgångar/svårigheter? (Vart ska vi beskriva detta?)
+%TODO : 6) titel
+%TODO : 7) GPS sektionen ska flyttas
+%TODO : 8) Trilateration kanske ska vara i tillvägagångssätt?
+%TODO : 9) ETIK och Säkerhet
 \end{document}
