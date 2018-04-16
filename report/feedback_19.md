@@ -16,7 +16,7 @@ Bra
 Källa?
 
 - 4.1 Trine -
-Ska källan vara efter företagsnamnet? Varför inte efter informationen?
+Ska källan vara efter företagsnamnet? Varför inte efter informationen? Vad är skillnaden från ert projekt?
 
 - 4.2 Soalr aid -
 Samma som ovan
