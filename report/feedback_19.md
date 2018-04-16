@@ -54,4 +54,4 @@ Bakgrund, brukar man inte motivera sitt egna projekt här? Motiveringen till see
 
 
 Relaterat arbete, Ska man jämföra med sin egna då? Mycket i det relaterade arbetet relaterar till seeding solar (vilket iof också är intressant) men inte så mycket till ert projekt.
-Kanske går att reatera lite några som kanske också har trixat med liknande algoritmer ni skriver om i Metod och Tillvägagångssätt? 
+Kanske går att reatera lite några som kanske också har trixat med liknande algoritmer ni skriver om i Metod och Tillvägagångssätt?
