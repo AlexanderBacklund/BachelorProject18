@@ -23,8 +23,8 @@ Ska källan vara efter företagsnamnet? Varför inte efter informationen? Vad ä
 - 4.2 Soalr aid -
 Samma som ovan
 
-<!-- ### Generella saker
+Generella saker
 Bakgrund, brukar man inte motivera sitt egna projekt här? Motiveringen till seeding solar är tydlig
 men inte så mycket om hemsidan.
 
-Relaterat arbete, Ska man jämföra med sin egna då? -->
+Relaterat arbete, Ska man jämföra med sin egna då?
