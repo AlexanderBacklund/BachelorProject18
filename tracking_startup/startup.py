@@ -33,6 +33,11 @@ def scanNetworks(netwrkCard):
     for c in cells:
         print(c.ssid+" - "+str(c.signal)+" - "+str(c.address))
 
+#def nerestReferencePoint(listOfRefPoints, myPositionInfo):
+#    for refs in listOfRefPoints:
+
+#        listOfRelevantRPs =
+
 def main():
     netcard = raw_input("Enter network-card for wifi-scan: ")
 
