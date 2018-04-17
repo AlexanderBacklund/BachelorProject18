@@ -17,7 +17,7 @@
 #################################################################
 
 from wifi import Cell, Scheme
-import time, platform, MySQLdb
+import time, platform#,# MySQLdb
 
 def connectToDB():
     return MySQLdb.connect(host="back.db1.course.it.uu.se", user="fall17_it12", passwd="vXdWAk2K", db="fall17_project_it12")
@@ -34,8 +34,12 @@ class RefPoint(object):
     # The class constructor
     def __init__(self, name, position, adress1, adress2, rssi1,rssi2):
         self.name = name
-        self.age = age
-        self.major = major
+        self.position = position
+        self.adress1 = adress1
+        self.adress2 = adress2
+        self.rssi1 = rssi1
+        self.rssi2 = rssi2
+
 #function to create a reference point
 def make_RefPoint(name, position, adress1, adress2, rssi1,rssi2):
     refPoint = RefPoint(name, position, adress1, adress2, rssi1,rssi2)
@@ -43,9 +47,9 @@ def make_RefPoint(name, position, adress1, adress2, rssi1,rssi2):
 
 #creates a list of dummy reference points
 def createTestListOfRPs():
-    r1 = make_RefPoint(r1, A1, AAA, BBB, -34, -55)
-    r2 = make_RefPoint(r2, A2, CCC, DDD, -14, -18)
-    r3 = make_RefPoint(r3, A3, EEE, FFF, -25, -33)
+    r1 = make_RefPoint("r1", "Albins dator", "24:01:C7:19:A3:00", "24:01:C7:19:A3:01", -52, -52)
+    r2 = make_RefPoint("r2", "Borta vid bordet", "24:01:C7:19:CF:4E", "24:01:C7:19:CF:4F", -49, -46)
+    r3 = make_RefPoint("r3", "Skrubben", "24:01:C7:19:47:10", "24:01:C7:19:47:11", -67, -68)
     rplist = [r1, r2, r3]
     return rplist
 
@@ -70,18 +74,20 @@ def listOfRelRPs(listOfRefPoints, myPositionInfo):
     mac2 = myPositionInfo[1].address
     RelRPs = []
     for ref in listOfRefPoints:
-        if (ref.adress1 == mac1 and ref.adress2 == mac2mac2):
-            RelRPs.append(refs)
+        if (ref.adress1 == mac1 and ref.adress2 == mac2):
+            RelRPs.append(ref)
         elif (ref.adress1 == mac1 and ref.adress2 == mac2):
-            RelRPs.append(refs)
+            RelRPs.append(ref)
     return RelRPs
 
 #determines which reference point is closest to me
 def nearestRP(relRPs, myAPs):
     area = "position unknown"
     closestDiff = 100
+    print("myAPs[0]addres " + myAPs[0].address)
+    print("myAPs[1]addres " + myAPs[1].address)
     for rp in relRPs:
-        if rp.adress1 == myAPs[0].adress1:
+        if rp.adress1 == myAPs[0].address:
             diff1 = rp.rssi1 - myAPs[0].signal
             if diff1<0:
                 diff1 = diff1 * -1
@@ -113,12 +119,12 @@ def main():
 
     # l = scanNetworks(netcard)
     # l1 = sortNetworksReturnAmount(4,l)
-    db = connectToDB()
+    #db = connectToDB()
     # you must create a Cursor object. It will let
     #  you execute all the queries you need
-    cur = db.cursor()
+    #cur = db.cursor()
 
-    getRefListFromDB(cur)
+    #getRefListFromDB(cur)
 
     l = scanNetworks(netcard)
     myAPs = sortNetworksReturnAmount(2,l)
@@ -128,11 +134,11 @@ def main():
     print myPosition
 
 
-    #for l2 in myAPs:
-    #    print(l2.ssid+" - "+str(l2.signal)+" - "+str(l2.address))
+    #for l2 in l:
+    #    print(l2.ssid+" - "+ str(l2.signal) + " - "+str(l2.address))
     #Leave me be
     ###############################################
-    db.close()
+    #db.close()
 
 if __name__ == "__main__":
     main()
