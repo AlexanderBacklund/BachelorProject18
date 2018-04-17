@@ -81,7 +81,7 @@ def nearestRP(relRPs, myAPs):
     area = "position unknown"
     closestDiff = 100
     for rp in relRPs:
-        if rp.adress1 = myAPs[0].adress1:
+        if rp.adress1 == myAPs[0].adress1:
             diff1 = rp.rssi1 - myAPs[0].signal
             if diff1<0:
                 diff1 = diff1 * -1
@@ -89,7 +89,7 @@ def nearestRP(relRPs, myAPs):
             if diff2 < 0:
                 diff2 = diff2 * -1
             diffSum = diff1 + diff2
-        else
+        else:
             diff1 = rp.rssi1 - myAPs[1].signal
             if diff1<0:
                 diff1 = diff1 * -1
@@ -109,7 +109,7 @@ def getRefListFromDB(cur):
 
 
 def main():
-    #netcard = raw_input("Enter network-card for wifi-scan: ")
+    netcard = raw_input("Enter network-card for wifi-scan: ")
 
     # l = scanNetworks(netcard)
     # l1 = sortNetworksReturnAmount(4,l)
