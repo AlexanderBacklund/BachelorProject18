@@ -65,7 +65,7 @@ class data : AppCompatActivity() {
             popupMenu.inflate(R.menu.menu_main)
             popupMenu.show()
 
-            Toast.makeText(this, "Position Clicked:"+" "+position,Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Position Clicked:"+" "+position,Toast.LENGTH_SHORT).show()
         }
 
 

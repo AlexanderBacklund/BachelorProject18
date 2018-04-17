@@ -29,7 +29,16 @@
         <activity android:name=".file" />
         <activity
             android:name=".real_scan"
-            android:label="@string/title_activity_real_scan"></activity>
+            android:label="@string/title_activity_real_scan" />
+        <activity
+            android:name=".calibration_of_RP"
+            android:label="@string/title_activity_calibration_of__rp"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".calibration_of_rp"
+            android:label="@string/title_activity_calibration_of_rp"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".calibration_rp"></activity>
     </application>
 
 </manifest>
