@@ -73,8 +73,30 @@ def listOfRelRPs(listOfRefPoints, myPositionInfo):
     return RelRPs
 
 def nearestRP(relRPs, myAPs):
+    area = "position unknown"
+    closestDiff = 100
     for rp in relRPs:
-        rp.
+        if rp.adress1 = myAPs[0].adress1:
+            diff1 = rp.rssi1 - myAPs[0].signal
+            if diff1<0:
+                diff1 = diff1 * -1
+            diff2 = rp.rssi2 - myAPs[1].signal
+            if diff2 < 0:
+                diff2 = diff2 * -1
+            diffSum = diff1 + diff2
+        else
+            diff1 = rp.rssi1 - myAPs[1].signal
+            if diff1<0:
+                diff1 = diff1 * -1
+            diff2 = rp.rssi2 - myAPs[0].signal
+            if diff2 < 0:
+                diff2 = diff2 * -1
+            diffSum = diff1 + diff2
+        if diffSum < closestDiff:
+            area = rp.position
+            closestDiff = diffSum
+    return area
+
 
 
 def main():
@@ -85,10 +107,11 @@ def main():
     rplist = createTestListOfRPs()
     relRPs = listOfRelRPs(rplist, myAPs)
     myPosition = nearestRP(relRPs, myAPs)
+    print myPosition
 
 
-    for l2 in myAPs:
-        print(l2.ssid+" - "+str(l2.signal)+" - "+str(l2.address))
+    #for l2 in myAPs:
+    #    print(l2.ssid+" - "+str(l2.signal)+" - "+str(l2.address))
 
 if __name__ == "__main__":
     main()
