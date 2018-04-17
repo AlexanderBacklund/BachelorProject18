@@ -39,7 +39,7 @@ class data : AppCompatActivity() {
 
         }
         else {
-            val letDirectory = File(path,"Saved Files") 
+            val letDirectory = File(path,"Saved Files")
             letDirectory.mkdirs()
             val file = File(letDirectory, FILENAME)
             writeToFile(file, "a")
