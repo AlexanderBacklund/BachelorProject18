@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -43,11 +44,17 @@ class data : AppCompatActivity() {
         APlv.adapter = adapter
     }
 
+    fun getItemFromFile(file: File, pos: Int): String {
+        var specificList= file.readLines()
+        Log.d("ALEXANDER", specificList.size.toString())
+        return specificList[pos]
+    }
+
     fun writeToFile(file: File,text: String) {
         file.appendText(text)
 
     }
-    fun startScanning(file: File){
+    fun startScanning(fileDB: File, fileUser: File, pos: Int){
         if (resultList.size > 0 || axisList.size > 0) {
             resultList.clear()
             axisList.clear()
@@ -60,11 +67,11 @@ class data : AppCompatActivity() {
         wifiManager.startScan()
 
         Handler().postDelayed({
-            this.stopScanning(file)
+            this.stopScanning(fileDB, fileUser, pos)
         }, 5000)
     }
 
-    fun stopScanning(file: File) {
+    fun stopScanning(fileDB: File, fileUser: File, pos: Int) {
         unregisterReceiver(broadcastReceiver)
         try {
             resultList.sortedWith(compareBy({ it.level }))
@@ -74,18 +81,20 @@ class data : AppCompatActivity() {
                     break
                 }
             }
-            var textToDB = ""
-            for (i in 0..axisList.size) {
-                textToDB +="\n" + axisList[i]
-                writeToFile(file, textToDB)
-            }
+
         } catch (e: IndexOutOfBoundsException) {
             Toast.makeText(this, "Scan Failed", Toast.LENGTH_SHORT).show()
-
         }
-
+        var specItem = getItemFromFile(fileUser, pos)
+        writeToFile(fileDB, specItem + ", ")
+        for (j in 0..4) {
+            writeToFile(fileDB, axisList[j] + ", ")
+        }
+        Toast.makeText(this, "Scan Successful", Toast.LENGTH_SHORT).show()
 
     }
+
+
     private fun mayRequestLocation(): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true
@@ -110,27 +119,29 @@ class data : AppCompatActivity() {
         wifiManager = this.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 
         val path = getExternalFilesDir(null)
-        val filecheckDB = File(path.toString() +  "/" + "Saved Files"+ "/" + filenameToDB)
-        val filecheckUser = File(path.toString() +  "/" + "Saved Files"+ "/" + filenameToUsers)
+        val fileDir = File(path.toString(), "/Saved Files/")
+        val filecheckDB = File(path.toString() +  "/Saved Files/" + filenameToDB)
+        val filecheckUser = File(path.toString() +  "/Saved Files/" + filenameToUsers)
 
-        if (filecheckDB.exists()) {
-            Toast.makeText(this, "File DB exists", Toast.LENGTH_SHORT).show()
+        if (fileDir.exists()) {
+            if (!filecheckDB.exists()) {
+                val file = File(fileDir, filenameToDB)
+                writeToFile(file, "Dummy \n")
+                Toast.makeText(this, "File DB Created", Toast.LENGTH_SHORT).show()
+            }
+            if (!filecheckUser.exists()) {
+                val file2 = File(fileDir, filenameToUsers)
+                writeToFile(file2, "Dummy \n")
+                Toast.makeText(this, "File user Created", Toast.LENGTH_SHORT).show()
+            }
         }
         else {
-            val letDirectory = File(path,"Saved Files")
+            val letDirectory = File(path, "Saved Files")
             letDirectory.mkdirs()
-            val file = File(letDirectory, filenameToDB)
-            writeToFile(file, "a")
-        }
-
-        if (filecheckUser.exists()) {
-            Toast.makeText(this, "File user exists", Toast.LENGTH_SHORT).show()
-        }
-        else {
-            val letDirectory = File(path,"Saved Files")
-            letDirectory.mkdirs()
-            val file2 = File(letDirectory, filenameToUsers)
-            writeToFile(file2, "a")
+            val file = File(fileDir, filenameToDB)
+            writeToFile(file, "Dummy \n")
+            val file2 = File(fileDir, filenameToUsers)
+            writeToFile(file2, "Dummy \n")
         }
 
         printFromFile(filecheckUser)
@@ -140,8 +151,10 @@ class data : AppCompatActivity() {
             popupMenu.setOnMenuItemClickListener { item  ->
                 when (item.itemId) {
                     R.id.menu_start_scan -> {
-                        startScanning(filecheckDB)
-                        Toast.makeText(this, "Klart", Toast.LENGTH_LONG).show()
+                        startScanning(filecheckDB,filecheckUser, position)
+                       // Handler().postDelayed({
+                       //     Toast.makeText(this, "Klart", Toast.LENGTH_LONG).show()
+                       // }, 5000)
                         true
                     }
                     R.id.menu_delete -> {
@@ -154,7 +167,6 @@ class data : AppCompatActivity() {
             popupMenu.inflate(R.menu.menu_main)
             popupMenu.show()
 
-            //Toast.makeText(this, "Position Clicked:"+" "+position,Toast.LENGTH_SHORT).show()
         }
 
 
@@ -162,8 +174,6 @@ class data : AppCompatActivity() {
             var textFromET = APet.text.toString()
             textFromET += "\n"
             writeToFile(filecheckUser, textFromET)
-            writeToFile(filecheckDB, textFromET)
-
             printFromFile(filecheckUser)
 
         }
