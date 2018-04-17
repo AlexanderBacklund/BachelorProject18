@@ -1,18 +1,19 @@
 package com.example.baurre95.my_first_kotlin
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.PopupMenu
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_data.*
 import java.io.File
-import java.io.FileOutputStream
 
 class data : AppCompatActivity() {
     val FILENAME = "accesspoints.txt"
     var myList =  listOf<String>()
+
 
     fun printFromFile(file: File) {
         myList = file.readLines()
@@ -38,23 +39,43 @@ class data : AppCompatActivity() {
 
         }
         else {
-            val letDirectory = File(path,"Saved Files")
+            val letDirectory = File(path,"Saved Files") 
             letDirectory.mkdirs()
             val file = File(letDirectory, FILENAME)
             writeToFile(file, "a")
         }
         printFromFile(filecheck)
 
+        APlv.setOnItemClickListener {parent, view, position, id ->
+            val popupMenu = PopupMenu(this, view)
+            popupMenu.setOnMenuItemClickListener { item  ->
+                when (item.itemId) {
+                    R.id.menu_start_scan -> {
+                        val intent = Intent(this, calibration::class.java)
+                        startActivity(intent)
+                        true
+                    }
+                    R.id.menu_delete -> {
+                        Toast.makeText(this, "delete", Toast.LENGTH_LONG).show()
+                        true
+                    }
+                    else -> false
+                }
+            }
+            popupMenu.inflate(R.menu.menu_main)
+            popupMenu.show()
+
+            Toast.makeText(this, "Position Clicked:"+" "+position,Toast.LENGTH_SHORT).show()
+        }
 
 
         APaddbtn.setOnClickListener{
-            FileOutputStream(filecheck).use {
-                var textFromET = APet.text.toString()
-                writeToFile(filecheck, textFromET)
-                Handler().postDelayed({
-                }, 500)
-                printFromFile(filecheck)
-            }
+            var textFromET = APet.text.toString()
+            textFromET += "\n"
+            writeToFile(filecheck, textFromET)
+
+            printFromFile(filecheck)
+
         }
     }
 }

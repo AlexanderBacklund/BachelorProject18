@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Calibration</string>
+    <string name="title_activity_real_scan">real_scan</string>
 </resources>

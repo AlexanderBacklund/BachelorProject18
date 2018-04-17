@@ -45,12 +45,12 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="14sp"
         app:fontFamily="casual"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/APlv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/APet"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.205" />
 
     <ListView
         android:id="@+id/APlv"
