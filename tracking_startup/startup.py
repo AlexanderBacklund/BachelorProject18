@@ -19,6 +19,7 @@
 from wifi import Cell, Scheme
 import time, platform
 
+#creates a object type reference point
 class RefPoint(object):
     name = ""
     position = ""
@@ -27,16 +28,17 @@ class RefPoint(object):
     rssi1 = 0
     rssi2 = 0
 
-    # The class "constructor" - It's actually an initializer
+    # The class constructor
     def __init__(self, name, position, adress1, adress2, rssi1,rssi2):
         self.name = name
         self.age = age
         self.major = major
-
+#function to create a reference point
 def make_RefPoint(name, position, adress1, adress2, rssi1,rssi2):
     refPoint = RefPoint(name, position, adress1, adress2, rssi1,rssi2)
     return refPoint
 
+#creates a list of dummy reference points
 def createTestListOfRPs():
     r1 = make_RefPoint(r1, A1, AAA, BBB, -34, -55)
     r2 = make_RefPoint(r2, A2, CCC, DDD, -14, -18)
@@ -61,6 +63,7 @@ def sortNetworksReturnAmount(amountReturned, netwrkList):
     nList = sorted(netwrkList, key=lambda x: x.signal, reverse=True)[:amountReturned]
     return nList
 
+#creates a list of relevant Reference points to check based on my position
 def listOfRelRPs(listOfRefPoints, myPositionInfo):
     mac1 = myPositionInfo[0].address
     mac2 = myPositionInfo[1].address
@@ -72,6 +75,7 @@ def listOfRelRPs(listOfRefPoints, myPositionInfo):
         RelRPs.append(refs)
     return RelRPs
 
+#determines which reference point is closest to me
 def nearestRP(relRPs, myAPs):
     area = "position unknown"
     closestDiff = 100
