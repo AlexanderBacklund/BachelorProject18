@@ -68,45 +68,67 @@ def sortNetworksReturnAmount(amountReturned, netwrkList):
     nList = sorted(netwrkList, key=lambda x: x.signal, reverse=True)[:amountReturned]
     return nList
 
+#def findMyAPinRP(listOfRefPoints, myPositionInfo):
+#    RelRPs = []
+#    for ref in listOfRefPoints:
+#        numberOfMatches = 0
+#        for tmp in range(0,10):
+#            if ref.adress1 == myPositionInfo[tmp].address or ref.adress2 == myPositionInfo[tmp].address:
+#                numberOfMatches += 1
+#        if (numberOfMatches > 1):
+#            RelRPs.append(tmp)
+#    return RelRPs
+
+
 #creates a list of relevant Reference points to check based on my position
-def listOfRelRPs(listOfRefPoints, myPositionInfo):
-    mac1 = myPositionInfo[0].address
-    mac2 = myPositionInfo[1].address
+def listOfRelRPs(listOfRefPoints, myPositionInfo, lengthAP):
     RelRPs = []
     for ref in listOfRefPoints:
-        if (ref.adress1 == mac1 and ref.adress2 == mac2):
+        numberOfMatches = 0
+        for tmp in range(0,lengthAP):
+            if ref.adress1 == myPositionInfo[tmp].address or ref.adress2 == myPositionInfo[tmp].address:
+                numberOfMatches += 1
+        if (numberOfMatches > 0):
             RelRPs.append(ref)
-        elif (ref.adress1 == mac1 and ref.adress2 == mac2):
-            RelRPs.append(ref)
+    print("langden 1 " + str(len(RelRPs)))
     return RelRPs
+    #mac1 = myPositionInfo[0].address
+    #mac2 = myPositionInfo[1].address
+    #RelRPs = []
+    #for ref in listOfRefPoints:
+    #    if (ref.adress1 == mac1 and ref.adress2 == mac2):
+    #        RelRPs.append(ref)
+    #    elif (ref.adress1 == mac1 and ref.adress2 == mac2):
+    #        RelRPs.append(ref)
+    #return RelRPs
 
 #determines which reference point is closest to me
-def nearestRP(relRPs, myAPs):
+def nearestRP(relRPs, myAPs, lengthAP):
+    for tsk in range(0,10):
+        print(myAPs[tsk].address)
+    print("langden " + str(len(relRPs)))
+    if len(relRPs) == 0:
+        return "position unknown"
     area = "position unknown"
-    closestDiff = 100
-    print("myAPs[0]addres " + myAPs[0].address)
-    print("myAPs[1]addres " + myAPs[1].address)
+    closestDiff = 300
+    diff1 = 500
+    diff2 = 500
     for rp in relRPs:
-        if rp.adress1 == myAPs[0].address:
-            diff1 = rp.rssi1 - myAPs[0].signal
-            if diff1<0:
-                diff1 = diff1 * -1
-            diff2 = rp.rssi2 - myAPs[1].signal
-            if diff2 < 0:
-                diff2 = diff2 * -1
-            diffSum = diff1 + diff2
-        else:
-            diff1 = rp.rssi1 - myAPs[1].signal
-            if diff1<0:
-                diff1 = diff1 * -1
-            diff2 = rp.rssi2 - myAPs[0].signal
-            if diff2 < 0:
-                diff2 = diff2 * -1
-            diffSum = diff1 + diff2
+        for tmp in range(0,lengthAP):
+            if (rp.adress1 == "" + myAPs[tmp].address):
+                diff1 = rp.rssi1 - myAPs[tmp].signal
+                if diff1<0:
+                    diff1 = diff1 * -1
+            elif rp.adress2 == "" + myAPs[tmp].address:
+                diff2 = rp.rssi2 - myAPs[tmp].signal
+                if diff2 < 0:
+                    diff2 = diff2 * -1
+        diffSum = diff1 + diff2
         if diffSum < closestDiff:
             area = rp.position
             closestDiff = diffSum
     return area
+
 
 
 def getRefListFromDB(cur):
@@ -116,6 +138,7 @@ def getRefListFromDB(cur):
 
 def main():
     netcard = raw_input("Enter network-card for wifi-scan: ")
+    numberOfNetworksToScanAroundMe = 10
 
     # l = scanNetworks(netcard)
     # l1 = sortNetworksReturnAmount(4,l)
@@ -127,10 +150,10 @@ def main():
     #getRefListFromDB(cur)
 
     l = scanNetworks(netcard)
-    myAPs = sortNetworksReturnAmount(2,l)
+    myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
     rplist = createTestListOfRPs()
-    relRPs = listOfRelRPs(rplist, myAPs)
-    myPosition = nearestRP(relRPs, myAPs)
+    relRPs = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
+    myPosition = nearestRP(relRPs, myAPs, numberOfNetworksToScanAroundMe)
     print myPosition
 
 
