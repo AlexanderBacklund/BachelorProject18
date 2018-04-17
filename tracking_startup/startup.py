@@ -30,8 +30,11 @@ def scanNetworks(netwrkCard):
         cells = Cell.all(netwrkCard)
         time.sleep(2)
         print('Scanning...')
-    for c in cells:
-        print(c.ssid+" - "+str(c.signal)+" - "+str(c.address))
+    return cells
+
+def sortNetworksReturnAmount(amountReturned, netwrkList):
+    nList = sorted(netwrkList, key=lambda x: x.signal, reverse=True)[:amountReturned]
+    return nList
 
 #def nerestReferencePoint(listOfRefPoints, myPositionInfo):
 #    for refs in listOfRefPoints:
@@ -41,7 +44,10 @@ def scanNetworks(netwrkCard):
 def main():
     netcard = raw_input("Enter network-card for wifi-scan: ")
 
-    scanNetworks(netcard)
+    l = scanNetworks(netcard)
+    l1 = sortNetworksReturnAmount(4,l)
+    for l2 in l1:
+        print(l2.ssid+" - "+str(l2.signal)+" - "+str(l2.address))
 
 if __name__ == "__main__":
     main()
