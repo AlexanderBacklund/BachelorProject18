@@ -3,27 +3,33 @@
 ## Tekniker - Android Applikation
 Denna applikation ska populera en databas med referenspunkter för att kunna positionera
 enheter i nätverket. Pre-användning av systemet.
+Skanna av våningsplan. Desto mer referenspunkter desto bättre precision.
 
-## Den store och otroliga databasen
+## Databasen som håller positions-data
 SQL-Databas som ska hålla data om:
 * referenspunkter i nätverket för positionering
 * Användare
-* Användares relation till referenspunkterna
+* Användares relation till referenspunkterna(position)
 
 ## Ett Python script som körs av Användare
 När man startar scriptet som körs av användare av systemet ska detta ske:
 1. Den promptar med ett användarnamn/userid
 2. Den startar en anslutning till databasen där den lämnar uppgifter i relation till
-referenspunkter som redan är definierade (detta ska ske med 5-10minuters mellanrum)
-3. Den går till sajten som vi byggt som i anslutning med databasen presenterar intressant information.
+referenspunkter som redan är definierade (detta ska ske med 20-30minuters mellanrum)
+3. Den går till sajten som vi byggt som i anslutning med databasen presenterar intressant information. Medans punkt 2 sker i bakgrunden.
 
 
 ## Web applikation för presentation av data från databasen
 * Den visar den aktuella positionen för användare som har delat med sig av det.
-* den sköter också algoritmer för att visa den ungefärliga positionen av arbetare.
+* Översikt på kartan med belägring
 ### (Utbyggnad)
 * Den visar historik utifrån medarbetares tidigare position.
+* Vem är mina grannar? (sitter i samma område)
 
+## Frågeställningar
+* Gdpr? Hur skyddar man användarnas integritet?
+* "Spårningen" sker endast på datorn. Telefonen blir spöke
+* Stöd för trådbundna anslutningar?
 
 ## Intressant information:
 Bygga windows paketerad executable:
