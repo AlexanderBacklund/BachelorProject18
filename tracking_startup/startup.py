@@ -20,7 +20,7 @@ from wifi import Cell, Scheme
 import time, platform#,# MySQLdb
 
 def connectToDB():
-    return MySQLdb.connect(host="back.db1.course.it.uu.se", user="fall17_it12", passwd="vXdWAk2K", db="fall17_project_it12")
+    return MySQLdb.connect(host="localhost", user="root", passwd="Alabse959393#", db="localisation")
 
 #creates a object type reference point
 class RefPoint(object):
