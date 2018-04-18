@@ -68,18 +68,6 @@ def sortNetworksReturnAmount(amountReturned, netwrkList):
     nList = sorted(netwrkList, key=lambda x: x.signal, reverse=True)[:amountReturned]
     return nList
 
-#def findMyAPinRP(listOfRefPoints, myPositionInfo):
-#    RelRPs = []
-#    for ref in listOfRefPoints:
-#        numberOfMatches = 0
-#        for tmp in range(0,10):
-#            if ref.adress1 == myPositionInfo[tmp].address or ref.adress2 == myPositionInfo[tmp].address:
-#                numberOfMatches += 1
-#        if (numberOfMatches > 1):
-#            RelRPs.append(tmp)
-#    return RelRPs
-
-
 #creates a list of relevant Reference points to check based on my position
 def listOfRelRPs(listOfRefPoints, myPositionInfo, lengthAP):
     RelRPs = []
@@ -92,15 +80,6 @@ def listOfRelRPs(listOfRefPoints, myPositionInfo, lengthAP):
             RelRPs.append(ref)
     print("langden 1 " + str(len(RelRPs)))
     return RelRPs
-    #mac1 = myPositionInfo[0].address
-    #mac2 = myPositionInfo[1].address
-    #RelRPs = []
-    #for ref in listOfRefPoints:
-    #    if (ref.adress1 == mac1 and ref.adress2 == mac2):
-    #        RelRPs.append(ref)
-    #    elif (ref.adress1 == mac1 and ref.adress2 == mac2):
-    #        RelRPs.append(ref)
-    #return RelRPs
 
 #determines which reference point is closest to me
 def nearestRP(relRPs, myAPs, lengthAP):
