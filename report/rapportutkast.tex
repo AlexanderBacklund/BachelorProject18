@@ -160,44 +160,46 @@ Se till att ni \emph{kommer till kritan snabbt} – man vill inte läsa igenom t
 Introduktionen bör vara begriplig för t.ex.~en student i årskursen under, och gärna för en ännu bredare läsarkrets.
 \fi
 
-\section{Bakgrund}
-Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktvitetsbaserade
-arbetsplatser. Tidigare var det absolut vanligaste sättet att organisera en arbetsplats att arbetsplatsen uppdelades i kontor och varje medarbetare hade en specifik kontorsplats.
-Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. De medarbetare som tidigare var tilldelade ett specifikt kontor
+Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktvitetsbaserade arbetsplatser. Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. Ett problem med denna typ av miljö är att det är svårt att veta vart sina medarbetare befinner sig. Lösningen till problemet är vårat system. Systemet fungerar så att när en medarbetare startar sin dator kommer den att skanna av nätverksinformationen och finna dess position. Denna position kommer sedan att visas på en hemsida så att andra medarbetare kan hitta en. Man kommer även kunna välja att inte visa sin position.
+
+\iffalse
+Tidigare var det absolut vanligaste sättet att organisera en arbetsplats att arbetsplatsen uppdelades i kontor och varje medarbetare hade en specifik kontorsplats.
+De medarbetare som tidigare var tilldelade ett specifikt kontor
 väljer nu istället en tillfällig arbetsyta baserat på vilken som just då
 är mest lämplig för att utföra deras arbetsuppgifter.
 \bigskip
 \newline
 Detta skapar i sin tur vissa problem i och med att det blir svårare att veta vart på arbetsplatsen en medarbetare befinner sig då denne inte har någon fast arbetsplats.
 Det är detta problem som det här projektet syftar till att lösa.
+\fi
 
+\section{Bakgrund}
 \subsection{Aktivitetsbaserad verksamhet (ABV)}
 Aktivitetsbaserade arbetsplatser erbjuder medarbetare en varierad arbetsmiljö. Syftet med ABV är att medarbetarna inte ska behöva vara bundna till ett specifikt skrivbord utan istället kunna välja den mest ändamålsenliga arbetsplatsen utifrån den aktuella arbetsuppgiften. % variationen för den individa arbetaren.
 Baserat på resultatet av en aktivitetsanalys delas arbetsplatsen in i olika miljöer som stödjer de olika arbetsuppgifterna som ska utföras, såväl individuella arbeten som grupparbeten. Det är vanligt att dela upp arbetsplatsen i olika zoner. Exempel på som zoner är tysta zoner och en möteszoner. Medarbetarna söker sig då till den zon de tycker passar för dagens arbete. \cite{ABV}
 
+\subsection{Uppsala Kommun}
+Uppsala Kommun agerar i det här projektet extern intressent. De är i ett skede där de övergår till aktivitetsbaserade arbetsplatser på många av deras kontor runt om i Uppsala. Det innebär att %TODO kolla upp antal
+ett par tusen personer kommer att kunna välja friare vart de vill utföra sitt arbete. Uppsala Kommun har uttryckt ett behov av att deras medarbetare snabbt ska kunna se vart deras kollegor befinner sig. Det är vår förhoppning att de ska kunna utnyttja vårt system för att kunna uppfylla deras behov.
 
+\subsection{Skype for Business}
+Skype for Business är ett kommunikationsmedel som används av många företag och organisationer. Skype for Business(SFB) erbjuder funktionalitet såsom realtidssamtal, videomöten och chattfunktioner. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFB´s server.\cite{Microsoft-Office} Det är en funktion som har undersökts om det är lämpligt att använda i vårt projekt. När denna databas är populerad med nätverksinformation för varje område på företagets/organisationens arbetsplatser kommer en medarbetares position kunna bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i Skypes användargränssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
 
-	\subsection{Uppsala Kommun}
-  Uppsala Kommun agerar i det här projektet extern intressent. De är i ett skede där de övergår till aktivitetsbaserade arbetsplatser på många av deras kontor runt om i Uppsala. Det innebär att %TODO kolla upp antal
-  ett par tusen personer kommer att kunna välja friare vart de vill utföra sitt arbete. Uppsala Kommun har uttryckt ett behov av att deras medarbetare snabbt ska kunna se vart deras kollegor befinner sig. Det är vår förhoppning att de ska kunna utnyttja vårt system för att kunna uppfylla deras behov.
+\subsection{Inomhuspositionering}
+Inomhuspositionering är jämfört med utomhuspositionering ett problem med fler komplikationer. GPS-tekniken(Global Position System) som ger en mycket liten felmarginal vid utomhuspositionering är sällan användbar för inomhuspositionering. Anledningen är att GPS-tekniken kräver en oblockerad signal till de satelliter som GPS använder sig av för positionsbestämning. \cite{GPS_US_ACCURACY}
 
-	\subsection{Skype for Business}
-    Skype for Business är ett kommunikationsmedel som används av många företag och organisationer. Skype for Business(SFB) erbjuder funktionalitet såsom realtidssamtal, videomöten och chattfunktioner. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFB´s server.\cite{Microsoft-Office} Det är en funktion som har undersökts om det är lämpligt att använda i vårt projekt. När denna databas är populerad med nätverksinformation för varje område på företagets/organisationens arbetsplatser kommer en medarbetares position kunna bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i Skypes användargränssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
-	\subsection{Inomhuspositionering}
-    Inomhuspositionering är jämfört med utomhuspositionering ett problem med fler komplikationer. GPS-tekniken(Global Position System) som ger en mycket liten felmarginal vid utomhuspositionering är sällan användbar för inomhuspositionering. Anledningen är att GPS-tekniken kräver en oblockerad signal till de satelliter som GPS använder sig av för positionsbestämning. \cite{GPS_US_ACCURACY}
+I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. En av skillnaderna är att det vid positionsbestämning inomhus tillkommer en faktor som komplicerar positionsbestämningen. Problemet är att man vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt koordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
 
-    I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. En av skillnaderna är att det vid positionsbestämning inomhus tillkommer en faktor som komplicerar positionsbestämningen. Problemet är att man vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt koordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
+%\subsection{Dataskyddsförordningen}
+%https://www.datainspektionen.se/dataskyddsreformen/dataskyddsforordningen/introduktion-till-dataskyddsforordningen/ TODO: skriv om detta!
 
-		\subsection{Etiska och säkerhetsmässiga aspekter}
-		Då många företag och organisationer har säkerhetsaspekter att ta hänsyn till är det viktigt att vårt system inte bidrar till att säkerheten för medarbetarna i organisationen försämras vid användning av vårt system.
-		Då vårt system har som uppgift att göra det lättare att lokalisera personal på arbetsplatserna kan en säkerhetsrisk uppstå ifall personer med onda avsikter kan ta del av information om vart vissa säkerhetsklassade personer befinner sig. Detta innebär att det i vårt system är viktigt att det är möjligt att välja att inte visa sin position för andra. Det är också viktigt att personer utanför organisationen inte kan ta del av information om vart viss personal befinner sig.
-		Säkerhetsaspekten blir särskilt relevant då det är Uppsala Kommun som är extern intressent i det här projektet. Eftersom det inom Kommunen arbetar många offentliga personer, politiker och annan personal vars positioneringsinformation är extra viktig att hemlighålla ur ett säkerhetsperspektiv.
+\subsection{Etiska och säkerhetsmässiga aspekter}
+Då många företag och organisationer har säkerhetsaspekter att ta hänsyn till är det viktigt att vårt system inte bidrar till att säkerheten för medarbetarna i organisationen försämras vid användning av vårt system.
+Då vårt system har som uppgift att göra det lättare att lokalisera personal på arbetsplatserna kan en säkerhetsrisk uppstå ifall personer med onda avsikter kan ta del av information om vart vissa säkerhetsklassade personer befinner sig. Detta innebär att det i vårt system är viktigt att det är möjligt att välja att inte visa sin position för andra. Det är också viktigt att personer utanför organisationen inte kan ta del av information om vart viss personal befinner sig.
+Säkerhetsaspekten blir särskilt relevant då det är Uppsala Kommun som är extern intressent i det här projektet. Eftersom det inom Kommunen arbetar många offentliga personer, politiker och annan personal vars positioneringsinformation är extra viktig att hemlighålla ur ett säkerhetsperspektiv.
 
-		Ur ett etiskt perspektiv finns också vissa frågeställningar som blir viktiga att ha i åtanke under systemets utveckling. Ska systemet till exempel göra det möjligt att öka kontrollen över medarbetarna genom att deras position alltid är känd? Är det lämpligt att föra statistik över vart medarbetare befinner sig vid olika tidpunkter?
-		Målet är inte att systemet ska användas som ett maktmedel utan för att underlätta för medarbetarna.
-
-
-
+Ur ett etiskt perspektiv finns också vissa frågeställningar som blir viktiga att ha i åtanke under systemets utveckling. Ska systemet till exempel göra det möjligt att öka kontrollen över medarbetarna genom att deras position alltid är känd? Är det lämpligt att föra statistik över vart medarbetare befinner sig vid olika tidpunkter?
+Målet är inte att systemet ska användas som ett maktmedel utan för att underlätta för medarbetarna.
 
 %Här beskriver ni bakgrunden till ert projekt, d.v.s., det som leder fram till er %problemformulering.  Vilket är området, omgivningen, kontextet, bakgrunden för %projektet?  Beskriv området (t.ex. ljudbehandling, studieplaner, visualisering, %autism...).  Beskriv uppdragsgivare, om ni har (men inte för detaljerat).  Tänk %på att bakgrunden och problemet måste vara på en generell akademisk nivå och %inte bara relaterat till en uppdragsgivare.
 
@@ -247,7 +249,7 @@ SFB har ett befintligt API som kan användas för att visa den information som v
 \fi
 \section{Relaterat arbete}
 Det generella problemet med inomhuspositionering har lösts på olika sätt.
-Beroende på vilket specifikt problem som gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice(IPS)\cite{IP1}.
+Beroende på vilket specifikt problem som gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice (IPS)\cite{IP1}.
 En av de vanligaste teknikerna vid IPS är Trilateration. Vid trilateration uppskattas minst tre avstånd till basstationer med kända koordinater och med hjälp av geometriska beräkningar uppskattas sedan en position. Trilateration beskrivs utförligare i sektion 4.2 nedan. En annan teknik som är vanligt förekommande i befintliga system för IPS är fingerprinting. Fingerprintingtekniken bygger i korthet på att den enhet som ska positionsbestämmas mäter signalstyrkor i närheten och jämför med en databas. Fingerprinting beskrivs utförligare i sektion 4.3.
 
 Binghao Li m. fl. analyserade i en studie \cite{IP1} olika tekniker som utgår från Wifi för inomhuspositionering och kom fram till att fingerprint var en av de metoder som enskilt genererade mest precisa resultat.
@@ -335,10 +337,10 @@ I tillvägagångsdelen av rapporten redogörs vilka tekniker och metoder som anv
 I början av projektplaneringen togs en gemensam beskrivning över systemet fram så att alla parter hade samma bild. I denna beskrivning gjordes tydliga separationer mellan de olika delsystem samt en prioriteringslista över vilka delsystem som var tvungen att fungera först. När denna beskrivning var klar togs en tidsplanering fram och tilldelning av arbetsuppgifter sinsemellan alla gruppmedlemmar.
 
 \subsection{Android}
-Systemet är uppbyggd av bland annat två Androidprogram. Ena programmet används för att kartlägga internet information med position i en byggnad. Det andra programmet används till att visualisera arbetsplatsen och få ut data angående positionering i arbetsplatsen. I utveckling av båda programmen används "Android Studios" vilket är en "integrerad utvecklingsmiljö" för att utveckla android applikationer. Alternativ till Android-applikationer är applikationer till iOS samt Windows telefoner. En anledning till att utveckla programmen i android är då programmeringsspråket Kotlin är enkelt och väldigt likt Java, vilket alla i gruppen behärskar. En annan anledning till Android är då kommunen använder sig av Android telefoner. Istället för att utveckla en webbaserad visualisering av arbetsplatsen så valdes det att göras i Android då vi kommer att ha mer kontroll över inomhuspositioneringen då.
+Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används för att kartlägga internet information med position i en byggnad. I utveckling av programmet används Android studios vilket är en integrerad utvecklingsmiljö för att utveckla android applikationer. Alternativ till Android-applikationer är applikationer till iOS samt Windows telefoner. Den största anledning till att utvecklar programmet i android är då kommunen använder sig av android telefoner. En annan anledning till Android är då programmeringsspråket Kotlin är enkelt och det finns många användbara bibliotek.
 
 \subsection{Python}
-Systemet består även av ett skript som automatiskt populerara SfB's databasen. Detta skript programmeras i Python då alla i gruppen behärskar Python. Det finns många alternativ till detta språk men då gruppen redan är familjär med Python och att denna del av systemet är så relativt liten så underlättar det att använda just Python.
+Systemet består även av ett skript som ska skanna nätverket, ansluta till en databas samt utföra en algoritm. Detta skript programmeras i Python då alla i gruppen behärskar Python. En annan anledning till just detta språk är för att det finns så många bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Det finns många alternativ till detta språk men då gruppen redan är familjär med Python och att denna del av systemet är ganska tidskrävande underlättar det att man kan språket.
 
 \subsection{Trilateration}
 Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf.\cite{cook2005indoor}
@@ -355,6 +357,7 @@ En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarand
 Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i inexaktheter i positionsbestämningen.
 
 I detta projekt är trilateration en teknik som vi inte kommer ha möjlighet att utnyttja. Eftersom vi är begränsade till att relatera en åtkomstpunkt till ett arbetsområde kommer inte klientenheten ha möjlighet att utföra några positionsberäkningar i realtid. Istället kommer klientenheten matcha MAC-adressen som den är ansluten till med positionsdatabasen. I och med denna begränsning kommer den största delen av analysen av områdenas nätverksmiljö ske i en lärandefas innan databasen populeras.
+
 \subsection{Fingerprinting}
 Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning. Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas.%TODO% fixa en bild
 Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värderna för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten.\cite{IP1}\cite{jun2018low}
@@ -362,7 +365,6 @@ Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och ac
 Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för clientenheten.\cite{IP1}
 
 Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det här projektet. Den första delen av vårt system kommer bygga på fingerprinttekniken. Skillnaden mellan vårt projekt och fingerprinttekniken beskriven ovan är i första hand att clientenheterna i vårt fall endast kommer kunna matcha en åtkomstpunkt mot ett förprogrammerat arbetsområde i databasen. Detta innebär att den delen av vårt system som står för inlärningsfasen sköter databaspopuleringen på ett så pass bra sätt att precisionskraven uppfylls.
-
 
 \section{Systemstruktur}
 I denna delen av rapporten beskriver vi våra system och hur de arbetar tillsammans sinsemellan och med det externa systemet.
