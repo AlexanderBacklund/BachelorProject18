@@ -78,11 +78,6 @@ REMOTE_EDUROAM_DB_CREDENTIALS = 'my_remote.cnf'
 DATABASES = {
     'default': {
          'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'localisation',
-        # 'USER':'root',
-        # 'PASSWORD':'Alabse959393#',
-        # 'PORT':'3306',
-        # 'HOST': 'localhost',
          'OPTIONS': {
             'read_default_file': LOCAL_DB_CREDENTIALS,
         },
