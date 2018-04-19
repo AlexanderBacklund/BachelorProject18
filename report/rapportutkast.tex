@@ -17,6 +17,7 @@
 %\usepackage[hyphens]{url}
 %\usepackage{hyperref}
 
+
 \usepackage{url}
 % Designval: per default används styckesindrag, men ibland blir det snyggare/mer lättläst med tomrad mellan stycken. Det åstadkoms av de följande raderna.
 % Tycker ni om styckesindrag mera, kommentera bort nästa två rader.
@@ -101,7 +102,7 @@ Many companies and organisations nowadays chose to transfer from an office struc
 % Ca 10-20 rader. Använd inte referenser; ej heller formler om det går att undvika.
 %
 % Abstract ska vara förståeligt utan att läsa resten av rapporten, och resten av rapporten ska kunna läsas utan att läsa abstract. Man kan återanvända text från introduktionen.
-Många företag och organisationer nuförtiden väljer att övergå från en kontorsstruktur bestående av dedikerade kontorsplatser för var och en av medarbetarna till en öppnare och mer kontorsfri struktur. Med den övergången tillkommer vissa problem med att hitta de medarbetare som du vill träffa och diskutera med eftersom de nu har möjlighet att friare välja arbetsplats. På grund av detta tappar de anställda i produktivitet eftersom de behöver spendera onödig tid på att lokalisera sina kollegor. Det här projektets intention är att göra övergången till en aktivitetsbaserad arbetsplats enkel, icke tidskrävande och möjlig genom att endast använda befintlig teknik och information på arbetsplatsen. Medarbetarnas position kommer presenteras via en lokaliseringsplattform där användare enkelt kan lokalisera sina medarbetare.
+Många företag och organisationer nuförtiden väljer att övergå från en kontorsstruktur bestående av dedikerade kontorsplatser för var och en av medarbetarna till en öppnare och mer kontorsfri struktur. Med den övergången tillkommer vissa problem med att hitta de medarbetare som du vill träffa och diskutera med eftersom de nu har möjlighet att välja arbetsplats friare. På grund av detta tappar de anställda i produktivitet eftersom de behöver spendera onödig tid på att lokalisera sina kollegor. En kontorsstruktur där medarbetarna väljer arbetsplats utifrån arbetsuppgift kallas för en aktivitetsbaserad arbetsplats. Det här projektets intention är att göra övergången till en aktivitetsbaserad arbetsplats enkel, icke tidskrävande och möjlig genom att endast använda befintlig teknik och information på arbetsplatsen. Medarbetarnas position kommer presenteras via en lokaliseringsplattform där varje användare enkelt kan lokalisera sina medarbetare.
 
  %%förlytta deras verksamhet från kontorsbaserad till en mer kontorsfri miljö. Med den övergången tillkommer vissa problem med att hitta medarbetare för att kunna diskutera arbetsrelaterade saker. På grund av det här tappar de anställda i produktivitet, eftersom de behöver spendera för mycket tid på att lokalisera sina kollegor. Detta projektets intention är att göra övergången enkel, icke tidskrävande och möjlig genom att endast använda befinntlig information och teknik. Vilket ges via en lokaliserings plattform som användare kan lokalisera sina medarbetare.
 \end{sammanfattning}
@@ -144,7 +145,7 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
 
 
 \section*{Att göra}
-Andra utkast: Bakgrund, relaterat arbete och referenser.
+Tredje utkast: systemstruktur, metoder.
 
 \newpage %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen (men inte \mainmatter)
 
@@ -160,7 +161,7 @@ Se till att ni \emph{kommer till kritan snabbt} – man vill inte läsa igenom t
 Introduktionen bör vara begriplig för t.ex.~en student i årskursen under, och gärna för en ännu bredare läsarkrets.
 \fi
 
-Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktvitetsbaserade arbetsplatser. Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. Ett problem med denna typ av miljö är att det är svårt att veta vart sina medarbetare befinner sig. Lösningen till problemet är vårat system. Systemet fungerar så att när en medarbetare startar sin dator kommer den att skanna av nätverksinformationen och finna dess position. Denna position kommer sedan att visas på en hemsida så att andra medarbetare kan hitta en. Man kommer även kunna välja att inte visa sin position.
+Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktvitetsbaserade arbetsplatser. Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. Ett problem med denna typ av miljö är att det är svårt att veta vart sina medarbetare befinner sig. Lösningen till problemet är vårat system. Systemet fungerar så att när en medarbetare startar sin dator kommer den att skanna av nätverksinformationen i närheten och bestämma medarbetarens position. Denna position kommer att visas på en hemsida så att andra medarbetare snabbt kan se vart sina kollegor befinner sig. Som användare kommer man även kunna välja att inte visa sin position.
 
 \iffalse
 Tidigare var det absolut vanligaste sättet att organisera en arbetsplats att arbetsplatsen uppdelades i kontor och varje medarbetare hade en specifik kontorsplats.
@@ -175,35 +176,53 @@ Det är detta problem som det här projektet syftar till att lösa.
 
 \section{Bakgrund}
 \subsection{Aktivitetsbaserad verksamhet (ABV)}
-Madeleine Stjärne, författaren till skriften "Aktivitetsbaserade
-arbetsplatser i offentliga sektor"\cite{ABV} beskriver aktivitetsbaserade arbetsplatser på så sätt att de erbjuder medarbetare en varierad arbetsmiljö. Hon fortsätter med att syftet med ABV är att medarbetarna inte ska behöva vara bundna till ett specifikt skrivbord utan istället kunna välja den mest ändamålsenliga arbetsplatsen utifrån den aktuella arbetsuppgiften. % variationen för den individa arbetaren.
-Baserat på resultatet av en aktivitetsanalys delas arbetsplatsen in i olika miljöer som stödjer de olika arbetsuppgifterna som ska utföras, såväl individuella arbeten som grupparbeten. Det är vanligt att dela upp arbetsplatsen i olika zoner. Exempel på som zoner är tysta zoner och en möteszoner. Medarbetarna söker sig då till den zon de tycker passar för dagens arbete.
+Madeleine Stjärne, \iffalse författaren till skriften "Aktivitetsbaserade
+arbetsplatser i offentliga sektor"\fi  beskriver aktivitetsbaserade arbetsplatser på så sätt att de erbjuder medarbetare en varierad arbetsmiljö.\cite{ABV} Hon hävdar att syftet med ABV är att medarbetarna inte ska behöva vara bundna till ett specifikt skrivbord utan istället kunna välja den mest ändamålsenliga arbetsplatsen utifrån den aktuella arbetsuppgiften. % variationen för den individa arbetaren.
+
+Då en organisation väljer att övergå till en aktivitetsbaserad arbetsplats
+delas arbetsplatsen in i olika miljöer som stödjer de olika arbetsuppgifterna som ska utföras, såväl individuella arbeten som grupparbeten. En sådan uppdelning görs baserat på resultatet av en verksamhetsanalys. I en verksamhetsanalys hur arbetsplates har använts tidigare. De viktigaste parametrarna att undersöka vid en verksamhetsanalys är vilka arbetsuppgifter som utförs, vart de utförs och hur ofta de utförs.\cite{ABV}
+Det är vanligt att arbetsplatsen delas upp i olika zoner. Exempel på zoner är tysta zoner och en möteszoner. Medarbetarna söker sig då till den zon de tycker passar bäst för dagens arbete.
 
 Enligt Lisbeth Slunga Järvholm, forskare vid Umeå universitet passar inte ett aktivitetsbaserat kontor alla. Inte alla sortes arbetsuppgifter fungerar optimalt då man lätt kan bli störd. Vissa arbetsuppgifter kräver en högre koncentrationsnivå, vilket kan vara svårt i ett öppet landskap.\cite{passarInteAlla}
 %TODO Fördelar med ett aktivitetsbaserat kontor
 
 \subsection{Uppsala Kommun}
 Uppsala Kommun agerar i det här projektet extern intressent. De är i ett skede där de övergår till aktivitetsbaserade arbetsplatser på många av deras kontor runt om i Uppsala. Det innebär att %TODO kolla upp antal
-ett par tusen personer kommer att kunna välja friare vart de vill utföra sitt arbete. Uppsala Kommun har uttryckt ett behov av att deras medarbetare snabbt ska kunna se vart deras kollegor befinner sig. Det är vår förhoppning att de ska kunna utnyttja vårt system för att kunna uppfylla deras behov.
+ett par tusen personer kommer att kunna välja friare vart de vill utföra sina arbetsuppgifter. Uppsala Kommun har uttryckt ett behov av att deras medarbetare snabbt ska kunna se vart deras kollegor befinner sig. Det är vår förhoppning att de ska kunna utnyttja vårt system för att kunna uppfylla deras behov.
 
 \subsection{Skype for Business}
-Skype for Business är ett kommunikationsmedel som används av många företag och organisationer. Skype for Business(SFB) erbjuder funktionalitet såsom realtidssamtal, videomöten och chattfunktioner. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFB´s server.\cite{Microsoft-Office} Det är en funktion som har undersökts om det är lämpligt att använda i vårt projekt. När denna databas är populerad med nätverksinformation för varje område på företagets/organisationens arbetsplatser kommer en medarbetares position kunna bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i Skypes användargränssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
+Skype for Business är ett kommunikationsmedel som används av många företag och organisationer. Skype for Business(SFB) erbjuder funktionalitet såsom realtidssamtal, videomöten och chattfunktioner. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFB´s server.\cite{Microsoft-Office} Det är en funktion som har undersökts om den är lämpligt att använda i detta projekt. När SFB´s platsdatabas är populerad med nätverksinformation för varje område på organisationens arbetsplatser kan en medarbetares position bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i Skypes användargränssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
+
+Skype erbjuder två olika versioner av tjänsten Skype for Business. Den ena varianten, Skype for Business \textit{Online} är en molnbaserad tjänst som inte kräver några fysiska servrar hos användaren.\cite{SFBonline}
+Den andra varianten, Skype for Business \textit{Server} kräver fysiska servrar hos användaren.\cite{SFBserver}. Funktinaliteten för de två olika versionerna skiljer sig delvis åt och intressenten i det här projektet (Uppsala Komun) hade som önskemål att vi skulle undersöka om funktionen med en platsdatabas i SFB var möjligt i deras fall. Uppsala Komun använder Skype for Business Online.
 
 \subsection{Inomhuspositionering}
 Inomhuspositionering är jämfört med utomhuspositionering ett problem med fler komplikationer. GPS-tekniken(Global Position System) som ger en mycket liten felmarginal vid utomhuspositionering är sällan användbar för inomhuspositionering. Anledningen är att GPS-tekniken kräver en oblockerad signal till de satelliter som GPS använder sig av för positionsbestämning. \cite{GPS_US_ACCURACY}
 
-I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. En av skillnaderna är att det vid positionsbestämning inomhus tillkommer en faktor som komplicerar positionsbestämningen. Problemet är att man vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt koordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
+I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. Även om GPS-tekniken kan användas för att bestämma en enhets höjd över marken är den inte tillräckligt tillförlitlig då man vill avgöra på vilket våningsplan i en byggnad en enhet befinner sig.
+
+En av skillnaderna är att det vid positionsbestämning inomhus tillkommer en faktor som komplicerar positionsbestämningen. Problemet är att man vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt koordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
 
 %\subsection{Dataskyddsförordningen}
 %https://www.datainspektionen.se/dataskyddsreformen/dataskyddsforordningen/introduktion-till-dataskyddsforordningen/ TODO: skriv om detta!
+\subsection{Icketekniska aspekter vid inomhuspositionering på \\arbetplatser}
 
-\subsection{Etiska och säkerhetsmässiga aspekter}
-Då många företag och organisationer har säkerhetsaspekter att ta hänsyn till är det viktigt att vårt system inte bidrar till att säkerheten för medarbetarna i organisationen försämras vid användning av vårt system.
-Då vårt system har som uppgift att göra det lättare att lokalisera personal på arbetsplatserna kan en säkerhetsrisk uppstå ifall personer med onda avsikter kan ta del av information om vart vissa säkerhetsklassade personer befinner sig. Detta innebär att det i vårt system är viktigt att det är möjligt att välja att inte visa sin position för andra. Det är också viktigt att personer utanför organisationen inte kan ta del av information om vart viss personal befinner sig.
-Säkerhetsaspekten blir särskilt relevant då det är Uppsala Kommun som är extern intressent i det här projektet. Eftersom det inom Kommunen arbetar många offentliga personer, politiker och annan personal vars positioneringsinformation är extra viktig att hemlighålla ur ett säkerhetsperspektiv.
+\subsubsection{Säkerhetsmässiga aspekter}
+Då många företag och organisationer har säkerhetsmässiga överväganden att ta hänsyn till är det viktigt att vårt system inte bidrar till att säkerheten för medarbetarna i en organisation försämras vid användning av vårt system.
+Då vårt system har som uppgift att göra det lättare att lokalisera personal på arbetsplatser kan säkerhetsrisker uppstå. Om det är möjligt för utomstående personer att ta del av information om vart personal befinner sig kan det leda till säkerhetsproblem. I Uppsala Komuns fall finns ett konkret exempel på den typen av säkerhetsproblem. Det arbetar många politiker inom Uppsala Komun och politiker är en yrkesgrupp som ofta får motta våld eller hot om våld. Ifall vårt system bidrar till att det går att tillskansa sig deras exakta position utsätter vi eventuellt dem för risker som inte skulle uppstå utan vårt system.
 
+Detta innebär att det i vårt system är viktigt att det är möjligt att välja att inte visa sin position för andra. Det är också viktigt att personer utanför organisationen inte kan ta del av information om vart personal befinner sig.
+
+
+\subsubsection{Etiska aspekter}
 Ur ett etiskt perspektiv finns också vissa frågeställningar som blir viktiga att ha i åtanke under systemets utveckling. Ska systemet till exempel göra det möjligt att öka kontrollen över medarbetarna genom att deras position alltid är känd? Är det lämpligt att föra statistik över vart medarbetare befinner sig vid olika tidpunkter?
-Målet är inte att systemet ska användas som ett maktmedel utan för att underlätta för medarbetarna.
+Målet med vårt system är inte att det ska användas som ett maktmedel utan för att underlätta för medarbetarna.
+
+\subsubsection{GDPR}
+
+\subsubsection{Fackliga aspekter}
+
+
 
 %Här beskriver ni bakgrunden till ert projekt, d.v.s., det som leder fram till er %problemformulering.  Vilket är området, omgivningen, kontextet, bakgrunden för %projektet?  Beskriv området (t.ex. ljudbehandling, studieplaner, visualisering, %autism...).  Beskriv uppdragsgivare, om ni har (men inte för detaljerat).  Tänk %på att bakgrunden och problemet måste vara på en generell akademisk nivå och %inte bara relaterat till en uppdragsgivare.
 
@@ -212,18 +231,20 @@ Målet är inte att systemet ska användas som ett maktmedel utan för att under
 %Efter att ha läst bakgrunden ska det vara uppenbart/lätt att förstå att syfte/mål är viktiga.
 \newpage
 \section{Syfte, mål, och motivation}
-Syftet med det här projektet är att utveckla ett enkelt och effektivt system för företag och organisationer som vill övergå till aktivitetsbaserade arbetsplatser(ABV). Systemet integreras med Skype for Buisness och möjliggör för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig.
+Syftet med det här projektet är att utveckla ett enkelt och effektivt positioneringssystem för företag och organisationer som vill övergå till aktivitetsbaserade arbetsplatser(ABV). Systemet ska möjliggöra för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig. I första hand ämnar vi att undersöka huruvida det är möjligt att utveckla ett system som går att integrera med Skype for Buisness(SFB). SFB´s roll blir isåfall att vara del den av systemet som presenterar information om vart användare befinner sig. Visar det sig att en integration med SFB inte är genomförbar är andrahandsalternativet att utveckla ett eget system för att presentera informationen.
 
-Projektet motiveras av att många företag och organisationer övergår till aktivitetsbaserade arbetsplatser. Uppsala Kommun har påbörjat en sådan övergång och har uttryckt ett behov av att medarbetare bör kunna se vart deras kollegor befinner sig. Uppsala kommun har ett arbetsplatser på ett flertal adresser i Uppsala och beroende på arbetsuppgift ska deras medarbetare kunna bestämma själva var de vill utföra arbetsuppgiften. Uppsala Kommuns medarbetare använder sig av Skype for Business(SFB) som kommunikationsmedel och har framfört ett önskemål att det direkt i SFB-applikationen ska visas vart en användare befinner sig.
+Projektet motiveras av att många företag och organisationer övergår till aktivitetsbaserade arbetsplatser (ABV). Uppsala Kommun har påbörjat en sådan övergång och har uttryckt ett behov av att medarbetare bör kunna se vart deras kollegor befinner sig. Uppsala kommun har arbetsplatser på ett flertal adresser i Uppsala och beroende på arbetsuppgift ska deras medarbetare själva kunna bestämma var de vill utföra sina arbetsuppgifter. Uppsala Kommuns medarbetare använder sig av Skype for Business(SFB) som kommunikationsmedel och har framfört ett önskemål att det direkt i SFB-applikationen ska gå att se vart en användare befinner sig.
 
-Vårt projekt syftar till att lösa dessa problem och erbjuda ett system som Uppsala Kommun ska kunna använda men även andra företag och organisationer som upplever samma problem. Systemet ska även vara enkelt att introducera, enkelt att använda och enkelt att underhålla.
+Vårt mål erbjuda ett system som såväl Uppsala Kommun som andra företag och organisationer som vill övergå till ABV ska kunna använda sig av. Systemet ska vara enkelt att introducera, enkelt att använda och enkelt att underhålla.
 
-Målet är att då vårt system att integrerat på arbetsplatsen ska användarna kunna se på vilken adress, vilken våning och i vilket område på den våningen som en kollega befinner sig. Uppsala Kommun har önskat en precision med max 10 meters felmarginal. Bättre precision än så anses inte nödvändig. Målet är också att kunna utnyttja den informationen som används för att visa en kollegas tillfälliga arbetsplats till att erbjuda en möjlighet för alla medarbetare att via en webb-baserad portal kunna se hur många medarbetare som befinner sig på en specifik arbetsyta. Detta kommer göra man ska välja arbetsplats kan se vart det finns lediga platser utan att behöva gå genom varje lokal och leta.
+Målet är att då vårt system aä integrerat på arbetsplatsen ska användarna kunna se på vilken adress, vilken våning och i vilket område på den våningen som en kollega befinner sig. Uppsala Kommun har önskat en precision med max 10 meters felmarginal. Även om bättre precision än så inte anses nödvändig hoppas vi kunna uppnå en felmarginal på maximalt 5 meter. Målet är också att erbjuda en möjlighet för alla medarbetare att via en webb-baserad portal se hur många medarbetare som befinner sig på en specifik arbetsyta. Webbportalens syfte är att göra det enkelt för medarbetarna att välja arbetsplats genom att kunna se vart det finns lediga platser utan att behöva gå genom varje lokal och leta.
 
-Vår förhoppning är att det här systemet löser många av de dagliga praktiska problemen hos företag och organisationer som använder vårt system. Vi hoppas att det dagliga arbetet därmed kommer fungera smidigare och utan de problem som en övergång till ABV kan medföra. Förhoppningsvis kan detta också leda till att företag som överväger att övergå till ABV kommer känna mindre oro över att det dagliga arbetet ska behöva störas dessa typer av problem.
+Vår förhoppning är att det här systemet löser några av de dagliga praktiska problemen hos företag och organisationer som övergår till aktivitetsbaserade arbetsplatser. Förhoppningsvis kan detta också leda till att företag som överväger att övergå till ABV kommer känna mindre oro över att det dagliga arbetet behöver störas av problem med att hitta sina medarbetare.
 
-Det finns sedan tidigare andra system som erbjuder inomhuspositionering. Vissa av dessa använder sig av extra hårdvara och vissa inte. Vår förhoppning är att vårt system ska erbjuda ett alternativ utan extra hårdvara och som inte heller kräver nya applikationer för användarna. vårt system ska istället använda medel som redan finns på arbetsplatsen för att presentera ytterligare information.
-SFB har ett befintligt API som kan användas för att visa den information som vi önskar presentera. Detta är dock inget system i sig. Vårt system ämnar erbjuda en helhetslösning som till viss del utnyttjar den funktionalitet som redan erbjuds i SFB.
+\iffalse
+Det finns sedan tidigare andra system som erbjuder inomhuspositionering. Vissa av dessa använder sig av extra hårdvara såsom Bluetooth Beacons. Vid användning av Bluetooth Beacons installeras först bluetoothenheter runt om på arbetsplatsen. Därefter sker positionsbestämmningen med hjälp av analys av signaler från dessa Beacons(enheter). \fi
+För att göra vårt system attraktivt vill vi det ska vara ett system som inte kräver extra hårdvara och som inte heller kräver nya applikationer för användarna. Vårt system ska istället använda medel och teknik som redan finns på arbetsplatserna, framför allt trådlösa internetanslutningar.
+
 
 
 
@@ -254,18 +275,20 @@ SFB har ett befintligt API som kan användas för att visa den information som v
 \section{Relaterat arbete}
 Det generella problemet med inomhuspositionering har lösts på olika sätt.
 Beroende på vilket specifikt problem som gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice (IPS)\cite{IP1}.
-En av de vanligaste teknikerna vid IPS är Trilateration. Vid trilateration uppskattas minst tre avstånd till basstationer med kända koordinater och med hjälp av geometriska beräkningar uppskattas sedan en position. Trilateration beskrivs utförligare i sektion 4.2 nedan. En annan teknik som är vanligt förekommande i befintliga system för IPS är fingerprinting. Fingerprintingtekniken bygger i korthet på att den enhet som ska positionsbestämmas mäter signalstyrkor i närheten och jämför med en databas. Fingerprinting beskrivs utförligare i sektion 4.3.
+En av de vanligaste teknikerna vid IPS är trilateration\cite{cook2005indoor}, triangulering på svenska. Vid triangulering uppskattas minst tre avstånd till basstationer med kända koordinater och med hjälp av geometriska beräkningar uppskattas sedan en position. Trilateration beskrivs utförligare i sektion \ref{triangulering}
+ nedan. En annan teknik som är vanligt förekommande i befintliga system för IPS är fingerprinting\cite{IP1}\cite{jun2018low}. Fingerprintingtekniken bygger i korthet på att den enhet som ska positionsbestämmas mäter signalstyrkor i närheten och jämför med en databas. Fingerprinting beskrivs utförligare i sektion \ref{fingerprinting}.
 
 Binghao Li m. fl. analyserade i en studie \cite{IP1} olika tekniker som utgår från Wifi för inomhuspositionering och kom fram till att fingerprint var en av de metoder som enskilt genererade mest precisa resultat.
 
+\subsection{Vanliga tekniker vid inomhuspositionering}
 
-\subsection{Problem med GPS-tekniken}
+\subsubsection{Problem med GPS-tekniken}
 Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en position med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
 Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USA´s flygvapen. GPS är ett system bestående av 24 satelliter som kretsar kring Jorden. Satelliterna sänder ut radiosignaler med information om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de satelliterna som befinner sig inom räckhåll och använder sig av satelliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig.\cite{GPS_US_HOW}
 
 Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från satelliterna reflekteras när de kommer i kontakt med byggnader och de anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord.\cite{GPS_US_ACCURACY} Detta gör att andra tekniker måste användas för inomhuspositionering.
-\iffalse
-\subsection{Trilateration}
+
+\subsubsection{Trilateration}\label{triangulering}
 Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf.\cite{cook2005indoor}
 \newline
 $$ P_r = P_t + 20log(\frac{\lambda}{4\pi}) + 10nlog(\frac{1}{d})$$
@@ -276,19 +299,22 @@ $ n $ = 2 i fria utrymmen\newline
 $ d $ = avståndet mellan mottagare och sändare
 \bigskip
 \newline
-En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. Se fig %TODO % fixa figur.. kan man sno?
+En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. %TODO % fixa figur.. kan man sno?
 Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i inexaktheter i positionsbestämningen.
 
-I detta projekt är trilateration en teknik som vi inte kommer ha möjlighet att utnyttja. Eftersom vi är begränsade till att relatera en åtkomstpunkt till ett arbetsområde kommer inte clientenheten ha möjlighet att utföra några positionsberäkningar i realtid. Istället kommer klientenheten matcha MAC-adresen som den är ansluten till med positionsdatabasen. I och med denna begränsning kommer den största delen av analysen av områdenas nätverksmiljö ske i en lärandefas innan databasen populeras.
-\subsection{Fingerprinting}
+I detta projekt är trilateration en teknik som vi inte har utnyttjat. Eftersom precisionen i det här projektet har en accepterad felmarginal på 5 meter har vi valt att begränsa oss till fingerprintingtekniken vilken ensam ger tillräckligt god precision.
+
+\subsubsection{Fingerprinting} \label{fingerprinting}
 Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning. Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas.%TODO% fixa en bild
 Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värdena för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten.\cite{IP1}\cite{jun2018low}
 Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och accepterad metod i system för inomhuspositionering finns det vissa problem .\cite{IP1}
 Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten.\cite{IP1}
 
 Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det här projektet. Den första delen av vårt system kommer bygga på fingerprinttekniken. Skillnaden mellan vårt projekt och fingerprinttekniken beskriven ovan är i första hand att klientenheterna i vårt fall endast kommer kunna matcha en åtkomstpunkt mot ett förprogrammerat arbetsområde i databasen. Detta innebär att den delen av vårt system som står för inlärningsfasen sköter databaspopuleringen på ett så pass bra sätt att precisionskraven uppfylls.
-\fi
-\subsection{AnyPlace}
+
+\subsection{Liknande system}
+Här beskriv system som i viss mån liknar vårt system och som vi tycker är värda att nämna.
+\subsubsection{AnyPlace}
 AnyPlace är ett befintligt system som har erbjuder inomhuspositioneringsservice samt inomhusnavigeringsservice. För positionering av enheter vid inomhusnavigering använder sig AnyPlace främst av tekniken Fingerprinting (se sektion 4.3) och uppger att de åstadkom en noggrannhet på 1.96 meter vid tävlingen Microsoft Indoor Localization Competition.\cite{anyplace}
 \cite{IPS_tavling}
 För navigeringssystemet använder AnyPlace en karta baserat på goolge maps för en övergripande karta. I den övergripande kartan går det att välja vissa byggnaders planritningar där AnyPlace har stöd för inomhuspositionering. AnyPlace´s positioneringssystem används för att bestämma en enhets position i byggnaden och kan därefter användas för inomhusnavigering.
