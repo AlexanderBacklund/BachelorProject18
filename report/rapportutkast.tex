@@ -8,6 +8,7 @@
 \usepackage[swedish, english]{babel}
 % Use the template for thesis reports
 \usepackage{UppsalaExjobb}
+\usepackage{float}
 
 % Useful font packages for maths and symbols
 \usepackage{amssymb,amsmath,amsthm,amsfonts}
@@ -390,26 +391,26 @@ I detta projekt är trilateration en teknik som vi inte kommer ha möjlighet att
 
 \subsection{Fingerprinting}
 Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning. Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas.%TODO% fixa en bild
-Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värderna för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten.\cite{IP1}\cite{jun2018low}
+Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värdena för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten.\cite{IP1}\cite{jun2018low}
 Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och accepterad metod i system för inomhuspositionering finns det vissa problem .\cite{IP1}
-Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för clientenheten.\cite{IP1}
+Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten.\cite{IP1}
 
-Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det här projektet. Den första delen av vårt system kommer bygga på fingerprinttekniken. Skillnaden mellan vårt projekt och fingerprinttekniken beskriven ovan är i första hand att clientenheterna i vårt fall endast kommer kunna matcha en åtkomstpunkt mot ett förprogrammerat arbetsområde i databasen. Detta innebär att den delen av vårt system som står för inlärningsfasen sköter databaspopuleringen på ett så pass bra sätt att precisionskraven uppfylls.
+Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det här projektet. Den första delen av vårt system kommer bygga på fingerprinttekniken. Skillnaden mellan vårt projekt och fingerprinttekniken beskriven ovan är i första hand att klientenheterna i vårt fall endast kommer kunna matcha en åtkomstpunkt mot ett förprogrammerat arbetsområde i databasen. Detta innebär att den delen av vårt system som står för inlärningsfasen sköter databaspopuleringen på ett så pass bra sätt att precisionskraven uppfylls.
 
 \section{Systemstruktur}
-I denna delen av rapporten beskriver vi våra system och hur de arbetar tillsammans sinsemellan och med det externa systemet.
-Systemet som vi konstruerat kan delas in i tre delsystem. Ett system där man mappar anslutningsinformation till en plats, ett system som automatiserar populeringen av Skype for Business (SFB) databas som skall sammankoppla anslutningsinformation med plats, men åt andra hållet, och ett system där man enkelt kan se beläggning i olika områden i verksamheten, historik mm.
+I denna delen av rapporten beskriver vi våra system och hur de arbetar tillsammans sinsemellan.
+Systemet som vi konstruerat kan delas in i tre delsystem. Ett system där man sammankopplar anslutningsinformation till en plats, ett system som utför en algoritm för att bestämma en ungefärlig position som den sedan lägger in i en databas som skall sammankoppla en användare med plats, och ett system som presenterar all relevant information på ett tydligt sätt.
 
-I följande figur  % TODO REFERENS TILL BILDEN
-ses systemet i sin helhet. Det interna systemet består av två android applikationer. Den ena som enligt schemat skall skicka sin information till SFB-admin maskinen, är det system som används för att sammankoppla anslutningsinformation med plats. På SFB-admin maskinen ska skriptet som automatiserar populeringen av databasen finnas. Den andra android applikationen skall vara den som arbetare i verksamheten nyttjar för att se beläggning i olika områden.
-Det externa systemet består av SFB's plats-databas och Skype's Web-API. % TODO referenser??
-Plats-databasen skall populeras av de interna systemet som konstruerats i form av android applikation och populerings-skript. Detta system använder därefter datan för att integrerat i Skype visa platsinformation om kollegor för andra i verksamheten. Det andra systemet är Skype's Web-API. Det ska tillhandahålla platsinformation till beläggnings-systemet.
+I följande figur  % TODO REFERENS TILL BILDEN \ref{fig:systemStruktur}
+ses systemet i sin helhet. Systemet består av en android applikation. Den ska användas av tekniker före användning av systemet, för att i den aktivitetsbaserade verksamheten placera ut referenspunkter som klienter sedan kan beräkna sitt förhållande till. Denna information ska därefter importeras på ett smidigt sätt in i databasen. När referenspunkterna är inlagda kan man börja använda Python-klienten. Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata som teknikern har tillhandahållit i databasen. När Python-klienten har bestämt sin position ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användare.
 
-De interna systemen kommer kommunicera på olika sätt. Mellan systemet som mappar anslutningsinformation med plats och SFB-admin maskinen så måste datan förflyttas manuellt, eftersom tillgången till den maskinen är begränsad. Från SFB's databas kommer datan att mottas genom anrop till Skype's API. % TODO kan inte säga att jag har full koll på protokoll här
+Slutligen så finns det ett Web-interface. Detta system använder data som Python-klienten har lagt in i databasen för att i en webbaserad applikation visa platsinformation om kollegor för andra i verksamheten. Systemet har också stöd för att presentera beläggning i olika områden samt annan intressant information.
 
-\begin{figure}[h]
+Mellan systemet som teknikern använder och databasen så måste data förflyttas manuellt, med risk av att en automatiserad uppkoppling kan förstöra referenspunkter, samt att inläggning in princip endast kommer ske en gång. Python-klienten använder sig av SQL-anrop till databasen för att extrahera referenspunkter, samt för att lägga in position. Detsamma gäller Web-interfacet, den kör också SQL-anrop till databasen för att presentera relevant information. % TODO kan inte säga att jag har full koll på protokoll här
+
+\begin{figure}[H]
 	\includegraphics[width=15cm]{media/systemStruktur.png}
-	\caption{System-Struktur}
+	\caption{Systemstruktur}
 	\label{}
 \end{figure}
 
