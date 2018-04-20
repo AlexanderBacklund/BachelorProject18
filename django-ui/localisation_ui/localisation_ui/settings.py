@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'localisation_ui.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 LOCAL_DB_CREDENTIALS = 'localisation_ui/my_local.cnf'
-REMOTE_EDUROAM_DB_CREDENTIALS = 'my_remote.cnf'
+REMOTE_EDUROAM_DB_CREDENTIALS = 'localisation_ui/my_remote.cnf'
 DATABASES = {
     'default': {
          'ENGINE': 'django.db.backends.mysql',
