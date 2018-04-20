@@ -214,14 +214,48 @@ Då vårt system har som uppgift att göra det lättare att lokalisera personal 
 
 Detta innebär att det i vårt system är viktigt att det är möjligt att välja att inte visa sin position för andra. Det är också viktigt att personer utanför organisationen inte kan ta del av information om vart personal befinner sig.
 
-
+\newpage
 \subsubsection{Etiska aspekter}
 Ur ett etiskt perspektiv finns också vissa frågeställningar som blir viktiga att ha i åtanke under systemets utveckling. Ska systemet till exempel göra det möjligt att öka kontrollen över medarbetarna genom att deras position alltid är känd? Är det lämpligt att föra statistik över vart medarbetare befinner sig vid olika tidpunkter?
 Målet med vårt system är inte att det ska användas som ett maktmedel utan för att underlätta för medarbetarna.
 
-\subsubsection{GDPR}
+\subsubsection{General Data Protection Regulation, GDPR}
+GDPR är en ny Europeisk Lagstiftning som gäller alla medlemsländer i EU och träder i kraft den 25 maj 2018.
+Lagstiftningen regulerar hantering av personuppgifter och har som syfte att stärka individens rättigheter då företag och organisationer hanterar personuppgifter.\cite{GDPRibm}\cite{GDPRdatainspektionen}
+Individer har nu rätt att ta ett ärende som gäller personuppgiftshantering till en rättsprocess mot företag som de anser ha brutit mot de krav som GDPR innebär.
+Mynidigheten Datainspektionen i Sverige har nu möjlighet att utdela böter till organisationer och företag som de anser bryter mot de nya lagarna. Det högsta bötesbeloppet som kan utdömmas är 4\% eller 20 miljoner Euro.\cite{GDPRibm}
 
+GDPR eller Dataskyddsförordningen på svenska har vissa regler som i Sverige sedan tidigare reglerats i personuppgiftslagen (PUL). De likheter som finns är bland annat kravet på sammtycke och rätten för en individ att få ta del av hur personuppgifter behandlas. PUL utgår den 25 maj 2018 i sin helhet och ersätts av GDPR.\cite{GDPRdatainspektionen}
+
+Några av de viktigaste nyheterna som detta innebär för den enskilda individen är enligt Datainspektionen\cite{GDPRdatainspektionen}:
+\begin{itemize}
+  \item Dataportabilitet
+  \item Konsekvensbedömmning innan hantering
+  \item Anmälningsskyldighet för organisatinoen
+  \item Dataskyddsombud hos organisationen
+  \item Sanktionsavgifter vid överträdelse
+  \item Missbruksregeln upphör.
+\end{itemize}
+\newpage
+Nedan föjler Datainspektionens\cite{GDPRdatainspektionen} förtydligande gällande ovan nämnda bergepp.
+
+\textbf{Dataprortabilitet} innebär att individer ska ha rätten att få ut de personuppgifter de lämnat för att kunna flytta de till en annan tjänst.
+
+\textbf{Konsekvensbedömmning} innebär att innan någon planerar att hantera personuppgifter ska det undersökas vilka risker hanteringen skulle kunna innebära för individen och hur dessa risker ska kunna förebyggas.
+
+\textbf{Anmälningsskyldighet} innebär att vid dataintrång eller dataförlust måste de drabbade informeras och an anmälning måste göras till Datainspektionen inom 72 timmar.
+
+\textbf{Dataskyddsombud.} Innebörden av kravet på ett dataskyddsombud är att varje företag eler organisation som hanterar känsliga personuppgifter måste ha ett dataskyddsombud som hanterar frågor gällande dataskydd.
+
+\textbf{Sanktionsavgift} innebär att Datainspektionen vid överträdelse av dessa regler har rätt att utdela böter i förhållande till hur allvarlig lverträdelsen anses vara.
+
+\textbf{Missbruksregeln} är en regel som funnits i PUL och har inneburit att vissa personuppgifter får behandlas så länge de inte anses kunna vara kränkande för någon. Denna regel försvinner i och med att GDPR börjar gälla.
+
+Enligt en av IT-strategerna hos Uppsala Kommun innebär den här nya lagen att många företag och organisationer, inklusive Uppsala Kommun, kommer behova genomgå ett omfattande arbete för att säkerställa att man uppfyller de nya kraven för hantering av personuppgifter. Därmed har det också varit vår avsikt att vårt system ska uppfylla alla de krav på personuppgiftshantering som den nya lagen ställer. Den kritiska delen i vårt projekt är då sambandet mellan en person och en plats som kommer lagras i en databas och sedan presenteras för deras kollegor. Därför bör alla anställda dels kunna välja att inte finnas med i systemet över huvud taget och dels kunna välja att deras plats inte ska visas för andra. De personuppgifter som vi då hanterar är namn och avdelning på arbetsplatsen. Då vårat system ställer dessa krav på samtycke uppfyller vi kraven mot GDPR i det avseendet.
+\newpage
 \subsubsection{Fackliga aspekter}
+Under ett möte med en företrädare för Uppsala Kommun uppkom även frågan om hur Fackförbunden kan tänkas ställa sig till att medarbetares position registreras.
+Den frågeställningen är svår för oss att besvara. Den slutsats som vi drog var att oavsett hur olika fackfunbund kan komma att ta ställning till registrering av personalens position så innebär det att det är en frågeställning vi behöver ha i åtankte när vi designar systemet. Vår förhoppning är att ett användande av vårat system ska stöta på så få fackliga hinder som möjligt. Vi anser att eftersom möjligheten finns för personal att överhuvudtaget inte behöva använda sig av vårt system så borde eventella fackliga probelm kunna minska. Det är vår ståndpunkt att valfriheten för medarbetare och personal att använda vårt system är ett val som erbjuds av företagsledningen eller organisationsledningen. Det är endast vår förhoppning och rekommendation att så blir fallet. Därmed blir också eventuella fackliga hinder en fråga för de personer i organisationen som eventuellt beslutar om användningen av vårt system.
 
 
 
@@ -373,6 +407,7 @@ Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används fö
 \subsection{Python}
 Systemet består även av ett skript som ska skanna nätverket, ansluta till en databas samt utföra en algoritm. Detta skript programmeras i Python då alla i gruppen behärskar Python. En annan anledning till just detta språk är för att det finns så många bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Det finns många alternativ till detta språk men då gruppen redan är familjär med Python och att denna del av systemet är ganska tidskrävande underlättar det att man kan språket.
 
+\iffalse
 \subsection{Trilateration}
 Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf.\cite{cook2005indoor}
 \newline
@@ -389,6 +424,7 @@ Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem m
 
 I detta projekt är trilateration en teknik som vi inte kommer ha möjlighet att utnyttja. Eftersom vi är begränsade till att relatera en åtkomstpunkt till ett arbetsområde kommer inte klientenheten ha möjlighet att utföra några positionsberäkningar i realtid. Istället kommer klientenheten matcha MAC-adressen som den är ansluten till med positionsdatabasen. I och med denna begränsning kommer den största delen av analysen av områdenas nätverksmiljö ske i en lärandefas innan databasen populeras.
 
+
 \subsection{Fingerprinting}
 Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning. Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas.%TODO% fixa en bild
 Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värdena för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten.\cite{IP1}\cite{jun2018low}
@@ -396,7 +432,7 @@ Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och ac
 Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten.\cite{IP1}
 
 Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det här projektet. Den första delen av vårt system kommer bygga på fingerprinttekniken. Skillnaden mellan vårt projekt och fingerprinttekniken beskriven ovan är i första hand att klientenheterna i vårt fall endast kommer kunna matcha en åtkomstpunkt mot ett förprogrammerat arbetsområde i databasen. Detta innebär att den delen av vårt system som står för inlärningsfasen sköter databaspopuleringen på ett så pass bra sätt att precisionskraven uppfylls.
-
+\fi
 \section{Systemstruktur}
 I denna delen av rapporten beskriver vi våra system och hur de arbetar tillsammans sinsemellan.
 Systemet som vi konstruerat kan delas in i tre delsystem. Ett system där man sammankopplar anslutningsinformation till en plats, ett system som utför en algoritm för att bestämma en ungefärlig position som den sedan lägger in i en databas som skall sammankoppla en användare med plats, och ett system som presenterar all relevant information på ett tydligt sätt.
