@@ -1,0 +1,613 @@
+% MUST use a4paper option
+% MAY use twoside, smaller font, and other class
+\documentclass[swedish, a4paper,12pt]{article}
+%\documentclass[swedish,12pt]{<class>}
+% Use UTF-8 encoding in input files
+\usepackage[utf8x]{inputenc}
+% TODO: If you are writing in English, un-comment the following line:
+\usepackage[swedish, english]{babel}
+% Use the template for thesis reports
+\usepackage{UppsalaExjobb}
+
+% Useful font packages for maths and symbols
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+
+% for nice code listings
+\usepackage{listings}
+%\usepackage[hyphens]{url}
+%\usepackage{hyperref}
+
+\usepackage{url}
+% Designval: per default används styckesindrag, men ibland blir det snyggare/mer lättläst med tomrad mellan stycken. Det åstadkoms av de följande raderna.
+% Tycker ni om styckesindrag mera, kommentera bort nästa två rader.
+\parskip=0.8em
+\parindent=0mm
+
+\begin{document}
+
+% Set title, and subtitle if you have one
+\title{Rapportmall för självständigt arbete} % och uppsatsmetodik
+% Use this if you have a subtitle
+%\subtitle{Really Exciting Stuff}
+% Set author names, separated by "\\ " (don't forget the space)
+% List authors alphabetically by last name (unless someone did significantly more/less)
+\author{Albin Hjelm \\ Sebastian Gustafsson \\ Alexander Backlund}
+% Set the date and year - use the right language!
+\date{\begin{otherlanguage}{swedish}  %\foreignlanguage doesn't seem to affect \today?
+\today
+\end{otherlanguage}}
+
+% Only need to set the year if it differs from the current year
+%\year=2018
+
+% Ange handledare, ämnesgranskare, examinator om dessa finns
+% Extern handledare: t.ex på företag ni arbetat med?
+%\exthandledare{NN}
+% Intern handledare
+\handledare{Lisa Lagom och Björn Victor}
+% Ämnesgranskare används inte på Självständigt arbete i IT
+%\reviewer{NN}
+% På Självständigt arbete i IT är detta BV
+\examinator{Björn Victor}
+
+% Programnamn på svenska och engelska
+\progname{Civilingenj{\"o}rsprogrammet i informationsteknologi}{Computer and Information Engineering Programme}
+
+% Utgivare
+\enhetsnamn{Institutionen för \\ informationsteknologi}
+\besoksadress{ITC, Polacksbacken\\ Lägerhyddsvägen 2}
+\postadress{Box 337 \\ 751 05 Uppsala}
+\hemsida{http:/www.it.uu.se}
+
+% Set the name of the series, and the number in the series
+\seriesname{Självständigt arbete i informationsteknologi}
+% \seriesname{Uppsatsmetodik}
+
+% OBS: Gäller bara exjobb i årskurs 5
+% Get a series number, e.g. from Studentservice Ångström
+%\seriesnumber{UPTEC IT16~0xx}
+% Use the appropriate ISSN for the series
+%\issn{ISSN 1401-5749}
+% Usually this is where it is printed
+%\printer{Ångströmlaboratoriet, Uppsala universitet}
+
+% This creates the title page
+\maketitle
+
+% Change to frontmatter style (e.g. roman page numbers)
+\frontmatter
+
+\begin{abstract}
+% Abstract in English, about 10-20 lines. Do not use references; do not use formulas if they can be avoided.
+% \begin{enumerate}
+% \item What is the problem/issue/subject?
+% \item How was the problem solved/attacked?
+% \item What are the results, how well was the problem solved?
+% \item How good are the results, how useful are they?
+% \end{enumerate}
+% The abstract should be understandable without reading the whole report (and the rest of the report should be understandable without reading the abstract). You can reuse text/phrases from the Introduction.
+Many companies and organisations nowadays chose to transfer from having offices into having an more office free operation. With that comes some difficulties finding coworkers to discuss work related concerns. Beacause of this, employees looses productivity and spends too much time and energy on locating coworkers. This project's' intent is to make this transition easy, non time consuming and available only using existing information and technology. Which is provided via a location platform that users can locate their co-workers.
+\end{abstract}
+\begin{sammanfattning}
+% Sammanfattning på svenska. Se till att det står samma saker i det svenska och det engelska abstractet.
+% \begin{enumerate}
+% \item Vad är problemet, ämnet?
+% \item Hur angreps/löstes problemet?
+% \item Vad är resultaten, hur väl löstes problemet?
+% \item Hur bra blev resultaten, hur användbara är de?
+% \end{enumerate}
+%
+% Ca 10-20 rader. Använd inte referenser; ej heller formler om det går att undvika.
+%
+% Abstract ska vara förståeligt utan att läsa resten av rapporten, och resten av rapporten ska kunna läsas utan att läsa abstract. Man kan återanvända text från introduktionen.
+Många företag och organisationer nuförtiden väljer att förlytta deras verksamhet från kontorsbaserad till en mer kontorsfri miljö. Med den övergången tillkommer vissa problem med att hitta medarbetare för att kunna diskutera arbetsrelaterade saker. På grund av det här tappar de anställda i produktivitet, eftersom de behöver spendera för mycket tid på att lokalisera sina kollegor. Detta projektets intention är att göra övergången enkel, icke tidskrävande och möjlig genom att endast använda befinntlig information och teknik. Vilket ges via en lokaliserings plattform som användare kan lokalisera sina medarbetare.
+\end{sammanfattning}
+
+% Innehållsförteckningen här.
+\tableofcontents
+
+% Här kan man också ha \listoffigures, \listoftables
+
+\cleardoublepage
+
+
+% Change to main matter style (arabic page numbers, reset page numbers)
+\mainmatter
+
+% Here comes the text of the report.
+
+\iffalse
+\section*{Hur ni använder detta malldokument}
+Titta i källdokumentet för diverse inställningar för författare, titel, etc.
+
+\emph{OBSERVERA} att de ``fasta fält'' som blir på svenska (trots att ni ställt in engelska med \texttt{babel}), som Examinator, Handledare, datum på framsidan osv, \emph{ska} vara på svenska oavsett språk i rapporten. Abstract ska alltid vara på engelska, medan Sammanfattning alltid ska vara på svenska.
+
+I flera appendix finns mer info som inte gäller rapportstrukturen.
+
+I era inlämningar, ta bort (eller kommentera bort) malltexten (beskrivningen av vad som ska stå), men behåll gärna tomma huvudrubriker. Ta också bort mall-appendix.
+
+\subsection*{Generellt}
+Varje numrerat avsnitt ska finnas med i er slutrapport, om inget annat anges.
+Välj rubrik på svenska eller engelska beroende på ert valda rapportspråk.
+
+Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:projects-in-computing-old}.
+\fi
+
+% \subsection*{Uppdateringar av detta dokument}
+% \begin{description}
+% \item[2016-05-16]\mbox{}\\
+
+% \end{description}
+
+
+\section*{Att göra}
+Andra utkast: Bakgrund, relaterat arbete och referenser.
+
+\newpage %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen (men inte \mainmatter)
+
+\section{Introduktion}
+\iffalse Beskriv åtminstone samma saker som i abstract, men mer utförligt. Spara tekniska detaljer till senare.
+
+Tänk på att börja introduktionen med en mening eller ännu hellre ett helt stycke som ``fångar'' läsaren och motiverar läsaren att fortsätta läsa.  \emph{Vi har valt att göra ett projekt om X} är relevant för er, men kommer inte att vilja få någon att läsa vidare.  Försök åtminstone få med någon slags bakgrund/kontext och (helst) motivation att fortsätta läsa.  Typ \emph{X är ett programspråk som tagit världen med storm.  Vi vill utforska om man kan kombinera X med Y för att göra\ldots}
+
+Se till att ni \emph{kommer till kritan snabbt} – man vill inte läsa igenom två stycken text innan man får veta vad ni tänker göra i ert projekt.  Börja t.ex. \emph{inte} med att presentera alla idéer ni inte valt – läsaren vill veta vad ni ska göra, inte vad ni inte ska göra.
+
+Översiktlig beskrivning av systemet och dess features ska vara under systemdesign / systemstruktur, inte i introduktionen.
+
+Introduktionen bör vara begriplig för t.ex.~en student i årskursen under, och gärna för en ännu bredare läsarkrets.
+\fi
+
+\section{Bakgrund}
+Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktvitetsbaserade
+arbetsplatser. Tidigare var det absolut vanligaste sättet att organisera en arbetsplats att arbetsplatsen uppdelades i kontor och varje medarbetare hade en specifik kontorsplats.
+Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. De medarbetare som tidigare var tilldelade ett specifikt kontor
+väljer nu istället en tillfällig arbetsyta baserat på vilken som just då
+är mest lämplig för att utföra deras arbetsuppgifter.
+\bigskip
+\newline
+Detta skapar i sin tur vissa problem i och med att det blir svårare att veta vart på arbetsplatsen en medarbetare befinner sig då denne inte har någon fast arbetplats.
+Det är detta problem som det här projektet syftar till att lösa.
+
+	\subsection{Uppsala Kommun}
+  Uppsala Kommun agerar i det här projektet extern intressent. De är i ett skede där de övergår till aktivitetsbaserade arbetsplatser på många av deras kontor runt om i Uppsala. Det innebär att %TODO kolla upp antal
+  ett par tusen personer kommer att kunna välja friare vart de vill utföra sitt arbete. Uppsala Kommun har uttryckt ett behov av att deras medarbetare snabbt ska kunna se vart deras kollegor befinner sig. Det är vår förhoppning att de ska kunna utnyttja vårat system för att kunna uppfylla deras behov.
+
+	\subsection{Skype for Business}
+    Skype for Business är ett kommunikationsmedel som används av många företag och organisationer. Skype for Business(SFB) erbjuder funktionalitet såsom realtidssamtal %TODO referens? och vidare funktionalitet
+    videomöten mm. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFB´s server.\cite{Microsoft-Office} Det är denna funktionalitet som vi ämnar utnyttja. När denna databas är populerad med nätverksinformation för varje område på företagets/organisationens arbetsplatser kommer en medarbetares position kunna bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i Skypes användargranssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
+	\subsection{Inomhuspositionering}
+    Inomhuspositionering är jämfört med utomhuspositionering ett problem med fler komplikationer. GPS-tekniken(Global Position System) som ger en mycket liten felmarginal vid utomhuspositionering är sällan avnändbar för inomhuspositionering. Anledningen är att \cite{GPS_US} % TODO referens och blah blah blah
+
+    I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. En av skillnaderna är att det vid positionsbetsämning inomhus tillkommer en faktor som komlicerar positionsbestämnignen. Problemet är att man vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt kordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
+
+	\subsection{Aktivitetsbaserad verksamhet (ABW)}
+	Aktivitetsbaserade arbetsplatser erbjuder arbetarna en variation av arbetsmiljöer. Kärnan i ABW är att arbetarna inte ska vara bundna till ett skrivbord utan istället skapa den mest ändamålsenliga variationen för den individa arbetaren. Utifrån resultatet från en aktivitetsanalys delas arbetsplatsen in i olika miljöer som stödjer de olika arbeten som ska utföras såväl som individuella till grupparbeten. Det är vanligt att dela upp arbetsplatsen i olika zoner som bland annat en tyst zon och en mötes zon. Arbetarna kan därefter söka sig till den zon de tycker passar för dagens arbete. \cite{ABW}
+
+	\iffalse
+	\bibitem{ABW}
+	J.~Hort, F.~Krause ``Aktivitetsbaserade arbetsplatser i offentlig sektor''
+	  \url{https://webbutik.skl.se/bilder/artiklar/pdf/7585-208-9.pdf?issuusl=ignore}
+	  accessed: 2018-04-15.
+\fi
+
+
+
+%Här beskriver ni bakgrunden till ert projekt, d.v.s., det som leder fram till er %problemformulering.  Vilket är området, omgivningen, kontextet, bakgrunden för %projektet?  Beskriv området (t.ex. ljudbehandling, studieplaner, visualisering, %autism...).  Beskriv uppdragsgivare, om ni har (men inte för detaljerat).  Tänk %på att bakgrunden och problemet måste vara på en generell akademisk nivå och %inte bara relaterat till en uppdragsgivare.
+
+%Tänk på att bakgrunden kan se längre tillbaka -- hur löste man problemet förr? Ibland är det både viktigt och intressant (men ibland inte).
+
+%Efter att ha läst bakgrunden ska det vara uppenbart/lätt att förstå att syfte/mål är viktiga.
+
+\section{Syfte, mål, och motivation}
+Syftet med det här projektet är att utveckla ett enkelt och effektivt system för företag och organisationer som vill övergå till aktivitetsbaserade arbetsplatser(ABW). Systemet intergeras med Skype for Buisness och möjliggör för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig.
+
+Projektet motiveras av att många företag och organisationer övergår till aktivitetsbaserade arbetsplatser. Uppsala Kommun har påbörjat en sådan övergång och har uttryckt ett behov av att medarbetare bör kunna se vart deras kollegor befinner sig. Uppsala kommun har ett arbetsplatser på ett flertal adresser i Uppsala och beroende på arbetsuppgift ska deras medarbetare kunna bestämma själva var de vill utföra arbetsuppgiften. Uppsala Kommuns medarbetare använder sig av Skype for Business(SFB) som kommunikationsmedel och har framfört ett önskemål att det direkt i SFB-applikationen ska visas vart en användare befinner sig.
+
+Vårat projekt syftar till att lösa dessa problem och erbjuda ett sytem som Uppsala Kommun ska kunna använda men även andra företag och organisationer som upplever samma problem. Systemet ska även vara enkelt att introducera, enkelt att använda och enkelt att underhålla.
+
+Målet är att då vårat system att integrerat på arbetsplatsen ska användarna kunna se på vilken adress, vilken våning och i vilket område på den våningen som en kollega befinner sig. Uppsala Kommun har önskat en precision med max 10 meters felmarginal. Bättre precision än så anses inte nödvändig. Målet är också att kunna utnyttja den informationen som används för att visa en kollegas tillfälliga arbetsplats till att erbjuda en möjlighet för alla medarbetare att via en webportal kunna se hur många medarbetare som befinner sig på en specifik arbetsyta. Detta kommer göra man ska välja arbetsplats kan se vart det finns lediga platser utan att behöva gå genom varje lokal och leta.
+
+Våran förhoppning är att det här systemet löser många av de dagliga praktiska problemen hos företag och organisationer som använder vårat system. Vi hoppas att det dagliga arbetet därmed kommer fungera smidigare och utan de problem som en övergång till ABW kan medföra. Förhoppningsvis kan detta också leda till att företag som överväger att övergå till ABW kommer känna mindre oro över att det dagliga arbetet ska behöva störas dessa typer av problem.
+
+Det finns sedan tidigare andra system som erbjuder inomhuspositionering. Vissa av dessa änvänder sig av extra hårdvara och vissa inte. Vår föhoppning är att vårat system ska erbjuda ett alternativ utan extra hårdvara och som inte heller kräver nya applikationer för användarna. Vårat system ska istället använda medel som redan finns på arbetsplatsen för att presentera ytterliggare information.
+SFB har ett befinntligt API som kan användas för att visa den information som vi önskar presentera. Detta är dock inget system i sig. Vårat system ämnar erbjuda en helhetslösning som till viss del utnyttjar den funktionalitet som redan erbjuds i SFB.
+
+
+
+
+
+
+%\label{sec:syfte}
+%Här beskriver ni i princip er problemformulering.  I detta avsnitt ska framgå syfte, mål, och motivation med projektet.
+%Dessa behöver dock \emph{inte} vara separata underrubriker.
+
+%\paragraph{Syfte.} Vart strävar projektet? vad är det övergripande målet, nyttan, effekterna av projektet?  (t.ex. bättre koll på kosthållning, enklare planering av studier\ldots)
+%\paragraph{Mål.} Vad ska konkret levereras/utföras av projektet, för att ta oss närmare syftet?
+%\paragraph{Motivation.}  Varför är projektet viktigt?  Vilka är det viktigt för, vilka externa intressenter finns?  Hur stort är problemet, vad är följden av att det inte är löst, hur bra vore det att lösa?  Vilken ``lucka'' i området täcker ni?
+%Varför är er lösning bättre/annorlunda än andras?
+
+%Se till att ni i detta avsnitt övertygar läsaren om att problemet finns, att det inte är löst, och att det är viktigt att lösa. Ju starkare argumentation och motivation (med källor) dess bättre.
+%\begin{itemize}
+%\item Visa att det finns ett problem.
+%\item Visa att problemet är viktigt att lösa, att det behöver lösas.
+%\item Visa att problemet inte redan är löst.
+%\end{itemize}
+
+\subsection{Avgränsningar}
+\iffalse Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er, och motiverar dessa avgränsningar. Detta förtydligar för läsaren som kanske hade förväntningar ni inte uppfyllt.
+
+(I tidiga versioner, men \emph{inte} i slutversionen, kan ni även beskriva vad som bara ska göras om tid/resurser/omständigheter räcker till. De sakerna kan ni då istället beskriva i Framtida arbete.)
+\fi
+\section{Relaterat arbete}
+Det generella problemet med inomhuspositionering har lösts på olika sätt.
+Beroende på vilket specifikt problem som gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice(IPS)\cite{IP1}.
+En av de vanligaste teknikerna vid IPS är Trilateration. Vid trilateration uppsakattas minst tre avstånd till basstationer med kända kordinater och med hjälp av geometriska beräkningar uppskattas sedan en position. Trilateration beskrivs utförligare i sektion 4.2 nedan. En annan teknik som är vanligt förekommande i befinntliga system för IPS är fingerprinting. Fingerprintingtekniken bygger i korthet på att den enhet som ska positionsbestämas mäter signalstyrkor i närheten och jämför med en databas. Fingerprinting beskrivs utförligare i sektion 4.3.
+
+Binghao Li m. fl. analyserade i en studie \cite{IP1} olika tekniker som utgår från Wifi  för IP och kom fram till att fingerprint var en av de metoder som enskilt genererade mest precisa resultat.
+
+
+\subsection{Problem med GPS-tekniken}
+Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en posistion med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
+Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USA´s flygvapen. GPS är ett system bestående av 24 sateliter som kretsar kring Jorden. Sateliterna sänder ut radiosignaler med information om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de sateliterna som befinner sig inom räckhåll och använder sig av sateliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig.\cite{GPS_US_HOW}
+
+Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från sateliterna reflekteras när de kommer i kontakt med byggnader och de anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord.\cite{GPS_US_ACCURACY} Detta gör att andra tekniker måste användas för inomhuspositionering.
+
+\subsection{Trilateration}
+Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enl. B Cook m. lf.\cite{cook2005indoor}
+\newline
+$$ P_r = P_t + 20log(\frac{\lambda}{4\pi}) + 10nlog(\frac{1}{d})$$
+där
+$  P_r $ = signalstyrkan hos mottagaren (dBm)\newline $P_t$ = styrkan hos sändaren\newline
+$\lambda$ = våglängden\newline
+$ n $ = 2 i fria utrymmen\newline
+$ d $ = avsåtndet mellan mottagare och sändare
+\bigskip
+\newline
+En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. Se fig %TODO % fixa figur.. kan man sno?
+Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i oexaktheter i positionsbestämmningen.
+
+I detta projekt är trilateration en teknik som vi inte kommer ha möjlighet att utnyttja. Eftersom vi är begränsade till att relatera en åtkomstpunkt till ett arbetsområde kommer inte clientenheten ha möjlighet att utföra några positionsberäkningar i realtid. Istället kommer clientenheten matcha MAC-adresen som den är ansluten till med positionsdatabasen. I och med denna begränsning kommer den största delen av analysen av områdenas nätverksmiljö ske i en lärandefas innan databasen populeras.
+\subsection{Fingerprinting}
+Fingerprinting bygger precis som trilateration på positionsbestämmning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalerns planritning. Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas.%TODO% fixa en bild
+Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värderna för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten.\cite{IP1}\cite{jun2018low}
+Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och accepterad metod i system för inomhuspositionering finns det vissa problem .\cite{IP1}
+Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för clientenheten.\cite{IP1}
+
+Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det här projektet. Den första delen av vårat system kommer bygga på fingerprinttekniken. Skillnaden mellan vårat projekt och fingerprinttekniken beskriven ovan är i första hand att clientenheterna i vårat fall endast kommer kunna matcha en åtkomstpunkt mot ett förprogrammerat arbetsområde i databasen. Detta innebär att den delen av vårat system som står för inlärningsfasen sköter databaspopuleringen på ett så pass bra sätt att precisionskraven uppfylls.
+\iffalse
+\subsection{AnyPlace}
+Här kommer mer info
+\subsection{Förra årets projekt}
+Här kommer mer info
+\fi
+
+
+%Här beskriver ni liknande system eller projekt, och förklarar hur de relaterar till ert.  Alltså: vad vet ni om läget när det gäller ``det större problemet'' som projektet ska lösa?  Vilka andra har försökt lösa liknande/närliggande problem, eller gjort relaterade/liknande saker/system? Referera! (Se Appendix~\ref{sec:referenser} för mer om hur.)
+
+%Liksom för bakgrunden kan relaterat arbete också gå längre tillbaka. Det är inte nödvändigtvis bara datorbaserade/appbaserade/etc lösningar som är relaterade.
+
+%\begin{itemize}
+	%\item
+	%Relaterat arbete bör vara på en generell (gärna akademisk) nivå och inte bara relaterat till en uppdragsgivare, en programmeringsplattform, eller ett särskilt sätt att angripa problemet.
+	%\item
+	%När ni jämför ert system med andra, se till att läsaren fått en översikt över vad ert system är först (t.ex. i inledningen) så att vederbörande kan göra en kvalificerad bedömning.
+%\item Beskriv vad varje relaterat arbete är (t.ex. en app, en undersökning\ldots), vad deras resultat var, \textbf{och hur det relaterar till ert arbete}.
+%\end{itemize}
+
+%(Ovanstående är ungefär max-storlek på saker i en punktlista -- är det mer text är det oftast bättre med riktiga paragrafer.)
+
+%Ibland är det bra att gruppera relaterade arbeten (t.ex. appar som löser liknande problem, eller andra angreppsätt än tekniska).
+%Ibland är det effektivt att efter en grupp relaterade arbeten summera hur de relaterar till ert (t.ex. ``dessa appar har dessa liknande finesser, men ingen av dem hanterar X som är en av våra huvudpoänger'').
+
+%Försök övertyga läsaren om att ni gjort ett vettigt urval av relaterat arbete (och inte bara beskriver de första google-träffarna). Beskriv gärna hur ni gjort urvalet, och motivera det.
+
+\section{Tillvägagångssätt}
+%Här beskriver ni vilka metoder/verktyg/tekniker/approacher ni använt för att lösa problemet / besvara frågeställningen.  Vilka metoder har ni konkret använt för att lösa problemet/bygga systemet?  Vilka tekniker/verktyg använde ni? Observera att det inte är samma sak som att beskriva \emph{hur} ni använde teknikerna/verktygen (det kommer i Del X).
+
+% Kolla workshop-materialet för exempel på vad metoder kan vara.
+
+%Glöm inte att motivera era val av metoder. Finns det flera rimliga alternativ? Beskriv varför ni inte valt dem (t.ex.~varför er valda metod är bättre).
+%Visa att det är rimligt att använda just detta tillvägagångssätt.
+
+%Detta avsnitt
+%ska \emph{inte} innehålla information om hur gruppen organiserat arbetet (github, trello\ldots) \emph{om} det inte är relevant för resultatet (och det är det oftast inte).
+
+I tillvägagångsdelen av rapporten redogörs vilka tekniker och metoder som användes för att bygga systemet.
+
+\subsection{Generella tillvägagångsätt}
+I början av projektplanneringen togs en gemensam beskrivning över systemt fram så att alla parter hade samma bild. I denna beskrivning gjordes tydliga separationer mellan de olika delsystem samt en prioriteringslista över vilka delsystem som var tvungen att fungera först. När denna beskrivning var klar togs en tidsplannering fram och tilldelning av arbetsuppgifter sinsemellan alla gruppmedlemmar.
+
+\subsection{Android}
+Systemet är uppbyggd av bland annat två android program. Ena programmet används för att kartlägga internet information med position i en byggnad. Det andra programmet används till att visualisera arbetsplatsen och få ut data angående positionering i arbetsplatsen. I utvekling av båda programmen används "Android Studios" vilket är en "integrerad utvecklingsmiljö" för att utveckla android applikationer. Alternativ till androida applikationer är applikationer till iOS samt windows telefoner. En anledning till att utveckla programmen i android är då programmeringsspråket "kotlin" är enkelt och väldigt likt java, vilket alla i gruppen behärskar. En annan anledning till android är då kommunen använder sig av android telefoner. Istället för att utveckla en webbaserad visualisering av arbetsplatsen så valdes det att göras i android då vi kommer att ha mer kontroll över inomhuspositioneringen då.
+
+\subsection{Python}
+Systemt består även av ett skript som automatiskt populerara SfB's databasen. Detta skript programmeras i python då alla i gruppen behärskar python. Det finns många alternativ till detta språk men då gruppen redan är familjär med python och att denna del av systemet är så relativt liten så underlättar det att använda python.
+
+
+\section{Systemstruktur}
+I denna delen av rapporten beskriver vi våra system och hur de arbetar tillsammans sinsemellan och med det externa systemet.
+Systemet som vi konstruerat kan delas in i tre delsystem. Ett system där man mappar anslutningsinformation till en plats, ett system som automatiserar populeringen av Skype for Business (SFB) databas som skall mappa anslutningsinformation med plats, men åt andra hållet, och ett system där man enkelt kan se beläggning i olika områden i verksamheten, historik mm.
+
+I följande figur  % TODO REFERENS TILL BILDEN
+ses systemet i sin helhet. Det interna systemet består av två android applikationer. Den ena som enligt schemat skall skicka sin information till SFB-admin maskinen, är det system som används för att mappa anslutningsinformation med plats. På SFB-admin maskinen ska skriptet som automatiserar populeringen av databasen finnas. Den andra android applikationen skall vara den som arbetare i verksamheten nyttjar för att se beläggning i olika områden.
+Det externa systemet består av SFB's plats-databas och Skype's Web-API. % TODO referenser??
+Plats-databasen skall populeras av de interna systemet som konstruerats i form av android appolikation och populerings-skript. Detta system använder därefter datan för att integrerat i Skype visa platsinformation om kollegor för andra i verksamheten. Det andra systemet är Skype's Web-API. Det ska tillhandahålla platsinformation till beläggnings-systemet.
+
+De interna systemen kommer kommunicera på olika sätt. Mellan systemet som mappar anslutningsinformation med plats och SFB-admin maskinen så måste datan förflyttas manuellt, eftersom tillgången till den maskinen är begränsad. Från SFB's databas kommer datan att mottas genom anrop till Skype's API. % TODO kan inte säga att jag har full koll på protokoll här
+
+\begin{figure}[h]
+	\includegraphics[width=15cm]{media/systemStruktur.png}
+	\caption{System-Struktur}
+	\label{}
+\end{figure}
+
+
+\subsection{Alternativa lösningar}
+% Alternativa lösningar
+% Beskriv strukturen både internt (hur ert eget system är uppbyggt) och externt (vilka andra system ert system kommunicerar med). \textbf{Använd figurer} (och text)!
+% \begin{itemize}
+% \item Vilka delar består systemet av? (T.ex. databas, webbinterface, AI-modul, grafik...) Vilka kommunicerar med vilka, beror av vilka, innehåller vilka andra?
+% \item Vilka delar fanns färdiga att använda/anpassa, vilka utvecklade ni själva? Visa tydligt, gärna grafiskt.
+% \item Finns olika alternativa byggblock eller designval? Vilka är argumenten för/emot valen?
+% \item Hur kommunicerar delarna, vilka protokoll och/eller dataformat används? (Beskriv mer detaljerat i senare, i Huvuddelen.)
+% \item Finns det olika typer av användare/motsv? (T.ex. administratörer resp slut\-an\-vän\-dare?)
+% \end{itemize}
+%
+% \iffalse
+% \subsection{Tänk på följande}
+%
+% Var inte för tekniskt detaljerade här.  Tanken är att ge en översikt över systemet.  Ni behöver inte beskriva objektmetoder etc. i detalj (om de inte är nya och avgörande för resultatet). Tekniska detaljer och implementation beskriver ni snarare i Huvudddelen.
+%
+%
+% Se till att ni använder \emph{samma terminologi} i figurer som visar systemet som i texten.
+%
+% Anknyt figurerna till texten på ett tydligt sätt. Om ni t.ex. har separata underrubriker som beskriver olika delar/aspekter av systemstrukturen med tillhörande figur, välj antingen en underrubrik per del i figuren eller använd helt andra underrubriker.  Annars kommer läsaren att undra var underrubriken som beskriver del X är, när det finns underrubriker för alla andra delar.
+% \fi
+
+\section{Krav och utvärderingsmetoder}\label{sec:krav}
+
+% Vilka krav ställer ni/andra på ert resultat?
+%
+% hur snabbt? hur många användare? hur strömsnålt? eller vad som är relevant
+% Hur ska ni utvärdera ert arbete/system (så att ni vet om/hur bra ni lyckats)?
+%
+% För de olika funktionaliteterna (och/eller motsv) i ert system, hur ska ni avgöra om de är tillräckligt bra utförda/implementerade? Var går gränsen för ``tillräckligt bra''? (Eller när är de ``för dåliga''?)
+%
+% Skilj på krav och funktionalitet. Själva funktionaliteterna har ni redan beskrivit i systemstrukturen eller huvuddelen nedan. (Har ni krav på saker ni beskriver först i huvuddelen kan ni lägga det här avsnittet efter huvuddelen.)
+%
+% Skriv tydliga krav \emph{som går att utvärdera}.  (Hur snabbt? Hur många användare? Hur strömsnålt? eller vad som är relevant).
+%
+% Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, en\-käter, fokusgrupper\ldots).
+% Beskriv hur externa intressenter involveras i utvärderingen.
+Kraven för det här projektet är något som vi tillsammans med kommunen har kommit fram till. Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till aktivitets. Det kommer vi kunna utvärdera genom att låta en utomstående få göra mappningen och sedan återkoppla om dennes upplevelse av applikationen.
+
+Kraven på presentationen av medarbetares position är att det ska visas vilket kontor, vilken våning samt en radie på 10 meter. Detta kommer utvärderas genom ett utförligt test, med olika försvårande förhållanden.
+
+
+
+\section{DEL x}\label{sec:delX}
+\iffalse Mellan introduktion och avslutning finns ett eller sannolikt \emph{flera} avsnitt (``huvuddelen'') som innehåller själva bidraget.  Ni får själva välja passande rubriker (INTE ``Huvuddel'' eller ``Bidrag'').  Rubrikerna i huvuddelen ska tillsammans med titeln ge en idé om vad som berättas, en ``berättelse''. (Exempel: ``Algoritm för automatisk igenkänning av stora fötter'', ``Design av databasen för användardata'', ``Optimering av minnesanvändning'', ``Implementation av djupinlärningssystemet'' etc.)
+
+Här kan ni beskriva implementationen, hur systemet används, etc.
+
+Beskriv gärna felhantering och riskanalys: vad kan gå fel när systemet kör/används, vad kan bli följden, och hur hanteras detta?
+\fi
+\section{DEL x+1}
+%Se avsnitt~\ref{sec:delX}.
+\section{DEL x+2}
+%Se avsnitt~\ref{sec:delX}.
+
+%\ldots
+
+\section{Utvärderingsresultat}
+\iffalse Beskriv resultaten av utvärderingen, när ni tillämpar de utvärderingsmetoder ni beskrivit i avsnitt~\ref{sec:krav}, och relatera utvärderingsresultaten till kraven i samma avsnitt.
+\fi
+
+\section{Resultat och diskussion}
+\iffalse Här beskriver ni först era resultat, vad ni åstadkommit.  Hur bra blev det?
+Sedan granskar ni era resultat kritiskt.  Varför blev det som det blev?  Var resultaten rimliga/bra/dåliga/o\-vän\-ta\-de\ldots?
+Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande arbeten?
+
+\begin{itemize}
+\item Visa att utvärderingen är rimlig.
+\item Visa att utvärderingen, resultatet och analysen är vetenskapliga och ingenjörsmässiga.
+\end{itemize}
+
+Relatera till mål och syften etc i avsnitt~\ref{sec:syfte}.
+\fi
+
+
+\section{Slutsatser}
+\iffalse Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och förklarar dess vikt och användning.  Vad var viktigt/nytt/intressant?  (INTE i termer av vad ni lärde er, utan för den som läser rapporten, funderar på att göra ett liknande system, vidareutveckla ert, etc.)
+\fi
+\section{Framtida arbete}
+\iffalse Här beskriver ni potentiella framtida utvecklingar av systemet. Var finns förbättrings\-poten\-tial och vad kan man bygga vidare på? Vilka intressanta utvidgningar hann ni inte med?
+
+Observera att risk\-be\-döm\-ning, tids\-planering, relation till kursmål \emph{inte} hör hemma i slutrapporten.
+\fi
+\newpage
+% Here comes the bibliography/references.
+\bibliography{refs}
+% Use one of these:
+%   IEEEtranS gives numbered references like [42] sorted by author,
+%   IEEEtranSA gives ``alpha''-style references like [Lam81] (also sorted by author)
+%\bibliographystyle{IEEEtranSA}
+
+\bibliographystyle{IEEEtranS}
+
+\newpage
+\appendix %%%% markerar att resten är appendixar
+\iffalse \section{Hur man gör appendix}
+Appendixar kan vara bra för bilagor som enkätundersökningar, större kodavsnitt, etc.
+
+Appendix läggs efter referenslistan, och ska börja på en ny sida. Använd \verb|\newpage| för att göra ett sidbrott där resten av nuvarande sida är tom. Skriv sen \verb|\appendix| för att markera att resten är appendix, och
+ använd sen vanliga \verb|\section{}| för varje appendix, som kommer att ``numreras'' A, B, C osv.
+
+\section{Några tips för La\TeX-användning}
+
+Ett enkelt sätt att använda/\textbf{installera} LaTeX för MacOS är TexShop (\url{http://pages.uoregon.edu/koch/texshop}).
+
+\textbf{Läs också i Wikibooks} (\url{http://en.wikibooks.org/wiki/LaTeX}), \textbf{missa inte} Appendix om ``Sample LaTeX documents'' (men använd alltid rapportmallen som bas).
+
+\textbf{Citat-tecken} skriver man med \verb|``foo''| (dvs två bakåtfnuttar före, och två vanliga fnuttar efter). LaTeX gör så att det blir snyggt: ``foo''.
+
+När man skriver på svenska behöver man ibland ``visa'' var ord (speciellt såna med med åäö) kan \textbf{avstavas} genom att använda \verb|\-| (liknande \textit{soft hyphen}): ämnesöversiktsintroduktion avstavas med några sådana instuckna på rätt ställen istället som ämnes\-över\-sikts\-intro\-duk\-tion
+
+\begin{verbatim}
+ämnes\-över\-sikts\-intro\-duk\-tion
+\end{verbatim}
+
+För att formattera \textbf{URLer} bättre (så att t.ex. radbrytning blir snyggare), skriv t.ex. \verb|\url{http://www.it.uu.se/research/group/concurrency}| i texten eller referensen.
+
+För att \textbf{referera} till avsnitt, figurer, tabeller etc, använd \verb|\label{markör}| för att ``sätta ett märke'' i text eller figur, och \verb|\ref{markör}| för att referera till den, t.ex.
+\begin{verbatim}
+\section{Motivation}
+\label{sec:motivation}
+\end{verbatim}
+
+följt av
+\begin{verbatim}
+Som vi nämnt i avsnitt~\ref{sec.motivation}...
+\end{verbatim}
+
+För att få referenser att inte hamna först efter ett \textbf{radbrott}, använd ``klister'' (icke-brytande space) \verb|såhär~\cite{fin-bok}|, där tilde-tecknet \verb|~| alltså gör ett obrytbart space. Detta är i princip också alltid rätt att använda före siffror, och förstås också före \verb|\ref{fig}|.
+
+Använd \emph{aldrig} dubbel-backslash \verb|\\| för att få avbrott mellan stycken. Använd alltid dubbel ny rad för detta.
+
+För att göra ett \textbf{sidbrott} där resten av sidan blir tom, använd \verb|\newpage|, inte \verb|\pagebreak|. Det senare är till för att finjustera var latex gör ett automatiskt sidbrott, inte för att avsluta en halvfull sida.
+
+\subsection{Bib\TeX-tips}
+
+För att hantera bibliografi (\textbf{referenser}) på ett smidigt sätt, använd BibTeX! (se \url{http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#BibTeX} och nedan om referenser.)
+
+För att se till att BibTeX inte gör namn, förkortningar etc till lowercase, använd \verb|{}| och skriv typ
+\begin{verbatim}
+title = {The {DSP} of {N}ewton applied to {iOS}}
+\end{verbatim}
+
+Skriv alltid månader för publikation med de inbyggda förkortningarna, typ:
+\begin{verbatim}
+month = jun
+\end{verbatim}
+istället för \verb|{jun}| eller \verb|"jun"| eller \verb|"June"| eller \verb|"Juni"|. Då kan nämligen bibliographystyle styra hur det förkortas etc.
+
+Ett verktyg för att hantera BibTeX-filer i MacOS är BibDesk (\url{http://bibdesk.sourceforge.net/}).
+
+
+\section{Referenser}
+\label{sec:referenser}
+
+Se också kap 8.5 i Dawson~\cite{dawson:projects-in-computing}.
+
+Det finns åtminstone tre syften med utformningen av referenserna och referenslistan.
+\begin{enumerate}
+\item Man ska hitta referensen (från texten) i referenslistan.
+\item Man ska förstå vad som refereras (vilken typ av referens det är) så att man kan värdera den.
+\item Man ska kunna hitta referensen i verkligheten.
+\end{enumerate}
+
+Använd numeriska referenser (IEEE-stil~[42]) eller nyckelordsbaserad~[Lam86], inte fotnotstil. Referenserna sorteras alfabetiskt efter författare/motsv i referenslistan. I LaTeX, använd \verb|\bibliographystyle{IEEEtranS}| eller \verb|{IEEEtranSA}| (eller liknande), se rapportmallen.
+
+Referenserna skrivs i direkt anknytning till det som föranleder referensen (t.ex. ett påstående eller resultat), före eventuellt skiljetecken, och med ett fast mellanslag till föregående ord. I LaTeX, \verb|skriv~\cite{lam86}| för att få en ``non-breaking space''. Se också rapportmallen, och sista stycket på sid 211 i Dawson~\cite{dawson:projects-in-computing}.
+
+Det är alltså \emph{inte} en bra approach att skriva referenserna efter ett längre stycke (som vissa verkar lära sig att göra, någonstans). Det gör det oftast otydligt vad som egentligen är hämtat från, eller styrks, av referenserna. I vissa fall kan man vilka göra en kort sammanfattning av vad en författare skriver i en artikel el.dyl., men att bara lägga på en referens sist i stycket är inte tillräckligt tydligt. Det är mycket bättre och tydligare att skriva något i stil med ``Lisa Lagom beskriver\verb|~\cite{lagom-bok}| hur X beror av Y och i sin analys visar hon i detalj hur sambandet ser ut\ldots''.
+
+När man refererar till ``tjocka'' saker som böcker är det lämpligt att ange sidnr
+(som \verb|\cite[sid 211-214]{dawson}|), men för ``tunnare'' saker behöver man bara göra det för att speciellt peka ut om man t.ex. menar en viss del av referensen (kanske den tar upp tre olika sätt att göra X och man vill peka på det 3:e, inte de första två).
+
+För mer info om vilken info som behövs för olika typer av referenser, se avsnitt 8.5.3 i Dawson~\cite{dawson:projects-in-computing,dawson:projects-in-computing-old}. (För att referera till flera saker samtidigt (som nyss) skriver man flera BibTeX-nycklar i samma \verb|\cite|.)
+
+Använd inte direktcitat, såvida inte den exakta formuleringen är viktig.  Skriv hellre ett referat av vad någon sagt. (Se Dawson.)
+
+Om referenslistan huvudsakligen innehåller referenser till ``mer info'' av typen
+\url{www.wordpress.org}, \url{www.w3c.org}, \url{developer.android.com}\ldots men få referenser som stöder resonemang, motivation, argument etc (jfr Workshoparna), är det antagligen ett tecken på att det finns få resonemang, motiveringar och argument som behöver stödjas. Då behöver man med största sannolikhet resonera, motivera och argumentera mera!
+
+Även om en referens har en URL till själva texten är det inte nödvändigtvis en webbreferens, utan ibland en artikel/bok el.dyl som råkar vara tllgänglig på nätet. Den ska då beskrivas som artikel/bok/el.dyl, men förstås gärna med URLen.
+
+\section{Formler, figurer, bilder, kod}
+\label{sec:forml-figur-bild}
+
+Formler och/eller ekvationer måste beskrivas.  Det betyder t.ex. att varje symbol måste vara förklarad i texten.
+
+I engelsk text skriver man ``Figure 3'', inte ``figure 3'', eftersom det fungerar som ett namn på figuren (och motsvarande för Table osv).
+
+Alla figurer och bilder som inte är era egna måste ha referenser.
+
+Om ni inkluderar kodsnuttar, se till att de är relevanta och kommenterade, så att man förstår.  Alternativt, för korta snuttar: ge motsvarande förklaring i texten.
+Använd vettigt latex-bibliotek för kod, t.ex. \texttt{listings}.
+
+\section{Språk och grammatik}
+\label{sec:sprak-och-grammatik}
+
+\begin{itemize}
+\item    Det är OK att skriva ``Vi''!
+
+\item    \textbf{Inte alla läsare är män}.  Skriv därför inte ``han'', ``hans'', ``denne'' etc.  Använd könsneutrala pronomen eller ord som ``vederbörande'', ``användaren'' etc.
+
+\item    \textbf{Undvik talspråk} ``så'', ``två stycken saker'', ``ifrån'', ``utav'', ``vart'', ``kommer göra/vara'' (istället för ``kommer att göra/vara'', \ldots \textbf{Kolla på Wikipedia-sidan} ``Vanliga språkfel'' (länk i vänsterkanten i SP).
+
+\item    Undvik värderande uttryck som enkelt, uppenbart.
+
+\item    Semikolon är \textbf{inte} en variant av kolon eller komma; semikolon kan endast användas där ni normalt sett skulle använt punkt, men vill fortsätta på samma mening. För att undvika problem, undvik semikolon helt.
+
+\item    Skriv inte meningar som börjar med ``Detta på grund av'' eller ``Detta eftersom\ldots' -- det blir ofta inte fullständiga meningar och det är ofta inte klart vad ``detta'' syftar på.
+
+\item    Använd inte framtid; skriv rapporten i nu- eller dåtid och var konsekventa (Vi gör\ldots eller Vi har gjort\ldots, inte Vi kommer att göra\ldots)
+
+\item    \textbf{Förklara begrepp innan ni använder dem}, hänvisa inte \emph{bara} läsaren till ett senare avsnitt (men ni kan naturligtvis också hänvisa till mer detaljerade förklaringar som kommer senare i texten).  Första gången ett begrepp nämns måste alltså åtminstone en kort förklaring finnas.
+
+\item    När ni introducerar nya koncept (sådant ni inte har diskuterat tidigare), gör inte det ``i förbifarten'', utan se till att ni \textbf{förklarar ordentligt}.  Alltså: ``Vi använder X (ett häftigt nytt programmeringsspråk) för att göra Y'' fungerar inte.  Beskriv först konceptet ni använder, och använd det sedan.  Typ ``X är ett viktigt nytt programmeringsspråk.  Vi använder X för att göra Y.''
+
+\item    \textbf{Var konsekventa} med hur ni skriver förkortningar och begrepp (c++ eller C++, android och Android t.ex.) Tumregel: namn skrivs med inledande stor bokstav (Android, inte android), förkortningar med stora bokstäver (XML, inte Xml).
+\item    Använd inte olika synonymer för det ni har utvecklat (tjänsten/projektet/systemet), utan bestäm er för vad det är ni har gjort.
+
+\item    Det kan vara bra att kursivera nya begrepp första gången de används, men normalt bör man inte kursivera \emph{alla} förekomster.
+
+\item    Efter uttryck som ``för det första\ldots'', ``one alternative is\ldots'' måste följa ``för det andra\ldots'' ``another alternative'' (inte ``slutligen'', ``dels'', ``another \underline{option}'' eller något annat).  Tänk också på ``firstly \ldots secondly'' resp. ``first \ldots second'', inte ``first \ldots secondly'' eller något annat.
+
+\item    Var försiktig med uttryck som ``this approach'', ``detta system'', etc. och kontrollera att det är uppenbart vad detta/this refererar till. Be någon icke-gruppmedlem läsa och kolla!
+
+\item    De av er som skriver på engelska: ni MÅSTE använda korrekta verbformer beroende på om subjektet är en eller flera saker (``it has'' men ``they have'').
+\end{itemize}
+\fi
+\section{Tidsplan}
+\subsection{Gantt-diagram}
+
+\begin{figure}[h]
+	\includegraphics[width=15cm]{media/GANTT.png}
+	\caption{GANTT Diagram}
+	\label{}
+\end{figure}
+
+\subsection{Arbetsbelastning}
+Vi har planerat att arbeta omkring 8 timmar per dag varav hälften tillsammans och hälften var för sig. Anledningen till detta är då mycket av det administrativa kan göras på egen hand samt vissa delar av programmernadet. Dock är det bra att arbeta tillsammans också då kommunikationen blir enklare samt förekommer avstämningsmöten varenda dag.
+
+\subsection{Feedback från videopitch}
+Den feedback vi fick från videopitcharna gick till det mesta ut på att vara tydligare rörande vad aktivitetsbaserade arbetsplatser egentligen innebär.
+Vi har försökt klargöra innebörden av en aktivitetsbaserad arbetsplats i framförallt abstract och avsnittet bakgrund i rapporten. Förhoppningsvis är förklaringen nu tillräckligt utförlig för att läsaren enkelt ska förstå vad vårat projekt syftar till.
+
+
+\subsection{Milstolpar}
+Vi har delat upp våra milstolpar i två delar. En för systemt och en för rapporten. Till rapporten valde vi att använda milstolparna som vi fick av kursansvariga, dvs de inlämningar som ska in ska in i tid. Till systemet har vi följande milstolpar:
+\begin{itemize}
+	\item 22/3 Projektbeskrivning klar.
+	\item 27/3 Läst grundläggande om relativ information angående projektet. Bland annat positionering, Wifi skanning, Kotlin programmering, android utveckling.
+	\item 3/4 Få första android applikationen att kunna skanna av ett nätverk och få relativ information och kunna spara informationen på ett lämpligt sätt (i en .csv fil).
+	\item 17/4 Få tillgång till Kommunen lokaler för att testa första android applikationen och få tillgång till Skype for Buisness (SFB) databasen för att kunna fortsätta arbeta med skriptet för att populera dess databas.
+ 	\item 25/4 Ha ett fungerande skript som kan populera  SFB databasen.
+	\item 7/5 Första prototyp för android applikationen som ska visualisera arbetsplatsen med relativ data. Samt få den godkänd av Uppsala kommun.
+	\item 14/5 Ha alla delsystem färdiga.
+	\item 21/5 Koppla samman alla delsystem.
+	\item 28/5 Ett fungerande system. Programmerings stop.
+\end{itemize}
+
+%TODO : 1) Hur ska vi kunna separera AP via våningar? (Vart ska det stå?)
+%TODO : 2) Fingerprinting varför bara en del? (Kommer inte ihåg vad jag menade med ni kanske gör)
+%TODO : 3) Kommunen hur ser det ut?
+%TODO : 4) Skype 4 Buisness, Skriva att vi skiter i det och varför vi skiter i det? (Vart ska det stå?)
+%TODO : 5) Kontor till ABW vilka motgångar/svårigheter? (Vart ska vi beskriva detta?)
+%TODO : 6) titel
+%TODO : 7) GPS sektionen ska flyttas
+%TODO : 8) Trilateration kanske ska vara i tillvägagångssätt?
+%TODO : 9) ETIK och Säkerhet
+\end{document}
