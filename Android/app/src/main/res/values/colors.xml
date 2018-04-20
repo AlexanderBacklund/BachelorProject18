@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">   #444941   </color>
+    <color name="colorPrimaryDark">  #444941  </color>
+    <color name="colorAccent"> #3eaa00 </color>
+    <color name="colorButton">  #5d5d5d  </color>
+    <color name="colorText"> #FFFFFF </color>
+</resources>
+
+<!-- #ff7d17 cool orange färg -->
