@@ -407,6 +407,9 @@ Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används fö
 \subsection{Python}
 Systemet består även av ett skript som ska skanna nätverket, ansluta till en databas samt utföra en algoritm. Detta skript programmeras i Python då alla i gruppen behärskar Python. En annan anledning till just detta språk är för att det finns så många bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Det finns många alternativ till detta språk men då gruppen redan är familjär med Python och att denna del av systemet är ganska tidskrävande underlättar det att man kan språket.
 
+\subsection{Django}
+Dango är en web applikations ramverk som är skriven i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Den viktigaste anledningen till Django är dess säkerhetsaspekter. Django kommer med väldigt många olika säkerhetsåtgärder samt finns ännu mer säkerhetsaspekter dokumenterade på deras hemsida som man kan använda sig av för att göra säkerheten på hemsidan så bra som möjligt.\cite{securityInDjango} Detta är en viktig aspekt för oss då vi hanterar känslig data. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder. %TODO Sebbe du får gärna lägga till saker här!
+
 \iffalse
 \subsection{Trilateration}
 Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf.\cite{cook2005indoor}
@@ -437,8 +440,8 @@ Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det 
 I denna delen av rapporten beskriver vi våra system och hur de arbetar tillsammans sinsemellan.
 Systemet som vi konstruerat kan delas in i tre delsystem. Ett system där man sammankopplar anslutningsinformation till en plats, ett system som utför en algoritm för att bestämma en ungefärlig position som den sedan lägger in i en databas som skall sammankoppla en användare med plats, och ett system som presenterar all relevant information på ett tydligt sätt.
 
-I följande figur  % TODO REFERENS TILL BILDEN \ref{fig:systemStruktur}
-ses systemet i sin helhet. Systemet består av en android applikation. Den ska användas av tekniker före användning av systemet, för att i den aktivitetsbaserade verksamheten placera ut referenspunkter som klienter sedan kan beräkna sitt förhållande till. Denna information ska därefter importeras på ett smidigt sätt in i databasen. När referenspunkterna är inlagda kan man börja använda Python-klienten. Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata som teknikern har tillhandahållit i databasen. När Python-klienten har bestämt sin position ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användare.
+I följande figur [\ref{fig:systemStruktur}] % TODO REFERENS TILL BILDEN ref{fig:systemStruktur}
+ses systemet i sin helhet. Systemet består av en android applikation. Den ska användas av tekniker före användning av systemet, för att i den aktivitetsbaserade verksamheten placera ut referenspunkter som klienter sedan kan beräkna sitt förhållande till. Denna information ska därefter importeras \iffalse på ett smidigt sätt \fi in till en databas. När referenspunkterna är inlagda kan man börja använda Python-klienten. Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata som teknikern har tillhandahållit i databasen. När Python-klienten har bestämt sin position ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användare.
 
 Slutligen så finns det ett Web-interface. Detta system använder data som Python-klienten har lagt in i databasen för att i en webbaserad applikation visa platsinformation om kollegor för andra i verksamheten. Systemet har också stöd för att presentera beläggning i olika områden samt annan intressant information.
 
@@ -447,11 +450,11 @@ Mellan systemet som teknikern använder och databasen så måste data förflytta
 \begin{figure}[H]
 	\includegraphics[width=15cm]{media/systemStruktur.png}
 	\caption{Systemstruktur}
-	\label{}
+	\label{fig:systemStruktur}
 \end{figure}
 
 
-\subsection{Alternativa lösningar}
+%\subsection{Alternativa lösningar}
 % Alternativa lösningar
 % Beskriv strukturen både internt (hur ert eget system är uppbyggt) och externt (vilka andra system ert system kommunicerar med). \textbf{Använd figurer} (och text)!
 % \begin{itemize}
@@ -714,7 +717,4 @@ Vi har delat upp våra milstolpar i två delar. En för systemt och en för rapp
 %TODO : 2) Fingerprinting varför bara en del? (Kommer inte ihåg vad jag menade med ni kanske gör)
 %TODO : 3) Kommunen hur ser det ut?
 %TODO : 4) Skype 4 Buisness, Skriva att vi skiter i det och varför vi skiter i det? (Vart ska det stå?)
-%TODO : 5) Kontor till ABV vilka motgångar/svårigheter? (Vart ska vi beskriva detta?)
-%TODO : 6) titel
-%TODO : 7) GPS sektionen ska flyttas
 \end{document}
