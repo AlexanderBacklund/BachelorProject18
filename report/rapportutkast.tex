@@ -10,6 +10,9 @@
 \usepackage{UppsalaExjobb}
 \usepackage{float}
 
+
+\usepackage[bottom]{footmisc}
+
 % Useful font packages for maths and symbols
 \usepackage{amssymb,amsmath,amsthm,amsfonts}
 
@@ -360,8 +363,9 @@ Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vil
 
 
 \iffalse
-\subsection{Förra årets projekt}
-Här kommer mer info
+\subsection{Kandidatarbete 2017}
+
+
 \fi
 
 
@@ -494,8 +498,27 @@ Kraven för det här projektet är något som vi tillsammans med kommunen har ko
 
 Kraven på presentationen av medarbetares position är att det ska visas vilket kontor, vilken våning och ett område på det våningsplanet. Felmarginalen ska vara max 5 meter. Detta kommer utvärderas genom ett utförligt test, med olika försvårande förhållanden.
 
+\section{Algoritm för Positionsbestämning}
+\subsubsection{K Nearest Neighbor - KNN}
+När metoden fingerprinting\footnote{Se sektion \ref{fingerprinting}} används för positionsbestämning krävs en algoritm för att analysera värden på Received Signal Strength Indikation (RSSI) för klientenheten i förhållande till RSSI-värden för referenspunkterna. Vid olika tillämpningar av fingerprinting kan olika algoritmer användas.\cite{tian2013fingerprint}\cite{jun2018low} En av de vanligaste typerna av algoritmer är versioner av KNN \cite{tian2013fingerprint}.
+Bokstaven k står för antalet "nearest neighbors"(närmaste grannar). Vid den mest simpla varianten, då k = 1 (1NN), görs en RSSI-scanning hos klientenheten av vilken närliggande åtkomstpunkt som har lägst försvagning av signalstyrka. Den åtkomstpunkt med lägst försvagning antas vara den som är finns närmast. Därefter jämför man med RSSI-värdet för de referenspunkter som finns registrerade och finner den referenspunkt vars lagrade RSSI-värde matchar bäst. Klientenhetens position uppskattas till samma position som för den referenspunkt som matchade bäst.
+Ju högre värde av \textit{k} som används vid analysen desto tillförlitligare blir positioneringen.
+En nackdel med KNN är att RSSI-värdet för de olika åtkostpunkterna kan variera över tid.\cite{tian2013fingerprint} Detta medför att för att upprätthålla en godtagbar exakthet bör varje referenspunkt scannas av vid jämna intervall.
+En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik position kan förändras om tillexempel möbleringen av rummen ändras radikalt. Då något sådant sker bör också intillliggande referenspunkter scannas om.
 
 
+\subsubsection{Vår algoritm}
+Den algoritm som vi valde för positionsbestämmningen är en variant av KNN.
+
+
+
+\section{Databasens uppbyggnad}
+
+\section{Applikation för scanning vid referenspunkter}
+
+\section{Webinterface}
+
+\iffalse
 \section{DEL x}\label{sec:delX}
 \iffalse Mellan introduktion och avslutning finns ett eller sannolikt \emph{flera} avsnitt (``huvuddelen'') som innehåller själva bidraget.  Ni får själva välja passande rubriker (INTE ``Huvuddel'' eller ``Bidrag'').  Rubrikerna i huvuddelen ska tillsammans med titeln ge en idé om vad som berättas, en ``berättelse''. (Exempel: ``Algoritm för automatisk igenkänning av stora fötter'', ``Design av databasen för användardata'', ``Optimering av minnesanvändning'', ``Implementation av djupinlärningssystemet'' etc.)
 
@@ -509,7 +532,7 @@ Beskriv gärna felhantering och riskanalys: vad kan gå fel när systemet kör/a
 %Se avsnitt~\ref{sec:delX}.
 
 %\ldots
-
+\fi
 \section{Utvärderingsresultat}
 \iffalse Beskriv resultaten av utvärderingen, när ni tillämpar de utvärderingsmetoder ni beskrivit i avsnitt~\ref{sec:krav}, och relatera utvärderingsresultaten till kraven i samma avsnitt.
 \fi
