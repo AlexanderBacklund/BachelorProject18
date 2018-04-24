@@ -44,6 +44,9 @@ class RefPoint(object):
     def __str__(self):
         return "Position: "+self.position+" mac1: "+self.address1+" mac2: "+self.address2+" mac3: "+self.address3+" rssi1: "+self.rssi1+" rssi2: "+self.rssi2+" rssi3: "+self.rssi3
 
+    def __repr__(self):
+        return self.__str__()
+
 #creates a list of dummy reference points
 # def createTestListOfRPs():
 #     r1 = make_RefPoint("r1", "Albins dator", "24:01:C7:19:A3:00", "24:01:C7:19:A3:01", -52, -52)
@@ -129,7 +132,7 @@ def main():
     #  you execute all the queries you need
     cur = db.cursor()
 
-    print(createObjectsFromDB(getRefListFromDB(cur))[0])
+    print((createObjectsFromDB(getRefListFromDB(cur))))
 
     # l = scanNetworks(netcard)
     # myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
