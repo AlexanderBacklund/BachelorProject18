@@ -1,0 +1,81 @@
+
+        fun writetofile() {
+            var FILENAME = "test.txt"
+            try {
+                val fos = openFileOutput(FILENAME, MODE_PRIVATE)
+
+                //fos.write("HESAN TEST AV WRITE")
+                fos.close()
+                Toast.makeText(this, "File Created", Toast.LENGTH_SHORT).show()
+            } catch (ex: Exception) {
+                print(ex.message)
+                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+        fun checkFile(): Boolean {
+             var result = false
+             val fileCheck = File(filesDir.toString() + "/" + FILENAME)
+             if (fileCheck.exists())
+                 result = true
+             return result
+        }
+
+
+            /*
+            val et1 = findViewById(R.id.et1) as EditText
+            if (fileList().contains("test.txt")) {
+                Toast.makeText(this, "test.txt finns", Toast.LENGTH_SHORT).show()
+                try {
+                    val file = InputStreamReader(openFileInput("test.txt"))
+                    /*val br = BufferedReader(file)
+                    var line = br.readLine()
+                    val all = StringBuilder()
+                    while (line != null) {
+                        all.append(line + "\n")
+                        line = br.readLine()
+                    }
+                    br.close()
+                    file.close()
+                    et1.setText(all)*/
+                } catch (e: IOException) {
+                    print(e.message)
+                }
+            }
+            else {
+                Toast.makeText(this, "finns inte", Toast.LENGTH_SHORT).show()
+            }
+
+            button1.setOnClickListener {
+                try {
+                    val file = OutputStreamWriter(openFileOutput("test.txt", Activity.MODE_PRIVATE))
+
+                    file.write(et1.text.toString())
+                    file.flush()
+                    file.close()
+                } catch (e: IOException) {
+                    print(e.message)
+                }
+                Toast.makeText(this, "data were recorded", Toast.LENGTH_SHORT).show()
+                //finish()
+
+            }
+        }
+
+*/
+        fun readfromfile() {
+            val filetext: String = applicationContext.assets.open("test.txt").bufferedReader().use {
+                it.readText()
+            }
+
+            tv.text = filetext
+        }
+
+        fun main() {
+            writetofile()
+            checkFile()
+            //readfromfile()
+        }
+
+        main()
+    }
+}
