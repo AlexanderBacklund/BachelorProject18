@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.location.Address
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
 import android.os.Build
@@ -29,6 +30,7 @@ class data : AppCompatActivity() {
     val REQUEST_FINE_LOCATION: Int=0
     var resultList = ArrayList<ScanResult>()
     val axisList = ArrayList<String>()
+    val rssiList = ArrayList<Int>()
     lateinit var wifiManager: WifiManager
 
     val broadcastReceiver = object : BroadcastReceiver() {
@@ -48,14 +50,8 @@ class data : AppCompatActivity() {
         return specificList[pos]
     }
 
-
-    fun getIndexFromFile(file: File, item: String): Int {
-        var specificItem = file.readLines().indexOf(item)
-        return specificItem
-    }
-
     fun writeToFile(file: File,text: String) {
-        file.appendText(text)
+        file.appendText(text, Charsets.UTF_8)
     }
 
     fun delete(fileDB: File, fileUser: File, pos: Int) {
@@ -90,7 +86,6 @@ class data : AppCompatActivity() {
         }
 
         printFromFile(fileUser)
-        Toast.makeText(this, "Deletion successful", Toast.LENGTH_LONG).show()
     }
 
     fun startScanning(fileDB: File, fileUser: File, pos: Int){
@@ -115,8 +110,9 @@ class data : AppCompatActivity() {
         try {
             resultList.sortedWith(compareBy({ it.level }))
             for (i in 0..resultList.size) {
-                axisList.add(resultList[i].SSID+" "+resultList[i].BSSID+" "+resultList[i].level)
-                if(i == 10) {
+                axisList.add(resultList[i].BSSID)
+                rssiList.add(resultList[i].level)
+                if(i == 5) {
                     break
                 }
             }} catch (e: IndexOutOfBoundsException) {
@@ -124,17 +120,24 @@ class data : AppCompatActivity() {
         }
 
         var specItem = getItemFromFile(fileUser, pos)
-        writeToFile(fileDB, specItem + ",")
+        writeToFile(fileDB, "Sebbe," + specItem + ",")
         writeToFile(fileUser, specItem + " ")
 
-        for (j in 0..4) {
+        for (j in 0..2) {
             writeToFile(fileDB, axisList[j] + ", ")
+        }
+
+        for (j in 0..2) {
+            if (j == 2) {
+                writeToFile(fileDB, rssiList[j].toString())
+                break
+            }
+            writeToFile(fileDB, rssiList[j].toString() + ", ")
         }
 
         delete(fileDB, fileUser, pos)
         Toast.makeText(this, "Scan Successful", Toast.LENGTH_SHORT).show()
     }
-
 
     private fun mayRequestLocation(): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -167,21 +170,21 @@ class data : AppCompatActivity() {
         if (fileDir.exists()) {
             if (!filecheckDB.exists()) {
                 val file = File(fileDir, filenameToDB)
-                writeToFile(file, "\n")
+                writeToFile(file, "ID, " + "Position, " + "Address_1, " + "Address_2, " + "Address_3, " + "RSSI_1, " + "RSSI _2, " + "RSSI_3 " + "\n")
                 Toast.makeText(this, "File DB Created", Toast.LENGTH_SHORT).show()
             }
             if (!filecheckUser.exists()) {
                 val file2 = File(fileDir, filenameToUsers)
-                writeToFile(file2, "\n")
+                writeToFile(file2, "ID, " + "Position, " + "Address_1, " + "Address_2, " + "Address_3, " + "RSSI_1, " + "RSSI_2, " + "RSSI_3 " + "\n")
                 Toast.makeText(this, "File user Created", Toast.LENGTH_SHORT).show()
             }
         } else {
             val letDirectory = File(path, "Saved Files")
             letDirectory.mkdirs()
             val file = File(fileDir, filenameToDB)
-            writeToFile(file, "\n")
+            writeToFile(file, "ID, " + "Position, " + "Address_1, " + "Address_2, " + "Address_3, " + "RSSI_1, " + "RSSI_2, " + "RSSI_3 " + "\n")
             val file2 = File(fileDir, filenameToUsers)
-            writeToFile(file2, "\n")
+            writeToFile(file2, "ID, " + "Position, " + "Address_1, " + "Address_2, " + "Address_3, " + "RSSI_1, " + "RSSI_2, " + "RSSI_3 " + "\n")
         }
 
         printFromFile(filecheckUser)
