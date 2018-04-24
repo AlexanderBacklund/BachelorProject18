@@ -15,10 +15,10 @@ och har ett användarvänligt API, på deras officiella hemsida finns även ett 
 - Förklara vad ni syftar på.
 Exempel från Relaterat arbete: "De flesta tjänsterna som finns är textbaserade och således svårt att få en enkel överblick över statistiken som ges." ....... -> "..och gör det således svårt att få.." alt. "..och är således svåra/ då man.. "
 Exempel från Gapminder i Rel Arb: "Gapminders verktyg som används för att åstadkomma målet att öka förståelsen, görs
-med hjälp av en mängd olika diagram och kartor som är färgkodade." ....-> "med att öka förståelsen". Är det verktygen som görs med hjälp av? ..->"färgkodade diagram och kartor".. "..olika diagram och kartor.." ger ett lite oprecist intryck.
+med hjälp av en mängd olika diagram och kartor som är färgkodade." ....-> dels "MED att öka förståelsen". Är det verktygen som görs med hjälp av? ..olika diagram och kartor.." ger ett lite oprecist intryck...->"färgkodade diagram och kartor".. "
 Ta bort ",görs med hjälp av " och använd "är.. en mängd färgkodade..."
 - Nämn gärna figurerna (som är snygga! :)) i texten. Typ 5.1 Booli
-- Förklara vissa begrepp tydligare, framför allt i metod typ "stacken i 6.2"
+- Förklara vissa begrepp tydligare, exempel i sektionen Metod typ "stacken i 6.2"
 
 
 ## Abstract
