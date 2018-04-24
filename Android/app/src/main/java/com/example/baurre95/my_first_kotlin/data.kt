@@ -27,6 +27,7 @@ class data : AppCompatActivity() {
     val filenameToDB = "accesspointsToDb.csv"
     val filenameToUsers = "ReferencePointsToUser.csv"
     var myList =  listOf<String>()
+    var showList = listOf<String>()
     val REQUEST_FINE_LOCATION: Int=0
     var resultList = ArrayList<ScanResult>()
     val axisList = ArrayList<String>()
@@ -41,7 +42,8 @@ class data : AppCompatActivity() {
 
     fun printFromFile(file: File) {
         myList = file.readLines()
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, myList)
+        var id = myList[0]
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, myList)//.takeLastWhile { it != id})
         APlv.adapter = adapter
     }
 
@@ -57,7 +59,6 @@ class data : AppCompatActivity() {
     fun delete(fileDB: File, fileUser: File, pos: Int) {
         var listFromUser = fileUser.readLines()
         var listFromDB = fileDB.readLines()
-
         if (listFromUser.size == 1) {
             Toast.makeText(this, "The file may not be empty, please insert another element first", Toast.LENGTH_LONG).show()
             return
@@ -89,9 +90,10 @@ class data : AppCompatActivity() {
     }
 
     fun startScanning(fileDB: File, fileUser: File, pos: Int){
-        if (resultList.size > 0 || axisList.size > 0) {
+        if (resultList.size > 0 || axisList.size > 0 || rssiList.size > 0) {
             resultList.clear()
             axisList.clear()
+            rssiList.clear()
         }
 
         wifiManager.setWifiEnabled(true)
@@ -112,7 +114,7 @@ class data : AppCompatActivity() {
             for (i in 0..resultList.size) {
                 axisList.add(resultList[i].BSSID)
                 rssiList.add(resultList[i].level)
-                if(i == 5) {
+                if(i == 10) {
                     break
                 }
             }} catch (e: IndexOutOfBoundsException) {
@@ -122,17 +124,16 @@ class data : AppCompatActivity() {
         var specItem = getItemFromFile(fileUser, pos)
         writeToFile(fileDB, "Sebbe," + specItem + ",")
         writeToFile(fileUser, specItem + " ")
-
         for (j in 0..2) {
             writeToFile(fileDB, axisList[j] + ", ")
         }
 
-        for (j in 0..2) {
-            if (j == 2) {
-                writeToFile(fileDB, rssiList[j].toString())
+        for (k in 0..2) {
+            if (k == 2) {
+                writeToFile(fileDB, rssiList[k].toString())
                 break
             }
-            writeToFile(fileDB, rssiList[j].toString() + ", ")
+            writeToFile(fileDB, rssiList[k].toString() + ", ")
         }
 
         delete(fileDB, fileUser, pos)
