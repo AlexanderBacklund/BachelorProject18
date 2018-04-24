@@ -17,7 +17,7 @@
 #################################################################
 
 from wifi import Cell, Scheme
-import time, platform#,# MySQLdb
+import time, platform,MySQLdb
 
 def connectToDB():
     return MySQLdb.connect(host="localhost", user="root", passwd="Alabse959393#", db="localisation")
@@ -32,26 +32,25 @@ class RefPoint(object):
     rssi2 = 0
 
     # The class constructor
-    def __init__(self, name, position, adress1, adress2, rssi1,rssi2):
-        self.name = name
+    def __init__(self, position, address1, address2, address3, rssi1,rssi2, rssi3):
         self.position = position
-        self.adress1 = adress1
-        self.adress2 = adress2
+        self.address1 = address1
+        self.address2 = address2
+        self.address3 = address3
         self.rssi1 = rssi1
         self.rssi2 = rssi2
+        self.rssi3 = rssi3
 
-#function to create a reference point
-def make_RefPoint(name, position, adress1, adress2, rssi1,rssi2):
-    refPoint = RefPoint(name, position, adress1, adress2, rssi1,rssi2)
-    return refPoint
+    def __str__(self):
+        return "Position: "+self.position+" mac1: "+self.address1+" mac2: "+self.address2+" mac3: "+self.address3+" rssi1: "+self.rssi1+" rssi2: "+self.rssi2+" rssi3: "+self.rssi3
 
 #creates a list of dummy reference points
-def createTestListOfRPs():
-    r1 = make_RefPoint("r1", "Albins dator", "24:01:C7:19:A3:00", "24:01:C7:19:A3:01", -52, -52)
-    r2 = make_RefPoint("r2", "Borta vid bordet", "24:01:C7:19:CF:4E", "24:01:C7:19:CF:4F", -49, -46)
-    r3 = make_RefPoint("r3", "Skrubben", "24:01:C7:19:47:10", "24:01:C7:19:47:11", -67, -68)
-    rplist = [r1, r2, r3]
-    return rplist
+# def createTestListOfRPs():
+#     r1 = make_RefPoint("r1", "Albins dator", "24:01:C7:19:A3:00", "24:01:C7:19:A3:01", -52, -52)
+#     r2 = make_RefPoint("r2", "Borta vid bordet", "24:01:C7:19:CF:4E", "24:01:C7:19:CF:4F", -49, -46)
+#     r3 = make_RefPoint("r3", "Skrubben", "24:01:C7:19:47:10", "24:01:C7:19:47:11", -67, -68)
+#     rplist = [r1, r2, r3]
+#     return rplist
 
 def checkOperatingSys():
     return platform.system()
@@ -111,36 +110,40 @@ def nearestRP(relRPs, myAPs, lengthAP):
 
 
 def getRefListFromDB(cur):
-    cur.execute("SELECT * FROM SEBBE") # TODO: Change to reftable
+    cur.execute("SELECT * FROM test") # TODO: Change to reftable
     return cur.fetchall()
-
+def createObjectsFromDB(refs):
+    refobjlista = []
+    for r in refs:
+        refobjlista.append(RefPoint(r[1],r[2],r[3],r[4], r[5], r[6], r[7]))
+    return refobjlista
 
 def main():
-    netcard = raw_input("Enter network-card for wifi-scan: ")
-    numberOfNetworksToScanAroundMe = 10
+    #netcard = raw_input("Enter network-card for wifi-scan: ")
+    #numberOfNetworksToScanAroundMe = 10
 
     # l = scanNetworks(netcard)
     # l1 = sortNetworksReturnAmount(4,l)
-    #db = connectToDB()
+    db = connectToDB()
     # you must create a Cursor object. It will let
     #  you execute all the queries you need
-    #cur = db.cursor()
+    cur = db.cursor()
 
-    #getRefListFromDB(cur)
+    print(createObjectsFromDB(getRefListFromDB(cur))[0])
 
-    l = scanNetworks(netcard)
-    myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
-    rplist = createTestListOfRPs()
-    relRPs = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
-    myPosition = nearestRP(relRPs, myAPs, numberOfNetworksToScanAroundMe)
-    print myPosition
+    # l = scanNetworks(netcard)
+    # myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
+    # rplist = createTestListOfRPs()
+    # relRPs = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
+    # myPosition = nearestRP(relRPs, myAPs, numberOfNetworksToScanAroundMe)
+    # print myPosition
 
 
     #for l2 in l:
     #    print(l2.ssid+" - "+ str(l2.signal) + " - "+str(l2.address))
     #Leave me be
     ###############################################
-    #db.close()
+    db.close()
 
 if __name__ == "__main__":
     main()
