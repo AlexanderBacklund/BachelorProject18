@@ -24,36 +24,31 @@ def connectToDB():
 
 #creates a object type reference point
 class RefPoint(object):
-    name = ""
+    #name = ""
     position = ""
-    adress1 = ""
-    adress2 = ""
+    address1 = ""
+    address2 = ""
+    address3 = ""
     rssi1 = 0
     rssi2 = 0
+    rssi3 = 0
 
     # The class constructor
     def __init__(self, position, address1, address2, address3, rssi1,rssi2, rssi3):
         self.position = position
-        self.address1 = address1
-        self.address2 = address2
-        self.address3 = address3
-        self.rssi1 = rssi1
-        self.rssi2 = rssi2
-        self.rssi3 = rssi3
+        self.address1 = address1.upper()
+        self.address2 = address2.upper()
+        self.address3 = address3.upper()
+        self.rssi1 = int(rssi1)
+        self.rssi2 = int(rssi2)
+        self.rssi3 = int(rssi3)
 
     def __str__(self):
-        return "Position: "+self.position+" mac1: "+self.address1+" mac2: "+self.address2+" mac3: "+self.address3+" rssi1: "+self.rssi1+" rssi2: "+self.rssi2+" rssi3: "+self.rssi3
+        return "Position: "+self.position+" mac1: "+self.address1+" mac2: "+self.address2+" mac3: "+self.address3+" rssi1: "+str(self.rssi1)+" rssi2: "+str(self.rssi2)+" rssi3: "+str(self.rssi3)
 
     def __repr__(self):
         return self.__str__()
 
-#creates a list of dummy reference points
-# def createTestListOfRPs():
-#     r1 = make_RefPoint("r1", "Albins dator", "24:01:C7:19:A3:00", "24:01:C7:19:A3:01", -52, -52)
-#     r2 = make_RefPoint("r2", "Borta vid bordet", "24:01:C7:19:CF:4E", "24:01:C7:19:CF:4F", -49, -46)
-#     r3 = make_RefPoint("r3", "Skrubben", "24:01:C7:19:47:10", "24:01:C7:19:47:11", -67, -68)
-#     rplist = [r1, r2, r3]
-#     return rplist
 
 def checkOperatingSys():
     return platform.system()
@@ -73,41 +68,51 @@ def sortNetworksReturnAmount(amountReturned, netwrkList):
 #creates a list of relevant Reference points to check based on my position
 def listOfRelRPs(listOfRefPoints, myPositionInfo, lengthAP):
     RelRPs = []
+    largestNumberOfMatchingRefs = 0
     for ref in listOfRefPoints:
         numberOfMatches = 0
         for tmp in range(0,lengthAP):
-            if ref.adress1 == myPositionInfo[tmp].address or ref.adress2 == myPositionInfo[tmp].address:
+            if ref.address1 == myPositionInfo[tmp].address or ref.address2 == myPositionInfo[tmp].address or ref.address3 ==myPositionInfo[tmp].address:
                 numberOfMatches += 1
         if (numberOfMatches > 0):
-            RelRPs.append(ref)
-    print("langden 1 " + str(len(RelRPs)))
-    return RelRPs
+            RelRPs.append((ref,numberOfMatches))
+        if (numberOfMatches > largestNumberOfMatchingRefs):
+            largestNumberOfMatchingRefs = numberOfMatches
+    toReturn = RelRPs, largestNumberOfMatchingRefs
+    return toReturn
+
 
 #determines which reference point is closest to me
-def nearestRP(relRPs, myAPs, lengthAP):
-    for tsk in range(0,10):
-        print(myAPs[tsk].address)
-    print("langden " + str(len(relRPs)))
+def nearestRP(relRPs, myAPs, lengthAP , numberOfMatchingRefs):
     if len(relRPs) == 0:
-        return "position unknown"
+        return "position unknown, no related reference points"
     area = "position unknown"
-    closestDiff = 300
-    diff1 = 500
-    diff2 = 500
-    for rp in relRPs:
-        for tmp in range(0,lengthAP):
-            if (rp.adress1 == "" + myAPs[tmp].address):
-                diff1 = rp.rssi1 - myAPs[tmp].signal
-                if diff1<0:
-                    diff1 = diff1 * -1
-            elif rp.adress2 == "" + myAPs[tmp].address:
-                diff2 = rp.rssi2 - myAPs[tmp].signal
-                if diff2 < 0:
-                    diff2 = diff2 * -1
-        diffSum = diff1 + diff2
-        if diffSum < closestDiff:
-            area = rp.position
-            closestDiff = diffSum
+    for ref,n_matches in relRPs:
+        if (n_matches == numberOfMatchingRefs):
+            closestDiff = 300
+            diff = []
+            diffsum = 0
+            for tmp in range(0,lengthAP):
+                if (ref.address1 == "" + myAPs[tmp].address):
+                    temp = ref.rssi1 - myAPs[tmp].signal
+                    if temp<0:
+                        temp = temp * -1
+                    diff.append(temp)
+                elif ref.address2 == "" + myAPs[tmp].address:
+                    temp = ref.rssi2 - myAPs[tmp].signal
+                    if temp < 0:
+                        temp = temp * -1
+                    diff.append(temp)
+                elif ref.address3 == "" + myAPs[tmp].address:
+                    temp = ref.rssi3 - myAPs[tmp].signal
+                    if temp < 0:
+                        temp = temp * -1
+                    diff.append(temp)
+                for diffs in diff:
+                    diffsum += diffs
+            if diffsum < closestDiff:
+                area = ref.position
+                closestDiff = diffsum
     return area
 
 
@@ -122,24 +127,22 @@ def createObjectsFromDB(refs):
     return refobjlista
 
 def main():
-    #netcard = raw_input("Enter network-card for wifi-scan: ")
-    #numberOfNetworksToScanAroundMe = 10
-
-    # l = scanNetworks(netcard)
-    # l1 = sortNetworksReturnAmount(4,l)
+    netcard = raw_input("Enter network-card for wifi-scan: ")
+    numberOfNetworksToScanAroundMe = 10
     db = connectToDB()
+
     # you must create a Cursor object. It will let
-    #  you execute all the queries you need
     cur = db.cursor()
 
-    print((createObjectsFromDB(getRefListFromDB(cur))))
+    print(createObjectsFromDB(getRefListFromDB(cur)))
+    rplist = createObjectsFromDB(getRefListFromDB(cur))
 
-    # l = scanNetworks(netcard)
-    # myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
-    # rplist = createTestListOfRPs()
-    # relRPs = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
-    # myPosition = nearestRP(relRPs, myAPs, numberOfNetworksToScanAroundMe)
-    # print myPosition
+
+    l = scanNetworks(netcard)
+    myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
+    relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
+    myPosition = nearestRP(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
+    print myPosition
 
 
     #for l2 in l:
