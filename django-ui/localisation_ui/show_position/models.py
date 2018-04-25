@@ -26,9 +26,10 @@ class Users_script(models.Model):
 class User_position(models.Model):
     u_id = models.ForeignKey(Users_script, related_name = "users_name")
     u_position = models.CharField(max_length = 64)
+    u_datetime = models.DateTimeField()
 
     def __str__(self):
-        return "User: nada"+" Position:"+(self.u_position)
+        return "User: "+self.u_id.u_username+" Position:"+(self.u_position)
 
 
 

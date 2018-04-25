@@ -11,7 +11,10 @@ from show_position.models import Refpoint, User_position, Users_script
 def index(request):
     users = Users_script.objects.all()
     for u in users:
-        u.position = u.users_name.all()[0].u_position
-
+        try:
+            u.position = u.users_name.order_by('-u_datetime')[:1][0].u_position
+        except IndexError:
+            u.position = 'No current position'
+        
     funny_dict = {'user_positions': users,}
     return render(request, 'show_position/index.html', funny_dict)
