@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static "show_position/css/index.css" %}"/>
-    <title>Albiiiin</title>
-  </head>
-  <body>
-    {% if msg %}
-    <h2>Hej !{{msg}}</h2>
+{% extends 'show_position/layout.html' %}
 
+{% block content %}
+  <h3 class="red lighten-3">Lista av alla positioner</h3>
+  <div class="collection row">
+    {% for u in user_positions  %}
+    <a href="#" class="col-sm-3 collection-item">{{u.u_username}} - {{u.u_position}}</a>
+    {% endfor %}
+  </div>
 
-    {% else %}
-    <p>No Funny business available</p>
-    {% endif %}
-  </body>
-</html>
+{% endblock %}
