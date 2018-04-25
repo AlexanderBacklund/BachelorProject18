@@ -81,12 +81,36 @@ def listOfRelRPs(listOfRefPoints, myPositionInfo, lengthAP):
     toReturn = RelRPs, largestNumberOfMatchingRefs
     return toReturn
 
+def posBasedOnOrder(relAps, myAPs, lengthAP, numberOfMatchingRefs):
+    highestScore = 0
+    myposition = "position unknown"
+    listOfEqualscores = []
+    for ref in relAps:
+        score1 = 0
+        score2 = 0
+        score3 = 0
+        for ap in range(0,lengthAP):
+            if ref.address1 == myAPs[ap].address:
+                score1 = 2*(10-ap)
+            if ref.address2 == myAPs[ap].address:
+                score2 = 2*(9-ap)
+            if ref.address3 ==  myAPs[ap].address:
+                score3 = 2*(8-ap)
+        score = score1 + score2 + score3
+        if score > highestScore:
+            highestScore = score
+            del listOfEqualscores[:]
+            listOfEqualscores.append(ref)
+        if score == highestScore:
+            listOfEqualscores.append(ref)
+
+    return listOfEqualscores
 
 #determines which reference point is closest to me
 def nearestRP(relRPs, myAPs, lengthAP , numberOfMatchingRefs):
     if len(relRPs) == 0:
         return "position unknown, no related reference points"
-    area = "position unknown"
+    area = "position unknown"     
     for ref,n_matches in relRPs:
         if (n_matches == numberOfMatchingRefs):
             closestDiff = 300
