@@ -86,7 +86,7 @@ def posBasedOnOrder(relAps, myAPs, lengthAP, numberOfMatchingRefs):
     highestScore = 0
     myposition = "position unknown"
     listOfEqualscores = []
-    for ref in relAps:
+    for ref,n_matches in relAps:
         score1 = 0
         score2 = 0
         score3 = 0
@@ -104,42 +104,63 @@ def posBasedOnOrder(relAps, myAPs, lengthAP, numberOfMatchingRefs):
             listOfEqualscores.append(ref)
         if score == highestScore:
             listOfEqualscores.append(ref)
-
     return listOfEqualscores
 
-#determines which reference point is closest to me
-def nearestRP(relRPs, myAPs, lengthAP , numberOfMatchingRefs):
-    if len(relRPs) == 0:
-        return "position unknown, no related reference points"
-    area = "position unknown"     
+def sortCandidatesOnMatchingRefs(relRPs, numberOfMatchingRefs):
+    listOfCandidatesBig = []
     for ref,n_matches in relRPs:
         if (n_matches == numberOfMatchingRefs):
-            closestDiff = 300
-            diff = []
-            diffsum = 0
-            for tmp in range(0,lengthAP):
-                if (ref.address1 == "" + myAPs[tmp].address):
-                    temp = ref.rssi1 - myAPs[tmp].signal
-                    if temp<0:
-                        temp = temp * -1
-                    diff.append(temp)
-                elif ref.address2 == "" + myAPs[tmp].address:
-                    temp = ref.rssi2 - myAPs[tmp].signal
-                    if temp < 0:
-                        temp = temp * -1
-                    diff.append(temp)
-                elif ref.address3 == "" + myAPs[tmp].address:
-                    temp = ref.rssi3 - myAPs[tmp].signal
-                    if temp < 0:
-                        temp = temp * -1
-                    diff.append(temp)
-                for diffs in diff:
-                    diffsum += diffs
-            if diffsum < closestDiff:
-                area = ref.position
-                closestDiff = diffsum
+            listOfCandidatesBig.append(ref)
+    return listOfCandidatesBig
+
+
+
+
+
+
+def posBasedOnRSSIstrenght(relRPs, myAPs, lengthAP):
+    area = "position unknown"
+    closestDiff = 300
+    for ref in relRPs:
+        diff = []
+        diffsum = 0
+        for tmp in range(0,lengthAP):
+            if (ref.address1 == "" + myAPs[tmp].address):
+                temp = ref.rssi1 - myAPs[tmp].signal
+                if temp<0:
+                    temp = temp * -1
+                diff.append(temp)
+            elif ref.address2 == "" + myAPs[tmp].address:
+                temp = ref.rssi2 - myAPs[tmp].signal
+                if temp < 0:
+                    temp = temp * -1
+                diff.append(temp)
+            elif ref.address3 == "" + myAPs[tmp].address:
+                temp = ref.rssi3 - myAPs[tmp].signal
+                if temp < 0:
+                    temp = temp * -1
+                diff.append(temp)
+            for diffs in diff:
+                diffsum += diffs
+        if diffsum < closestDiff:
+            area = ref.position
+            closestDiff = diffsum
     return area
 
+
+def whichPosition(relRPs, myAPs, lengthAP , numberOfMatchingRefs):
+    if len(relRPs) == 0:
+        return "position unknown, no related reference points"
+    position = "position unknown"
+    listOfCandidatesBig = sortCandidatesOnMatchingRefs(relRPs, numberOfMatchingRefs)
+    listOfCandidatesSmall =  posBasedOnOrder(listOfCandidatesBig, myAPs, lengthAP, numberOfMatchingRefs)
+    if len(listOfCandidatesSmall) == 0:
+        position = "position unknown"
+    elif len(listOfCandidatesSmall) == 1:
+        position =  listOfCandidatesSmall[0].position
+    elif len(listOfCandidatesSmall) > 1:
+        position = posBasedOnRSSIstrenght(listOfCandidatesSmall, myAPs, lengthAP)
+    return position
 
 
 def getRefListFromDB(cur):
@@ -168,7 +189,7 @@ def main():
     for a in myAPs:
         print(a.address, a.signal)
     relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
-    myPosition = nearestRP(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
+    myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
     print myPosition
 
 
