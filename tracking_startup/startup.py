@@ -20,7 +20,8 @@ from wifi import Cell, Scheme
 import time, platform,MySQLdb
 
 def connectToDB():
-    return MySQLdb.connect(host="localhost", user="root", passwd="Alabse959393#", db="localisation")
+    #return MySQLdb.connect(host="localhost", user="root", passwd="Alabse959393#", db="localisation")
+    return MySQLdb.connect(host="back.db1.course.it.uu.se", user="fall17_it12", passwd="vXdWAk2K", db="fall17_project_it12")
 
 #creates a object type reference point
 class RefPoint(object):
@@ -164,6 +165,8 @@ def main():
 
     l = scanNetworks(netcard)
     myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
+    for a in myAPs:
+        print(a.address, a.signal)
     relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
     myPosition = nearestRP(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
     print myPosition
