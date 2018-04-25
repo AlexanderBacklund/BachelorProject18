@@ -15,7 +15,7 @@ class refpoint(models.Model):
 
 
     def __str__(self):
-        return "Position: "+(self.r_position)+" Ref_id:"+self.r_id
+        return "Position: "+(self.r_position)+" Ref_id:"+str(self.r_id)
 
 class user_position(models.Model):
     u_id = models.AutoField(primary_key = True, unique = True)
