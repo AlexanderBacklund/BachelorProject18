@@ -29,7 +29,7 @@ class User_position(models.Model):
     u_datetime = models.DateTimeField()
 
     def __str__(self):
-        return "User: "+self.u_id.u_username+" Position:"+(self.u_position)
+        return "User: "+self.u_id.u_username+" Position:"+(self.u_position)+" Datum:"+str(self.u_datetime)
 
 
 
