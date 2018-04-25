@@ -86,42 +86,51 @@ def posBasedOnOrder(relAps, myAPs, lengthAP, numberOfMatchingRefs):
     highestScore = 0
     myposition = "position unknown"
     listOfEqualscores = []
-    for ref,n_matches in relAps:
+
+    print("before pos based on order")
+    for ref in relAps:
+        print(ref.position)
         score1 = 0
         score2 = 0
         score3 = 0
         for ap in range(0,lengthAP):
             if ref.address1 == myAPs[ap].address:
-                score1 = 2*(10-ap)
+                score1 = 4*(10-ap)
             if ref.address2 == myAPs[ap].address:
-                score2 = 2*(9-ap)
+                score2 = 4*(9-ap)
             if ref.address3 ==  myAPs[ap].address:
-                score3 = 2*(8-ap)
+                score3 = 4*(8-ap)
         score = score1 + score2 + score3
         if score > highestScore:
             highestScore = score
-            del listOfEqualscores[:]
+            listOfEqualscores = []
             listOfEqualscores.append(ref)
-        if score == highestScore:
+        elif score == highestScore:
             listOfEqualscores.append(ref)
+    print(listOfEqualscores)
     return listOfEqualscores
+
+
 
 def sortCandidatesOnMatchingRefs(relRPs, numberOfMatchingRefs):
     listOfCandidatesBig = []
     for ref,n_matches in relRPs:
         if (n_matches == numberOfMatchingRefs):
             listOfCandidatesBig.append(ref)
+
+    print("listOfCandidatesBig = " )
+    print(listOfCandidatesBig)
     return listOfCandidatesBig
 
 
 
 
-
-
 def posBasedOnRSSIstrenght(relRPs, myAPs, lengthAP):
+    print("going in for RSSI positioning")
     area = "position unknown"
     closestDiff = 300
     for ref in relRPs:
+        print(ref.position)
         diff = []
         diffsum = 0
         for tmp in range(0,lengthAP):
@@ -164,7 +173,7 @@ def whichPosition(relRPs, myAPs, lengthAP , numberOfMatchingRefs):
 
 
 def getRefListFromDB(cur):
-    cur.execute("SELECT * FROM test") # TODO: Change to reftable
+    cur.execute("SELECT * FROM show_position_refpoint") # TODO: Change to reftable
     return cur.fetchall()
 def createObjectsFromDB(refs):
     refobjlista = []
