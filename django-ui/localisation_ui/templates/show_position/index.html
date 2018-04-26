@@ -1,15 +1,21 @@
 {% extends 'show_position/layout.html' %}
 
 {% block content %}
-  <h3 class="red lighten-3">Lista av alla positioner</h3>
-  <div class="collection row">
-    {% for u in user_positions  %}
-    <a href="#" class="col-sm-3 collection-item">{{u.u_username}} - {{u.position}}</a>
-    {% endfor %}
+  <h3 class="center-align">Lista av alla positioner</h3>
 
-    <!--{% for u in user_positions  %}
-    <a href="#" class="col-sm-3 collection-item">{{u.u_username}} - {{u.u_position}}</a>
-    {% endfor %}-->
-  </div>
+  <!-- Collection of icon items -->
+  <ul class="collection">
+    {% for u in user_positions  %}
+    <li class="collection-item avatar">
+      {% load static %}
+      <img src="{% static "images/albin.jpg" %}"  alt="" class="circle ">
+      <!-- <a href="#" class=""><i class="material-icons medium left">account_box</i></a> -->
+      <span class="title">{{u.u_fullname}}</span>
+      <p>{{u.position}} </p>
+      <a href="#!" class="secondary-content"><i class="material-icons small">chat</i>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
 
 {% endblock %}

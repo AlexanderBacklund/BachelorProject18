@@ -15,6 +15,6 @@ def index(request):
             u.position = u.users_name.order_by('-u_datetime')[:1][0].u_position
         except IndexError:
             u.position = 'No current position'
-        
+
     funny_dict = {'user_positions': users,}
     return render(request, 'show_position/index.html', funny_dict)
