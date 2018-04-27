@@ -1,38 +1,39 @@
 {% extends 'show_position/layout.html' %}
-
 {% block content %}
-  <h3 class="center-align">Lista av alla positioner</h3>
 
-  <div class="row">
-    {% for u in user_positions  %}
-    <div class="col s12 m6 l4">
-      <div class="card horizontal">
-        <div class="card-image">
-          {% if u.u_id == 1 %}
-          {% load static %}
-          <img src="{% static "images/alex.jpg" %}"  alt="" class="hoverZoomLink">
-          {% endif %}
-
-          {% if u.u_id == 2 %}
-          {% load static %}
-          <img src="{% static "images/sebbe.jpg" %}"  alt="" class="circle">
-          {% endif %}
-
-          {% if u.u_id == 3 %}
-          {% load static %}
-          <img src="{% static "images/albin.jpg" %}"  alt="" class="circle">
-          {% endif %}
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <span class="title">{{u.u_fullname}}</span>
-            <p>{{u.position}}</p>
-            <a href="#!" class="secondary-content"><i class="material-icons small">chat</i>
-            </a>
-          </div>
+{% if user.is_authenticated %}
+<h3 class="center-align">Lista av alla positioner</h3>
+<div class="row">
+  {% for u in user_positions  %}
+  <div class="col s12 m6 l4">
+    <div class="card horizontal">
+      <div class="card-image">
+        {% if u.u_id == 1 %}
+        {% load static %}
+        <img src="{% static "images/alex.jpg" %}"  alt="" class="hoverZoomLink">
+        {% endif %}
+        {% if u.u_id == 2 %}
+        {% load static %}
+        <img src="{% static "images/sebbe.jpg" %}"  alt="" class="hoverZoomLink">
+        {% endif %}
+        {% if u.u_id == 3 %}
+        {% load static %}
+        <img src="{% static "images/albin.jpg" %}"  alt="" class="hoverZoomLink">
+        {% endif %}
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <span class="title">{{u.u_fullname}}</span>
+          <p>{{u.position}}</p>
+          <a href="#!" class="secondary-content"><i class="material-icons small">chat</i>
+          </a>
         </div>
       </div>
     </div>
-    {% endfor %}
   </div>
+  {% endfor %}
+  {% else %}
+  <h2 class="center-align">You are not logged in</h2>
+  {% endif %}
+</div>
 {% endblock %}

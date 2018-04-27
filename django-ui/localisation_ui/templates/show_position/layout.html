@@ -4,13 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- Bootstrap
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-   Js, vill kanske vara längs nere i body
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
--->
 
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -32,18 +25,20 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#"><i class="material-icons">search</i></a></li>
-        <li><a href="#"><i class="material-icons">view_module</i></a></li>
-        <li><a href="#"><i class="material-icons">refresh</i></a></li>
-        <li><a href="{% url 'logout' %}"><i class="material-icons">lock</i></a></li>
-  <p><a href=>logout</a></p>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}"><i class="material-icons">lock_open</i></a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}"><i class="material-icons">lock</i></a></li>
+        {% endif %}
 
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="#">Home</a></li>
         <li><a href="#">Search</a></li>
-        <li><a href="#">log out</a></li>
-        <li><a href="#">information</a></li>
-      </ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}"><i class="material-icons">lock_open</i></a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}"><i class="material-icons">lock</i></a></li>
+        {% endif %}  </ul>
     </div>
   </nav>
 
