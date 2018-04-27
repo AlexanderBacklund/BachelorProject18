@@ -1,3 +1,13 @@
-body {
-  background-color: green;
+.card.horizontal {
+    }
+.title {
+  font-weight: bold;
+}
+.card-image {
+  width: 40%;
+  height: relative;
+}
+
+.card-image img {
+  height: 100%;
 }

@@ -20,7 +20,8 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
+  {% load static %}
+  <link rel="stylesheet" href="{% static "show_position/css/index.css" %}">
   <title>Position</title>
 </head>
 <body>
@@ -33,7 +34,9 @@
         <li><a href="#"><i class="material-icons">search</i></a></li>
         <li><a href="#"><i class="material-icons">view_module</i></a></li>
         <li><a href="#"><i class="material-icons">refresh</i></a></li>
-        <li><a href="#"><i class="material-icons">cloud</i></a></li>
+        <li><a href="{% url 'logout' %}"><i class="material-icons">lock</i></a></li>
+  <p><a href=>logout</a></p>
+
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="#">Home</a></li>
