@@ -2,6 +2,17 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+
+<h3 class="center-align">Sök efter medarbetare</h3>
+<div class="container">
+
+<form class="center-align" action="" method="GET">
+  <input class="grey lighten-3" type="text" placeholder="Search" name="query" value="{{request.GET.query}}">
+  <input type="submit" name="" value="Search">
+</form>
+</div>
+
+
 <h3 class="center-align">Lista av alla positioner</h3>
 <div class="row">
   {% for u in user_positions  %}
