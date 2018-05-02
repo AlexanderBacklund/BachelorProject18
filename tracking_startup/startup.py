@@ -95,12 +95,13 @@ def posBasedOnOrder(relAps, myAPs, lengthAP, numberOfMatchingRefs):
         score3 = 0
         for ap in range(0,lengthAP):
             if ref.address1 == myAPs[ap].address:
-                score1 = 4*(10-ap)
+                score1 = 8*(10-ap)
             if ref.address2 == myAPs[ap].address:
-                score2 = 4*(9-ap)
+                score2 = 8*(8-ap)
             if ref.address3 ==  myAPs[ap].address:
-                score3 = 4*(8-ap)
+                score3 = 8*(6-ap)
         score = score1 + score2 + score3
+        print(str(score))
         if score > highestScore:
             highestScore = score
             listOfEqualscores = []
@@ -149,8 +150,9 @@ def posBasedOnRSSIstrenght(relRPs, myAPs, lengthAP):
                 if temp < 0:
                     temp = temp * -1
                 diff.append(temp)
-            for diffs in diff:
-                diffsum += diffs
+        for diffs in diff:
+            diffsum += diffs
+        print(str(diffsum))
         if diffsum < closestDiff:
             area = ref.position
             closestDiff = diffsum
