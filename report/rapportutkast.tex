@@ -404,14 +404,24 @@ I tillvägagångsdelen av rapporten redogörs för vilka tekniker och metoder so
 \subsection{Generella tillvägagångsätt}
 I början av projektplaneringen togs en gemensam beskrivning över systemet fram så att alla parter hade samma bild. I denna beskrivning gjordes tydliga separationer mellan de olika delsystem samt en prioriteringslista över vilka delsystem som var tvungna att fungera först. När denna beskrivning var klar togs en tidsplanering fram och tilldelning av arbetsuppgifter sinsemellan alla gruppmedlemmar.
 
+\subsection{Recieved Signal Strength Indication - RSSI}
+RSSI är ett mått på signalstyrkan från en trådlös åtkomstpunkt. RSSI mäts i enheten decibel(dB) och anger hur mycket styrkan av en signal har avtagit innan den signalen uppfångas av en mottagarenhet.
+%\TODO: referenser och fortsätta och fortsaätta
+
+\subsection{Referenspunkter i samband med Fingerprintingmetoden}
+När Fingerprintingmetoden används vid inomhuspositionering uppmäts ett antal referenspunkter i de lokaler där inomhuspositionering ska kunna tillämpas\cite{yiu2017wireless}\cite{IP1}.
+En referenspunkt bestäms som en specifik position i en lokal där man gör mätningar av den trådlösa nätverksinformationen. Det som analyseras vid dessa mätningar är vilka trådlösa åtkomstpunkter, vanligvis routrar, som går att ansluta till vid referenspunktens position. För varje åtkomstpunkt som upptäcks vid analysen av den trådlösa nätverksmiljön mäts även signalstyrkan till respektive åtkomstpunkt. Signalstyrkan ges i form av ett RSSI-värde. När referenspunkterna utmäts sparar man information om ett visst antal åtkomstpunkter vid den specifika referenspunkten samt RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Vanligtvis sparas information om de åtkomstpunkter som anses befinna sig närmast referenspunkten, detta baserat på RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Denna information i kombination med information om vart i lokalen referenspunkten är utmätt lagras i en databas. Referenspunkter utmäts vanligvis i ett rutmönster med ett par meters mellanrum i alla de lokaler där man vill kunnna utföra inomhuspositionering\cite{IP1}. När mätningar är utförda vid varje referenspunkt finns all information som behövs om nätverksmiljön i en byggnad lagrad i en databas. Det är denna information som sedan används som referenser till olika platser i lokalerna för att kunna positionsbestämma enheter som sedan befinner sig i byggnaden\cite{yiu2017wireless}\cite{IP1}.
+
 \subsection{Mobilapplikation}
 Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av programmet används Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar programmet i android är att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder.
 
-\subsection{Python} %\TODO: Byta namn på rubbriken
+\subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna} %\TODO: Byta namn på rubbriken
+Vi har skrivit skriptet som körs på klientenheterna i programmeringsspråket Python.
 En anledning till att vi använde detta språk är för att det finns många bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Det finns många alternativ till detta språk men då gruppen redan är bekant med Python och då denna del av systemet är ganska tidskrävande underlättar det för oss att vi behärskar det programmeringsspråket.
 
-\subsection{Hemsida}
+\subsection{Hemsida för presentation av positionsinformation}
 Dango är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Den viktigaste anledningen till att vi använder Django att det är Django är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Detta är en viktig aspekt för oss då vi hanterar känslig data. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder. %TODO Sebbe du får gärna lägga till saker här!
+
 
 \iffalse
 \subsection{Trilateration}
@@ -512,9 +522,10 @@ Målet med algoritmen är att avgöra vilken referenspunkt som är närmast klie
 För att åstadkomma detta har vi använt två typer av positionsbestämningsmetoder som körs i skriptet hos klientenheten. Dessa två beskrivs nedan.
 
 \begin{itemize}
-  \item {\textbf{Metod 1} -  Referenspunkter med samma närliggande åtkomstpunkter
+  \item {\textbf{Metod 1 - Referenspunkter med samma närliggande åtkomstpunkter}
+  \bigskip
   \newline
-  Metod 1 är en metod vars syfte är att finna referenspunkter som har samma närmast intilliggande åtkomstpunkter som klientenheten. Vilka åtkomstpunkter som är närmast baseras på RSSI-värdet som mäts upp för åtkomstpunkten både vid referenspunkten och vid klientenheten. Datan som ligger sparad i databasen för varje referenspunkt ser ut som följer.
+  Metod 1 är en metod vars syfte är att finna referenspunkter som har samma närmast intilliggande åtkomstpunkter som klientenheten. Vilka åtkomstpunkter som är närmast baseras på RSSI-värdet som mäts upp för åtkomstpunkten både vid referenspunkten och vid klientenheten. Den data som ligger sparad i databasen för varje referenspunkt ser ut som följer.
   \begin{itemize}
     \item Referenspunkt exempel:
           \newline Id = 1
@@ -526,8 +537,9 @@ För att åstadkomma detta har vi använt två typer av positionsbestämningsmet
           \newline RSSI MAC 2 = -48
           \newline RSSI MAC 3 = -50
   \end{itemize}
-\texitit{Id}-fältet är ett index som är unikt för varje referenspunkt. Det indexet är till för att kunna skilja de åt. Området anger vart denna referenspunkt befinner sig, alltså vart nätverksanalysen är genomförd. \textit{MAC 1}-fältet håller MAC-adressen för den åtkomstpunkt vars RSSI-värde var störst vid nätverksanalysen. Det tillhörande RSSI-värdet ligger i fältet \textit{RSSI MAC 1}.
-Det samma gäller för färten \textit{MAC 2 - RSSI MAC 2} samt \textit{MAC 3 - RSSI MAC 3}
+\texitit{Id}-fältet är ett index som är unikt för varje referenspunkt. Området anger vart denna referenspunkt befinner sig, alltså vart nätverksanalysen är genomförd. \textit{MAC 1}-fältet håller MAC-adressen för den åtkomstpunkt vars RSSI-värde var störst vid nätverksanalysen. Det tillhörande RSSI-värdet ligger i fältet \textit{RSSI MAC 1}.
+Det samma gäller för fälten \textit{MAC 2 - RSSI MAC 2} samt \textit{MAC 3 - RSSI MAC 3}
+
 
 \end{itemize}
 
