@@ -405,13 +405,13 @@ I tillvägagångsdelen av rapporten redogörs för vilka tekniker och metoder so
 \subsection{Generella tillvägagångsätt}
 I början av projektplaneringen togs en gemensam beskrivning över systemet fram så att alla parter hade samma bild. I denna beskrivning gjordes tydliga separationer mellan de olika delsystem samt en prioriteringslista över vilka delsystem som var tvungna att fungera först. När denna beskrivning var klar togs en tidsplanering fram och tilldelning av arbetsuppgifter sinsemellan alla gruppmedlemmar.
 
-\subsection{Android}
+\subsection{Mobilapplikation}
 Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av programmet används Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar programmet i android är att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder.
 
-\subsection{Python}
-Systemet består även av ett skript som ska skanna av nätverksinformation om nätverk i närheten. Skriptet ska även ansluta till en databas för att hämta information om sparad nätverksinformation om organisationens byggnader. Därefter utförs en algoritm som jämför nätverksinformationen hos klienten med nätverksinformationen i databasen. Algoritmen avgör då vart i byggnaden klientenheten befinner sig. Detta skript programmeras i Python då alla i gruppen behärskar Python. En annan anledning till just detta språk är för att det finns många bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Det finns många alternativ till detta språk men då gruppen redan är bekant med Python och då denna del av systemet är ganska tidskrävande underlättar det för oss att vi behärskar det programmeringsspråket.
+\subsection{Python} %\TODO: Byta namn på rubbriken
+En anledning till att vi använde detta språk är för att det finns många bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Det finns många alternativ till detta språk men då gruppen redan är bekant med Python och då denna del av systemet är ganska tidskrävande underlättar det för oss att vi behärskar det programmeringsspråket.
 
-\subsection{Django}
+\subsection{Hemsida}
 Dango är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Den viktigaste anledningen till att vi använder Django att det är Django är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Detta är en viktig aspekt för oss då vi hanterar känslig data. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder. %TODO Sebbe du får gärna lägga till saker här!
 
 \iffalse
@@ -535,6 +535,8 @@ Beskriv gärna felhantering och riskanalys: vad kan gå fel när systemet kör/a
 
 %\ldots
 \fi
+Systemet består även av ett skript som ska skanna av nätverksinformation om nätverk i närheten. Skriptet ska även ansluta till en databas för att hämta information om sparad nätverksinformation om organisationens byggnader. Därefter utförs en algoritm som jämför nätverksinformationen hos klienten med nätverksinformationen i databasen. Algoritmen avgör då vart i byggnaden klientenheten befinner sig.
+
 \section{Utvärderingsresultat}
 \iffalse Beskriv resultaten av utvärderingen, när ni tillämpar de utvärderingsmetoder ni beskrivit i avsnitt~\ref{sec:krav}, och relatera utvärderingsresultaten till kraven i samma avsnitt.
 \fi
