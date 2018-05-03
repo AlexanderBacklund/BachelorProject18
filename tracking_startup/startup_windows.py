@@ -17,7 +17,7 @@
 #################################################################
 
 import subprocess
-import time, platform,pymysql.cursors, sys
+import time, platform,pymysql.cursors, sys, datetime
 
 def connectToDB(h,u,p,d):
     #return MySQLdb.connect(host="localhost", user="root", passwd="Alabse959393#", db="localisation")
@@ -73,7 +73,7 @@ def scanNetworks():
     signalsUnparsed = []
     returnlist = []
     x = 0
-
+    tid = 0
     while(len(returnlist) < 2):
         returnlist = []
         results = subprocess.check_output(["netsh", "wlan", "show", "network", "mode=Bssid"])
@@ -96,8 +96,9 @@ def scanNetworks():
             obj = scanAPPoint(bssid, dBm)
             returnlist.append(obj)
             i = i+1
-        print("Scanning..")
-        time.sleep(1)
+        print("Scanning.. - time spent: "+str(tid)+"s")
+        tid = tid+2
+        time.sleep(2)
     return returnlist
 
 def sortNetworksReturnAmount(amountReturned, netwrkList):
@@ -265,28 +266,27 @@ def main():
     username = askForUser()
     userList = getUsersFromDB(cur)
     userExists = checkIfUserInDB(userList, username)
+
+    #Kill it when given an incorrect Username
     if (not userExists):
         print("user not recognized, terminating")
         sys.exit()
 
+    #Mainloop that never dies
+    while(True):
+        rplist = createObjectsFromDB(getRefListFromDB(cur))
+        l = scanNetworks()
+        #print(l)
+        numberOfNetworksToScanAroundMe = 10
+        myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
+        relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
+        myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
+        print myPosition
 
-
-    #print(createObjectsFromDB(getRefListFromDB(cur)))
-    rplist = createObjectsFromDB(getRefListFromDB(cur))
-
-
-    l = scanNetworks()
-    #print(l)
-    numberOfNetworksToScanAroundMe = 10
-    myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
-    relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
-    myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
-    print myPosition
-
-    userList = getUsersFromDB(cur)
-    updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
-    db.commit()
-    time.sleep(10)
+        userList = getUsersFromDB(cur)
+        updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
+        db.commit()
+        time.sleep(20)
 
     #for l2 in l:
     #    print(l2.ssid+" - "+ str(l2.signal) + " - "+str(l2.address))
