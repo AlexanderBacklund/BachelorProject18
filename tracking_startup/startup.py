@@ -18,6 +18,8 @@
 
 from wifi import Cell, Scheme
 import time, platform,MySQLdb
+import datetime, sys
+
 
 def connectToDB():
     #return MySQLdb.connect(host="localhost", user="root", passwd="Alabse959393#", db="localisation")
@@ -183,20 +185,28 @@ def getUsersFromDB(cur):
     cur.execute("SELECT * FROM show_position_users_script")
     users = cur.fetchall()
     for user in users:
-        userList.append(user[1])
+        userList.append((user[0],user[1]))
     return userList
 
-def updateUserPosition(cur, username, position):
-    cur.execute()
+def updateUserPosition(cur, username, position, datetime, userId):
+    cur.execute ("""
+    UPDATE show_position_user_position
+    SET u_position=%s, u_datetime=%s
+    WHERE u_id_id=%s
+    """, (position, datetime, userId))
+
 
 def checkIfUserInDB(usersFromDB, username):
     temp = False
-    for user in usersFromDB:
+    for user_id,user in usersFromDB:
         if user == username:
             temp = True
     return temp
 
-
+def getUserID(usersFromDB, username):
+    for user_id,user in usersFromDB:
+        if user == username:
+            return user_id
 
 
 def createObjectsFromDB(refs):
@@ -206,18 +216,29 @@ def createObjectsFromDB(refs):
     return refobjlista
 
 def askForUser():
-    uName = raw_input('Enter username?')
+    uName = raw_input('Enter username: ')
     return uName
+
+def askForFullName():
+    fullname = raw_input('Please enter your full name: ')
+    return fullname
 
 
 def main():
     netcard = raw_input("Enter network-card for wifi-scan: ")
-    username = askForUser()
-    numberOfNetworksToScanAroundMe = 10
     db = connectToDB()
-
     # you must create a Cursor object. It will let
     cur = db.cursor()
+    username = askForUser()
+    userList = getUsersFromDB(cur)
+    userExists = checkIfUserInDB(userList, username)
+    if (not userExists):
+        print("user not recognized, terminating")
+        sys.exit()
+
+
+
+    numberOfNetworksToScanAroundMe = 10
 
 
     print(createObjectsFromDB(getRefListFromDB(cur)))
@@ -231,9 +252,13 @@ def main():
     relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
     myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
     print myPosition
-    getUsersFromDB(cur)
-    temp = checkIfUserInDB(getUsersFromDB(cur), username):
-    if temp:
+    userList = getUsersFromDB(cur)
+    updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
+
+
+
+
+
 
 
 
@@ -243,6 +268,7 @@ def main():
     #    print(l2.ssid+" - "+ str(l2.signal) + " - "+str(l2.address))
     #Leave me be
     ###############################################
+    db.commit()
     db.close()
 
 if __name__ == "__main__":
