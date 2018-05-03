@@ -17,11 +17,11 @@
 #################################################################
 
 import subprocess
-import time, platform,pymysql.cursors
+import time, platform,pymysql.cursors, sys
 
-def connectToDB():
+def connectToDB(h,u,p,d):
     #return MySQLdb.connect(host="localhost", user="root", passwd="Alabse959393#", db="localisation")
-    return pymysql.connect(host="back.db1.course.it.uu.se", user="fall17_it12", passwd="vXdWAk2K", db="fall17_project_it12")
+    return pymysql.connect(host=h, user=u, passwd=p, db=d)
 
 #creates a object type reference point
 class RefPoint(object):
@@ -69,8 +69,8 @@ def checkOperatingSys():
     return platform.system()
 
 def scanNetworks():
-    bssids = []
-    signals = []
+    bssidsUnparsed = []
+    signalsUnparsed = []
     returnlist = []
     x = 0
 
@@ -81,15 +81,15 @@ def scanNetworks():
         ls = results.split("\n")
         while x < len(ls):
             if "BSSID" in ls[x]:
-                bssids.append(ls[x])
+                bssidsUnparsed.append(ls[x])
             elif "Signal" in ls[x]:
-                signals.append(ls[x])
+                signalsUnparsed.append(ls[x])
             x += 1
         i = 0
-        while(i < len(bssids)):
-            h = bssids[i].split(":")
+        while(i < len(bssidsUnparsed)):
+            h = bssidsUnparsed[i].split(":")
             bssid = h[1].strip()+":"+h[2]+":"+h[3]+":"+h[4]+":"+h[5]+":"+h[6]
-            g = signals[i].split(":")
+            g = signalsUnparsed[i].split(":")
             signal = g[1].strip()
             s = int(signal.strip('%'))
             dBm = (s / 2) - 100
@@ -212,9 +212,60 @@ def createObjectsFromDB(refs):
         refobjlista.append(RefPoint(r[1],r[2],r[3],r[4], r[5], r[6], r[7]))
     return refobjlista
 
+def readMySQLCredentials():
+    try:
+        file  = open("mysql.txt", "r")
+        str = file.read()
+        s = str.split("\n")
+        return s[0],s[1],s[2],s[3]
+
+    except IOError:
+        print("create file mysql.txt and for each row put in this order: host, user, pass, db")
+        sys.exit()
+
+def getUsersFromDB(cur):
+    userList = []
+    cur.execute("SELECT * FROM show_position_users_script")
+    users = cur.fetchall()
+    for user in users:
+        userList.append((user[0],user[1]))
+    return userList
+
+def updateUserPosition(cur, username, position, datetime, userId):
+    cur.execute ("""
+    UPDATE show_position_user_position
+    SET u_position=%s, u_datetime=%s
+    WHERE u_id_id=%s
+    """, (position, datetime, userId))
+
+
+def checkIfUserInDB(usersFromDB, username):
+    temp = False
+    for user_id,user in usersFromDB:
+        if user == username:
+            temp = True
+    return temp
+
+def getUserID(usersFromDB, username):
+    for user_id,user in usersFromDB:
+        if user == username:
+            return user_id
+
+
+def askForUser():
+    uName = raw_input('Enter username: ')
+    return uName
+
 def main():
-    numberOfNetworksToScanAroundMe = 10
-    db = connectToDB()
+    host, usr, passw, db = readMySQLCredentials()
+    db = connectToDB(host, usr, passw, db)
+    username = askForUser()
+    userList = getUsersFromDB(cur)
+    userExists = checkIfUserInDB(userList, username)
+    if (not userExists):
+        print("user not recognized, terminating")
+        sys.exit()
+
 
     # you must create a Cursor object. It will let
     cur = db.cursor()
@@ -225,10 +276,15 @@ def main():
 
     l = scanNetworks()
     #print(l)
+    numberOfNetworksToScanAroundMe = 10
     myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
     relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
     myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
     print myPosition
+
+    userList = getUsersFromDB(cur)
+    updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
+    db.commit()
     time.sleep(10)
 
     #for l2 in l:
