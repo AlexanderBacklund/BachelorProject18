@@ -177,19 +177,48 @@ def whichPosition(relRPs, myAPs, lengthAP , numberOfMatchingRefs):
 def getRefListFromDB(cur):
     cur.execute("SELECT * FROM show_position_refpoint") # TODO: Change to reftable
     return cur.fetchall()
+
+def getUsersFromDB(cur):
+    userList = []
+    cur.execute("SELECT * FROM show_position_users_script")
+    users = cur.fetchall()
+    for user in users:
+        userList.append(user[1])
+    return userList
+
+def updateUserPosition(cur, username, position):
+    cur.execute()
+
+def checkIfUserInDB(usersFromDB, username):
+    temp = False
+    for user in usersFromDB:
+        if user == username:
+            temp = True
+    return temp
+
+
+
+
 def createObjectsFromDB(refs):
     refobjlista = []
     for r in refs:
         refobjlista.append(RefPoint(r[1],r[2],r[3],r[4], r[5], r[6], r[7]))
     return refobjlista
 
+def askForUser():
+    uName = raw_input('Enter username?')
+    return uName
+
+
 def main():
     netcard = raw_input("Enter network-card for wifi-scan: ")
+    username = askForUser()
     numberOfNetworksToScanAroundMe = 10
     db = connectToDB()
 
     # you must create a Cursor object. It will let
     cur = db.cursor()
+
 
     print(createObjectsFromDB(getRefListFromDB(cur)))
     rplist = createObjectsFromDB(getRefListFromDB(cur))
@@ -202,6 +231,12 @@ def main():
     relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
     myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
     print myPosition
+    getUsersFromDB(cur)
+    temp = checkIfUserInDB(getUsersFromDB(cur), username):
+    if temp:
+
+
+
 
 
     #for l2 in l:
