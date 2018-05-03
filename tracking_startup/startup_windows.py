@@ -259,6 +259,9 @@ def askForUser():
 def main():
     host, usr, passw, db = readMySQLCredentials()
     db = connectToDB(host, usr, passw, db)
+    # you must create a Cursor object. It will let
+    cur = db.cursor()
+
     username = askForUser()
     userList = getUsersFromDB(cur)
     userExists = checkIfUserInDB(userList, username)
@@ -267,8 +270,6 @@ def main():
         sys.exit()
 
 
-    # you must create a Cursor object. It will let
-    cur = db.cursor()
 
     #print(createObjectsFromDB(getRefListFromDB(cur)))
     rplist = createObjectsFromDB(getRefListFromDB(cur))
