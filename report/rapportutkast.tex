@@ -607,7 +607,6 @@ många referenspunkter. För att sedan populera databasen importerar man csv fil
 
 Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv filen och ersätta å:et med ett a eller liknande.
 
-
 \section{Webinterface för presentation av användares position}
 Vi byggde detta i webapplikationsramverket Django samt Materialize%TODO referens
 för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som man enkelt kan starta lokalt. I vår implementation kan man köra den servern både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
@@ -652,6 +651,10 @@ Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande 
 
 Relatera till mål och syften etc i avsnitt~\ref{sec:syfte}.
 \fi
+
+Vi har ett fullt fungerande system som kan visa vart en medarbetare befinner sig inom ett område som har blivit nätverksskannad innan. Personen ska även finnas med i vår databas där alla referenspunkter och användare är sparade. Medarbetarnas position visas i en webapplikation där man även kan välja att inte delge sin egen position. Vi kan uppskatta en medarbetares position med en radie på \ldots %TODO fyll i med verkliga siffror
+
+Vår initiala plan var att interagera vår positionsbestämnings algoritm med Skype for buisness. Detta visade sig vara omöjligt att göra då Skype inte hade denna funktionalitet i den version som vår intressent hade. Detta medförde att vår plan förändrades och blev istället att göra ett eget oberoende system.  
 
 
 \section{Slutsatser}
