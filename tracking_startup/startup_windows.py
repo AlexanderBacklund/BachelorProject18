@@ -222,6 +222,7 @@ def readMySQLCredentials():
 
     except IOError:
         print("create file mysql.txt and for each row put in this order: host, user, pass, db")
+        time.sleep(10)
         sys.exit()
 
 def getUsersFromDB(cur):
@@ -270,13 +271,13 @@ def main():
     #Kill it when given an incorrect Username
     if (not userExists):
         print("user not recognized, terminating")
+        time.sleep(10)
         sys.exit()
 
     #Mainloop that never dies
     while(True):
         rplist = createObjectsFromDB(getRefListFromDB(cur))
         l = scanNetworks()
-        #print(l)
         numberOfNetworksToScanAroundMe = 10
         myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
         relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
@@ -286,10 +287,9 @@ def main():
         userList = getUsersFromDB(cur)
         updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
         db.commit()
+        print("Comitted to db")
         time.sleep(20)
 
-    #for l2 in l:
-    #    print(l2.ssid+" - "+ str(l2.signal) + " - "+str(l2.address))
     #Leave me be
     ###############################################
     db.close()
