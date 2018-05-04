@@ -1,7 +1,0 @@
-[client]
-database = 'localisation'
-host = 'localhost'
-user = 'root'
-password = 'Alabse959393#'
-port = '3306'
-default-character-set = utf8
