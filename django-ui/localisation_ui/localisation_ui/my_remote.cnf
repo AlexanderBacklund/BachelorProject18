@@ -1,0 +1,7 @@
+[client]
+database = 'fall17_project_it12'
+host = 'back.db1.course.it.uu.se'
+user = 'fall17_it12'
+password = 'vXdWAk2K'
+port = '3306'
+default-character-set = utf8
