@@ -132,11 +132,11 @@ def posBasedOnOrder(relAps, myAPs, lengthAP, numberOfMatchingRefs):
         score3 = 0
         for ap in range(0,lengthAP):
             if ref.address1 == myAPs[ap].address:
-                score1 = 4*(10-ap)
+                score1 = ((2*10)-ap)
             if ref.address2 == myAPs[ap].address:
-                score2 = 4*(9-ap)
+                score2 = ((2*8)-ap)
             if ref.address3 ==  myAPs[ap].address:
-                score3 = 4*(8-ap)
+                score3 = ((2*6)-ap)
         score = score1 + score2 + score3
         if score > highestScore:
             highestScore = score
