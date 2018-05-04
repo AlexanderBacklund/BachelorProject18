@@ -190,10 +190,9 @@ def getUsersFromDB(cur):
 
 def updateUserPosition(cur, username, position, datetime, userId):
     cur.execute ("""
-    UPDATE show_position_user_position
-    SET u_position=%s, u_datetime=%s
-    WHERE u_id_id=%s
-    """, (position, datetime, userId))
+    INSERT INTO show_position_user_position (u_position, u_id_id, u_datetime)
+    VALUES (%s, %s, %s)
+    """, (position, userId, datetime))
 
 
 def checkIfUserInDB(usersFromDB, username):
