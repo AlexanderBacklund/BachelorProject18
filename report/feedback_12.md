@@ -26,4 +26,7 @@ mot API för backend", detta bör kanske förklaras lite utförlilgare
 tid." vilka är det som gör testerna?
 - Vad innebär det att ni resonerar kring hur implementationen har uppfyllt syftet för applikationen?
 
-## Åpterkoppling till frågeställningarna 
+## Vår feedback:
+KRav->varför->hur utvärderas
+Inledande text i varje stycke ska bekriva hur stycket är uppbyggt
+Dela in syfte mål och motivation
