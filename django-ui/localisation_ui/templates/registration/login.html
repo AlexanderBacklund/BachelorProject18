@@ -1,12 +1,30 @@
 {% extends 'registration/base.html' %}
 
 {% block content %}
+{% load widget_tweaks %}
 
+<div class="container center-align">
+  <div class="row">
+    <h2>Login</h2>
+    <div class="col s6 offset-s3">
+      <form method="post">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+          {{ hidden }}
+        {% endfor %}
 
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+        {% for field in form.visible_fields %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}" class="black-text">{{ field.label }}</label>
+            {{ field}}
+            {% for error in field.errors %}
+              <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endfor %}
+        <button class="waves-effect waves-light btn  light-green accent-4" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
