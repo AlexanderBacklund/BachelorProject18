@@ -429,17 +429,23 @@ En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik posi
 \subsection{Mobilapplikation}
 Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av programmet används Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar programmet i android är att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder.
 
-\subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna} %\TODO: Byta namn på rubbriken
+\subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna}
 Vi har skrivit skriptet som körs på klientenheterna i programmeringsspråket Python.
-Anledningen till att vi använde detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter en producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek till ett skript som inte blir särskilt stort.
+En av anledningarna till att vi använder detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Detta är i vårat fall användbart eftersom vi vill ha en körbar fil på operativsystemet Windows då en klar majoritet av medarbetarna hos vår intressent använder det.
+
+Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter en producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek och sätta oss in i Windows-utveckling till ett skript som inte ska vara särskilt omfattande.
 
 \subsection{Webapplikation för presentation av positionsinformation}
-Django är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Django kommer med en rad fördelar. Det är ett ramverk som utgår från MVC layout %TODO referens!!
+Django är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Django kommer med en rad fördelar. Det är ett ramverk som utgår från MVC layout, %TODO referens!!
 detta innebär att man delar upp webapplikationen i models, views och controllers. I Django fall betyder det att koden blir väldigt välstrukturerad och lätt att hitta i.
-En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Bland en mängd andra säkerhetsåtgärder som Django erbjuder automatiskt så är det skyddat för SQL-injection %TODO referens
-vilket innebär att man inte kan utnyttja databas kommandon i användarinput för att ta sig in i databasen, och Session security %TODO referens
+
+En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Dessa inbyggda funktioner kan vi använda oss av för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Bland de säkerhetsåtgärder som Django erbjuder automatiskt så finns det två som är viktiga för oss. Django är automatiskt skyddat för SQL-injection %TODO referens
+vilket innebär att man inte kan utnyttja databaskommandon i användarinput för att ta sig in i databasen, och Session security %TODO referens
 som skyddar för att bara användare som verkligen har loggat in har tillgång till data som inloggade ska ha tillgång till.
-Detta är viktiga aspekter för oss då vi hanterar känslig data och det är väldigt skönt att det kommer gratis. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt.
+Eftersom vi hanterar känslig data så är detta väldigt viktiga aspekter för oss. Att det är inbyggt i Django är en stor fördel.
+
+En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt.
+
 Ett sista argument är att eftersom skriptet är skrivet i Python och Django bygger på Python. Då skulle man i framtiden enkelt kunna integrera de två.
 
 \iffalse
@@ -470,15 +476,15 @@ I följande figur \ref{fig:systemStruktur} ses systemet i sin helhet.
 Detta delsystem innefattar en Androidapplikation. Den ska användas av it-tekniker före användning av systemet. Applikationen används i förutbestämda referenspunkter i den aktivitetsbaserade verksamheten för att scanna nätverksinformation. Denna information kan användas för att användarenheter ska kunna beräkna sin position i förhållande till  dessa referenspunkter.  Nätverksinformationen importeras därefter till en databas. När referenspunkterna är inlagda kan man börja använda nästa delsystem.
 
 \subsection{Delsystem som beräknar positionen}
-Detta delsystem innefattar ett Python-klient som ska köras i bakgrunden på användardatorn.
-Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata i databasen som Androidapplikationen från förra delsystemet har tillhandahållit. När Python-klienten har bestämt sin position ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användare. Detta delsystem kommer ligga i bakgrunden och inte presentera något viktigt visuellt.
+Detta delsystem innefattar en Python-klient som ska köras i bakgrunden på användardatorn.
+Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata som finns i databasen, som Androidapplikationen från förra delsystemet har tillhandahållit. När Python-klienten har bestämt positionen för användaren av klienten ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användaridentitet. Detta delsystem kommer ligga i bakgrunden och inte presentera något viktigt visuellt.
 
 \subsection{Delsystem som presenterar position}
 Slutligen så finns det ett Web-interface. Detta system använder data som Python-klienten har lagt in i databasen för att i en webbaserad applikation visa platsinformation om kollegor i verksamheten. Systemet har också stöd för att presentera beläggning i olika områden samt eventuellt annan intressant information.
 
 \subsection{Databasen som håller användare och positionsinformation}
 Databasen är av typen MySQL och den kommer samspela med alla de tre delsystemen. Den håller information om referenspunkter, användare och deras position.
-Mellan systemet som it-teknikern använder och databasen så måste data förflyttas manuellt. Detta med risk för att en automatiserad uppkoppling kan förstöra referenspunkter samt att inläggning in princip endast kommer ske en gång. Python-klienten använder sig av SQL-anrop till databasen för att extrahera referenspunkter, samt för att lägga in sin position. Detsamma gäller Web-interfacet, den kör SQL-anrop till databasen för att presentera relevant information.
+Mellan systemet som it-teknikern använder och databasen så måste data förflyttas manuellt. Detta med risk för att en automatiserad uppkoppling kan förstöra referenspunkter samt att inläggning in princip endast kommer ske en gång. Python-klienten använder sig av SQL-anrop till databasen för att extrahera referenspunkter, samt för att lägga in sin position kontinuerligt. Detsamma gäller Web-interfacet, den kör SQL-anrop till databasen för att presentera relevant information.
 
 \begin{figure}[H]
 	\includegraphics[width=15cm]{media/systemStruktur.png}
@@ -524,14 +530,17 @@ Mellan systemet som it-teknikern använder och databasen så måste data förfly
 %
 % Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, en\-käter, fokusgrupper\ldots).
 % Beskriv hur externa intressenter involveras i utvärderingen.
-Kraven för det här projektet är något som vi tillsammans med kommunen har kommit fram till. Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till aktivitetsbaserad. Det kommer vi kunna utvärdera genom att låta en utomstående få göra sammankopplingen och sedan återkoppla om dennes upplevelse av applikationen.
+Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot krascher, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod.
 
-Kraven på presentationen av medarbetares position är att det ska visas vilket kontor, vilken våning och ett område på det våningsplanet. Felmarginalen ska vara max 5 meter.
+\subsection{Skanningsapplikation för referenspunkter}
+Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker %TODO varför krav? hur ska det utvärderas?
+
 
 \subsection{Positionsbestämning}
+Vår intressent har en vision om att man ska integrerat i deras befintliga system ska kunna se vart deras kollegor befinner sig i Uppsala. Med det menas att man ska kunna se vilket kontor, vilken våning och i vilket område med en felmarginal på 5 meter. %TODO varför krav? hur ska det utvärderas?
 
 \subsection{Användarerfarenheter av webapplikation}
-
+Kraven på presentationen av medarbetares position är att det %TODO varför krav? hur ska det utvärderas?
 
 
 
