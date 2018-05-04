@@ -526,7 +526,7 @@ Mellan systemet som it-teknikern använder och databasen så måste data förfly
 % Beskriv hur externa intressenter involveras i utvärderingen.
 Kraven för det här projektet är något som vi tillsammans med kommunen har kommit fram till. Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till aktivitetsbaserad. Det kommer vi kunna utvärdera genom att låta en utomstående få göra sammankopplingen och sedan återkoppla om dennes upplevelse av applikationen.
 
-Kraven på presentationen av medarbetares position är att det ska visas vilket kontor, vilken våning och ett område på det våningsplanet. Felmarginalen ska vara max 5 meter. Detta kommer utvärderas genom ett utförligt test, med olika försvårande förhållanden.
+Kraven på presentationen av medarbetares position är att det ska visas vilket kontor, vilken våning och ett område på det våningsplanet. Felmarginalen ska vara max 5 meter.
 
 \subsection{Positionsbestämning}
 
@@ -604,7 +604,11 @@ Den första algoritmen för att uppskatta vilken referenspunkt som befinner sig 
 
 \section{Applikation för scanning vid referenspunkter}
 
-\section{Webinterface}
+\section{Webinterface för presentation av användares position}
+Vi byggde detta i webapplikationsramverket Django samt Materialize%TODO referens
+för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som man enkelt kan starta lokalt. I vår implementation kan man köra den servern både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
+
+Webapplikationen utgörs initial av en loginsida, där medarbetare på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När man har loggat in så har man möjlighet att se all medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
 
 \section{Vår produkt}
 
