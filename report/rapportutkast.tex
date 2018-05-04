@@ -431,11 +431,16 @@ Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används fö
 
 \subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna} %\TODO: Byta namn på rubbriken
 Vi har skrivit skriptet som körs på klientenheterna i programmeringsspråket Python.
-En anledning till att vi använde detta språk är för att det finns många bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Det finns många alternativ till detta språk men då gruppen redan är bekant med Python och då denna del av systemet är ganska tidskrävande underlättar det för oss att vi behärskar det programmeringsspråket.
+Anledningen till att vi använde detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter en producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek till ett skript som inte blir särskilt stort.
 
-\subsection{Hemsida för presentation av positionsinformation}
-Dango är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Den viktigaste anledningen till att vi använder Django att det är Django är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Detta är en viktig aspekt för oss då vi hanterar känslig data. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder. %TODO Sebbe du får gärna lägga till saker här!
-
+\subsection{Webapplikation för presentation av positionsinformation}
+Django är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Django kommer med en rad fördelar. Det är ett ramverk som utgår från MVC layout %TODO referens!!
+detta innebär att man delar upp webapplikationen i models, views och controllers. I Django fall betyder det att koden blir väldigt välstrukturerad och lätt att hitta i.
+En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Bland en mängd andra säkerhetsåtgärder som Django erbjuder automatiskt så är det skyddat för SQL-injection %TODO referens
+vilket innebär att man inte kan utnyttja databas kommandon i användarinput för att ta sig in i databasen, och Session security %TODO referens
+som skyddar för att bara användare som verkligen har loggat in har tillgång till data som inloggade ska ha tillgång till.
+Detta är viktiga aspekter för oss då vi hanterar känslig data och det är väldigt skönt att det kommer gratis. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt.
+Ett sista argument är att eftersom skriptet är skrivet i Python och Django bygger på Python. Då skulle man i framtiden enkelt kunna integrera de två.
 
 \iffalse
 \subsection{Trilateration}
@@ -458,13 +463,22 @@ I detta projekt är trilateration en teknik som vi inte kommer ha möjlighet att
 
 \section{Systemstruktur}
 I denna del av rapporten beskriver vi våra system och hur de samverkar.
-Systemet som vi konstruerat kan delas in i tre delsystem. Ett system där man kopplar nätverksinformation till en specifik plats. Ett system som utför en algoritm för att bestämma en ungefärlig position. Positionen läggs sedan in i en databas som skall relaterar en användare med en plats. Slutligen ett system som presenterar all relevant information på ett tydligt sätt.
+Systemet som vi konstruerat kan delas in i tre delsystem samt en databas. Det första delsystemet där man kopplar nätverksinformation till en specifik plats. Det andra delsystemet som utför en algoritm för att bestämma en ungefärlig position. Det tredje delsystemet som presenterar all relevant information på ett tydligt sätt, och slutligen databasen som håller all data som är relevant för vårt samlade system.
+I följande figur \ref{fig:systemStruktur} ses systemet i sin helhet.
 
-I följande figur [\ref{fig:systemStruktur}] ses systemet i sin helhet. Systemet består av en Androidapplikation. Den ska användas av tekniker före användning av systemet. Applikationen används i förutbestämda referenspunkter i den aktivitetsbaserade verksamheten för att scanna nätverksinformation. Denna information kan används för att användarenheter ska kunna beräkna sin position i förhållande till  dessa referenspunkter.  Nätverksinformationen importeras därefter till en databas. När referenspunkterna är inlagda kan man börja använda Python-klienten. Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata i databasen som applikationen har tillhandahållit. När Python-klienten har bestämt sin position ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användare.
+\subsection{Delsystem som kopplar nätverksinformation med en plats}
+Detta delsystem innefattar en Androidapplikation. Den ska användas av it-tekniker före användning av systemet. Applikationen används i förutbestämda referenspunkter i den aktivitetsbaserade verksamheten för att scanna nätverksinformation. Denna information kan användas för att användarenheter ska kunna beräkna sin position i förhållande till  dessa referenspunkter.  Nätverksinformationen importeras därefter till en databas. När referenspunkterna är inlagda kan man börja använda nästa delsystem.
 
+\subsection{Delsystem som beräknar positionen}
+Detta delsystem innefattar ett Python-klient som ska köras i bakgrunden på användardatorn.
+Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata i databasen som Androidapplikationen från förra delsystemet har tillhandahållit. När Python-klienten har bestämt sin position ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användare. Detta delsystem kommer ligga i bakgrunden och inte presentera något viktigt visuellt.
+
+\subsection{Delsystem som presenterar position}
 Slutligen så finns det ett Web-interface. Detta system använder data som Python-klienten har lagt in i databasen för att i en webbaserad applikation visa platsinformation om kollegor i verksamheten. Systemet har också stöd för att presentera beläggning i olika områden samt eventuellt annan intressant information.
 
-Mellan systemet som teknikern använder och databasen så måste data förflyttas manuellt. Detta med risk för att en automatiserad uppkoppling kan förstöra referenspunkter samt att inläggning in princip endast kommer ske en gång. Python-klienten använder sig av SQL-anrop till databasen för att extrahera referenspunkter, samt för att lägga in sin position. Detsamma gäller Web-interfacet, den kör SQL-anrop till databasen för att presentera relevant information. % TODO kan inte säga att jag har full koll på protokoll här
+\subsection{Databasen som håller användare och positionsinformation}
+Databasen är av typen MySQL och den kommer samspela med alla de tre delsystemen. Den håller information om referenspunkter, användare och deras position.
+Mellan systemet som it-teknikern använder och databasen så måste data förflyttas manuellt. Detta med risk för att en automatiserad uppkoppling kan förstöra referenspunkter samt att inläggning in princip endast kommer ske en gång. Python-klienten använder sig av SQL-anrop till databasen för att extrahera referenspunkter, samt för att lägga in sin position. Detsamma gäller Web-interfacet, den kör SQL-anrop till databasen för att presentera relevant information.
 
 \begin{figure}[H]
 	\includegraphics[width=15cm]{media/systemStruktur.png}
@@ -514,6 +528,13 @@ Kraven för det här projektet är något som vi tillsammans med kommunen har ko
 
 Kraven på presentationen av medarbetares position är att det ska visas vilket kontor, vilken våning och ett område på det våningsplanet. Felmarginalen ska vara max 5 meter. Detta kommer utvärderas genom ett utförligt test, med olika försvårande förhållanden.
 
+\subsection{Positionsbestämning}
+
+\subsection{Användarerfarenheter av webapplikation}
+
+
+
+
 \section{Algoritm för Positionsbestämning}
 
 
@@ -539,7 +560,7 @@ För att åstadkomma detta har vi använt två typer av positionsbestämningsmet
           \newline RSSI MAC 2 = -48
           \newline RSSI MAC 3 = -50
   \end{itemize}
-\texitit{Id}-fältet är ett index som är unikt för varje referenspunkt. Området anger vart denna referenspunkt befinner sig, alltså vart nätverksanalysen är genomförd. \textit{MAC 1}-fältet håller MAC-adressen för den åtkomstpunkt vars RSSI-värde var störst vid nätverksanalysen. Det tillhörande RSSI-värdet ligger i fältet \textit{RSSI MAC 1}.
+\textit{Id}-fältet är ett index som är unikt för varje referenspunkt. Området anger vart denna referenspunkt befinner sig, alltså vart nätverksanalysen är genomförd. \textit{MAC 1}-fältet håller MAC-adressen för den åtkomstpunkt vars RSSI-värde var störst vid nätverksanalysen. Det tillhörande RSSI-värdet ligger i fältet \textit{RSSI MAC 1}.
 Det samma gäller för fälten \textit{MAC 2 - RSSI MAC 2} samt \textit{MAC 3 - RSSI MAC 3}
 
 Klientenheten som ska positionsbestämmas gör en scanning av tillgängliga åtkommstpunkter och tillhörande RSSI-värde. Vid den scanningen läses upp till 10 stycken tillgängliga åtkommstpunkter in och sorteras med hänsyn till vilken åtkommstpunkt som har högst RSSI-värde (se sektion \ref{RSSI}). Ett exempel på resultatet efter scanningen kan se ut som föjlande:
@@ -574,12 +595,7 @@ Den första algoritmen för att uppskatta vilken referenspunkt som befinner sig 
     Poängsystemet i sin helhet ser ut som följer:
 
     %\TODO: Diabild fixa
-
-
-
   \end{itemize}
-
-
 \end{itemize}
 
 
