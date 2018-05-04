@@ -17,13 +17,12 @@
 #################################################################
 
 from wifi import Cell, Scheme
-import time, platform,MySQLdb
+import time, platform, pymysql.cursors
 import datetime, sys
 
 
-def connectToDB():
-    #return MySQLdb.connect(host="localhost", user="root", passwd="Alabse959393#", db="localisation")
-    return MySQLdb.connect(host="back.db1.course.it.uu.se", user="fall17_it12", passwd="vXdWAk2K", db="fall17_project_it12")
+def connectToDB(h,u,p,d):
+    return pymysql.connect(host=h, user=u, passwd=p, db=d)
 
 #creates a object type reference point
 class RefPoint(object):
@@ -89,9 +88,7 @@ def posBasedOnOrder(relAps, myAPs, lengthAP, numberOfMatchingRefs):
     myposition = "position unknown"
     listOfEqualscores = []
 
-    print("before pos based on order")
     for ref in relAps:
-        print(ref.position)
         score1 = 0
         score2 = 0
         score3 = 0
@@ -103,14 +100,12 @@ def posBasedOnOrder(relAps, myAPs, lengthAP, numberOfMatchingRefs):
             if ref.address3 ==  myAPs[ap].address:
                 score3 = 8*(6-ap)
         score = score1 + score2 + score3
-        print(str(score))
         if score > highestScore:
             highestScore = score
             listOfEqualscores = []
             listOfEqualscores.append(ref)
         elif score == highestScore:
             listOfEqualscores.append(ref)
-    print(listOfEqualscores)
     return listOfEqualscores
 
 
@@ -121,19 +116,15 @@ def sortCandidatesOnMatchingRefs(relRPs, numberOfMatchingRefs):
         if (n_matches == numberOfMatchingRefs):
             listOfCandidatesBig.append(ref)
 
-    print("listOfCandidatesBig = " )
-    print(listOfCandidatesBig)
     return listOfCandidatesBig
 
 
 
 
 def posBasedOnRSSIstrenght(relRPs, myAPs, lengthAP):
-    print("going in for RSSI positioning")
     area = "position unknown"
     closestDiff = 300
     for ref in relRPs:
-        print(ref.position)
         diff = []
         diffsum = 0
         for tmp in range(0,lengthAP):
@@ -154,7 +145,6 @@ def posBasedOnRSSIstrenght(relRPs, myAPs, lengthAP):
                 diff.append(temp)
         for diffs in diff:
             diffsum += diffs
-        print(str(diffsum))
         if diffsum < closestDiff:
             area = ref.position
             closestDiff = diffsum
@@ -222,52 +212,54 @@ def askForFullName():
     fullname = raw_input('Please enter your full name: ')
     return fullname
 
+def readMySQLCredentials():
+    try:
+        file  = open("mysql.txt", "r")
+        str = file.read()
+        s = str.split("\n")
+        return s[0].strip(),s[1].strip(),s[2].strip(),s[3].strip()
 
-def main():
-    netcard = raw_input("Enter network-card for wifi-scan: ")
-    db = connectToDB()
-    # you must create a Cursor object. It will let
-    cur = db.cursor()
-    username = askForUser()
-    userList = getUsersFromDB(cur)
-    userExists = checkIfUserInDB(userList, username)
-    if (not userExists):
-        print("user not recognized, terminating")
+    except IOError:
+        print("create file mysql.txt and for each row put in this order: host, user, pass, db")
+        time.sleep(10)
         sys.exit()
 
 
+def main():
+    netcard = raw_input("Enter network-card for wifi-scan: ")
+    host, usr, passw, db = readMySQLCredentials()
+    db = connectToDB(host, usr, passw, db)
+    # you must create a Cursor object. It will let
+    cur = db.cursor()
 
-    numberOfNetworksToScanAroundMe = 10
-
-
-    print(createObjectsFromDB(getRefListFromDB(cur)))
-    rplist = createObjectsFromDB(getRefListFromDB(cur))
-
-
-    l = scanNetworks(netcard)
-    myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
-    for a in myAPs:
-        print(a.address, a.signal)
-    relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
-    myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
-    print myPosition
+    username = askForUser()
     userList = getUsersFromDB(cur)
-    updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
+    userExists = checkIfUserInDB(userList, username)
 
+    #Kill it when given an incorrect Username
+    if (not userExists):
+        print("user not recognized, terminating")
+        time.sleep(10)
+        sys.exit()
 
+    #Mainloop that never dies
+    while(True):
+        rplist = createObjectsFromDB(getRefListFromDB(cur))
+        l = scanNetworks(netcard)
+        numberOfNetworksToScanAroundMe = 10
+        myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
+        relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
+        myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
+        print myPosition
 
+        userList = getUsersFromDB(cur)
+        updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
+        db.commit()
+        print("Comitted to db")
+        time.sleep(200)
 
-
-
-
-
-
-
-    #for l2 in l:
-    #    print(l2.ssid+" - "+ str(l2.signal) + " - "+str(l2.address))
     #Leave me be
     ###############################################
-    db.commit()
     db.close()
 
 if __name__ == "__main__":
