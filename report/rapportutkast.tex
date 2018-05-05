@@ -540,37 +540,50 @@ Kraven på presentationen av medarbetares position är att det %TODO varför kra
 
 
 
-\section{Algoritm för Positionsbestämning}
+\section{Skript för positionsbestämmning}
 
 
+Då en klientenhet ska kunna positionsbestämmas behöver klientenheten köra det skript som vi har utvecklat. För att genomföra positionsbestämmningen av en klientenhet utför skriptet följande uppgifter:
+\begin{enumerate}
+  \item \textbf{Registrerar vilken användare som kör skriptet}
+  \item \textbf{Hämtar information om lokalernas referenspunkter från vår databas}
+  \item \textbf{Utför en scanning av nätverksinformationen}
+  \item \textbf{Bestämmer med hjälp av en algoritm positionen för enheten}
+  \item \textbf{Uppdaterar databasen med användarens nya position}
+\end{enumerate}
 
-\subsubsection{Vår algoritm för positionsbestämmning}
-Den algoritm som vi valde för positionsbestämmningen är en variant av KNN (se sektion \ref{KNN}).
-Målet med algoritmen är att avgöra vilken referenspunkt som är närmast klientenhetns fysiska position. Referenspunkterna finns sparade i en databas och är där kopplade till en specifik position(se sektion \ref{referenspunkter}). Då en algoritm för att positionsbestämma en klientenhet körs (på samma kliantenhet) kommer resultatet bli samma position som den bäst matchande referenspunktens position. Positionen som bestäms för en klientenhet är alltså inte en uppskattad x,y-koordinat utan en position som redan är kopplad till en referenspunkt.
-För att åstadkomma detta har vi använt två typer av positionsbestämningsmetoder som körs i skriptet hos klientenheten. Dessa två beskrivs nedan.
+Skriptet i sin helhet är skrivet i programmeringsspråket Python.
+Nedan redogörs för hur de olika uppgifterna ovan genomförs.
 
+\subsection{Registrera vilken användare som kör skriptet}
+I den nuvarande versionen av systemet kommer skriptet be användaren om ett användarnamn.
+Användarnamnet verifieras därefter mot alla registrerade användare som finns i databasen (se sektion \ref{databasen}). Om användarnamnet som användaren anger inte matchar något användarnamn i databasen termineras skriptet. Anledningen är att endast godkända användare ska ha möjlighet att göra skriptet och ladda upp sin positionsinformation i databasen. Användare läggs till av systemadministratören från webinterfacet (se sektion ~\ref{webinterface}). I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämmningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår "proof of concept" version att be användaren om ett användarnamn.
+
+
+\subsection{Hämta information om referenspunkter från databasen}
+För att kunna utföra positionsbestämmningen behöver klientenheten hämta information om referenspunkerna från databasen. Positionsbestämmningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämmningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många använadre ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter MySQLdb\cite{mysqldb}. MySQLdb erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
+
+Nedan följer ett exempel på informationen om en referenspunkt som vi hämtar från databasen:
 \begin{itemize}
-  \item {\textbf{Metod 1 - Referenspunkter med samma närliggande åtkomstpunkter}
-  \bigskip
-  \newline
-  Metod 1 är en metod vars syfte är att finna referenspunkter som har samma närmast intilliggande åtkomstpunkter som klientenheten. Vilka åtkomstpunkter som är närmast baseras på RSSI-värdet som mäts upp för åtkomstpunkten både vid referenspunkten och vid klientenheten. Den data som ligger sparad i databasen för varje referenspunkt ser ut som följer.
-  \begin{itemize}
-    \item Referenspunkt exempel:
-          \newline Id = 1
-          \newline Område = Polacksbacken, Hus 1, Våning 2, Skrubben.
-          \newline MAC 1 = XX:XX:XX:XX:XX:XX
-          \newline MAC 2 = YY:YY:YY:YY:YY:YY
-          \newline MAC 3 = ZZ:ZZ:ZZ:ZZ:ZZ:ZZ
-          \newline RSSI MAC 1 = -45
-          \newline RSSI MAC 2 = -48
-          \newline RSSI MAC 3 = -50
-  \end{itemize}
+  \item Referenspunkt exempel:
+        \newline Område = Polacksbacken, Hus 1, Våning 2, Skrubben.
+        \newline MAC 1 = XX:XX:XX:XX:XX:XX
+        \newline MAC 2 = YY:YY:YY:YY:YY:YY
+        \newline MAC 3 = ZZ:ZZ:ZZ:ZZ:ZZ:ZZ
+        \newline RSSI MAC 1 = -45
+        \newline RSSI MAC 2 = -48
+        \newline RSSI MAC 3 = -50
+\end{itemize}
+
 \textit{Id}-fältet är ett index som är unikt för varje referenspunkt. Området anger vart denna referenspunkt befinner sig, alltså vart nätverksanalysen är genomförd. \textit{MAC 1}-fältet håller MAC-adressen för den åtkomstpunkt vars RSSI-värde var störst vid nätverksanalysen. Det tillhörande RSSI-värdet ligger i fältet \textit{RSSI MAC 1}.
-Det samma gäller för fälten \textit{MAC 2 - RSSI MAC 2} samt \textit{MAC 3 - RSSI MAC 3}
+Det samma gäller för fälten \textit{MAC 2 - RSSI MAC 2} samt \textit{MAC 3 - RSSI MAC 3}.
 
-Klientenheten som ska positionsbestämmas gör en scanning av tillgängliga åtkommstpunkter och tillhörande RSSI-värde. Vid den scanningen läses upp till 10 stycken tillgängliga åtkommstpunkter in och sorteras med hänsyn till vilken åtkommstpunkt som har högst RSSI-värde (se sektion \ref{RSSI}). Ett exempel på resultatet efter scanningen kan se ut som föjlande:
 
-\begin{itemize}
+\subsection{Uföra scanning av nätverksinformation} \label{scanning}
+%\TODO: SEBBE- här får du gärna bidra lite med din extrema kunskap om exakt hur scanningen går till
+Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att se vilken trådlös nätverksinformation som kan upptäckas. Det information som sparas vid scanningen är tillgängliga åtkommstpunkter samt tillhörande RSSI-värde (se sektion \ref{RSSI}). Vid den scanningen läses upp till 10 stycken tillgängliga åtkommstpunkter in och sorteras med hänsyn till vilken åtkommstpunkt som har högst RSSI-värde. Ett exempel på resultatet efter scanningen ser ut som föjler:
+
+  \begin{itemize}
   \item Klientenhetsscanning exempel:
         \newline MAC 1 = AA:AA:AA:AA:AA:AA,  RSSI = -20
         \newline MAC 2 = BB:BB:BB:BB:BB:BB,  RSSI = -25
@@ -582,38 +595,94 @@ Klientenheten som ska positionsbestämmas gör en scanning av tillgängliga åtk
         \newline MAC 8 = HH:HH:HH:HH:HH:HH,  RSSI = -55
         \newline MAC 9 = II:II:II:II:II:II,  RSSI = -60
         \newline MAC 10 = JJ:JJ:JJ:JJ:JJ:JJ,  RSSI = -65
-\end{itemize}
+  \end{itemize}
 
-Den första algoritmen för att uppskatta vilken referenspunkt som befinner sig närmast klientenheten ser ut som följer:
+\subsection{Algoritm för positionsbestämmning}
+För att utföra positionebestämmningen av klientenheten körs en algoritm i skriptet.
+Den algoritm som vi valde för positionsbestämmningen är en variant av KNN (se sektion \ref{KNN}). Vid algoritmer av typer KNN analyseras ett antal (K) Nearest Neigbours (NN). Eftersom vi har information om tre åtkomstpunkter för varje sparad referenspunkt analyserar vi tre st närmaste grannar, NN. Vi har valt att implementera en algoritm som vi utvecklat och som vi anser passa vårt syfte och möta våra krav på precision utan att generera för lång beräkningstid.
+Målet med algoritmen är att avgöra vilken sparad referenspunkt som befinner sig närmast klientenhetns fysiska position. Då algoritmen för att positionsbestämma en klientenhet körs kommer resultatet bli samma position som positionen för den bäst matchande referenspunkten.
+För att åstadkomma detta har vi använt två typer av positionsbestämningsmetoder som körs i skriptet hos klientenheten. Dessa två beskrivs nedan.
+
+\subsubsection{Metod 1 - Närliggande åtkomstpunkter}
+
+Metod 1 bygger på teorin att de referenspunkter som har åtkommstpunkter sparade som överensstämmer med de åtkommstpunkter med högst RSSI-värde i klienenhetens lista (se exempel i sektion \ref{scanning}) är de referenspunkter som befinner sig närmast klientenheten. Om det går att finna en referenspunkt vars tre åtkommstpunkter återfinns som top tre åtkommstpunkter i klientenhetens lista bör denna refeferenspunkt i teorin befinna sig i nära anslutning till klientenheten.
+Metod 1:s syfte är alltså att finna referenspunkter som har samma närmast intilliggande åtkomstpunkter som klientenheten.
+
+Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinner sig närmast klientenheten ser ut som följer:
 
   \begin{itemize}
     \item \textbf{Steg 1}
     \newline
-    Analysera alla tillgängliga referenspunkter i databasen och sortera ut alla som har minst en åtkommstpunkt som överensstämmer med en åtkommstpunkt i listan hos klientenheten. Alla referenspunkter som har en överensstämmande åtkommstpunkt sparas för vidare beräkningar. Detta görs för att slippa utföra mer krävande beräkningar på alla referenspunkter i databasen.
+    Analysera alla tillgängliga referenspunkter i databasen och sortera ut alla som har minst en åtkommstpunkt som överensstämmer med en åtkommstpunkt i listan hos klientenheten. Alla referenspunkter som har en överensstämmande åtkommstpunkt sparas för vidare beräkningar. Om ingen referenspunkt har en tillhörande åtkommstpunkt som återfinns i klientenhetens lista med åtkommstpunkter är inte positionsbestämmning möjligt och resultatet blir "position okänd".
+    Detta steg görs för att slippa utföra mer krävande beräkningar på alla referenspunkter i databasen.
     \item \textbf{Steg 2}
     \newline
-    Utifrån de referenspunkter som sorterats fram från steg 1 görs en ny sortering. Nu undersöks vilket det högsta antalet matchande åtkommstpunkter är hos en referenspunkt. Det högsta möjliga antalet matchande åtkommstpunkter är 3 eftersom det finns 3 åtkommstpunkter lagrade för varje referenspunkt. Alla de referenspunkter som har samma högst antal matchande referenspunkter sorteras ut och sparas. Syftet med detta steg är det samma som syftet i steg 1.
+    Utifrån de referenspunkter som sorterats fram från steg 1 görs en ny sortering. Nu undersöks vilket det högsta antalet matchande åtkommstpunkter är hos en referenspunkt. Det högsta möjliga antalet matchande åtkommstpunkter är 3 eftersom det finns 3 åtkommstpunkter lagrade för varje referenspunkt. Alla de referenspunkter som har samma högsta antal matchande referenspunkter sorteras ut och sparas.
+    Om det till exempel finns fyra referenspunkter vars alla tillhörande åtkommstpunkter finns med i klientenhetes lista sparas dessa fyra referenspunkter för vidare beräkningar. Syftet med detta steg är det samma som syftet i steg 1.
+
     \item \textbf{Steg 3}
     \newline
     I steg 3 poängges alla kvarvarande referenspunkter baserat på hur väl ordningen i de åtkomstpunkter som finns lagrade för referenspunkten överensstämmer med ordningen för åtkommstpunkterna som är scannade av klientenheten. Eftersom både referenspunkternas och klientenhetens åtkommstpunkter är sorterade baserat på RSSI-värdet (signalstyrkan) kan detta ett poängsystem användas för att avgöra vilken referenspunkt som troligtvis är den som befinner sig närmast klientenheten.
-    Högsta möjliga poäng tilldelas en referenspunkt vars 3 lagrade åtkommstpunkter återfinns bland de tre åtkommstpunkerna med bäst signalstyrka hos klientenheten.
-    Poängsystemet i sin helhet ser ut som följer:
+    Högsta möjliga poäng tilldelas en referenspunkt vars 3 lagrade åtkommstpunkter återfinns bland de tre åtkommstpunkerna med bäst signalstyrka hos klientenheten samt med samma inbördes ordning. Varje åtkommstpunkt hos referenspunkten jämförs med varje åtkommstpunkt i klienenhetens lista. Ju högre upp i listan åtkommstpunkten befinner sig, både i referenspunkten och i klientlistan, ju högra poäng tilldelas referenspunkten. När varje åtkommstpunkt i referenslistan jämförts läggs poängen för varje åtkommstpunkt ihop och ger referenspunktens slutgiltiga poäng.
+    Den referenspunkt som fått högst totapoäng bedömms vara den referenspunkt som befinner sig närmast klientenheten varvid klientenhetens position bestämms till samma position som för den vinnande referenspunkten.
+    En illustration av poängutdelningsprocessen ges i figurerna \ref{fig:MAC1},\ref{fig:MAC2},\ref{fig:MAC3} nedan.
+    MAC-adresserna är åtkomstpunkternas unika namn.
 
-    %\TODO: Diabild fixa
-  \end{itemize}
+
+  \begin{figure}[H]
+    \centering
+  	\includegraphics[width=10cm]{media/MAC_1.png}
+  	\caption{Poängsystem för åtkommstpunkt 1}
+  	\label{fig:MAC1}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+  	\includegraphics[width=10cm]{media/MAC_2.png}
+  	\caption{Poängsystem för åtkommstpunkt 2}
+  	\label{fig:MAC2}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+  	\includegraphics[width=10cm]{media/MAC_3.png}
+  	\caption{Poängsystem för åtkommstpunkt 3}
+  	\label{fig:MAC3}
+  \end{figure}
+
+  \item \textbf{Steg 4}
+  \newline
+  Om fler än en referenspunkt slutar på samma poäng i steg 3 av algoritmen betyder det att vi inte bara med hjälp av att undersöka den inbördes ordningen för åtkommstpunkterna kan avgöra vilken som teoretiskt sett bör vara den som bäst överensstämmer med klientenhetens position. Vid de fall som detta uppstår vill vi ändå kunna utse en referenspunkt som den bäst matchande. Det gör vi genom att övergå till Metod 2 för positionsbestämning.
+
+
 \end{itemize}
 
+\subsubsection{Metod 2 - Analys av RSSI-värden}
 
 
-\section{Databasens uppbyggnad}
+
+
+
+
+
+
+
+\section{Databasens uppbyggnad}\label{databasen}
 
 \section{Applikation för scanning vid referenspunkter}
+Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
 
-\section{Webinterface för presentation av användares position}
+Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de fem mac-adresserna med högst RSSI-värde. Namnet på positionen samt de fem mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet med lämpligt %TODO Vad är lämpligt många??
+många referenspunkter. För att sedan populera databasen importerar man csv filen in till databasen.
+
+Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv filen och ersätta å:et med ett a eller liknande.
+
+\section{Webinterface för presentation av användares position}\label{webinterface}
 Vi byggde detta i webapplikationsramverket Django samt Materialize%TODO referens
 för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som man enkelt kan starta lokalt. I vår implementation kan man köra den servern både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
 
-Webapplikationen utgörs initial av en loginsida, där medarbetare på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När man har loggat in så har man möjlighet att se all medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
+Webbapplikationen utgörs initial av en loginsida, där medarbetare på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När man har loggat in så har man möjlighet att se all medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
+
+Webbapplikationen erbjuder även en admin sida. Här kan man se alla användare, man kan ge behörigheter till olika användare. Om man är admin på webbapplikationen kan man tex ge andra användare behörighet till att se adminsidan alternativt ändra i adminsidan.
+
 
 \section{Vår produkt}
 
@@ -650,6 +719,10 @@ Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande 
 
 Relatera till mål och syften etc i avsnitt~\ref{sec:syfte}.
 \fi
+
+Vi har ett fullt fungerande system som kan visa vart en medarbetare befinner sig inom ett område som har blivit nätverksskannad innan. Personen ska även finnas med i vår databas där alla referenspunkter och användare är sparade. Medarbetarnas position visas i en webapplikation där man även kan välja att inte delge sin egen position. Vi kan uppskatta en medarbetares position med en radie på \ldots %TODO fyll i med verkliga siffror
+
+Vår initiala plan var att interagera vår positionsbestämnings algoritm med Skype for buisness. Detta visade sig vara omöjligt att göra då Skype inte hade denna funktionalitet i den version som vår intressent hade. Detta medförde att vår plan förändrades och blev istället att göra ett eget oberoende system.
 
 
 \section{Slutsatser}
