@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'show_position',
-    'accounts',
-    'widget_tweaks'
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +82,7 @@ DATABASES = {
     'default': {
          'ENGINE': 'django.db.backends.mysql',
          'OPTIONS': {
-            'read_default_file': LOCAL_DB_CREDENTIALS,
+            'read_default_file': REMOTE_EDUROAM_DB_CREDENTIALS,
         },
     }
 }

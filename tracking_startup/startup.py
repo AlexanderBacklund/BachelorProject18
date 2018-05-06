@@ -245,18 +245,22 @@ def main():
     #Mainloop that never dies
     while(True):
         rplist = createObjectsFromDB(getRefListFromDB(cur))
-        l = scanNetworks(netcard)
-        numberOfNetworksToScanAroundMe = 10
-        myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
-        relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
-        myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
-        print myPosition
+        try:
+            l = scanNetworks(netcard)
+            numberOfNetworksToScanAroundMe = 10
+            myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
+            relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
+            myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
+            print myPosition
 
-        userList = getUsersFromDB(cur)
-        updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
-        db.commit()
-        print("Comitted to db")
-        time.sleep(200)
+            userList = getUsersFromDB(cur)
+            updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
+            db.commit()
+            print("Comitted to db")
+            time.sleep(5)
+        except:
+            print("Device busy, waiting")
+            time.sleep(3)
 
     #Leave me be
     ###############################################
