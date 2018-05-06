@@ -29,7 +29,8 @@
         {% else %}
         <li><a href="{% url 'login' %}"><i class="material-icons">lock</i></a></li>
         {% endif %}
-
+        {{user.username}}
+        {{user_positions.0}}
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="#">Search</a></li>

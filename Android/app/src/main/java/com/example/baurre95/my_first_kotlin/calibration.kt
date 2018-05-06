@@ -88,7 +88,6 @@ class calibration : AppCompatActivity() {
 
         } catch (e: IndexOutOfBoundsException) {
             Toast.makeText(this, "Scan Failed", Toast.LENGTH_SHORT).show()
-
         }
 
 
