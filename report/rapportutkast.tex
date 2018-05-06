@@ -312,16 +312,21 @@ För att göra vårt system attraktivt vill vi det ska vara ett system som inte 
 
 \subsection{Avgränsningar}
 På grund av den begränsade tid vi har haft att arbeta på det här projektet har vi varit tvungna att göra vissa avgränsningar.
-Vi har valt att endast använda oss Fingerprintingtekniken för positionsbestämning (se sektion \ref{fingerprinting}). Det finns ett ytterligare tekniker som vi skulle kunnat använda oss av i kombination med fingerprintingtekniken, tillexempel trilateration (se sektion \ref{triangulering}). Även vid användning av fingerprintingtekniken finns olika typer av algoritmer som används för positionsbestämningen. Några exempel är
+Vi har valt att endast använda oss Fingerprintingtekniken för positionsbestämning (se sektion \ref{fingerprinting}). Det finns ett ytterligare tekniker som vi skulle kunnat använda oss av i kombination med fingerprintingtekniken, tillexempel Trilateration (se sektion \ref{triangulering}).
+
+
+För att utföra positionsbestämning med hjälp av referenspunkter (se sektion \ref{referenspunkter}) så exakt som möjligt bör man enligt J. Jun m. fl. representera varje geografisk plats med fler än referenspunkt\cite{jun2018low}. Anledningen till det är att olika typer av nätverkskort kan utläsa olika RSSI-värden (se sektion \ref{RSSI}) mot samma åtkomspunkt\cite{problem_with_RSSI}. Om man representerar varje planerad plats för en referenspunkt med fler referenspunkter baserade på mätningar utföra av enheter med olika typer av nätverkskort kan det därmed fungera som en kompensation för att olika nätverkskort kan generera olika RSSI-värden\cite{jun2018low}.
+En avgränsning vi valde att göra är att mobilapplikationen endast fungerar för Androidtelefoner. Även om det finns enheter som har olika typer av nätverkskort men som ändå använder Andriod täcker vi inte in enheter med andra typer av nätverkskort och som inte kan köras med Android.
+
+
+ Avgränsningen med att endast utveckla scanningsapplikationen för Android gjordes dels på grund av tidsbrist med också eftersom applikationen endast kommer att användas ett fåtal gånger, dvs när man ska installera systemet på sin arbetsplats. Eftersom applikationen inte kommer användas regelbundet ansåg vi att android var lämpligare eftersom det är enligt vår uppfattning är enklare och smidigare att publicera en Andoidapplikation än tillexempel en Iphoneapplikation. Det enda man behöver göra för är att ladda upp sin fungerande APK (android package kit) och betala en mindre engångssumma \cite{android} \cite{guidePublish}. För att kunna publisera en Iphoneapplikation behöver applikationen genomgå fler steg och applikationen har en risk att bli nekad. Applikationen måste fungera enligt vissa kriterier samt att det tillkommer en årlig avgift som man måste betala \cite{submitIphone} \cite{guidePublish}.
+
+En avgränsning gällande vår webapplikation är att den endast kommer vara utrustad med de mest väsentliga funktionaliteterna då den endast kommer att användas för demonstration. Vår intressent har redan ett intern webbportal som de använder för andra arbetsuppgifter och som de i händelse av användning vill använda även för presentation av positioneringsinformation. Det information som kommer vara synlig i vårt interface är användarnas position.
 
 \iffalse Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er, och motiverar dessa avgränsningar. Detta förtydligar för läsaren som kanske hade förväntningar ni inte uppfyllt.
 
 (I tidiga versioner, men \emph{inte} i slutversionen, kan ni även beskriva vad som bara ska göras om tid/resurser/omständigheter räcker till. De sakerna kan ni då istället beskriva i Framtida arbete.)
 \fi
-
-En avgränsning vi valde att göra var att mobilapplikationen endast fungerar för android telefoner. Denna avgränsning gjorde vi då applikationen endast kommer att användas ett fåtal gånger, dvs när man ska installera systemet på sin arbetsplats. Eftersom applikationen inte kommer användas regelbundet ansåg vi att android var lämpligare då att publicera en andoid applikation är enklare och smidigare. Det enda man behöver göra är att ladda upp sin fungerande APK (android package kit) och betala en mindre engångssumma \cite{android} \cite{guidePublish}. För att kunna publisera en iphone applikation behöver applikationen genomgå fler steg och applikationen har en risk att bli nekad. Applikationen måste fungerar enligt vissa kriterier samt måste man betala en årlig summa \cite{submitIphone} \cite{guidePublish}.
-
-Vår webapplikation kommer endast vara utrustad med de väsentliga funktionaliteterna då den endast kommer att användas för demonstration. Vår intressent har redan en webapplikation som de använder. Det enda vi kommer att ge till vår intressent är positionen som sparas i våran databas.
 
 \section{Relaterat arbete}
 Det generella problemet med inomhuspositionering har lösts på olika sätt.
@@ -335,7 +340,7 @@ Binghao Li m. fl. analyserade i en studie \cite{IP1} olika tekniker som utgår f
 
 \subsubsection{Problem med GPS-tekniken}
 Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en position med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
-Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USA´s flygvapen. GPS är ett system bestående av 24 satelliter som kretsar kring Jorden. Satelliterna sänder ut radiosignaler med information om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de satelliterna som befinner sig inom räckhåll och använder sig av satelliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig \cite{GPS_US_HOW}.
+Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USAs flygvapen. GPS är ett system bestående av 24 satelliter som kretsar kring Jorden. Satelliterna sänder ut radiosignaler med information om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de satelliterna som befinner sig inom räckhåll och använder sig av satelliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig \cite{GPS_US_HOW}.
 
 Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från satelliterna reflekteras när de kommer i kontakt med byggnader och de anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord \cite{GPS_US_ACCURACY}. Detta gör att andra tekniker måste användas för inomhuspositionering.
 
@@ -437,9 +442,9 @@ När metoden fingerprinting\footnote{Se sektion \ref{fingerprinting}} används f
 Bokstaven k står för antalet "nearest neighbors"(närmaste grannar). Vid den mest simpla varianten, då k = 1 (1NN), görs en RSSI-scanning hos klientenheten av vilken närliggande åtkomstpunkt som har lägst försvagning av signalstyrka. Den åtkomstpunkt med lägst försvagning antas vara den som är finns närmast. Därefter jämför man med RSSI-värdet för de referenspunkter som finns registrerade och finner den referenspunkt vars lagrade RSSI-värde matchar bäst. Klientenhetens position uppskattas till samma position som för den referenspunkt som matchade bäst.
 Ju högre värde av \textit{k} som används vid analysen desto tillförlitligare blir positioneringen.\cite{yiu2017wireless}
 En nackdel med KNN är att RSSI-värdet för de olika åtkostpunkterna kan variera över tid \cite{tian2013fingerprint}. Detta medför att för att upprätthålla en godtagbar exakthet bör varje referenspunkt scannas av vid jämna intervall.
-En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik position kan förändras om tillexempel möbleringen av rummen ändras radikalt. Då något sådant sker bör också intillliggande referenspunkter scannas om.
+En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik position kan förändras om tillexempel möbleringen av rummen ändras radikalt\cite{zanca2008experimental}. Då något sådant sker bör också intillliggande referenspunkter scannas om.
 
-\subsection{Andrioidapplikationsutveckling}
+\subsection{Applikationsutveckling, Android}
 Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av programmet används Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar programmet i android är att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder.
 
 \subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna}
@@ -544,10 +549,10 @@ Mellan systemet som it-teknikern använder och databasen så måste data förfly
 Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot krascher, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. På grund av tidsbrist kommer vi att endast utföra 1000 manuella tester på vår intressents arbetsplats. Utifrån dessa tester kan vi se hur stor procent av testerna som lyckades beräkna rätt position. Vårat krav är att systemet ska 90\% av fallen lyckas positionera arbetaren rätt.\iffalse Vi har även tänkt stresstesta och belastningstesta våran databas.\fi % TODO Hur och vad förväntar vi oss?
 
 \subsection{Skanningsapplikation för referenspunkter}
--Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker %TODO varför krav? hur ska det utvärderas?
+-Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till en aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker %TODO varför krav? hur ska det utvärderas?
 
 \subsection{Positionsbestämning}
-Vår intressent har en vision om att man ska integrerat i deras befintliga system ska kunna se vart deras kollegor befinner sig i Uppsala. Med det menas att man ska kunna se vilket kontor, vilken våning och i vilket område med en felmarginal på 5 meter. %TODO varför krav? hur ska det utvärderas?
+Vår intressent har en vision om att man ska integrerat i deras befintliga system ska kunna se vart deras kollegor befinner sig i Uppsala. Med det menas att man ska kunna se vilket kontor, vilken våning och i vilket område med en felmarginal på 10 meter. %TODO varför krav? hur ska det utvärderas?
 
 \subsection{Användarerfarenheter av webapplikation}
 Kraven på presentationen av medarbetares position är att det %TODO varför krav? hur ska det utvärderas?
