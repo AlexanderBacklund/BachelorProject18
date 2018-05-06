@@ -21,7 +21,6 @@
 %\usepackage[hyphens]{url}
 %\usepackage{hyperref}
 
-
 \usepackage{url}
 % Designval: per default används styckesindrag, men ibland blir det snyggare/mer lättläst med tomrad mellan stycken. Det åstadkoms av de följande raderna.
 % Tycker ni om styckesindrag mera, kommentera bort nästa två rader.
@@ -106,7 +105,7 @@ Many companies and organisations nowadays chose to transfer from an office struc
 % Ca 10-20 rader. Använd inte referenser; ej heller formler om det går att undvika.
 %
 % Abstract ska vara förståeligt utan att läsa resten av rapporten, och resten av rapporten ska kunna läsas utan att läsa abstract. Man kan återanvända text från introduktionen.
-Många företag och organisationer nuförtiden väljer att övergå från en kontorsstruktur bestående av dedikerade kontorsplatser för var och en av medarbetarna till en öppnare och mer kontorsfri struktur. Med den övergången tillkommer vissa problem med att hitta de medarbetare som du vill träffa och diskutera med eftersom de nu har möjlighet att välja arbetsplats friare. På grund av detta tappar de anställda i produktivitet eftersom de behöver spendera onödig tid på att lokalisera sina kollegor. En kontorsstruktur där medarbetarna väljer arbetsplats utifrån arbetsuppgift kallas för en aktivitetsbaserad arbetsplats. Det här projektets intention är att göra övergången till en aktivitetsbaserad arbetsplats enkel, icke tidskrävande och möjlig genom att endast använda befintlig teknik och information på arbetsplatsen. Medarbetarnas position kommer presenteras via en lokaliseringsplattform där varje användare enkelt kan lokalisera sina medarbetare.
+Många företag och organisationer väljer nuförtiden att övergå från en kontorsstruktur bestående av dedikerade kontorsplatser för var och en av medarbetarna, till en öppnare och mer kontorsfri struktur. Med den övergången tillkommer vissa problem med att hitta enskilda medarbetare som du vill träffa eftersom de nu har möjlighet att välja arbetsplats friare. På grund av detta tappar de anställda i produktivitet eftersom de behöver spendera onödig tid på att lokalisera sina kollegor. En kontorsstruktur där medarbetarna väljer arbetsplats utifrån arbetsuppgift kallas för en aktivitetsbaserad arbetsplats. Det här projektets intention är att göra övergången till en aktivitetsbaserad arbetsplats enkel, icke tidskrävande och möjlig genom att endast använda befintlig teknik och information på arbetsplatsen. Medarbetarnas position kommer presenteras via en lokaliseringsplattform där varje användare enkelt kan lokalisera sina medarbetare.
 
  %%förlytta deras verksamhet från kontorsbaserad till en mer kontorsfri miljö. Med den övergången tillkommer vissa problem med att hitta medarbetare för att kunna diskutera arbetsrelaterade saker. På grund av det här tappar de anställda i produktivitet, eftersom de behöver spendera för mycket tid på att lokalisera sina kollegor. Detta projektets intention är att göra övergången enkel, icke tidskrävande och möjlig genom att endast använda befinntlig information och teknik. Vilket ges via en lokaliserings plattform som användare kan lokalisera sina medarbetare.
 \end{sammanfattning}
@@ -149,7 +148,7 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
 
 
 \section*{Att göra}
-Fjärde utkastet: Krav, utvärdering med koppling till frågeställningar.
+Femte utkast: Resultat, slutsatser och diskussion. Kolla gärna igenom introduktion också.
 
 \newpage %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen (men inte \mainmatter)
 
@@ -256,6 +255,7 @@ Nedan följer Datainspektionens \cite{GDPRdatainspektionen} förtydligande gäll
 
 Enligt en av IT-strategerna hos Uppsala Kommun innebär den här nya lagen att många företag och organisationer, inklusive Uppsala Kommun, kommer behöva genomgå ett omfattande arbete för att säkerställa att man uppfyller de nya kraven för hantering av personuppgifter. Därmed har det också varit vår avsikt att vårt system ska uppfylla alla de krav på personuppgiftshantering som den nya lagen ställer. Den kritiska delen i vårt projekt är att sambandet mellan en person och en plats kommer lagras i en databas och sedan presenteras för deras kollegor. Därför bör alla anställda dels kunna välja att inte finnas med i systemet över huvud taget och dels kunna välja att deras plats inte ska visas för andra. De personuppgifter som vi då hanterar är namn och avdelning på arbetsplatsen. Då vårt system ställer dessa krav på samtycke uppfyller vi kraven mot GDPR i det avseendet.
 \newpage
+
 \subsubsection{Fackliga aspekter}
 Under ett möte med en företrädare för Uppsala Kommun uppkom även frågan om hur Fackförbunden kan tänkas ställa sig till att medarbetares position registreras.
 Den frågeställningen är svår för oss att besvara. Den slutsats som vi drog var att oavsett hur olika fackförbund kan komma att ta ställning till registrering av medarbetares position så innebär det att det är en frågeställning vi behöver ha i åtanke när vi designar systemet. Vår förhoppning är såklart att ett användande av vårt system ska stöta på så få fackliga hinder som möjligt. Vi anser att eftersom möjligheten finns för personal att överhuvudtaget inte behöva använda sig av vårt system så borde eventuella fackliga problem kunna minska. Det är vår ståndpunkt att valfriheten för medarbetare och personal att använda vårt system är ett val som måste erbjudas av företagsledningen eller organisationsledningen. Det är endast vår förhoppning och rekommendation att så blir fallet. Därmed blir också eventuella fackliga hinder en fråga för de personer i organisationen som eventuellt beslutar om användningen av vårt system.
@@ -310,6 +310,11 @@ För att göra vårt system attraktivt vill vi det ska vara ett system som inte 
 
 (I tidiga versioner, men \emph{inte} i slutversionen, kan ni även beskriva vad som bara ska göras om tid/resurser/omständigheter räcker till. De sakerna kan ni då istället beskriva i Framtida arbete.)
 \fi
+
+En avgränsning vi valde att göra var att mobilapplikationen endast fungerar för android telefoner. Denna avgränsning gjorde vi då applikationen endast kommer att användas ett fåtal gånger, dvs när man ska installera systemet på sin arbetsplats. Eftersom applikationen inte kommer användas regelbundet ansåg vi att android var lämpligare då att publicera en andoid applikation är enklare och smidigare. Det enda man behöver göra är att ladda upp sin fungerande APK (android package kit) och betala en mindre engångssumma \cite{android} \cite{guidePublish}. För att kunna publisera en iphone applikation behöver applikationen genomgå fler steg och applikationen har en risk att bli nekad. Applikationen måste fungerar enligt vissa kriterier samt måste man betala en årlig summa \cite{submitIphone} \cite{guidePublish}.
+
+Vår webapplikation kommer endast vara utrustad med de väsentliga funktionaliteterna då den endast kommer att användas för demonstration. Vår intressent har redan en webapplikation som de använder. Det enda vi kommer att ge till vår intressent är positionen som sparas i våran databas.
+
 \section{Relaterat arbete}
 Det generella problemet med inomhuspositionering har lösts på olika sätt.
 Beroende på vilket specifikt problem som gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice (IPS)\cite{IP1}.
@@ -445,7 +450,7 @@ vilket innebär att man inte kan utnyttja databaskommandon i användarinput för
 Eftersom vi hanterar känslig data så är detta väldigt viktiga aspekter för oss. Att det är inbyggt i Django är en stor fördel. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt.
 
  Ett sista argument är att eftersom skriptet är skrivet i Python och Django bygger på Python. Då skulle man i framtiden enkelt kunna integrera de två.
- 
+
 \iffalse
 \subsection{Trilateration}
 Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf \cite{cook2005indoor}.
@@ -528,7 +533,7 @@ Mellan systemet som it-teknikern använder och databasen så måste data förfly
 %
 % Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, en\-käter, fokusgrupper\ldots).
 % Beskriv hur externa intressenter involveras i utvärderingen.
-Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot krascher, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod.
+Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot krascher, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. Vi kommer att utföra 200 tester på vår intressents arbetsplats. Utifrån dessa tester kan vi se hur stor procent av testerna som lyckades beräkna rätt position. Vårat krav är att systemet ska 90\% av fallen lyckas positionera arbetaren rätt.\iffalse Vi har även tänkt stresstesta och belastningstesta våran databas.\fi % TODO Hur och vad förväntar vi oss?
 
 \subsection{Skanningsapplikation för referenspunkter}
 -Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker %TODO varför krav? hur ska det utvärderas?
@@ -541,9 +546,18 @@ Kraven på presentationen av medarbetares position är att det %TODO varför kra
 
 
 
-\section{Skript för positionsbestämmning}
+\section{Vår produkt}
+I följande delavsnitt beskrivs implementationen av de olika komponenterna av vårat system i mer detalj. Först beskrivs hur applikationen används för att skapa referenspunkter. Sedan beskrivs det hur en position beräknas utifrån dessa punkter. Till sist beskrivs systemets presentations applikation.
 
+\subsection{Applikation för scanning vid referenspunkter}
+Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
 
+Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de fem mac-adresserna med högst RSSI-värde. Namnet på positionen samt de fem mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet med lämpligt %TODO Vad är lämpligt många??
+många referenspunkter. För att sedan populera databasen importerar man csv filen in till databasen.
+
+Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv filen och ersätta å:et med ett a eller liknande.
+
+\subsection{Skript för positionsbestämmning}
 Då en klientenhet ska kunna positionsbestämmas behöver klientenheten köra det skript som vi har utvecklat. För att genomföra positionsbestämmningen av en klientenhet utför skriptet följande uppgifter:
 \begin{enumerate}
   \item \textbf{Registrerar vilken användare som kör skriptet}
@@ -556,12 +570,12 @@ Då en klientenhet ska kunna positionsbestämmas behöver klientenheten köra de
 Skriptet i sin helhet är skrivet i programmeringsspråket Python.
 Nedan redogörs för hur de olika uppgifterna ovan genomförs.
 
-\subsection{Registrera vilken användare som kör skriptet}
+\subsubsection{Registrera vilken användare som kör skriptet}
 I den nuvarande versionen av systemet kommer skriptet be användaren om ett användarnamn.
 Användarnamnet verifieras därefter mot alla registrerade användare som finns i databasen (se sektion \ref{databasen}). Om användarnamnet som användaren anger inte matchar något användarnamn i databasen termineras skriptet. Anledningen är att endast godkända användare ska ha möjlighet att göra skriptet och ladda upp sin positionsinformation i databasen. Användare läggs till av systemadministratören från webinterfacet (se sektion ~\ref{webinterface}). I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämmningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår "proof of concept" version att be användaren om ett användarnamn.
 
 
-\subsection{Hämta information om referenspunkter från databasen}
+\subsubsection{Hämta information om referenspunkter från databasen}
 För att kunna utföra positionsbestämmningen behöver klientenheten hämta information om referenspunkerna från databasen. Positionsbestämmningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämmningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många använadre ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter MySQLdb\cite{mysqldb}. MySQLdb erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
 
 Nedan följer ett exempel på informationen om en referenspunkt som vi hämtar från databasen:
@@ -580,7 +594,7 @@ Nedan följer ett exempel på informationen om en referenspunkt som vi hämtar f
 Det samma gäller för fälten \textit{MAC 2 - RSSI MAC 2} samt \textit{MAC 3 - RSSI MAC 3}.
 
 
-\subsection{Uföra scanning av nätverksinformation} \label{scanning}
+\subsubsection{Uföra scanning av nätverksinformation} \label{scanning}
 %\TODO: SEBBE- här får du gärna bidra lite med din extrema kunskap om exakt hur scanningen går till
 Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att se vilken trådlös nätverksinformation som kan upptäckas. Det information som sparas vid scanningen är tillgängliga åtkommstpunkter samt tillhörande RSSI-värde (se sektion \ref{RSSI}). Vid den scanningen läses upp till 10 stycken tillgängliga åtkommstpunkter in och sorteras med hänsyn till vilken åtkommstpunkt som har högst RSSI-värde. Ett exempel på resultatet efter scanningen ser ut som föjler:
 
@@ -598,14 +612,14 @@ Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att 
         \newline MAC 10 = JJ:JJ:JJ:JJ:JJ:JJ,  RSSI = -65
   \end{itemize}
 
-\subsection{Algoritm för positionsbestämmning}
+\subsubsection{Algoritm för positionsbestämmning}
 För att utföra positionebestämmningen av klientenheten körs en algoritm i skriptet.
 Den algoritm som vi valde för positionsbestämmningen är en variant av KNN (se sektion \ref{KNN}). Vid algoritmer av typer KNN analyseras ett antal (K) Nearest Neigbours (NN). Eftersom vi har information om tre åtkomstpunkter för varje sparad referenspunkt analyserar vi tre st närmaste grannar, NN. Vi har valt att implementera en algoritm som vi utvecklat och som vi anser passa vårt syfte och möta våra krav på precision utan att generera för lång beräkningstid.
 Målet med algoritmen är att avgöra vilken sparad referenspunkt som befinner sig närmast klientenhetns fysiska position. Då algoritmen för att positionsbestämma en klientenhet körs kommer resultatet bli samma position som positionen för den bäst matchande referenspunkten.
 För att åstadkomma detta har vi använt två typer av positionsbestämningsmetoder som körs i skriptet hos klientenheten. Dessa två beskrivs nedan.
 
-\subsubsection{Metod 1 - Närliggande åtkomstpunkter}
-
+\paragraph{Metod 1 - Närliggande åtkomstpunkter}
+\leavevmode\\
 Metod 1 bygger på teorin att de referenspunkter som har åtkommstpunkter sparade som överensstämmer med de åtkommstpunkter med högst RSSI-värde i klienenhetens lista (se exempel i sektion \ref{scanning}) är de referenspunkter som befinner sig närmast klientenheten. Om det går att finna en referenspunkt vars tre åtkommstpunkter återfinns som top tre åtkommstpunkter i klientenhetens lista bör denna refeferenspunkt i teorin befinna sig i nära anslutning till klientenheten.
 Metod 1:s syfte är alltså att finna referenspunkter som har samma närmast intilliggande åtkomstpunkter som klientenheten.
 
@@ -629,7 +643,6 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
     En illustration av poängutdelningsprocessen ges i figurerna \ref{fig:MAC1},\ref{fig:MAC2},\ref{fig:MAC3} nedan.
     MAC-adresserna är åtkomstpunkternas unika namn.
 
-
   \begin{figure}[H]
     \centering
   	\includegraphics[width=10cm]{media/MAC_1.png}
@@ -652,40 +665,20 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
   \item \textbf{Steg 4}
   \newline
   Om fler än en referenspunkt slutar på samma poäng i steg 3 av algoritmen betyder det att vi inte bara med hjälp av att undersöka den inbördes ordningen för åtkommstpunkterna kan avgöra vilken som teoretiskt sett bör vara den som bäst överensstämmer med klientenhetens position. Vid de fall som detta uppstår vill vi ändå kunna utse en referenspunkt som den bäst matchande. Det gör vi genom att övergå till Metod 2 för positionsbestämning.
-
-
 \end{itemize}
 
-\subsubsection{Metod 2 - Analys av RSSI-värden}
+\paragraph{Metod 2 - Analys av RSSI-värden}
+\leavevmode\newline
 
+\subsection{Databasens uppbyggnad}\label{databasen}
 
-
-
-
-
-
-
-
-\section{Databasens uppbyggnad}\label{databasen}
-
-\section{Applikation för scanning vid referenspunkter}
-Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
-
-Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de fem mac-adresserna med högst RSSI-värde. Namnet på positionen samt de fem mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet med lämpligt %TODO Vad är lämpligt många??
-många referenspunkter. För att sedan populera databasen importerar man csv filen in till databasen.
-
-Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv filen och ersätta å:et med ett a eller liknande.
-
-\section{Webinterface för presentation av användares position}\label{webinterface}
+\subsection{Webinterface för presentation av användares position}\label{webinterface}
 Vi byggde detta i webapplikationsramverket Django samt Materialize%TODO referens
 för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som man enkelt kan starta lokalt. I vår implementation kan man köra den servern både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
 
 Webbapplikationen utgörs initial av en loginsida, där medarbetare på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När man har loggat in så har man möjlighet att se all medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
 
 Webbapplikationen erbjuder även en admin sida. Här kan man se alla användare, man kan ge behörigheter till olika användare. Om man är admin på webbapplikationen kan man tex ge andra användare behörighet till att se adminsidan alternativt ändra i adminsidan.
-
-
-\section{Vår produkt}
 
 \iffalse
 \section{DEL x}\label{sec:delX}
