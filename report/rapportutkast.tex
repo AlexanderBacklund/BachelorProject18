@@ -437,15 +437,17 @@ Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma 
 
 \subsection{Webapplikation för presentation av positionsinformation}
 Django är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Django kommer med en rad fördelar. Det är ett ramverk som utgår från MVC layout, %TODO referens!!
-detta innebär att man delar upp webapplikationen i models, views och controllers. I Django fall betyder det att koden blir väldigt välstrukturerad och lätt att hitta i.	 detta innebär att man delar upp
- webapplikationen i models, views och controllers. I Django fall betyder det att koden blir väldigt välstrukturerad och lätt att hitta i.
+detta innebär att man delar upp webapplikationen i models, views och controllers. I Django fall betyder det att koden blir väldigt välstrukturerad och lätt att hitta i.
+
 En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Bland en mängd andra säkerhetsåtgärder som Django erbjuder automatiskt så är det skyddat för SQL-injection %TODO referens
 vilket innebär att man inte kan utnyttja databaskommandon i användarinput för att ta sig in i databasen, och Session security %TODO referens
  som skyddar för att bara användare som verkligen har loggat in har tillgång till data som inloggade ska ha tillgång till.
-Eftersom vi hanterar känslig data så är detta väldigt viktiga aspekter för oss. Att det är inbyggt i Django är en stor fördel. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt.
+Eftersom vi hanterar känslig data så är detta väldigt viktiga aspekter för oss. Att det är inbyggt i Django är en stor fördel.
+
+En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt.
 
  Ett sista argument är att eftersom skriptet är skrivet i Python och Django bygger på Python. Då skulle man i framtiden enkelt kunna integrera de två.
- 
+
 \iffalse
 \subsection{Trilateration}
 Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf \cite{cook2005indoor}.
@@ -667,6 +669,46 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
 
 
 \section{Databasens uppbyggnad}\label{databasen}
+Databasen är hjärtat och den enda resursen som egentligen behöver delas mellan enheter i vårt system. Den håller data om referenspunkter och data om användare samt deras position.
+Varje delsystem som vi har konstruerat gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positions bestämning kontrollerar att man är en användare som finns och sedan lägger den in vilken position man har i de relationella tabellerna för vilken position varje användare samt historik. Webapplikationen som ska presentera datan på ett tydligt sätt går in och hämtar varje användare, länkar dessa med vilken position och presenterar detta.
+
+\subsection{Tabell för referenspunkter}
+Tabellen för referenspunkterna har vi konstruerat manuellt med SQL direkt in i databasen, se figur [Figur kommer] %TODO figur kommer
+Den är konstruerad som en enskild tabell kontra om man skulle dela upp den i två relationella tabeller vilket hade varit önskvärt om man vill uppnå 3NF [Referens].%TODO referns?
+Detta för att det vi har valt att skanningen ska resultera i en CSV-fil. CSV, står för comma seperated values och det är ett format som gör att man enkelt kan importera mängder av rader automatiskt.
+Tabellens struktur består av
+
+\begin{itemize}
+  \item id - som bara autoinkrementeras, ingen speciell funktion
+  \item position - positionen som referenspunkten ska innebära
+  \item address1 - MAC-addressen för den starkaste accesspunkten sorterat enligt RSSI
+  \item address2 - MAC-addressen för den näst starkaste accesspunkten sorterat enligt RSSI
+  \item address3 - MAC-addressen för den tredje starkaste accesspunkten sorterat enligt RSSI
+  \item rssi1 - RSSI för den starkaste accesspunkten sorterat enligt RSSI
+  \item rssi2 - RSSI för den näst starkaste accesspunkten sorterat enligt RSSI
+  \item rssi3 - RSSI för den tredje starkaste accesspunkten sorterat enligt RSSI
+\end{itemize}
+
+\subsection{Relationella tabeller för användare och deras position}
+Tabellerna som med hjälp av en Foreign Key [referens]%TODO referens
+kopplas ihop och håller användare och deras position, se figur [Figur kommer].%TODO figur
+Dessa är två tabeller som Django, webbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. Man skapar en modell, definierar vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
+
+Tabellen som håller användarinformation:s struktur består av
+\begin{itemize}
+  \item  u\_id - Primary Key som länkar till tabellen för användares position
+  \item  u\_username - användarens användarnamn
+  \item  u\_fullname - användarens för- och efternamn
+  \item  u\_show\_position - huruvida användaren vill visa sin position
+\end{itemize}
+
+Tabellen som håller användares position:s struktur består av
+\begin{itemize}
+  \item u\_id - Foreign Key som länkar till tabellen för användarinformation
+    u\_position - Användarens position
+    u\_datetime - Datum och tid som användarens position lades in i tabellen
+\end{itemize}
+
 
 \section{Applikation för scanning vid referenspunkter}
 Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
