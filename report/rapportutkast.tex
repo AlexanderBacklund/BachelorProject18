@@ -739,11 +739,11 @@ Vi ser då att referenspunkt 1 genererar ett lägre slutvärde än referenspunkt
 \subsection{Uppdatera databasen med klientenhetens position}
 Efter det att klientenhetens position är bestämmd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av MySQLdb (se sektion \ref{HamtaInfoDB}).
 
-\section{Databasens uppbyggnad}\label{databasen}
+\subsection{Databasens uppbyggnad}\label{databasen}
 Databasen är hjärtat och den enda resursen som egentligen behöver delas mellan enheter i vårt system. Den håller data om referenspunkter och data om användare samt deras position.
 Varje delsystem som vi har konstruerat gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positions bestämning kontrollerar att man är en användare som finns och sedan lägger den in vilken position man har i de relationella tabellerna för vilken position varje användare samt historik. Webapplikationen som ska presentera datan på ett tydligt sätt går in och hämtar varje användare, länkar dessa med vilken position och presenterar detta.
 
-\subsection{Tabell för referenspunkter}
+\subsubsection{Tabell för referenspunkter}
 Tabellen för referenspunkterna har vi konstruerat manuellt med SQL direkt in i databasen, se figur [Figur kommer] %TODO figur kommer
 Den är konstruerad som en enskild tabell kontra om man skulle dela upp den i två relationella tabeller vilket hade varit önskvärt om man vill uppnå 3NF [Referens].%TODO referns?
 Detta för att det vi har valt att skanningen ska resultera i en CSV-fil. CSV, står för comma seperated values och det är ett format som gör att man enkelt kan importera mängder av rader automatiskt.
@@ -760,7 +760,7 @@ Tabellens struktur består av
   \item rssi3 - RSSI för den tredje starkaste accesspunkten sorterat enligt RSSI
 \end{itemize}
 
-\subsection{Relationella tabeller för användare och deras position}
+\subsubsection{Relationella tabeller för användare och deras position}
 Tabellerna som med hjälp av en Foreign Key [referens]%TODO referens
 kopplas ihop och håller användare och deras position, se figur [Figur kommer].%TODO figur
 Dessa är två tabeller som Django, webbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. Man skapar en modell, definierar vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
@@ -989,6 +989,8 @@ Använd vettigt latex-bibliotek för kod, t.ex. \texttt{listings}.
 \item    De av er som skriver på engelska: ni MÅSTE använda korrekta verbformer beroende på om subjektet är en eller flera saker (``it has'' men ``they have'').
 \end{itemize}
 \fi
+
+\iffalse
 \section{Tidsplan}
 \subsection{Gantt-diagram}
 
@@ -1019,7 +1021,7 @@ Vi har delat upp våra milstolpar i två delar. En för systemt och en för rapp
 	\item 21/5 Koppla samman alla delsystem.
 	\item 28/5 Ett fungerande system. Programmerings stop.
 \end{itemize}
-
+\fi
 %TODO : 1) Hur ska vi kunna separera AP via våningar? (Vart ska det stå?)
 %TODO : 2) Fingerprinting varför bara en del? (Kommer inte ihåg vad jag menade med ni kanske gör)
 %TODO : 3) Kommunen hur ser det ut?
