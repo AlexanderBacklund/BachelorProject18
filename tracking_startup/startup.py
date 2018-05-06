@@ -236,6 +236,7 @@ def main():
     userList = getUsersFromDB(cur)
     userExists = checkIfUserInDB(userList, username)
     lastposition = ""
+    myPosition = ""
 
     #Kill it when given an incorrect Username
     if (not userExists):
