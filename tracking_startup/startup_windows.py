@@ -266,7 +266,7 @@ def main():
     username = askForUser()
     userList = getUsersFromDB(cur)
     userExists = checkIfUserInDB(userList, username)
-
+    lastposition = ""
     #Kill it when given an incorrect Username
     if (not userExists):
         print("user not recognized, terminating")
@@ -285,10 +285,11 @@ def main():
 
         userList = getUsersFromDB(cur)
         updateUserPosition(cur, username, myPosition ,datetime.datetime.now(), getUserID(userList,username))
-        db.commit()
-        print("Comitted to db")
+        if (myPosition != lastposition):
+            db.commit()
+            print("Comitted to db")
         time.sleep(20)
-
+        lastposition = myPosition
     #Leave me be
     ###############################################
     db.close()
