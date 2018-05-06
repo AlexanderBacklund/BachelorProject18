@@ -12,19 +12,14 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
+  {% load static %}
+  <link rel="stylesheet" href="{% static "show_position/css/index.css" %}">
 
   <title>Document</title>
 
 
 </head>
 <body>
-  <div class="container center-align">
-
-  <a href="{% url 'login' %}" class="waves-effect waves-light btn">Login</a>
-  <a href="{% url 'signup' %}" class="waves-effect waves-light btn">Signup</a>
-
-</div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -35,6 +30,12 @@
 {% block content %}
 {% endblock %}
 
+<div class="container center-align">
+
+  <a href="{% url 'login' %}" class="waves-effect waves-light btn cyan lighten-2">Go to login page</a>
+  <a href="{% url 'signup' %}" class="waves-effect waves-light btn cyan lighten-2">Go to signup page</a>
+
+</div>
 
 </body>
 </html>

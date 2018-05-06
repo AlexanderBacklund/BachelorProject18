@@ -27,7 +27,7 @@
         {% load static %}
         <img src="{% static "images/sebbe.jpg" %}"  alt="" class="hoverZoomLink">
         {% endif %}
-        {% if u.u_id == 12 %}
+        {% if u.u_id == 3 %}
         {% load static %}
         <img src="{% static "images/albin.jpg" %}"  alt="" class="hoverZoomLink">
         {% endif %}
@@ -35,9 +35,10 @@
       <div class="card-stacked">
         <div class="card-content">
           <span class="title">{{u.u_fullname}}</span>
+          {% if u.u_show_position %}
           <p>{{u.position}}</p>
-          <a href="#!" class="secondary-content"><i class="material-icons small">chat</i>
-          </a>
+          {% endif %}
+          <a href="#!" class="secondary-content"><i class="material-icons small">chat</i></a>
         </div>
       </div>
     </div>

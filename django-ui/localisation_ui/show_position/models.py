@@ -20,9 +20,10 @@ class Users_script(models.Model):
     u_id = models.AutoField(primary_key = True, unique = True)
     u_username = models.CharField(max_length = 64)
     u_fullname = models.CharField(max_length = 64)
+    u_show_position = models.BooleanField(default=True)
 
     def __str__(self):
-        return "UserID: "+str(self.u_id)+" Username:"+(self.u_username)
+        return "UserID: "+str(self.u_id)+" Username:"+(self.u_username) + " Show position: " +str(self.u_show_position)
 class User_position(models.Model):
     u_id = models.ForeignKey(Users_script, related_name = "users_name")
     u_position = models.CharField(max_length = 64)

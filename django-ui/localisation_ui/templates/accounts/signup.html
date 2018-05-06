@@ -1,12 +1,38 @@
 {% extends 'registration/base.html' %}
+{% load widget_tweaks %}
 
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+  <h2 class="center">Sign up</h2>
+
+<div class="container center-align">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+     <div>
+        <div class="row">
+        <div class="col s11">
+          {{ field.label }}<br class="black-text">
+          {{ field }}
+        </div>
+          {% if field.help_text %}
+        <div class="col s1">
+          <a class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="{{ field.help_text }}"><i style="margin-top: 20px" class="material-icons">help</i></a>
+        </div>
+          {% endif %}
+
+      </div>
+       {% for error in field.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+     </div>
+   {% endfor %}
+        <button class="waves-effect waves-light btn  light-green accent-4"type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
