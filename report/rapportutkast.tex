@@ -269,9 +269,14 @@ Den frågeställningen är svår för oss att besvara. Den slutsats som vi drog 
 %Efter att ha läst bakgrunden ska det vara uppenbart/lätt att förstå att syfte/mål är viktiga.
 \newpage
 \section{Syfte, mål, och motivation}
+\subsection{Syfte}
 Syftet med det här projektet är att utveckla ett enkelt och effektivt positioneringssystem för företag och organisationer som vill övergå till aktivitetsbaserade arbetsplatser(ABV). Systemet ska möjliggöra för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig. I första hand ämnar vi att undersöka huruvida det är möjligt att utveckla ett system som går att integrera med Skype for Buisness(SFB). SFB´s roll blir isåfall att vara del den av systemet som presenterar information om vart användare befinner sig. Visar det sig att en integration med SFB inte är genomförbar är andrahandsalternativet att utveckla ett eget system för att presentera informationen.
 
+\subsection{Motivation}
+
 Projektet motiveras av att många företag och organisationer övergår till aktivitetsbaserade arbetsplatser (ABV). Uppsala Kommun har påbörjat en sådan övergång och har uttryckt ett behov av att medarbetare bör kunna se vart deras kollegor befinner sig. Uppsala kommun har arbetsplatser på ett flertal adresser i Uppsala och beroende på arbetsuppgift ska deras medarbetare själva kunna bestämma var de vill utföra sina arbetsuppgifter. Uppsala Kommuns medarbetare använder sig av Skype for Business(SFB) som kommunikationsmedel och har framfört ett önskemål att det direkt i SFB-applikationen ska gå att se vart en användare befinner sig.
+
+\subsection{Mål}
 
 Vårt mål är att erbjuda ett system som såväl Uppsala Kommun som andra företag och organisationer som vill övergå till ABV ska kunna använda sig av. Systemet ska vara enkelt att introducera, enkelt att använda och enkelt att underhålla.
 
@@ -306,6 +311,7 @@ För att göra vårt system attraktivt vill vi det ska vara ett system som inte 
 %\end{itemize}
 
 \subsection{Avgränsningar}
+På grund av den begränsade tid 
 \iffalse Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er, och motiverar dessa avgränsningar. Detta förtydligar för läsaren som kanske hade förväntningar ni inte uppfyllt.
 
 (I tidiga versioner, men \emph{inte} i slutversionen, kan ni även beskriva vad som bara ska göras om tid/resurser/omständigheter räcker till. De sakerna kan ni då istället beskriva i Framtida arbete.)
@@ -426,7 +432,7 @@ Ju högre värde av \textit{k} som används vid analysen desto tillförlitligare
 En nackdel med KNN är att RSSI-värdet för de olika åtkostpunkterna kan variera över tid \cite{tian2013fingerprint}. Detta medför att för att upprätthålla en godtagbar exakthet bör varje referenspunkt scannas av vid jämna intervall.
 En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik position kan förändras om tillexempel möbleringen av rummen ändras radikalt. Då något sådant sker bör också intillliggande referenspunkter scannas om.
 
-\subsection{Mobilapplikation}
+\subsection{Andrioidapplikationsutveckling}
 Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av programmet används Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar programmet i android är att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder.
 
 \subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna}
