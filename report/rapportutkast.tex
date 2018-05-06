@@ -285,7 +285,7 @@ Vårt målsättning i ett prestandamässigt avseende är att då vårt system ä
 Vår förhoppning är att det här systemet löser några av de dagliga praktiska problemen hos företag och organisationer som övergår till aktivitetsbaserade arbetsplatser. Förhoppningsvis kan detta också leda till att företag som överväger att övergå till ABV kommer känna mindre oro över att det dagliga arbetet behöver störas av problem med att hitta sina medarbetare.
 
 \iffalse
-Det finns sedan tidigare andra system som erbjuder inomhuspositionering. Vissa av dessa använder sig av extra hårdvara såsom Bluetooth Beacons. Vid användning av Bluetooth Beacons installeras först bluetoothenheter runt om på arbetsplatsen. Därefter sker positionsbestämmningen med hjälp av analys av signaler från dessa Beacons(enheter). \fi
+Det finns sedan tidigare andra system som erbjuder inomhuspositionering. Vissa av dessa använder sig av extra hårdvara såsom Bluetooth Beacons. Vid användning av Bluetooth Beacons installeras först bluetoothenheter runt om på arbetsplatsen. Därefter sker positionsbestämningen med hjälp av analys av signaler från dessa Beacons(enheter). \fi
 För att göra vårt system attraktivt vill vi det ska vara ett system som inte kräver extra hårdvara och som inte heller kräver nya applikationer för användarna. Vårt system ska istället använda medel och teknik som redan finns på arbetsplatserna, framför allt trådlösa internetanslutningar.
 
 
@@ -311,7 +311,9 @@ För att göra vårt system attraktivt vill vi det ska vara ett system som inte 
 %\end{itemize}
 
 \subsection{Avgränsningar}
-På grund av den begränsade tid 
+På grund av den begränsade tid vi har haft att arbeta på det här projektet har vi varit tvungna att göra vissa avgränsningar.
+Vi har valt att endast använda oss Fingerprintingtekniken för positionsbestämning (se sektion \ref{fingerprinting}). Det finns ett ytterligare tekniker som vi skulle kunnat använda oss av i kombination med fingerprintingtekniken, tillexempel trilateration (se sektion \ref{triangulering}). Även vid användning av fingerprintingtekniken finns olika typer av algoritmer som används för positionsbestämningen. Några exempel är 
+
 \iffalse Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er, och motiverar dessa avgränsningar. Detta förtydligar för läsaren som kanske hade förväntningar ni inte uppfyllt.
 
 (I tidiga versioner, men \emph{inte} i slutversionen, kan ni även beskriva vad som bara ska göras om tid/resurser/omständigheter räcker till. De sakerna kan ni då istället beskriva i Framtida arbete.)
@@ -418,14 +420,14 @@ RSSI är ett mått på signalstyrkan från en trådlös åtkomstpunkt. RSSI mät
 Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning (se sektion \ref{referenspunkter}). Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas. %TODO: fixa en bild
 Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värdena för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten \cite{IP1}\cite{jun2018low}.
 Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och accepterad metod i system för inomhuspositionering finns det vissa problem med den här tekniken\cite{IP1}.
-Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten \cite{IP1}. Ett annat problem med Fingerprintingtekniken och som beskrivs av Lui m. fl \cite{problem_with_RSSI} är att mätningar av RSSI-värdet till olika åtkommstpunkter kan variera beroende på vilken hårdvara som används för mätningarna. Det betyder att olika RSSI-värden kan uppkomma för samma åtkommstpunkt vid samma mätningsplats. Detta kan leda till att jämförelsen av RSSI-värden för referenspunkter och klientenheter kan bli icke tillförlitlig i de fall hårdvaruskillnader i de olika enheterna förekommer. Därmed kan dessa hårvaruskillnader göra att precisionen försämras då en klientenhet ska positionsbestämmas\cite{problem_with_RSSI}. En övervägande fördel med Fingerprintingtekniken är däremot att ingen extra hårdvara behöver installeras i lokalerna. Fingerprintingtekniken utnyttjar endast befinntlig nätverksinformation i lokalerna.
+Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten \cite{IP1}. Ett annat problem med Fingerprintingtekniken och som beskrivs av Lui m. fl \cite{problem_with_RSSI} är att mätningar av RSSI-värdet till olika åtkomstpunkter kan variera beroende på vilken hårdvara som används för mätningarna. Det betyder att olika RSSI-värden kan uppkomma för samma åtkomstpunkt vid samma mätningsplats. Detta kan leda till att jämförelsen av RSSI-värden för referenspunkter och klientenheter kan bli icke tillförlitlig i de fall hårdvaruskillnader i de olika enheterna förekommer. Därmed kan dessa hårvaruskillnader göra att precisionen försämras då en klientenhet ska positionsbestämmas\cite{problem_with_RSSI}. En övervägande fördel med Fingerprintingtekniken är däremot att ingen extra hårdvara behöver installeras i lokalerna. Fingerprintingtekniken utnyttjar endast befinntlig nätverksinformation i lokalerna.
 
 \subsection{Referenspunkter i samband med Fingerprintingmetoden}\label{referenspunkter}
 När Fingerprintingmetoden används vid inomhuspositionering uppmäts ett antal referenspunkter i de lokaler där inomhuspositionering ska kunna tillämpas\cite{yiu2017wireless}\cite{IP1}.
-En referenspunkt bestäms som en specifik position i en lokal där man gör mätningar av den trådlösa nätverksinformationen. Det som analyseras vid dessa mätningar är vilka trådlösa åtkomstpunkter, vanligvis routrar, som går att ansluta till vid referenspunktens position. För varje åtkomstpunkt som upptäcks vid analysen av den trådlösa nätverksmiljön mäts även signalstyrkan till respektive åtkomstpunkt. Signalstyrkan mäts i form av ett RSSI-värde. När referenspunkterna utmätts sparar man information om ett visst antal åtkomstpunkter vid den specifika referenspunkten samt RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Vanligtvis sparas information om de åtkomstpunkter som anses befinna sig närmast referenspunkten, detta baserat på RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Denna information i kombination med information om vart i lokalen referenspunkten är utmätt lagras i en databas. Referenspunkter utmäts i ett rutmönster, med en area på 1-4 $m^2$ för bästa resultat\cite{yiu2017wireless}, i de lokaler där man vill kunnna utföra inomhuspositionering\cite{IP1}. När mätningar är utförda vid varje referenspunkt finns tillräcklig information som behövs för att kunna utföra positionsbestämmning lagrad i en databas. Denna lagrade nätverksinformation i referenspunkterna används som referenser till olika platser i lokalerna för att kunna positionsbestämma enheter som befinner sig i byggnaden\cite{yiu2017wireless}\cite{IP1}.
+En referenspunkt bestäms som en specifik position i en lokal där man gör mätningar av den trådlösa nätverksinformationen. Det som analyseras vid dessa mätningar är vilka trådlösa åtkomstpunkter, vanligvis routrar, som går att ansluta till vid referenspunktens position. För varje åtkomstpunkt som upptäcks vid analysen av den trådlösa nätverksmiljön mäts även signalstyrkan till respektive åtkomstpunkt. Signalstyrkan mäts i form av ett RSSI-värde. När referenspunkterna utmätts sparar man information om ett visst antal åtkomstpunkter vid den specifika referenspunkten samt RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Vanligtvis sparas information om de åtkomstpunkter som anses befinna sig närmast referenspunkten, detta baserat på RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Denna information i kombination med information om vart i lokalen referenspunkten är utmätt lagras i en databas. Referenspunkter utmäts i ett rutmönster, med en area på 1-4 $m^2$ för bästa resultat\cite{yiu2017wireless}, i de lokaler där man vill kunnna utföra inomhuspositionering\cite{IP1}. När mätningar är utförda vid varje referenspunkt finns tillräcklig information som behövs för att kunna utföra positionsbestämning lagrad i en databas. Denna lagrade nätverksinformation i referenspunkterna används som referenser till olika platser i lokalerna för att kunna positionsbestämma enheter som befinner sig i byggnaden\cite{yiu2017wireless}\cite{IP1}.
 Att mäta ut referenspunkter och utföra mätningar är något som sker i en inlärningsfas av ett positioneringssystem\cite{tian2013fingerprint}. Nackdelen med detta är att det kan vara tidskrävande arbete samt att nya mätningar måste utföras om den trådlösa infrastrukturen i byggnaden förändras\cite{IP1}.
 
-\subsection{Metod för positionsbestämmning, K Nearest Neighbor - KNN}\label{KNN}
+\subsection{Metod för positionsbestämning, K Nearest Neighbor - KNN}\label{KNN}
 När metoden fingerprinting\footnote{Se sektion \ref{fingerprinting}} används för positionsbestämning krävs en algoritm för att analysera värden på Received Signal Strength Indikation (RSSI) för klientenheten i förhållande till RSSI-värden för referenspunkterna. Vid olika tillämpningar av fingerprinting kan olika algoritmer användas \cite{tian2013fingerprint}\cite{jun2018low}. En av de vanligaste typerna av algoritmer är versioner av KNN \cite{tian2013fingerprint}.
 Bokstaven k står för antalet "nearest neighbors"(närmaste grannar). Vid den mest simpla varianten, då k = 1 (1NN), görs en RSSI-scanning hos klientenheten av vilken närliggande åtkomstpunkt som har lägst försvagning av signalstyrka. Den åtkomstpunkt med lägst försvagning antas vara den som är finns närmast. Därefter jämför man med RSSI-värdet för de referenspunkter som finns registrerade och finner den referenspunkt vars lagrade RSSI-värde matchar bäst. Klientenhetens position uppskattas till samma position som för den referenspunkt som matchade bäst.
 Ju högre värde av \textit{k} som används vid analysen desto tillförlitligare blir positioneringen.\cite{yiu2017wireless}
@@ -547,10 +549,10 @@ Kraven på presentationen av medarbetares position är att det %TODO varför kra
 
 
 
-\section{Skript för positionsbestämmning}
+\section{Skript för positionsbestämning}
 
 
-Då en klientenhet ska kunna positionsbestämmas behöver klientenheten köra det skript som vi har utvecklat. För att genomföra positionsbestämmningen av en klientenhet utför skriptet följande uppgifter:
+Då en klientenhet ska kunna positionsbestämmas behöver klientenheten köra det skript som vi har utvecklat. För att genomföra positionsbestämningen av en klientenhet utför skriptet följande uppgifter:
 \begin{enumerate}
   \item \textbf{Registrerar vilken användare som kör skriptet}
   \item \textbf{Hämtar information om lokalernas referenspunkter från vår databas}
@@ -564,11 +566,11 @@ Nedan redogörs för hur de olika uppgifterna ovan genomförs.
 
 \subsection{Registrera vilken användare som kör skriptet}
 I den nuvarande versionen av systemet kommer skriptet be användaren om ett användarnamn.
-Användarnamnet verifieras därefter mot alla registrerade användare som finns i databasen (se sektion \ref{databasen}). Om användarnamnet som användaren anger inte matchar något användarnamn i databasen termineras skriptet. Anledningen är att endast godkända användare ska ha möjlighet att göra skriptet och ladda upp sin positionsinformation i databasen. Användare läggs till av systemadministratören från webinterfacet (se sektion ~\ref{webinterface}). I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämmningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår "proof of concept" version att be användaren om ett användarnamn.
+Användarnamnet verifieras därefter mot alla registrerade användare som finns i databasen (se sektion \ref{databasen}). Om användarnamnet som användaren anger inte matchar något användarnamn i databasen termineras skriptet. Anledningen är att endast godkända användare ska ha möjlighet att göra skriptet och ladda upp sin positionsinformation i databasen. Användare läggs till av systemadministratören från webinterfacet (se sektion ~\ref{webinterface}). I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår "proof of concept" version att be användaren om ett användarnamn.
 
 
 \subsection{Hämta information om referenspunkter från databasen}\label{HamtaInfoDB}
-För att kunna utföra positionsbestämmningen behöver klientenheten hämta information om referenspunkerna från databasen. Positionsbestämmningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämmningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många använadre ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter MySQLdb\cite{mysqldb}. MySQLdb erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
+För att kunna utföra positionsbestämningen behöver klientenheten hämta information om referenspunkerna från databasen. Positionsbestämningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många använadre ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter MySQLdb\cite{mysqldb}. MySQLdb erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
 
 Nedan följer ett exempel på informationen om en referenspunkt som vi hämtar från databasen:
 \begin{itemize}
@@ -588,7 +590,7 @@ Det samma gäller för fälten \textit{MAC 2 - RSSI MAC 2} samt \textit{MAC 3 - 
 
 \subsection{Uföra scanning av nätverksinformation} \label{scanning}
 %\TODO: SEBBE- här får du gärna bidra lite med din extrema kunskap om exakt hur scanningen går till
-Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att se vilken trådlös nätverksinformation som kan upptäckas. Det information som sparas vid scanningen är tillgängliga åtkommstpunkter samt tillhörande RSSI-värde (se sektion \ref{RSSI}). Vid den scanningen läses upp till 10 stycken tillgängliga åtkommstpunkter in och sorteras med hänsyn till vilken åtkommstpunkt som har högst RSSI-värde. Ett exempel på resultatet efter scanningen ser ut som föjler:
+Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att se vilken trådlös nätverksinformation som kan upptäckas. Det information som sparas vid scanningen är tillgängliga åtkomstpunkter samt tillhörande RSSI-värde (se sektion \ref{RSSI}). Vid den scanningen läses upp till 10 stycken tillgängliga åtkomstpunkter in och sorteras med hänsyn till vilken åtkomstpunkt som har högst RSSI-värde. Ett exempel på resultatet efter scanningen ser ut som föjler:
 
   \begin{itemize}
   \item Klientenhetsscanning exempel:
@@ -604,15 +606,15 @@ Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att 
         \newline MAC 10 = JJ:JJ:JJ:JJ:JJ:JJ,  RSSI = -65
   \end{itemize}
 
-\subsection{Algoritm för positionsbestämmning}
-För att utföra positionebestämmningen av klientenheten körs en algoritm i skriptet.
-Den algoritm som vi valde för positionsbestämmningen är en variant av KNN (se sektion \ref{KNN}). Vid algoritmer av typer KNN analyseras ett antal (K) Nearest Neigbours (NN). Eftersom vi har information om tre åtkomstpunkter för varje sparad referenspunkt analyserar vi tre st närmaste grannar, NN. Vi har valt att implementera en algoritm som vi utvecklat och som vi anser passa vårt syfte och möta våra krav på precision utan att generera för lång beräkningstid.
+\subsection{Algoritm för positionsbestämning}
+För att utföra positionebestämningen av klientenheten körs en algoritm i skriptet.
+Den algoritm som vi valde för positionsbestämningen är en variant av KNN (se sektion \ref{KNN}). Vid algoritmer av typer KNN analyseras ett antal (K) Nearest Neigbours (NN). Eftersom vi har information om tre åtkomstpunkter för varje sparad referenspunkt analyserar vi tre st närmaste grannar, NN. Vi har valt att implementera en algoritm som vi utvecklat och som vi anser passa vårt syfte och möta våra krav på precision utan att generera för lång beräkningstid.
 Målet med algoritmen är att avgöra vilken sparad referenspunkt som befinner sig närmast klientenhetns fysiska position. Då algoritmen för att positionsbestämma en klientenhet körs kommer resultatet bli samma position som positionen för den bäst matchande referenspunkten.
 För att åstadkomma detta har vi använt två typer av positionsbestämningsmetoder som körs i skriptet hos klientenheten. Dessa två beskrivs nedan.
 
 \subsubsection{Metod 1 - Närliggande åtkomstpunkter}
 
-Metod 1 bygger på teorin att de referenspunkter som har åtkommstpunkter sparade som överensstämmer med de åtkommstpunkter med högst RSSI-värde i klienenhetens lista (se exempel i sektion \ref{scanning}) är de referenspunkter som befinner sig närmast klientenheten. Om det går att finna en referenspunkt vars tre åtkommstpunkter återfinns som top tre åtkommstpunkter i klientenhetens lista bör denna refeferenspunkt i teorin befinna sig i nära anslutning till klientenheten.
+Metod 1 bygger på teorin att de referenspunkter som har åtkomstpunkter sparade som överensstämmer med de åtkomstpunkter med högst RSSI-värde i klienenhetens lista (se exempel i sektion \ref{scanning}) är de referenspunkter som befinner sig närmast klientenheten. Om det går att finna en referenspunkt vars tre åtkomstpunkter återfinns som top tre åtkomstpunkter i klientenhetens lista bör denna refeferenspunkt i teorin befinna sig i nära anslutning till klientenheten.
 Metod 1:s syfte är alltså att finna referenspunkter som har samma närmast intilliggande åtkomstpunkter som klientenheten.
 
 Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinner sig närmast klientenheten ser ut som följer:
@@ -620,17 +622,17 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
   \begin{itemize}
     \item \textbf{Steg 1}
     \newline
-    Analysera alla tillgängliga referenspunkter i databasen och sortera ut alla som har minst en åtkommstpunkt som överensstämmer med en åtkommstpunkt i listan hos klientenheten. Alla referenspunkter som har en överensstämmande åtkommstpunkt sparas för vidare beräkningar. Om ingen referenspunkt har en tillhörande åtkommstpunkt som återfinns i klientenhetens lista med åtkommstpunkter är inte positionsbestämmning möjligt och resultatet blir "position okänd".
+    Analysera alla tillgängliga referenspunkter i databasen och sortera ut alla som har minst en åtkomstpunkt som överensstämmer med en åtkomstpunkt i listan hos klientenheten. Alla referenspunkter som har en överensstämmande åtkomstpunkt sparas för vidare beräkningar. Om ingen referenspunkt har en tillhörande åtkomstpunkt som återfinns i klientenhetens lista med åtkomstpunkter är inte positionsbestämning möjligt och resultatet blir "position okänd".
     Detta steg görs för att slippa utföra mer krävande beräkningar på alla referenspunkter i databasen.
     \item \textbf{Steg 2}
     \newline
-    Utifrån de referenspunkter som sorterats fram från steg 1 görs en ny sortering. Nu undersöks vilket det högsta antalet matchande åtkommstpunkter är hos en referenspunkt. Det högsta möjliga antalet matchande åtkommstpunkter är 3 eftersom det finns 3 åtkommstpunkter lagrade för varje referenspunkt. Alla de referenspunkter som har samma högsta antal matchande referenspunkter sorteras ut och sparas.
-    Om det till exempel finns fyra referenspunkter vars alla tillhörande åtkommstpunkter finns med i klientenhetes lista sparas dessa fyra referenspunkter för vidare beräkningar. Syftet med detta steg är det samma som syftet i steg 1.
+    Utifrån de referenspunkter som sorterats fram från steg 1 görs en ny sortering. Nu undersöks vilket det högsta antalet matchande åtkomstpunkter är hos en referenspunkt. Det högsta möjliga antalet matchande åtkomstpunkter är 3 eftersom det finns 3 åtkomstpunkter lagrade för varje referenspunkt. Alla de referenspunkter som har samma högsta antal matchande referenspunkter sorteras ut och sparas.
+    Om det till exempel finns fyra referenspunkter vars alla tillhörande åtkomstpunkter finns med i klientenhetes lista sparas dessa fyra referenspunkter för vidare beräkningar. Syftet med detta steg är det samma som syftet i steg 1.
 
     \item \textbf{Steg 3}
     \newline
-    I steg 3 poängges alla kvarvarande referenspunkter baserat på hur väl ordningen i de åtkomstpunkter som finns lagrade för referenspunkten överensstämmer med ordningen för åtkommstpunkterna som är scannade av klientenheten. Eftersom både referenspunkternas och klientenhetens åtkommstpunkter är sorterade baserat på RSSI-värdet (signalstyrkan) kan detta ett poängsystem användas för att avgöra vilken referenspunkt som troligtvis är den som befinner sig närmast klientenheten.
-    Högsta möjliga poäng tilldelas en referenspunkt vars 3 lagrade åtkommstpunkter återfinns bland de tre åtkommstpunkerna med bäst signalstyrka hos klientenheten samt med samma inbördes ordning. Varje åtkommstpunkt hos referenspunkten jämförs med varje åtkommstpunkt i klienenhetens lista. Ju högre upp i listan åtkommstpunkten befinner sig, både i referenspunkten och i klientlistan, ju högra poäng tilldelas referenspunkten. När varje åtkommstpunkt i referenslistan jämförts läggs poängen för varje åtkommstpunkt ihop och ger referenspunktens slutgiltiga poäng.
+    I steg 3 poängges alla kvarvarande referenspunkter baserat på hur väl ordningen i de åtkomstpunkter som finns lagrade för referenspunkten överensstämmer med ordningen för åtkomstpunkterna som är scannade av klientenheten. Eftersom både referenspunkternas och klientenhetens åtkomstpunkter är sorterade baserat på RSSI-värdet (signalstyrkan) kan detta ett poängsystem användas för att avgöra vilken referenspunkt som troligtvis är den som befinner sig närmast klientenheten.
+    Högsta möjliga poäng tilldelas en referenspunkt vars 3 lagrade åtkomstpunkter återfinns bland de tre åtkomstpunkerna med bäst signalstyrka hos klientenheten samt med samma inbördes ordning. Varje åtkomstpunkt hos referenspunkten jämförs med varje åtkomstpunkt i klienenhetens lista. Ju högre upp i listan åtkomstpunkten befinner sig, både i referenspunkten och i klientlistan, ju högra poäng tilldelas referenspunkten. När varje åtkomstpunkt i referenslistan jämförts läggs poängen för varje åtkomstpunkt ihop och ger referenspunktens slutgiltiga poäng.
     Den referenspunkt som fått högst totapoäng bedömms vara den referenspunkt som befinner sig närmast klientenheten varvid klientenhetens position bestämms till samma position som för den vinnande referenspunkten.
     En illustration av poängutdelningsprocessen ges i figurerna \ref{fig:MAC1},\ref{fig:MAC2},\ref{fig:MAC3} nedan.
     MAC-adresserna är åtkomstpunkternas unika namn.
@@ -639,44 +641,44 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
   \begin{figure}[H]
     \centering
   	\includegraphics[width=10cm]{media/MAC_1.png}
-  	\caption{Poängsystem för åtkommstpunkt 1}
+  	\caption{Poängsystem för åtkomstpunkt 1}
   	\label{fig:MAC1}
   \end{figure}
   \begin{figure}[H]
     \centering
   	\includegraphics[width=10cm]{media/MAC_2.png}
-  	\caption{Poängsystem för åtkommstpunkt 2}
+  	\caption{Poängsystem för åtkomstpunkt 2}
   	\label{fig:MAC2}
   \end{figure}
   \begin{figure}[H]
     \centering
   	\includegraphics[width=10cm]{media/MAC_3.png}
-  	\caption{Poängsystem för åtkommstpunkt 3}
+  	\caption{Poängsystem för åtkomstpunkt 3}
   	\label{fig:MAC3}
   \end{figure}
 
   \item \textbf{Steg 4}
   \newline
-  Om fler än en referenspunkt slutar på samma poäng i steg 3 av algoritmen betyder det att vi inte bara med hjälp av att undersöka den inbördes ordningen för åtkommstpunkterna kan avgöra vilken som teoretiskt sett bör vara den som bäst överensstämmer med klientenhetens position. Vid de fall som detta uppstår vill vi ändå kunna utse en referenspunkt som den bäst matchande. Det gör vi genom att övergå till Metod 2 för positionsbestämning.
+  Om fler än en referenspunkt slutar på samma poäng i steg 3 av algoritmen betyder det att vi inte bara med hjälp av att undersöka den inbördes ordningen för åtkomstpunkterna kan avgöra vilken som teoretiskt sett bör vara den som bäst överensstämmer med klientenhetens position. Vid de fall som detta uppstår vill vi ändå kunna utse en referenspunkt som den bäst matchande. Det gör vi genom att övergå till Metod 2 för positionsbestämning.
 
 
 \end{itemize}
 
 \subsubsection{Metod 2 - Analys av RSSI-värden}
 
-I de fall som Metod 1 för positionsbestämmningen av en klientenhet inte har lyckats avgöra vilken referenspunkt som bäst matchar klientenhetens position behöver vi ytterligare en metod för att utse \textbf{en} specifik referenspunk som den bäst matchande. Om Metod 1 inte kunnat fastställa en specifik referenspunkt betyder det att två eller fler kandiderar om att vara bäst matchande. Dessa kandidater skickas vidare till Metod 2.
+I de fall som Metod 1 för positionsbestämningen av en klientenhet inte har lyckats avgöra vilken referenspunkt som bäst matchar klientenhetens position behöver vi ytterligare en metod för att utse \textbf{en} specifik referenspunk som den bäst matchande. Om Metod 1 inte kunnat fastställa en specifik referenspunkt betyder det att två eller fler kandiderar om att vara bäst matchande. Dessa kandidater skickas vidare till Metod 2.
 
-Metod 2 har till uppgift att analysera RSSI-värdet för varje åtkommstpunkt som återfinns i både referenspunktens och klientenhetens lista med åtkommstpunkter.
-Teorin som Metod 2 bygger på är att ju mindre RSSI-värdet skiljer sig åt för åtkommstpunkten till klientenhet respektive åtkommstpunkten till referenspunkt desto troligare är det att avståndet mellan åtkommstpunkt och klientenhet respektive åtkommstpunkt och referenspunkt är detsamma. Teorin illustreras i figur \ref{fig:TEO2} nedan.
+Metod 2 har till uppgift att analysera RSSI-värdet för varje åtkomstpunkt som återfinns i både referenspunktens och klientenhetens lista med åtkomstpunkter.
+Teorin som Metod 2 bygger på är att ju mindre RSSI-värdet skiljer sig åt för åtkomstpunkten till klientenhet respektive åtkomstpunkten till referenspunkt desto troligare är det att avståndet mellan åtkomstpunkt och klientenhet respektive åtkomstpunkt och referenspunkt är detsamma. Teorin illustreras i figur \ref{fig:TEO2} nedan.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=10cm]{media/TeoriMetod2.png}
-  \caption{Illustration av teorin bakom Metod 2 för positionsbestämmning}
+  \caption{Illustration av teorin bakom Metod 2 för positionsbestämning}
   \label{fig:TEO2}
 \end{figure}
 
-Teorin bakom Metod 2 bygger därmed på att om klientenheten och en referenspunkt har ett RSSI-värde till samma åtkomspunkt som överensstämmer så bör de även befinna sig på samma avstånd från åtkomstpunkten. Detta gäller tyvärr till viss del bara i teorin eftersom signalen från åtkommstpunkten kan reflekteras mot väggar, tak och annat möblemang vilket påverkar RSSI-värdet\cite{zanca2008experimental}. Ett annat problem som gör denna teori mindre tillförlitlig i praktiken är enligt Lui m. fl. att olika hårdvara för trådlös nätverksmottagning kan ge olika RSSI-värden trots identiska förhållanden\cite{problem_with_RSSI}. Dessa problem är anledningen till att vi väljer att implenentera Metod 2, som är baserad på denna teori, som ett eventuellt sista steg i positionsbestämmningen.
+Teorin bakom Metod 2 bygger därmed på att om klientenheten och en referenspunkt har ett RSSI-värde till samma åtkomspunkt som överensstämmer så bör de även befinna sig på samma avstånd från åtkomstpunkten. Detta gäller tyvärr till viss del bara i teorin eftersom signalen från åtkomstpunkten kan reflekteras mot väggar, tak och annat möblemang vilket påverkar RSSI-värdet\cite{zanca2008experimental}. Ett annat problem som gör denna teori mindre tillförlitlig i praktiken är enligt Lui m. fl. att olika hårdvara för trådlös nätverksmottagning kan ge olika RSSI-värden trots identiska förhållanden\cite{problem_with_RSSI}. Dessa problem är anledningen till att vi väljer att implenentera Metod 2, som är baserad på denna teori, som ett eventuellt sista steg i positionsbestämningen.
 
 Algoritmen för Metod 2 som är baserad på teorin beskriven ovan har vi konstruerat som följer.
 
@@ -686,8 +688,8 @@ Algoritmen för Metod 2 som är baserad på teorin beskriven ovan har vi konstru
   \item Den referenspunkt med lägst sammanlagd differans uppskattas till att vara den referenspunkt som befinner sig närmast klientenheten.
 \end{enumerate}
 
-Figur \ref{fig:MET2} ger är ett exempel på en situation när Metod 2 används och hur positionsbestämmningen går till.
-Observera att den åtkommstpunkt med högst RSSI-värde i klientenhetens list även är den åtkommstpunkt i båda referenspunkternas lista som har högst RSSI-värde.
+Figur \ref{fig:MET2} ger är ett exempel på en situation när Metod 2 används och hur positionsbestämningen går till.
+Observera att den åtkomstpunkt med högst RSSI-värde i klientenhetens list även är den åtkomstpunkt i båda referenspunkternas lista som har högst RSSI-värde.
 Observera även att det samma gäller för åtkomstpunkten med näst högst RSSI-värde.
 Det är viktigt att dessa observationer påpekas då det endast är i dessa fall som Metod 2 används.
 
@@ -699,7 +701,7 @@ Det är viktigt att dessa observationer påpekas då det endast är i dessa fall
 \end{figure}
 
 Det som sker i figur \ref{fig:MET2} är att både referenspunkt 1, referenspunkt 2 och klientenheten har åtkomstpunkt 1 som den åtkomstpunkt vars RSSI-värde är lägst.
-Både referenspunkt 1, referenspunkt 2 och klientenheten har även gemensamt att åtkommstpunkt 2 är den åtkomstpunkt vars uppmätta RSSI-värde är näst högst.
+Både referenspunkt 1, referenspunkt 2 och klientenheten har även gemensamt att åtkomstpunkt 2 är den åtkomstpunkt vars uppmätta RSSI-värde är näst högst.
 Vi antar att både referenspunkt 1 och referenspunkt 2:s tredje registrerade åtkomstpunkt inte finns med i klientenhetens lista över åtkomstpunkter.
 Beräkningarna som följer ser då ut på följande sätt.
 
