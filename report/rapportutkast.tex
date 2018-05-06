@@ -453,7 +453,7 @@ En av anledningarna till att vi använder detta språk är för att det finns m�
 
 Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter en producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek och sätta oss in i Windows-utveckling till ett skript som inte ska vara särskilt omfattande.
 
-\subsection{Webapplikation för presentation av positionsinformation}
+\subsection{Webapplikation för presentation av positionsinformation}\label{django}
 Django är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Django kommer med en rad fördelar. Det är ett ramverk som utgår från MVC layout, %TODO referens!!
 detta innebär att man delar upp webapplikationen i models, views och controllers. I Django fall betyder det att koden blir väldigt välstrukturerad och lätt att hitta i.
 
@@ -548,17 +548,17 @@ Mellan systemet som it-teknikern använder och databasen så måste data förfly
 %
 % Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, en\-käter, fokusgrupper\ldots).
 % Beskriv hur externa intressenter involveras i utvärderingen.
-Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot krascher, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. På grund av tidsbrist kommer vi att endast utföra 1000 manuella tester på vår intressents arbetsplats. Utifrån dessa tester kan vi se hur stor procent av testerna som lyckades beräkna rätt position. Vårat krav är att systemet ska 90\% av fallen lyckas positionera arbetaren rätt.\iffalse Vi har även tänkt stresstesta och belastningstesta våran databas.\fi % TODO Hur och vad förväntar vi oss?
+Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot kraschar, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. Vårt krav är att systemet i minst 95\% av fallen lyckas ska positionera användaren rätt. På grund av tidsbrist kommer vi att endast utföra 1000 manuella tester på vår intressents arbetsplats. Utifrån dessa tester kan vi se hur stor procent av testerna som lyckades beräkna rätt position. \iffalse Vi har även tänkt stresstesta och belastningstesta våran databas.\fi % TODO Hur och vad förväntar vi oss?
 
 \subsection{Skanningsapplikation för referenspunkter}
--Systemet där mappningen sker ska vara ett lättförståeligt och självgående system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till en aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker %TODO varför krav? hur ska det utvärderas?
+Scannsingsapplikationen ska vara ett lättförståeligt och lättanvänt system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till en aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker och måste göras innan någon positionsbestämmning kan ske.  Vi vill att det ska vara enkelt att använda vår scanningsapplikation eftersom det kan vara ett övertygande argument för att använda vårt system i sin helhet. Användarvänligheten kommer utvärderas genom att personal från vår intressent får gå med och använda applikationen när vi utför våra övriga tester och därefter ge feedback på användarvänligheten.
 
 \subsection{Positionsbestämning}
-Vår intressent har en vision om att man ska integrerat i deras befintliga system ska kunna se vart deras kollegor befinner sig i Uppsala. Med det menas att man ska kunna se vilket kontor, vilken våning och i vilket område med en felmarginal på 10 meter. %TODO varför krav? hur ska det utvärderas?
+Vår intressent har en vision om att man ska kunna se vilket kontor, vilken våning och i vilket område på våningen en medarbetare befinner sig. Detta med en felmarginal på max 10 meter. Vi har själva satt upp krav på en felmarginal på max 5 meter eftersom vi tror att det att möjligt att uppnå. Kraven på exakthet finns eftersom det precisionen i positionsbetsämmningen är en förutsättning för att systemet i sin helet ska fylla någon funktion. Vi kommer utföra två precisionstester av vårt system. Det ena formella testet kommer utföras i vår klients, Uppsala Komuns, lokaler. Det andra, mer informella testet, kommer ske i Uppsala Universitets lokaler på Pollacksbacken. Utvärderingen kommer ske på så sätt att vi kommer positionsbestämma en enhet 1000 gånger och för varje gång granska om den beräknade positionen överensstämmer med den faktiska.
 
 \subsection{Användarerfarenheter av webapplikation}
-Kraven på presentationen av medarbetares position är att det %TODO varför krav? hur ska det utvärderas?
-
+Kraven på presentationen av medarbetarnas position är att det ska vara enkelt att i vår webapplikation se vart en medarbetare befinner sig. Detta är ett krav som vi bedömmer vara viktigt för att kunna demonstrera vårt system på ett bra sätt. För vår intressent kommer detta inte vara ett prioriterat krav eftersom de vid eventuell lansering planerar att presentera positionsinformationen via en medarbetarportal på deras interna nät.
+Vi kommer utvärdera denna del av systemet genom att låte en extern person navigera i vår webapplikation och därigenom utvärdera användarvänligheten.
 
 
 \section{Vår produkt}
@@ -768,7 +768,7 @@ Tabellens struktur består av
 \subsubsection{Relationella tabeller för användare och deras position}
 Tabellerna som med hjälp av en Foreign Key [referens]%TODO referens
 kopplas ihop och håller användare och deras position, se figur [Figur kommer].%TODO figur
-Dessa är två tabeller som Django, webbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. Man skapar en modell, definierar vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
+Dessa är två tabeller som Django (se sektion \ref{django}), webbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. Man skapar en modell, definierar vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
 
 Tabellen som håller användarinformation:s struktur består av
 \begin{itemize}
@@ -778,7 +778,7 @@ Tabellen som håller användarinformation:s struktur består av
   \item  u\_show\_position - huruvida användaren vill visa sin position
 \end{itemize}
 
-Tabellen som håller användares position:s struktur består av
+Tabellen som håller en användares positions struktur består av
 \begin{itemize}
   \item u\_id - Foreign Key som länkar till tabellen för användarinformation
   \item u\_position - Användarens position
@@ -789,8 +789,7 @@ Tabellen som håller användares position:s struktur består av
 \subsection{Applikation för scanning vid referenspunkter}
 Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
 
-Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de fem mac-adresserna med högst RSSI-värde. Namnet på positionen samt de fem mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet med lämpligt %TODO Vad är lämpligt många??
-många referenspunkter. För att sedan populera databasen importerar man csv filen in till databasen.
+Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de fem mac-adresserna med högst RSSI-värde. Namnet på positionen samt de fem mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet ett lämpligt antal referenspunkter, vilket är med en till två meters mellanrum (se sektion \ref{referenspunkter}). För att sedan populera databasen importerar man csv filen in till databasen.
 
 Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv filen och ersätta å:et med ett a eller liknande.
 
@@ -838,7 +837,7 @@ Relatera till mål och syften etc i avsnitt~\ref{sec:syfte}.
 
 Vi har ett fullt fungerande system som kan visa vart en medarbetare befinner sig inom ett område som har blivit nätverksskannad innan. Personen ska även finnas med i vår databas där alla referenspunkter och användare är sparade. Medarbetarnas position visas i en webbapplikation där man även kan välja att inte delge sin egen position. Vi kan uppskatta en medarbetares position med en radie på \ldots %TODO fyll i med verkliga siffror
 
-Vår initiala plan var att interagera vår positionsbestämnings algoritm med Skype for buisness. Detta visade sig vara omöjligt att göra då Skype inte hade denna funktionalitet i den version som vår intressent hade. Detta medförde att vår plan förändrades och blev istället att göra ett eget oberoende system.
+Vår initiala plan var att interagera vår positionsbestämningsalgoritm med Skype for buisness. Detta visade sig vara omöjligt att göra då den version av Skype for Business som vår intressent hade inte hade denna funktionalitet som krvädes. Detta medförde att vår plan förändrades och blev istället att göra ett eget system oberoende av Skype.
 
 
 \section{Slutsatser}
