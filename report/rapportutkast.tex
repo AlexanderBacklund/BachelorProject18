@@ -269,9 +269,14 @@ Den frågeställningen är svår för oss att besvara. Den slutsats som vi drog 
 %Efter att ha läst bakgrunden ska det vara uppenbart/lätt att förstå att syfte/mål är viktiga.
 \newpage
 \section{Syfte, mål, och motivation}
+\subsection{Syfte}
 Syftet med det här projektet är att utveckla ett enkelt och effektivt positioneringssystem för företag och organisationer som vill övergå till aktivitetsbaserade arbetsplatser(ABV). Systemet ska möjliggöra för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig. I första hand ämnar vi att undersöka huruvida det är möjligt att utveckla ett system som går att integrera med Skype for Buisness(SFB). SFB´s roll blir isåfall att vara del den av systemet som presenterar information om vart användare befinner sig. Visar det sig att en integration med SFB inte är genomförbar är andrahandsalternativet att utveckla ett eget system för att presentera informationen.
 
+\subsection{Motivation}
+
 Projektet motiveras av att många företag och organisationer övergår till aktivitetsbaserade arbetsplatser (ABV). Uppsala Kommun har påbörjat en sådan övergång och har uttryckt ett behov av att medarbetare bör kunna se vart deras kollegor befinner sig. Uppsala kommun har arbetsplatser på ett flertal adresser i Uppsala och beroende på arbetsuppgift ska deras medarbetare själva kunna bestämma var de vill utföra sina arbetsuppgifter. Uppsala Kommuns medarbetare använder sig av Skype for Business(SFB) som kommunikationsmedel och har framfört ett önskemål att det direkt i SFB-applikationen ska gå att se vart en användare befinner sig.
+
+\subsection{Mål}
 
 Vårt mål är att erbjuda ett system som såväl Uppsala Kommun som andra företag och organisationer som vill övergå till ABV ska kunna använda sig av. Systemet ska vara enkelt att introducera, enkelt att använda och enkelt att underhålla.
 
@@ -306,6 +311,7 @@ För att göra vårt system attraktivt vill vi det ska vara ett system som inte 
 %\end{itemize}
 
 \subsection{Avgränsningar}
+På grund av den begränsade tid
 \iffalse Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er, och motiverar dessa avgränsningar. Detta förtydligar för läsaren som kanske hade förväntningar ni inte uppfyllt.
 
 (I tidiga versioner, men \emph{inte} i slutversionen, kan ni även beskriva vad som bara ska göras om tid/resurser/omständigheter räcker till. De sakerna kan ni då istället beskriva i Framtida arbete.)
@@ -359,7 +365,7 @@ Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det 
 \subsection{Liknande system}
 Här beskriv system som i viss mån liknar vårt system och som vi tycker är värda att nämna.
 \subsubsection{AnyPlace}
-AnyPlace är ett befintligt system som har erbjuder inomhuspositioneringsservice samt inomhusnavigeringsservice. För positionering av enheter vid inomhusnavigering använder sig AnyPlace främst av tekniken Fingerprinting (se sektion 4.3) och uppger att de åstadkom en noggrannhet på 1.96 meter vid tävlingen Microsoft Indoor Localization Competition \cite{anyplace}
+AnyPlace är ett befintligt system som har erbjuder inomhuspositioneringsservice samt inomhusnavigeringsservice. För positionering av enheter vid inomhusnavigering använder sig AnyPlace främst av tekniken Fingerprinting (se sektion \ref{fingerprinting}) och uppger att de åstadkom en noggrannhet på 1.96 meter vid tävlingen Microsoft Indoor Localization Competition \cite{anyplace}
 \cite{IPS_tavling}.
 För navigeringssystemet använder AnyPlace en karta baserat på goolge maps för en övergripande karta. I den övergripande kartan går det att välja vissa byggnaders planritningar där AnyPlace har stöd för inomhuspositionering. AnyPlace´s positioneringssystem används för att bestämma en enhets position i byggnaden och kan därefter användas för inomhusnavigering.
 
@@ -431,7 +437,7 @@ Ju högre värde av \textit{k} som används vid analysen desto tillförlitligare
 En nackdel med KNN är att RSSI-värdet för de olika åtkostpunkterna kan variera över tid \cite{tian2013fingerprint}. Detta medför att för att upprätthålla en godtagbar exakthet bör varje referenspunkt scannas av vid jämna intervall.
 En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik position kan förändras om tillexempel möbleringen av rummen ändras radikalt. Då något sådant sker bör också intillliggande referenspunkter scannas om.
 
-\subsection{Mobilapplikation}
+\subsection{Andrioidapplikationsutveckling}
 Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av programmet används Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar programmet i android är att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder.
 
 \subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna}
@@ -575,7 +581,7 @@ I den nuvarande versionen av systemet kommer skriptet be användaren om ett anv�
 Användarnamnet verifieras därefter mot alla registrerade användare som finns i databasen (se sektion \ref{databasen}). Om användarnamnet som användaren anger inte matchar något användarnamn i databasen termineras skriptet. Anledningen är att endast godkända användare ska ha möjlighet att göra skriptet och ladda upp sin positionsinformation i databasen. Användare läggs till av systemadministratören från webinterfacet (se sektion ~\ref{webinterface}). I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämmningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår "proof of concept" version att be användaren om ett användarnamn.
 
 
-\subsubsection{Hämta information om referenspunkter från databasen}
+\subsection{Hämta information om referenspunkter från databasen}\label{HamtaInfoDB}
 För att kunna utföra positionsbestämmningen behöver klientenheten hämta information om referenspunkerna från databasen. Positionsbestämmningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämmningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många använadre ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter MySQLdb\cite{mysqldb}. MySQLdb erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
 
 Nedan följer ett exempel på informationen om en referenspunkt som vi hämtar från databasen:
@@ -669,10 +675,79 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
 
 \paragraph{Metod 2 - Analys av RSSI-värden}
 \leavevmode\newline
+I de fall som Metod 1 för positionsbestämmningen av en klientenhet inte har lyckats avgöra vilken referenspunkt som bäst matchar klientenhetens position behöver vi ytterligare en metod för att utse \textbf{en} specifik referenspunk som den bäst matchande. Om Metod 1 inte kunnat fastställa en specifik referenspunkt betyder det att två eller fler kandiderar om att vara bäst matchande. Dessa kandidater skickas vidare till Metod 2.
 
-\subsection{Databasens uppbyggnad}\label{databasen}
+Metod 2 har till uppgift att analysera RSSI-värdet för varje åtkommstpunkt som återfinns i både referenspunktens och klientenhetens lista med åtkommstpunkter.
+Teorin som Metod 2 bygger på är att ju mindre RSSI-värdet skiljer sig åt för åtkommstpunkten till klientenhet respektive åtkommstpunkten till referenspunkt desto troligare är det att avståndet mellan åtkommstpunkt och klientenhet respektive åtkommstpunkt och referenspunkt är detsamma. Teorin illustreras i figur \ref{fig:TEO2} nedan.
 
-\subsection{Webinterface för presentation av användares position}\label{webinterface}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{media/TeoriMetod2.png}
+  \caption{Illustration av teorin bakom Metod 2 för positionsbestämmning}
+  \label{fig:TEO2}
+\end{figure}
+
+Teorin bakom Metod 2 bygger därmed på att om klientenheten och en referenspunkt har ett RSSI-värde till samma åtkomspunkt som överensstämmer så bör de även befinna sig på samma avstånd från åtkomstpunkten. Detta gäller tyvärr till viss del bara i teorin eftersom signalen från åtkommstpunkten kan reflekteras mot väggar, tak och annat möblemang vilket påverkar RSSI-värdet\cite{zanca2008experimental}. Ett annat problem som gör denna teori mindre tillförlitlig i praktiken är enligt Lui m. fl. att olika hårdvara för trådlös nätverksmottagning kan ge olika RSSI-värden trots identiska förhållanden\cite{problem_with_RSSI}. Dessa problem är anledningen till att vi väljer att implenentera Metod 2, som är baserad på denna teori, som ett eventuellt sista steg i positionsbestämmningen.
+
+Algoritmen för Metod 2 som är baserad på teorin beskriven ovan har vi konstruerat som följer.
+
+\begin{enumerate}
+  \item Differansen i RSSI-värde för klientenheten samt för en referenspunkt till samma åtkomstpunkt beränas och sparas. Detta görs för varje överensstämmande åtkommspunkt hos en referenspunkt och klientenheten.
+  \item Differanserna i RSSI-värde för varje överensstämmande åtkomstpunkt adderas. Detta gör att varje referenspunkt får ett sammanlagt värde på differanserna uppmätta i steg 1.
+  \item Den referenspunkt med lägst sammanlagd differans uppskattas till att vara den referenspunkt som befinner sig närmast klientenheten.
+\end{enumerate}
+
+Figur \ref{fig:MET2} ger är ett exempel på en situation när Metod 2 används och hur positionsbestämmningen går till.
+Observera att den åtkommstpunkt med högst RSSI-värde i klientenhetens list även är den åtkommstpunkt i båda referenspunkternas lista som har högst RSSI-värde.
+Observera även att det samma gäller för åtkomstpunkten med näst högst RSSI-värde.
+Det är viktigt att dessa observationer påpekas då det endast är i dessa fall som Metod 2 används.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{media/MET2.png}
+  \caption{Exempel på när användning av Metod kan förekomma}
+  \label{fig:MET2}
+\end{figure}
+
+Det som sker i figur \ref{fig:MET2} är att både referenspunkt 1, referenspunkt 2 och klientenheten har åtkomstpunkt 1 som den åtkomstpunkt vars RSSI-värde är lägst.
+Både referenspunkt 1, referenspunkt 2 och klientenheten har även gemensamt att åtkommstpunkt 2 är den åtkomstpunkt vars uppmätta RSSI-värde är näst högst.
+Vi antar att både referenspunkt 1 och referenspunkt 2:s tredje registrerade åtkomstpunkt inte finns med i klientenhetens lista över åtkomstpunkter.
+Beräkningarna som följer ser då ut på följande sätt.
+
+Vi jämför först RSSI-värdena för klientenheten och referenspunkt 1 i förhållande till åtkomstpunkterna 1 och 2.
+
+Först mot åtkomstpunkt 1: $$ RSSI (KE,\verb|Å|1)  -  RSSI (R1,\verb|Å|1) = -30 - (- 40) = 10 $$
+
+Sedan mot åtkomstpunkt 2: $$ RSSI (KE,\verb|Å|2)  -  RSSI (R1,\verb|Å|2) = -50 - (- 60) = 10 $$
+
+Därefter adderas resultaten för analysen av referensunkt 1: $$ 10 + 10 = 20$$
+
+Vi jämför därefter RSSI-värdena för klientenheten och referenspunkt 2 i förhållande till åtkomstpunkterna 1 och 2.
+
+Först mot åtkomstpunkt 1: $$ RSSI (KE,\verb|Å|1)  -  RSSI (R2,\verb|Å|1) = -30 - (- 50) = 20 $$
+
+Sedan mot åtkomstpunkt 2: $$ RSSI (KE,\verb|Å|2)  -  RSSI (R2,\verb|Å|2) = -50 - (- 70) = 20 $$
+
+Därefter adderas resultaten för analysen av referensunkt 2: $$ 20 + 20 = 40$$
+
+Vi ser då att referenspunkt 1 genererar ett lägre slutvärde än referenspunkt 2. Därmed antas referenspunkt 1 befinna sig närmare klientenheten och klientenhetens position uppskattas till samma position som för referenspunkt 1.
+
+\subsection{Uppdaterar databasen med klientenhetens position}
+Efter det att klientenhetens position är bestämmd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av MySQLdb (se sektion \ref{HamtaInfoDB}).
+
+
+
+\section{Databasens uppbyggnad}\label{databasen}
+
+\section{Applikation för scanning vid referenspunkter}
+Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
+
+Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de fem mac-adresserna med högst RSSI-värde. Namnet på positionen samt de fem mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet med lämpligt %TODO Vad är lämpligt många??
+många referenspunkter. För att sedan populera databasen importerar man csv filen in till databasen.
+
+Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv filen och ersätta å:et med ett a eller liknande.
+
+\section{Webinterface för presentation av användares position} \label{webinterface}
 Vi byggde detta i webapplikationsramverket Django samt Materialize%TODO referens
 för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som man enkelt kan starta lokalt. I vår implementation kan man köra den servern både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
 
