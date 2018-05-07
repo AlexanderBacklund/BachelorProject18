@@ -446,8 +446,14 @@ I denna del av rapporten beskriver vi våra system och hur de samverkar.
 Systemet som vi konstruerat kan delas in i tre delsystem samt en databas. Det första delsystemet där man kopplar nätverksinformation till en specifik plats. Det andra delsystemet som utför en algoritm för att bestämma en ungefärlig position. Det tredje delsystemet som presenterar all relevant information på ett tydligt sätt, och slutligen databasen som håller all data som är relevant för vårt samlade system.
 I följande figur \ref{fig:systemStruktur} ses systemet i sin helhet.
 
+\begin{figure}[H]
+	\includegraphics[width=15cm]{media/systemStruktur.png}
+	\caption{Systemstruktur}
+	\label{fig:systemStruktur}
+\end{figure}
+
 \subsection{Delsystem som kopplar nätverksinformation med en plats}
-Detta delsystem innefattar en Androidapplikation. Den ska användas av it-tekniker före användning av systemet. Applikationen används i förutbestämda referenspunkter i den aktivitetsbaserade verksamheten för att scanna nätverksinformation. Denna information kan användas för att användarenheter ska kunna beräkna sin position i förhållande till  dessa referenspunkter.  Nätverksinformationen importeras därefter till en databas. När referenspunkterna är inlagda kan man börja använda nästa delsystem.
+Detta delsystem innefattar en Androidapplikation. Den ska användas av it-tekniker före användning av systemet. Applikationen används i förutbestämda referenspunkter i den aktivitetsbaserade verksamheten för att scanna nätverksinformation. Denna information kan användas för att användarenheter ska kunna beräkna sin position i förhållande till dessa referenspunkter. Nätverksinformationen importeras därefter till en databas. När referenspunkterna är inlagda kan man börja använda nästa delsystem.
 
 \subsection{Delsystem som beräknar positionen}
 Detta delsystem innefattar en Python-klient som ska köras i bakgrunden på användardatorn.
@@ -459,13 +465,6 @@ Slutligen så finns det ett webb-interface. Detta system använder data som Pyth
 \subsection{Databasen som håller användare och positionsinformation}
 Databasen är av typen MySQL och den kommer samspela med alla de tre delsystemen. Den håller information om referenspunkter, användare och deras position.
 Mellan systemet som it-teknikern använder och databasen så måste data förflyttas manuellt. Detta med risk för att en automatiserad uppkoppling kan förstöra referenspunkter samt att inläggning in princip endast kommer ske en gång. Python-klienten använder sig av SQL-anrop till databasen för att extrahera referenspunkter, samt för att lägga in sin position kontinuerligt. Detsamma gäller webb-interfacet, den kör SQL-anrop till databasen för att presentera relevant information.
-
-\begin{figure}[H]
-	\includegraphics[width=15cm]{media/systemStruktur.png}
-	\caption{Systemstruktur}
-	\label{fig:systemStruktur}
-\end{figure}
-
 
 %\subsection{Alternativa lösningar}
 % Alternativa lösningar
@@ -507,15 +506,13 @@ Mellan systemet som it-teknikern använder och databasen så måste data förfly
 Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot kraschar, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. Vårt krav är att systemet i minst 95\% av fallen lyckas ska positionera användaren rätt. På grund av tidsbrist kommer vi att endast utföra 1000 manuella tester på vår intressents arbetsplats. Utifrån dessa tester kan vi se hur stor procent av testerna som lyckades beräkna rätt position. \iffalse Vi har även tänkt stresstesta och belastningstesta våran databas.\fi % TODO Hur och vad förväntar vi oss?
 
 \subsection{Skanningsapplikation för referenspunkter}
-Scanningsapplikationen ska vara ett lättförståeligt och lättanvänt system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till en aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker och måste göras innan någon positionsbestämning kan ske.  Vi vill att det ska vara enkelt att använda vår scanningsapplikation eftersom det kan vara ett övertygande argument för att använda vårt system i sin helhet. Användarvänligheten kommer utvärderas genom att personal från vår intressent får gå med och använda applikationen när vi utför våra övriga tester och därefter ge feedback på användarvänligheten.
+Scannsingsapplikationen ska vara ett lättförståeligt och lättanvänt system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till en aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker och måste göras innan någon positionsbestämmning kan ske. Vi vill att det ska vara enkelt att använda vår scanningsapplikation eftersom det kan vara ett övertygande argument för att använda vårt system i sin helhet. Användarvänligheten kommer utvärderas genom att personal från vår intressent får gå med och använda applikationen när vi utför våra övriga tester och därefter ge feedback på användarvänligheten.
 
 \subsection{Positionsbestämning}
-Vår intressent har en vision om att man ska kunna se vilket kontor, vilken våning och i vilket område på våningen en medarbetare befinner sig. Detta med en felmarginal på max 10 meter. Vi har själva satt upp krav på en felmarginal på max 5 meter eftersom vi tror att det att möjligt att uppnå. Kraven på exakthet finns eftersom det precisionen i positionsbestämning är en förutsättning för att systemet i sin helet ska fylla någon funktion. Vi kommer utföra två precisionstester av vårt system. Det ena formella testet kommer utföras i vår klients, Uppsala Kommuns, lokaler. Det andra, mer informella testet, kommer ske i Uppsala Universitets lokaler på Pollacksbacken. Utvärderingen kommer ske på så sätt att vi kommer positionsbestämma en enhet 1000 gånger och för varje gång granska om den beräknade positionen överensstämmer med den faktiska.
+Vår intressent har en vision om att man ska kunna se vilket kontor, vilken våning och i vilket område på våningen en medarbetare befinner sig. Detta med en felmarginal på max 10 meter. Vi har själva satt upp krav på en felmarginal på max 5 meter eftersom vi tror att det att möjligt att uppnå. Kraven på exakthet finns eftersom det precisionen i positionsbestämmningen är en förutsättning för att systemet i sin helet ska fylla någon funktion. Vi kommer utföra två precisionstester av vårt system. Det ena formella testet kommer utföras i vår klients, Uppsala Komuns, lokaler. Det andra, mer informella testet, kommer ske i Uppsala Universitets lokaler på Pollacksbacken. Utvärderingen kommer ske på så sätt att vi kommer positionsbestämma en enhet 1000 gånger och för varje gång granska om den beräknade positionen överensstämmer med den faktiska.
 
-\subsection{Användarerfarenheter av webbapplikation}
-Kraven på presentationen av medarbetarnas position är att det ska vara enkelt att i vår webbapplikation se vart en medarbetare befinner sig. Detta är ett krav som vi bedömer vara viktigt för att kunna demonstrera vårt system på ett bra sätt. För vår intressent kommer detta inte vara ett prioriterat krav eftersom de vid eventuell lansering planerar att presentera positionsinformationen via en medarbetarportal på deras interna nät.
-Vi kommer utvärdera denna del av systemet genom att låta en extern person navigera i vår webbapplikation och därigenom utvärdera användarvänligheten.
-
+\subsection{Användarerfarenheter av webapplikation}
+Kraven på presentationen av medarbetarnas position är att det ska vara enkelt att i vår webapplikation se vart en medarbetare befinner sig. Detta är ett krav som vi bedömmer vara viktigt för att kunna demonstrera vårt system på ett bra sätt. För vår intressent kommer detta inte vara ett prioriterat krav eftersom de vid eventuell lansering planerar att presentera positionsinformationen via en medarbetarportal på deras interna nät. Vi kommer utvärdera denna del av systemet genom att låte en extern person navigera i vår webapplikation och därigenom utvärdera användarvänligheten.
 
 \section{Vår produkt}
 I följande delavsnitt beskrivs implementationen av de olika komponenterna av vårat system i mer detalj. Först beskrivs hur applikationen används för att skapa referenspunkter. Sedan beskrivs det hur en position beräknas utifrån dessa punkter. Till sist beskrivs systemets presentationsinterface.
@@ -523,10 +520,9 @@ I följande delavsnitt beskrivs implementationen av de olika komponenterna av v�
 \subsection{Applikation för scanning vid referenspunkter}
 Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
 
-Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de tre MAC-adresserna med högst RSSI-värde. Namnet på positionen samt de tre MAC-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet med lämpligt %TODO Vad är lämpligt många??
-många referenspunkter. För att sedan populera databasen importerar man csv-filen in till databasen.
+Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de tre mac-adresserna med högst RSSI-värde. Namnet på positionen samt de tre mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet med lämpligt många referenspunkter, (se sektion \ref{referenspunkter}). För att sedan populera databasen importerar man csv filen in till databasen.
 
-Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv-filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv-filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv-filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv-filen och ersätta å:et med ett a eller liknande.
+Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på mobilen. När detta förekommer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv filen och ersätta å:et med ett a eller liknande.
 
 \subsection{Skript för positionsbestämning}
 Då en klientenhet ska kunna positionsbestämmas behöver klientenheten köra det skript som vi har utvecklat. För att genomföra positionsbestämningen av en klientenhet utför skriptet följande uppgifter:
@@ -539,12 +535,11 @@ Då en klientenhet ska kunna positionsbestämmas behöver klientenheten köra de
 \end{enumerate}
 
 Skriptet i sin helhet är skrivet i programmeringsspråket Python.
-Nedan redogörs för hur de olika uppgifterna ovan genomförs.
+Nedan redogörs för hur de olika uppgifterna ovan genomförs. %TODO upp och ner ner och upp grisen gal i granens topp
 
 \subsubsection{Registrera vilken användare som kör skriptet}
 I den nuvarande versionen av systemet kommer skriptet be användaren om ett användarnamn.
 Användarnamnet verifieras därefter mot alla registrerade användare som finns i databasen (se sektion \ref{databasen}). Om användarnamnet som användaren anger inte matchar något användarnamn i databasen termineras skriptet. Anledningen är att endast godkända användare ska ha möjlighet att göra skriptet och ladda upp sin positionsinformation i databasen. Användare läggs till av systemadministratören från webbinterfacet (se sektion ~\ref{webbinterface}). I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår "proof of concept" version att be användaren om ett användarnamn.
-
 
 \subsection{Hämta information om referenspunkter från databasen}\label{HamtaInfoDB}
 För att kunna utföra positionsbestämningen behöver klientenheten hämta information om referenspunkterna från databasen. Positionsbestämningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många användare ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter MySQLdb\cite{mysqldb}. MySQLdb erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
@@ -561,13 +556,16 @@ Nedan följer ett exempel på informationen om en referenspunkt som vi hämtar f
         \newline RSSI MAC 3 = -50
 \end{itemize}
 
-\textit{Id}-fältet är ett index som är unikt för varje referenspunkt. Området anger vart denna referenspunkt befinner sig, alltså vart nätverksanalysen är genomförd. \textit{MAC 1}-fältet håller MAC-adressen för den åtkomstpunkt vars RSSI-värde var störst vid nätverksanalysen. Det tillhörande RSSI-värdet ligger i fältet \textit{RSSI MAC 1}.
+\textit{Id}-fältet är ett index som är unikt för varje referenspunkt. %TODO vilket ID fält??
+Området anger vart denna referenspunkt befinner sig, alltså vart nätverksanalysen är genomförd. \\
+\textit{MAC 1}-fältet håller MAC-adressen för den åtkomstpunkt vars RSSI-värde var störst vid nätverksanalysen. Det tillhörande RSSI-värdet ligger i fältet \textit{RSSI MAC 1}\\
 Det samma gäller för fälten \textit{MAC 2 - RSSI MAC 2} samt \textit{MAC 3 - RSSI MAC 3}.
-
+%TODO lite svårt att förstå vad du menar.
 
 \subsubsection{Uföra scanning av nätverksinformation} \label{scanning}
 %\TODO: SEBBE- här får du gärna bidra lite med din extrema kunskap om exakt hur scanningen går till
-Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att se vilken trådlös nätverksinformation som kan upptäckas. Det information som sparas vid scanningen är tillgängliga åtkomstpunkter samt tillhörande RSSI-värde (se sektion \ref{RSSI}). Vid den scanningen läses upp till 10 stycken tillgängliga åtkomstpunkter in och sorteras med hänsyn till vilken åtkomstpunkt som har högst RSSI-värde. Ett exempel på resultatet efter scanningen ser ut som följer:
+Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att se vilken trådlös nätverksinformation som kan upptäckas. Den information som sparas vid scanningen är tillgängliga åtkomstpunkter samt tillhörande RSSI-värde (se sektion \ref{RSSI}). Vid den scanningen läses upp till 10 stycken tillgängliga åtkomstpunkter %TODO kanske ska nämna vaför vi väljer 10 här och bara 3 annars.
+in och sorteras med hänsyn till vilken åtkomstpunkt som har högst RSSI-värde. Ett exempel på resultatet efter scanningen ser ut som föjler:
 
   \begin{itemize}
   \item Klientenhetsscanning exempel:
@@ -583,10 +581,8 @@ Då en klientenheten ska positionsbestämmas kör skriptet en scanning för att 
         \newline MAC 10 = JJ:JJ:JJ:JJ:JJ:JJ,  RSSI = -65
   \end{itemize}
 
-\subsubsection{Algoritm för positionsbestämning}
-För att utföra positionebestämningen av klientenheten körs en algoritm i skriptet.
-Den algoritm som vi valde för positionsbestämningen är en variant av KNN (se sektion \ref{KNN}). Vid algoritmer av typer KNN analyseras ett antal (K) Nearest Neigbours (NN). Eftersom vi har information om tre åtkomstpunkter för varje sparad referenspunkt analyserar vi tre st närmaste grannar, NN. Vi har valt att implementera en algoritm som vi utvecklat och som vi anser passa vårt syfte och möta våra krav på precision utan att generera för lång beräkningstid.
-Målet med algoritmen är att avgöra vilken sparad referenspunkt som befinner sig närmast klientenhetens fysiska position. Då algoritmen för att positionsbestämma en klientenhet körs kommer resultatet bli samma position som positionen för den bäst matchande referenspunkten.
+\subsubsection{Algoritm för positionsbestämmning}
+För att utföra positionebestämmningen av klientenheten körs en algoritm i skriptet. Den algoritm som vi valde för positionsbestämmningen är en variant av KNN (se sektion \ref{KNN}). Vid algoritmer av typer KNN analyseras ett antal (K) Nearest Neigbours (NN). Eftersom vi har information om tre åtkomstpunkter för varje sparad referenspunkt analyserar vi tre st närmaste grannar, NN. Vi har valt att implementera en algoritm som vi utvecklat och som vi anser passa vårt syfte och möta våra krav på precision utan att generera för lång beräkningstid. Målet med algoritmen är att avgöra vilken sparad referenspunkt som befinner sig närmast klientenhetns fysiska position. Då algoritmen för att positionsbestämma en klientenhet körs kommer resultatet bli samma position som positionen för den bäst matchande referenspunkten.
 För att åstadkomma detta har vi använt två typer av positionsbestämningsmetoder som körs i skriptet hos klientenheten. Dessa två beskrivs nedan.
 
 \paragraph{Metod 1 - Närliggande åtkomstpunkter}
@@ -982,8 +978,5 @@ Vi har delat upp våra milstolpar i två delar. En för systemt och en för rapp
 	\item 28/5 Ett fungerande system. Programmerings stop.
 \end{itemize}
 \fi
-%TODO : 1) Hur ska vi kunna separera AP via våningar? (Vart ska det stå?)
-%TODO : 2) Fingerprinting varför bara en del? (Kommer inte ihåg vad jag menade med ni kanske gör)
-%TODO : 3) Kommunen hur ser det ut?
-%TODO : 4) Skype 4 Buisness, Skriva att vi skiter i det och varför vi skiter i det? (Vart ska det stå?)
+%TODO Generellt: Ska det stå Androidapplikation eller androidapplikation. Ska det så Python-klient eller python-klient. Ska ska alla information om RSSI, fingerprinting osv vara i metod? ska de inte vara i bakgrundsinformationen? Sen kan man självklart ha små stycken i metoden om varför vi valde just fingerprinting?
 \end{document}
