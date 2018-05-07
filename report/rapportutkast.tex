@@ -35,7 +35,7 @@
 %\subtitle{Really Exciting Stuff}
 % Set author names, separated by "\\ " (don't forget the space)
 % List authors alphabetically by last name (unless someone did significantly more/less)
-\author{Albin Hjelm \\ Sebastian Gustafsson \\ Alexander Backlund}
+\author{Alexander Backlund \\ Sebastian Gustafsson \\ Albin Hjelm }
 % Set the date and year - use the right language!
 \date{\begin{otherlanguage}{swedish}  %\foreignlanguage doesn't seem to affect \today?
 \today
@@ -49,6 +49,7 @@
 %\exthandledare{NN}
 % Intern handledare
 \handledare{Lisa Lagom och Björn Victor}
+\exthandledare{Markus	Bylund}
 % Ämnesgranskare används inte på Självständigt arbete i IT
 %\reviewer{NN}
 % På Självständigt arbete i IT är detta BV
@@ -90,8 +91,8 @@
 % \item How good are the results, how useful are they?
 % \end{enumerate}
 % The abstract should be understandable without reading the whole report (and the rest of the report should be understandable without reading the abstract). You can reuse text/phrases from the Introduction.
-Many companies and organisations nowadays chose to transfer from an office structure consisting of employee dedicated offices into having a more open and office free structure. With that transition some difficulties occur in locating coworkers when you want to discuss something since they now have the opportunity to choose workplace more freely. %work related concerns with%.
- Beacause of this, employees looses productivity and spends unnecessary time and energy on locating coworkers. This project's' intent is to make this transition easy, non time consuming and available only using existing information and technology. This is to be provided via a location platform at which users can locate their co-workers.
+Many companies and organisations nowadays chose to transfer from an office structure consisting of employee dedicated offices, into having a more open and office free structure. With that transition some difficulties occur in locating coworkers when you want to meet them. This is because they now have the opportunity to choose workplace more freely. %work related concerns with%.
+ Beacause of this, employees looses productivity and spends unnecessary time and energy on locating coworkers. This project's' intent is to make this transition easy, non time consuming and available only using existing information and technology. This is to be provided via a location platform at which users can locate their co-workers. %TODO skriv hur väl vi löste problemet.
 \end{abstract}
 \begin{sammanfattning}
 % Sammanfattning på svenska. Se till att det står samma saker i det svenska och det engelska abstractet.
@@ -105,9 +106,9 @@ Many companies and organisations nowadays chose to transfer from an office struc
 % Ca 10-20 rader. Använd inte referenser; ej heller formler om det går att undvika.
 %
 % Abstract ska vara förståeligt utan att läsa resten av rapporten, och resten av rapporten ska kunna läsas utan att läsa abstract. Man kan återanvända text från introduktionen.
-Många företag och organisationer väljer nuförtiden att övergå från en kontorsstruktur bestående av dedikerade kontorsplatser för var och en av medarbetarna, till en öppnare och mer kontorsfri struktur. Med den övergången tillkommer vissa problem med att hitta enskilda medarbetare som du vill träffa eftersom de nu har möjlighet att välja arbetsplats friare. På grund av detta tappar de anställda i produktivitet eftersom de behöver spendera onödig tid på att lokalisera sina kollegor. En kontorsstruktur där medarbetarna väljer arbetsplats utifrån arbetsuppgift kallas för en aktivitetsbaserad arbetsplats. Det här projektets intention är att göra övergången till en aktivitetsbaserad arbetsplats enkel, icke tidskrävande och möjlig genom att endast använda befintlig teknik och information på arbetsplatsen. Medarbetarnas position kommer presenteras via en lokaliseringsplattform där varje användare enkelt kan lokalisera sina medarbetare.
-
- %%förlytta deras verksamhet från kontorsbaserad till en mer kontorsfri miljö. Med den övergången tillkommer vissa problem med att hitta medarbetare för att kunna diskutera arbetsrelaterade saker. På grund av det här tappar de anställda i produktivitet, eftersom de behöver spendera för mycket tid på att lokalisera sina kollegor. Detta projektets intention är att göra övergången enkel, icke tidskrävande och möjlig genom att endast använda befinntlig information och teknik. Vilket ges via en lokaliserings plattform som användare kan lokalisera sina medarbetare.
+Många företag och organisationer väljer nuförtiden att övergå från en kontorsstruktur bestående av dedikerade kontorsplatser för var och en av medarbetarna, till en öppnare och mer kontorsfri struktur. %TODO kanske skriva om meningen då den är ganska lång, dock tycker jag om den...
+Med den övergången tillkommer vissa problem med att hitta enskilda medarbetare som du vill träffa eftersom de nu har möjlighet att välja arbetsplats friare. På grund av detta tappar de anställda i produktivitet eftersom de behöver spendera onödig tid på att lokalisera sina kollegor. En kontorsstruktur där medarbetarna väljer arbetsplats utifrån arbetsuppgift kallas för en aktivitetsbaserad arbetsplats. Det här projektets intention är att göra övergången till en aktivitetsbaserad arbetsplats enkel, icke tidskrävande och möjlig genom att endast använda befintlig teknik och information på arbetsplatsen. Medarbetarnas position kommer presenteras via en lokaliseringsplattform där varje användare enkelt kan lokalisera sina medarbetare.
+%TODO skriv hur väl vi löste problemet.
 \end{sammanfattning}
 
 % Innehållsförteckningen här.
@@ -165,17 +166,6 @@ Introduktionen bör vara begriplig för t.ex.~en student i årskursen under, och
 \fi
 
 Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktivitetsbaserade arbetsplatser. Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. Ett problem med denna typ av miljö är att det är svårt att veta vart sina medarbetare befinner sig. Lösningen till problemet är vårt system. Systemet fungerar så att när en medarbetare startar sin dator kommer den att skanna av nätverksinformationen i närheten och bestämma medarbetarens position. Denna position kommer att visas på en hemsida så att andra medarbetare snabbt kan se vart sina kollegor befinner sig. Som användare kommer man även kunna välja att inte visa sin position.
-
-\iffalse
-Tidigare var det absolut vanligaste sättet att organisera en arbetsplats att arbetsplatsen uppdelades i kontor och varje medarbetare hade en specifik kontorsplats.
-De medarbetare som tidigare var tilldelade ett specifikt kontor
-väljer nu istället en tillfällig arbetsyta baserat på vilken som just då
-är mest lämplig för att utföra deras arbetsuppgifter.
-\bigskip
-\newline
-Detta skapar i sin tur vissa problem i och med att det blir svårare att veta vart på arbetsplatsen en medarbetare befinner sig då denne inte har någon fast arbetsplats.
-Det är detta problem som det här projektet syftar till att lösa.
-\fi
 
 \section{Bakgrund}
 \subsection{Aktivitetsbaserad verksamhet (ABV)}
@@ -273,7 +263,6 @@ Den frågeställningen är svår för oss att besvara. Den slutsats som vi drog 
 Syftet med det här projektet är att utveckla ett enkelt och effektivt positioneringssystem för företag och organisationer som vill övergå till aktivitetsbaserade arbetsplatser(ABV). Systemet ska möjliggöra för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig. I första hand ämnar vi att undersöka huruvida det är möjligt att utveckla ett system som går att integrera med Skype for Buisness(SFB). SFB´s roll blir isåfall att vara del den av systemet som presenterar information om vart användare befinner sig. Visar det sig att en integration med SFB inte är genomförbar är andrahandsalternativet att utveckla ett eget system för att presentera informationen.
 
 \subsection{Motivation}
-
 Projektet motiveras av att många företag och organisationer övergår till aktivitetsbaserade arbetsplatser (ABV). Uppsala Kommun har påbörjat en sådan övergång och har uttryckt ett behov av att medarbetare bör kunna se vart deras kollegor befinner sig. Uppsala kommun har arbetsplatser på ett flertal adresser i Uppsala och beroende på arbetsuppgift ska deras medarbetare själva kunna bestämma var de vill utföra sina arbetsuppgifter. Uppsala Kommuns medarbetare använder sig av Skype for Business(SFB) som kommunikationsmedel och har framfört ett önskemål att det direkt i SFB-applikationen ska gå att se vart en användare befinner sig.
 
 \subsection{Mål}
@@ -281,6 +270,7 @@ Projektet motiveras av att många företag och organisationer övergår till akt
 Vårt mål är att erbjuda ett system som såväl Uppsala Kommun som andra företag och organisationer som vill övergå till ABV ska kunna använda sig av. Systemet ska vara enkelt att introducera, enkelt att använda och enkelt att underhålla.
 
 Vårt målsättning i ett prestandamässigt avseende är att då vårt system är integrerat på arbetsplatsen ska användarna kunna se på vilken adress, vilken våning och i vilket område på den våningen som en kollega befinner sig. Uppsala Kommun har önskat en precision med max 10 meters felmarginal. Även om bättre precision än så inte anses nödvändig hoppas vi kunna uppnå en felmarginal på maximalt 5 meter. Målet är också att erbjuda en möjlighet för alla medarbetare att via en webb-baserad portal se hur många medarbetare som befinner sig på en specifik arbetsyta. Webbportalens syfte är att göra det enkelt för medarbetarna att välja arbetsplats genom att kunna se vart det finns lediga platser utan att behöva gå genom varje lokal och leta.
+%TODO ibland säger vi att webapplikationen inte kommer användas av arbetarana och ibland säger vi att dom komer använda det.
 
 Vår förhoppning är att det här systemet löser några av de dagliga praktiska problemen hos företag och organisationer som övergår till aktivitetsbaserade arbetsplatser. Förhoppningsvis kan detta också leda till att företag som överväger att övergå till ABV kommer känna mindre oro över att det dagliga arbetet behöver störas av problem med att hitta sina medarbetare.
 
@@ -315,13 +305,14 @@ På grund av den begränsade tid vi har haft att arbeta på det här projektet h
 Vi har valt att endast använda oss Fingerprintingtekniken för positionsbestämning (se sektion \ref{fingerprinting}). Det finns ett ytterligare tekniker som vi skulle kunnat använda oss av i kombination med fingerprintingtekniken, tillexempel Trilateration (se sektion \ref{triangulering}).
 
 
-För att utföra positionsbestämning med hjälp av referenspunkter (se sektion \ref{referenspunkter}) så exakt som möjligt bör man enligt J. Jun m. fl. representera varje geografisk plats med fler än referenspunkt\cite{jun2018low}. Anledningen till det är att olika typer av nätverkskort kan utläsa olika RSSI-värden (se sektion \ref{RSSI}) mot samma åtkomspunkt\cite{problem_with_RSSI}. Om man representerar varje planerad plats för en referenspunkt med fler referenspunkter baserade på mätningar utföra av enheter med olika typer av nätverkskort kan det därmed fungera som en kompensation för att olika nätverkskort kan generera olika RSSI-värden\cite{jun2018low}.
+För att utföra positionsbestämning med hjälp av referenspunkter (se sektion \ref{referenspunkter}) så exakt som möjligt bör man enligt J. Jun m. fl. representera varje geografisk plats med fler än referenspunkt\cite{jun2018low}.
+%TODO Jag förstår inte den här meningen.
+Anledningen till det är att olika typer av nätverkskort kan utläsa olika RSSI-värden (se sektion \ref{RSSI}) mot samma åtkomspunkt\cite{problem_with_RSSI}. Om man representerar varje planerad plats för en referenspunkt med fler referenspunkter baserade på mätningar utföra av enheter med olika typer av nätverkskort kan det därmed fungera som en kompensation för att olika nätverkskort kan generera olika RSSI-värden\cite{jun2018low}.
 En avgränsning vi valde att göra är att mobilapplikationen endast fungerar för Androidtelefoner. Även om det finns enheter som har olika typer av nätverkskort men som ändå använder Andriod täcker vi inte in enheter med andra typer av nätverkskort och som inte kan köras med Android.
-
 
  Avgränsningen med att endast utveckla scanningsapplikationen för Android gjordes dels på grund av tidsbrist med också eftersom applikationen endast kommer att användas ett fåtal gånger, dvs när man ska installera systemet på sin arbetsplats. Eftersom applikationen inte kommer användas regelbundet ansåg vi att android var lämpligare eftersom det är enligt vår uppfattning är enklare och smidigare att publicera en Andoidapplikation än tillexempel en Iphoneapplikation. Det enda man behöver göra för är att ladda upp sin fungerande APK (android package kit) och betala en mindre engångssumma \cite{android} \cite{guidePublish}. För att kunna publisera en Iphoneapplikation behöver applikationen genomgå fler steg och applikationen har en risk att bli nekad. Applikationen måste fungera enligt vissa kriterier samt att det tillkommer en årlig avgift som man måste betala \cite{submitIphone} \cite{guidePublish}.
 
-En avgränsning gällande vår webapplikation är att den endast kommer vara utrustad med de mest väsentliga funktionaliteterna då den endast kommer att användas för demonstration. Vår intressent har redan ett intern webbportal som de använder för andra arbetsuppgifter och som de i händelse av användning vill använda även för presentation av positioneringsinformation. Det information som kommer vara synlig i vårt interface är användarnas position.
+En avgränsning gällande vår webapplikation är att den endast kommer vara utrustad med de mest väsentliga funktionaliteterna då den endast kommer att användas för demonstration. Vår intressent har redan en intern webbportal som de använder för andra arbetsuppgifter och som de i händelse av användning vill använda även för presentation av positioneringsinformation. Det information som kommer vara synlig i vårt interface är användarnas position.
 
 \iffalse Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er, och motiverar dessa avgränsningar. Detta förtydligar för läsaren som kanske hade förväntningar ni inte uppfyllt.
 
@@ -330,63 +321,50 @@ En avgränsning gällande vår webapplikation är att den endast kommer vara utr
 
 \section{Relaterat arbete}
 Det generella problemet med inomhuspositionering har lösts på olika sätt.
-Beroende på vilket specifikt problem som gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice (IPS)\cite{IP1}.
+Beroende på vilket specifikt problem som har gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice (IPS)\cite{IP1}.
 En av de vanligaste teknikerna vid IPS är trilateration\cite{cook2005indoor}, triangulering på svenska. Vid triangulering uppskattas minst tre avstånd till basstationer med kända koordinater och med hjälp av geometriska beräkningar uppskattas sedan en position. Trilateration beskrivs utförligare i sektion \ref{triangulering}
  nedan. En annan teknik som är vanligt förekommande i befintliga system för IPS är fingerprinting\cite{IP1}\cite{jun2018low}. Fingerprintingtekniken bygger i korthet på att den enhet som ska positionsbestämmas mäter signalstyrkor i närheten och jämför med en databas. Fingerprinting beskrivs utförligare i sektion \ref{fingerprinting}.
 
-Binghao Li m. fl. analyserade i en studie \cite{IP1} olika tekniker som utgår från Wifi för inomhuspositionering och kom fram till att fingerprint var en av de metoder som enskilt genererade mest precisa resultat.
+Binghao Li m. fl. analyserade i en studie \cite{IP1} olika tekniker som utgår från Wifi för inomhuspositionering och kom fram till att fingerprinting var en av de metoder som enskilt genererade mest precisa resultat.
+
+
+\subsection{Problem med GPS-tekniken}
+Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en position med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
+Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USAs flygvapen. GPS är ett system bestående av 24 satelliter som kretsar kring Jorden. Satelliterna sänder ut radiosignaler med information
+om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de satelliterna som befinner sig inom räckhåll och använder sig av satelliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig \cite{GPS_US_HOW}.
+
+Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från satelliterna reflekteras när de kommer i kontakt med byggnader. De anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord \cite{GPS_US_ACCURACY}. Detta gör att andra tekniker måste användas för inomhuspositionering.
 
 \subsection{Vanliga tekniker vid inomhuspositionering}
-
-\subsubsection{Problem med GPS-tekniken}
-Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en position med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
-Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USAs flygvapen. GPS är ett system bestående av 24 satelliter som kretsar kring Jorden. Satelliterna sänder ut radiosignaler med information om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de satelliterna som befinner sig inom räckhåll och använder sig av satelliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig \cite{GPS_US_HOW}.
-
-Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från satelliterna reflekteras när de kommer i kontakt med byggnader och de anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord \cite{GPS_US_ACCURACY}. Detta gör att andra tekniker måste användas för inomhuspositionering.
 
 \subsubsection{Trilateration}\label{triangulering}
 Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf \cite{cook2005indoor}.
 \newline
 $$ P_r = P_t + 20log(\frac{\lambda}{4\pi}) + 10nlog(\frac{1}{d})$$
-där
-$  P_r $ = signalstyrkan hos mottagaren (dBm)\newline $P_t$ = styrkan hos sändaren\newline
-$\lambda$ = våglängden\newline
-$ n $ = 2 i fria utrymmen\newline
+där:\\
+$  P_r $ = signalstyrkan hos mottagaren (dBm)\\
+$P_t$ = styrkan hos sändaren\\
+$\lambda$ = våglängden\\
+$ n $ = 2 i fria utrymmen\\ %TODO vad är n annars?
 $ d $ = avståndet mellan mottagare och sändare
 \bigskip
 \newline
-En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. %TODO % fixa figur.. kan man sno?
+En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. %TODO % fixa figur.. kan man sno? Ja sno på du men säg att du har snott den!!!!
 Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i inexaktheter i positionsbestämningen.
 
 I detta projekt är trilateration en teknik som vi inte har utnyttjat. Eftersom precisionen i det här projektet har en accepterad felmarginal på 5 meter har vi valt att begränsa oss till fingerprintingtekniken vilken ensam ger tillräckligt god precision.
-\iffalse
-\subsubsection{Fingerprinting}
-Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning. Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas. %TODO% fixa en bild
-Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värdena för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten \cite{IP1}\cite{jun2018low}.
-Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och accepterad metod i system för inomhuspositionering finns det vissa problem \cite{IP1}.
-Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten \cite{IP1}.
-
-Fingerprinting är en teknik som vi i vissa avseenden kommer att använda i det här projektet. Den första delen av vårt system kommer bygga på fingerprinttekniken. Skillnaden mellan vårt projekt och fingerprinttekniken beskriven ovan är i första hand att klientenheterna i vårt fall endast kommer kunna matcha en åtkomstpunkt mot ett förprogrammerat arbetsområde i databasen. Detta innebär att den delen av vårt system som står för inlärningsfasen sköter databaspopuleringen på ett så pass bra sätt att precisionskraven uppfylls.
-\fi
 
 \subsection{Liknande system}
-Här beskriv system som i viss mån liknar vårt system och som vi tycker är värda att nämna.
+Här beskrivs system som i viss mån liknar vårt system och som vi tycker är värda att nämna.
+
 \subsubsection{AnyPlace}
-AnyPlace är ett befintligt system som har erbjuder inomhuspositioneringsservice samt inomhusnavigeringsservice. För positionering av enheter vid inomhusnavigering använder sig AnyPlace främst av tekniken Fingerprinting (se sektion \ref{fingerprinting}) och uppger att de åstadkom en noggrannhet på 1.96 meter vid tävlingen Microsoft Indoor Localization Competition \cite{anyplace}
+AnyPlace är ett befintligt system som erbjuder inomhuspositioneringsservice samt inomhusnavigeringsservice. För positionering av enheter vid inomhusnavigering använder sig AnyPlace främst av tekniken Fingerprinting (se sektion \ref{fingerprinting}) och uppger att de åstadkom en noggrannhet på 1.96 meter vid tävlingen Microsoft Indoor Localization Competition \cite{anyplace}
 \cite{IPS_tavling}.
 För navigeringssystemet använder AnyPlace en karta baserat på goolge maps för en övergripande karta. I den övergripande kartan går det att välja vissa byggnaders planritningar där AnyPlace har stöd för inomhuspositionering. AnyPlace´s positioneringssystem används för att bestämma en enhets position i byggnaden och kan därefter användas för inomhusnavigering.
 
-AnyPlace har också integrerat en metod som de kallar Crowdsurfing \cite{anyplace}. Crowdsurfing bygger på användarna av systemet ges en möjlighet att förbättra systemet i sig. Användarna av systemet kan då de är på en plats där AnyPlace inte har stöd för navigering använda deras applikation (på mobiltelefoner) och samla data om WiFi-information i närheten som sedan läggs till i AnyPlace databas. Crowdsurfing innebär att stora mängder data kan inhämtas samtidigt att inlärningsprocessen med Fingerprintingtekniken kan förkortas jämfört med om AnyPlace hade varit tvungna att inhämta den informationen själva.
+AnyPlace har också integrerat en metod som de kallar Crowdsurfing \cite{anyplace}. Crowdsurfing bygger på användarna av systemet ges en möjlighet att förbättra systemet. Användarna av systemet kan använda deras applikation (på mobiltelefoner) för att samla data om WiFI-information i närheten. Denna information läggs sedan in i AnyPlaces databas för att få vidare stöd för navigering på platser som inte hade det tidigare. Crowdsurfing innebär att stora mängder data kan inhämtas samtidigt och att inlärningsprocessen med Fingerprintingtekniken kan förkortas jämfört med om AnyPlace hade varit tvungna att inhämta den informationen själva.
 
 Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vill göra det möjligt att se andra enheters position snarare än att erbjuda någon navigeringsservice. Att AnyPlace har lyckats uppnå en såpass lite felmarginal som ca 2 meter visar på att Fingerprinting är ett bra val av metod även i det här projektet då samma felmarginal i vårt system skulle innebära mer än tillräcklig precision utifrån de krav som vi har.
-
-
-\iffalse
-\subsection{Kandidatarbete 2017}
-
-\fi
-
-
 
 %Här beskriver ni liknande system eller projekt, och förklarar hur de relaterar till ert.  Alltså: vad vet ni om läget när det gäller ``det större problemet'' som projektet ska lösa?  Vilka andra har försökt lösa liknande/närliggande problem, eller gjort relaterade/liknande saker/system? Referera! (Se Appendix~\ref{sec:referenser} för mer om hur.)
 
@@ -407,7 +385,7 @@ Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vil
 
 %Försök övertyga läsaren om att ni gjort ett vettigt urval av relaterat arbete (och inte bara beskriver de första google-träffarna). Beskriv gärna hur ni gjort urvalet, och motivera det.
 
-\section{Tillvägagångssätt och metoder}
+\section{Metoder}
 %Här beskriver ni vilka metoder/verktyg/tekniker/approacher ni använt för att lösa problemet / besvara frågeställningen.  Vilka metoder har ni konkret använt för att lösa problemet/bygga systemet?  Vilka tekniker/verktyg använde ni? Observera att det inte är samma sak som att beskriva \emph{hur} ni använde teknikerna/verktygen (det kommer i Del X).
 
 % Kolla workshop-materialet för exempel på vad metoder kan vara.
@@ -418,72 +396,50 @@ Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vil
 %Detta avsnitt
 %ska \emph{inte} innehålla information om hur gruppen organiserat arbetet (github, trello\ldots) \emph{om} det inte är relevant för resultatet (och det är det oftast inte).
 
-I tillvägagångsdelen av rapporten redogörs för vilka tekniker och metoder som användes för att bygga systemet.
+I följande del av rapporten redogörs för vilka tekniker och metoder som användes för att bygga systemet.
 
-\subsection{Generella tillvägagångsätt}
+\subsection{Generella metoder}
 I början av projektplaneringen togs en gemensam beskrivning över systemet fram så att alla parter hade samma bild. I denna beskrivning gjordes tydliga separationer mellan de olika delsystem samt en prioriteringslista över vilka delsystem som var tvungna att fungera först. När denna beskrivning var klar togs en tidsplanering fram och tilldelning av arbetsuppgifter sinsemellan alla gruppmedlemmar.
 
 \subsection{Recieved Signal Strength Indication - RSSI}\label{RSSI}
 RSSI är ett mått på signalstyrkan från en trådlös åtkomstpunkt. RSSI mäts i enheten decibel(dB) och anger hur mycket styrkan av en signal har avtagit innan den signalen uppfångas av en mottagarenhet. RSSI-värdet varierar generellt mellan 0 och -100 dB hos en mottagarenhet. Ett RSSI-värde nära 0 antyder att förlusten i signalstyrka mellan åtkomstpunkt och mottagare är låg. Ett lägre RSSI-värde indikerar en större förlust i signalstyrka mellan åtkomstpunkt och mottagare och därmed också sämre anslutningsmöjlighet.
 
 \subsection{Fingerprinting}\label{fingerprinting}
-Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter(här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning (se sektion \ref{referenspunkter}). Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas. %TODO: fixa en bild
-Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför med värdena för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten \cite{IP1}\cite{jun2018low}.
+Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter (här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning (se sektion \ref{referenspunkter}). Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas. %TODO: fixa en bild
+Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför den med värdena för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten \cite{IP1}\cite{jun2018low}.
 Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och accepterad metod i system för inomhuspositionering finns det vissa problem med den här tekniken\cite{IP1}.
 Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten \cite{IP1}. Ett annat problem med Fingerprintingtekniken och som beskrivs av Lui m. fl \cite{problem_with_RSSI} är att mätningar av RSSI-värdet till olika åtkomstpunkter kan variera beroende på vilken hårdvara som används för mätningarna. Det betyder att olika RSSI-värden kan uppkomma för samma åtkomstpunkt vid samma mätningsplats. Detta kan leda till att jämförelsen av RSSI-värden för referenspunkter och klientenheter kan bli icke tillförlitlig i de fall hårdvaruskillnader i de olika enheterna förekommer. Därmed kan dessa hårvaruskillnader göra att precisionen försämras då en klientenhet ska positionsbestämmas\cite{problem_with_RSSI}. En övervägande fördel med Fingerprintingtekniken är däremot att ingen extra hårdvara behöver installeras i lokalerna. Fingerprintingtekniken utnyttjar endast befinntlig nätverksinformation i lokalerna.
 
 \subsection{Referenspunkter i samband med Fingerprintingmetoden}\label{referenspunkter}
 När Fingerprintingmetoden används vid inomhuspositionering uppmäts ett antal referenspunkter i de lokaler där inomhuspositionering ska kunna tillämpas\cite{yiu2017wireless}\cite{IP1}.
-En referenspunkt bestäms som en specifik position i en lokal där man gör mätningar av den trådlösa nätverksinformationen. Det som analyseras vid dessa mätningar är vilka trådlösa åtkomstpunkter, vanligvis routrar, som går att ansluta till vid referenspunktens position. För varje åtkomstpunkt som upptäcks vid analysen av den trådlösa nätverksmiljön mäts även signalstyrkan till respektive åtkomstpunkt. Signalstyrkan mäts i form av ett RSSI-värde. När referenspunkterna utmätts sparar man information om ett visst antal åtkomstpunkter vid den specifika referenspunkten samt RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Vanligtvis sparas information om de åtkomstpunkter som anses befinna sig närmast referenspunkten, detta baserat på RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Denna information i kombination med information om vart i lokalen referenspunkten är utmätt lagras i en databas. Referenspunkter utmäts i ett rutmönster, med en area på 1-4 $m^2$ för bästa resultat\cite{yiu2017wireless}, i de lokaler där man vill kunnna utföra inomhuspositionering\cite{IP1}. När mätningar är utförda vid varje referenspunkt finns tillräcklig information som behövs för att kunna utföra positionsbestämning lagrad i en databas. Denna lagrade nätverksinformation i referenspunkterna används som referenser till olika platser i lokalerna för att kunna positionsbestämma enheter som befinner sig i byggnaden\cite{yiu2017wireless}\cite{IP1}.
+En referenspunkt bestäms som en specifik position i en lokal där man gör mätningar av den trådlösa nätverksinformationen. Det som analyseras vid dessa mätningar är vilka trådlösa åtkomstpunkter, vanligvis routrar, som går att ansluta till vid referenspunktens position. För varje åtkomstpunkt som upptäcks vid analysen av den trådlösa nätverksmiljön mäts även signalstyrkan till respektive åtkomstpunkt. Signalstyrkan mäts i form av ett RSSI-värde. När referenspunkterna utmätts sparar man information om ett visst antal åtkomstpunkter vid den specifika referenspunkten samt RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Vanligtvis sparas information om de åtkomstpunkter som anses befinna sig närmast referenspunkten, detta baserat på RSSI-värdet för respektive åtkomstpunkt\cite{IP1}.
+%TODO Förstår inte riktigt meningen ovan menar du samma sak som meningen ovan den eller vad menar du?
+Denna information i kombination med information om vart i lokalen referenspunkten är utmätt lagras i en databas. Referenspunkter utmäts i ett rutmönster, med en area på 1-4 $m^2$ för bästa resultat\cite{yiu2017wireless}, i de lokaler där man vill kunnna utföra inomhuspositionering\cite{IP1}. När mätningar är utförda vid varje referenspunkt finns det tillräckligt med information för att kunna utföra positionsbestämning med den lagrade informationen i databasen. Denna lagrade nätverksinformation i referenspunkterna används som referenser till olika platser i lokalerna för att kunna positionsbestämma enheter som befinner sig i byggnaden\cite{yiu2017wireless}\cite{IP1}.
 Att mäta ut referenspunkter och utföra mätningar är något som sker i en inlärningsfas av ett positioneringssystem\cite{tian2013fingerprint}. Nackdelen med detta är att det kan vara tidskrävande arbete samt att nya mätningar måste utföras om den trådlösa infrastrukturen i byggnaden förändras\cite{IP1}.
 
 \subsection{Metod för positionsbestämning, K Nearest Neighbor - KNN}\label{KNN}
 När metoden fingerprinting\footnote{Se sektion \ref{fingerprinting}} används för positionsbestämning krävs en algoritm för att analysera värden på Received Signal Strength Indikation (RSSI) för klientenheten i förhållande till RSSI-värden för referenspunkterna. Vid olika tillämpningar av fingerprinting kan olika algoritmer användas \cite{tian2013fingerprint}\cite{jun2018low}. En av de vanligaste typerna av algoritmer är versioner av KNN \cite{tian2013fingerprint}.
 Bokstaven k står för antalet "nearest neighbors"(närmaste grannar). Vid den mest simpla varianten, då k = 1 (1NN), görs en RSSI-scanning hos klientenheten av vilken närliggande åtkomstpunkt som har lägst försvagning av signalstyrka. Den åtkomstpunkt med lägst försvagning antas vara den som är finns närmast. Därefter jämför man med RSSI-värdet för de referenspunkter som finns registrerade och finner den referenspunkt vars lagrade RSSI-värde matchar bäst. Klientenhetens position uppskattas till samma position som för den referenspunkt som matchade bäst.
-Ju högre värde av \textit{k} som används vid analysen desto tillförlitligare blir positioneringen.\cite{yiu2017wireless}
+Ju högre värde av \textit{k} som används vid analysen desto tillförlitligare blir positioneringen\cite{yiu2017wireless}.
 En nackdel med KNN är att RSSI-värdet för de olika åtkostpunkterna kan variera över tid \cite{tian2013fingerprint}. Detta medför att för att upprätthålla en godtagbar exakthet bör varje referenspunkt scannas av vid jämna intervall.
 En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik position kan förändras om tillexempel möbleringen av rummen ändras radikalt\cite{zanca2008experimental}. Då något sådant sker bör också intillliggande referenspunkter scannas om.
 
 \subsection{Applikationsutveckling, Android}
-Systemet är uppbyggd av bland annat ett Androidprogram. Programmet används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av programmet används Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar programmet i android är att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder.
+Systemet är uppbyggd av bland annat en Androidapplikation. Applikationen används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av applikationen användes Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar applikationen i Android är för att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är för att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder. Ytterligare en anledning är då publiceringen av Androidapplikation är enklare än för bland annat iOS \cite{submitIphone}\cite{android}.
 
 \subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna}
 Vi har skrivit skriptet som körs på klientenheterna i programmeringsspråket Python.
-En av anledningarna till att vi använder detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Detta är i vårat fall användbart eftersom vi vill ha en körbar fil på operativsystemet Windows då en klar majoritet av medarbetarna hos vår intressent använder det.	Anledningen till att vi använde detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter en producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek till ett skript som inte blir särskilt stort.
-
-Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter en producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek och sätta oss in i Windows-utveckling till ett skript som inte ska vara särskilt omfattande.
+En av anledningarna till att vi använder detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Detta är i vårat fall användbart eftersom vi vill ha en körbar fil på operativsystemet Windows då en klar majoritet av medarbetarna hos vår intressent använder det. Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter en producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek och sätta oss in i Windows-utveckling till ett skript som inte ska vara särskilt omfattande.
 
 \subsection{Webapplikation för presentation av positionsinformation}\label{django}
-Django är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Django kommer med en rad fördelar. Det är ett ramverk som utgår från MVC layout, %TODO referens!!
+Django är ett webapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Django kommer med en rad fördelar. Det är ett ramverk som utgår från MVC layout\cite{djangoMVC},
 detta innebär att man delar upp webapplikationen i models, views och controllers. I Django fall betyder det att koden blir väldigt välstrukturerad och lätt att hitta i.
 
-En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Bland en mängd andra säkerhetsåtgärder som Django erbjuder automatiskt så är det skyddat för SQL-injection %TODO referens
-vilket innebär att man inte kan utnyttja databaskommandon i användarinput för att ta sig in i databasen, och Session security %TODO referens
- som skyddar för att bara användare som verkligen har loggat in har tillgång till data som inloggade ska ha tillgång till.
+En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Bland en mängd andra säkerhetsåtgärder som Django erbjuder automatiskt så är det skyddat för SQL-injection \cite{securityInDjango}
+vilket innebär att man inte kan utnyttja databaskommandon i användarinput för att ta sig in i databasen. Django erbjuder även session security \cite{securityInDjango} som skyddar för att bara användare som verkligen har loggat in har tillgång till data som inloggade ska ha tillgång till.
 Eftersom vi hanterar känslig data så är detta väldigt viktiga aspekter för oss. Att det är inbyggt i Django är en stor fördel.
 
-En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt.
-
- Ett sista argument är att eftersom skriptet är skrivet i Python och Django bygger på Python. Då skulle man i framtiden enkelt kunna integrera de två.
-
-\iffalse
-\subsection{Trilateration}
-Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf \cite{cook2005indoor}.
-\newline
-$$ P_r = P_t + 20log(\frac{\lambda}{4\pi}) + 10nlog(\frac{1}{d})$$
-där
-$  P_r $ = signalstyrkan hos mottagaren (dBm)\newline $P_t$ = styrkan hos sändaren\newline
-$\lambda$ = våglängden\newline
-$ n $ = 2 i fria utrymmen\newline
-$ d $ = avståndet mellan mottagare och sändare
-\bigskip
-\newline
-En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. Se fig %TODO % fixa figur.. kan man sno?
-Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i inexaktheter i positionsbestämningen.
-
-I detta projekt är trilateration en teknik som vi inte kommer ha möjlighet att utnyttja. Eftersom vi är begränsade till att relatera en åtkomstpunkt till ett arbetsområde kommer inte klientenheten ha möjlighet att utföra några positionsberäkningar i realtid. Istället kommer klientenheten matcha MAC-adressen som den är ansluten till med positionsdatabasen. I och med denna begränsning kommer den största delen av analysen av områdenas nätverksmiljö ske i en lärandefas innan databasen populeras.
-\fi
-
+En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt\cite{djangoMVC}. Ett sista argument är att eftersom vårt systems skript är skrivet i Python och Django bygger på Python skulle man i framtiden enkelt kunna integrera de två.
 
 \section{Systemstruktur}
 I denna del av rapporten beskriver vi våra system och hur de samverkar.
