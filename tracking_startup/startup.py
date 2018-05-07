@@ -11,9 +11,7 @@
 #
 #################################################################
 #Todos:
-# TODO: prompting user for  checking which networkcard they want to use
-# TODO: (maybe) prompt user for which system they're on
-# TODO: prompt user for username
+
 #################################################################
 
 from wifi import Cell, Scheme
