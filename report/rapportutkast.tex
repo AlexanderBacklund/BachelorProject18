@@ -1,4 +1,4 @@
-bestämdutformadMAC-% MUST use a4paper option
+% MUST use a4paper option
 % MAY use twoside, smaller font, and other class
 \documentclass[swedish, a4paper,12pt]{article}
 %\documentclass[swedish,12pt]{<class>}
@@ -300,7 +300,7 @@ För att göra vårt system attraktivt vill vi det ska vara ett system som inte 
 %\item Visa att problemet inte redan är löst.
 %\end{itemize}
 
-\subsection{Avgränsningar}
+\section{Avgränsningar}
 På grund av den begränsade tid vi har haft att arbeta på det här projektet har vi varit tvungna att göra vissa avgränsningar.
 Vi har valt att endast använda oss Fingerprintingtekniken för positionsbestämning (se sektion \ref{fingerprinting}). Det finns ett ytterligare tekniker som vi skulle kunnat använda oss av i kombination med fingerprintingtekniken, till exempel Trilateration (se sektion \ref{triangulering}).
 
@@ -310,7 +310,7 @@ För att utföra positionsbestämning med hjälp av referenspunkter (se sektion 
 Anledningen till det är att olika typer av nätverkskort kan utläsa olika RSSI-värden (se sektion \ref{RSSI}) mot samma åtkomspunkt\cite{problem_with_RSSI}. Om man representerar varje planerad plats för en referenspunkt med fler referenspunkter baserade på mätningar utföra av enheter med olika typer av nätverkskort kan det därmed fungera som en kompensation för att olika nätverkskort kan generera olika RSSI-värden\cite{jun2018low}.
 En avgränsning vi valde att göra är att mobilapplikationen endast fungerar för Androidtelefoner. Även om det finns enheter som har olika typer av nätverkskort men som ändå använder Andriod täcker vi inte in enheter med andra typer av nätverkskort och som inte kan köras med Android.
 
- Avgränsningen med att endast utveckla scanningsapplikationen för Android gjordes dels på grund av tidsbrist med också eftersom applikationen endast kommer att användas ett fåtal gånger, dvs när man ska installera systemet på sin arbetsplats. Eftersom applikationen inte kommer användas regelbundet ansåg vi att android var lämpligare eftersom det är enligt vår uppfattning är enklare och smidigare att publicera en Andoidapplikation än till exempel en Iphoneapplikation. Det enda man behöver göra för är att ladda upp sin fungerande APK (android package kit) och betala en mindre engångssumma \cite{android} \cite{guidePublish}. För att kunna publicera en Iphoneapplikation behöver applikationen genomgå fler steg och applikationen har en risk att bli nekad. Applikationen måste fungera enligt vissa kriterier samt att det tillkommer en årlig avgift som man måste betala \cite{submitIphone} \cite{guidePublish}.
+Avgränsningen med att endast utveckla scanningsapplikationen för Android gjordes dels på grund av tidsbrist med också eftersom applikationen endast kommer att användas ett fåtal gånger, dvs när man ska installera systemet på sin arbetsplats. Eftersom applikationen inte kommer användas regelbundet ansåg vi att android var lämpligare eftersom det är enligt vår uppfattning är enklare och smidigare att publicera en Andoidapplikation än till exempel en Iphoneapplikation. Det enda man behöver göra för är att ladda upp sin fungerande APK (android package kit) och betala en mindre engångssumma \cite{android} \cite{guidePublish}. För att kunna publicera en Iphoneapplikation behöver applikationen genomgå fler steg och applikationen har en risk att bli nekad. Applikationen måste fungera enligt vissa kriterier samt att det tillkommer en årlig avgift som man måste betala \cite{submitIphone} \cite{guidePublish}.
 
 En avgränsning gällande vår webbapplikation är att den endast kommer vara utrustad med de mest väsentliga funktionaliteterna då den endast kommer att användas för demonstration. Vår intressent har redan en intern webbportal som de använder för andra arbetsuppgifter och som de i händelse av användning vill använda även för presentation av positioneringsinformation. Det information som kommer vara synlig i vårt interface är användarnas position.
 
@@ -633,10 +633,11 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
   \newline
   Om fler än en referenspunkt slutar på samma poäng i steg 3 av algoritmen betyder det att vi inte bara med hjälp av att undersöka den inbördes ordningen för åtkommstpunkterna kan avgöra vilken som teoretiskt sett bör vara den som bäst överensstämmer med klientenhetens position. Vid de fall som detta uppstår vill vi ändå kunna utse en referenspunkt som den bäst matchande. Det gör vi genom att övergå till Metod 2 för positionsbestämning.
 \end{itemize}
+%TODO väldigt lång förstamening i steg 4.
 
 \paragraph{Metod 2 - Analys av RSSI-värden}
 \leavevmode\newline
-I de fall som Metod 1 för positionsbestämningen av en klientenhet inte har lyckats avgöra vilken referenspunkt som bäst matchar klientenhetens position behöver vi ytterligare en metod för att utse \textbf{en} specifik referenspunktsom den bäst matchande. Om Metod 1 inte kunnat fastställa en specifik referenspunkt betyder det att två eller fler kandiderar om att vara bäst matchande. Dessa kandidater skickas vidare till Metod 2.
+I de fall som Metod 1 för positionsbestämningen av en klientenhet inte har lyckats avgöra vilken referenspunkt som bäst matchar klientenhetens position behöver vi ytterligare en metod. Metoden används för att utse \textbf{en} specifik referenspunkt som klientenhetens position bäst matchar. Om Metod 1 inte kunnat fastställa en specifik referenspunkt betyder det att två eller fler kandiderar om att vara bäst matchande. Dessa kandidater skickas vidare till Metod 2.
 
 Metod 2 har till uppgift att analysera RSSI-värdet för varje åtkomstpunkt som återfinns i både referenspunktens och klientenhetens lista med åtkomstpunkter.
 Teorin som Metod 2 bygger på är att ju mindre RSSI-värdet skiljer sig åt för åtkomstpunkten till klientenhet respektive åtkomstpunkten till referenspunkt desto troligare är det att avståndet mellan åtkomstpunkt och klientenhet respektive åtkomstpunkt och referenspunkt är detsamma. Teorin illustreras i figur \ref{fig:TEO2} nedan.
@@ -647,16 +648,18 @@ Teorin som Metod 2 bygger på är att ju mindre RSSI-värdet skiljer sig åt fö
   \caption{Illustration av teorin bakom Metod 2 för positionsbestämning}
   \label{fig:TEO2}
 \end{figure}
+%TODO man kan kanske ha en till punkt i bilden för att visa att referenspunkten och klienenheten är närmare varandra än den punkt som har ett annat RSSI värde. Nu ser det ut som om trots att de har samma RSSI värde så är de inte nära varandra.
 
 Teorin bakom Metod 2 bygger därmed på att om klientenheten och en referenspunkt har ett RSSI-värde till samma åtkomspunkt som överensstämmer så bör de även befinna sig på samma avstånd från åtkomstpunkten. Detta gäller tyvärr till viss del bara i teorin eftersom signalen från åtkomstpunkten kan reflekteras mot väggar, tak och annat möblemang vilket påverkar RSSI-värdet\cite{zanca2008experimental}. Ett annat problem som gör denna teori mindre tillförlitlig i praktiken är enligt Lui m. fl. att olika hårdvara för trådlös nätverksmottagning kan ge olika RSSI-värden trots identiska förhållanden\cite{problem_with_RSSI}. Dessa problem är anledningen till att vi väljer att implementera Metod 2, som är baserad på denna teori, som ett eventuellt sista steg i positionsbestämningen.
 
 Algoritmen för Metod 2 som är baserad på teorin beskriven ovan har vi konstruerat som följer.
 
 \begin{enumerate}
-  \item differensen i RSSI-värde för klientenheten samt för en referenspunkt till samma åtkomstpunkt beränas och sparas. Detta görs för varje överensstämmande åtkommspunkt hos en referenspunkt och klientenheten.
+  \item differensen i RSSI-värde för klientenheten samt för en referenspunkt till samma åtkomstpunkt beräknas och sparas. Detta görs för varje överensstämmande åtkommspunkt hos en referenspunkt och klientenheten.
   \item differenserna i RSSI-värde för varje överensstämmande åtkomstpunkt adderas. Detta gör att varje referenspunkt får ett sammanlagt värde på differenserna uppmätta i steg 1.
   \item Den referenspunkt med lägst sammanlagd differens uppskattas till att vara den referenspunkt som befinner sig närmast klientenheten.
 \end{enumerate}
+
 
 Figur \ref{fig:MET2} ger är ett exempel på en situation när Metod 2 används och hur positionsbestämningen går till.
 Observera att den åtkomstpunkt med högst RSSI-värde i klientenhetens list även är den åtkomstpunkt i båda referenspunkternas lista som har högst RSSI-värde.
