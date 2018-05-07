@@ -542,7 +542,8 @@ I den nuvarande versionen av systemet kommer skriptet be användaren om ett anv�
 Användarnamnet verifieras därefter mot alla registrerade användare som finns i databasen (se sektion \ref{databasen}). Om användarnamnet som användaren anger inte matchar något användarnamn i databasen termineras skriptet. Anledningen är att endast godkända användare ska ha möjlighet att göra skriptet och ladda upp sin positionsinformation i databasen. Användare läggs till av systemadministratören från webbinterfacet (se sektion ~\ref{webbinterface}). I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår "proof of concept" version att be användaren om ett användarnamn.
 
 \subsection{Hämta information om referenspunkter från databasen}\label{HamtaInfoDB}
-För att kunna utföra positionsbestämningen behöver klientenheten hämta information om referenspunkterna från databasen. Positionsbestämningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många användare ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter MySQLdb\cite{mysqldb}. MySQLdb erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
+För att kunna utföra positionsbestämningen behöver klientenheten hämta information om referenspunkterna från databasen. Positionsbestämningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många användare ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter PyMySQL\cite{mysqldb}%TODO byt referens
+. PyMySQL erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
 
 Nedan följer ett exempel på informationen om en referenspunkt som vi hämtar från databasen:
 \begin{itemize}
@@ -606,7 +607,7 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
     \newline
     I steg 3 ges alla kvarvarande referenspunkter poäng baserat på hur väl ordningen i de åtkomstpunkter som finns lagrade för referenspunkten överensstämmer med ordningen för åtkomstpunkterna som är scannade av klientenheten. Eftersom både referenspunkternas och klientenhetens åtkomstpunkter är sorterade baserat på RSSI-värdet (signalstyrkan) kan detta poängsystem användas för att avgöra vilken referenspunkt som troligtvis är den som befinner sig närmast klientenheten.
     Högsta möjliga poäng tilldelas en referenspunkt vars 3 lagrade åtkomstpunkter återfinns bland de tre åtkomstpunkerna med bäst signalstyrka hos klientenheten samt med samma inbördes ordning. Varje åtkomstpunkt hos referenspunkten jämförs med varje åtkomstpunkt i klientenhetens lista. Ju högre upp i listan åtkomstpunkten befinner sig, både i referenspunkten och i klientlistan, ju högra poäng tilldelas referenspunkten. När varje åtkomstpunkt i referenslistan jämförts läggs poängen för varje åtkomstpunkt ihop och ger referenspunktens slutgiltiga poäng.
-    Den referenspunkt som fått högst totalpoäng bedömms vara den referenspunkt som befinner sig närmast klientenheten varvid klientenhetens position bestäms till samma position som för den vinnande referenspunkten.
+    Den referenspunkt som fått högst totalpoäng bedöms vara den referenspunkt som befinner sig närmast klientenheten varvid klientenhetens position bestäms till samma position som för den vinnande referenspunkten.
     En illustration av poängutdelningsprocessen ges i figurerna \ref{fig:MAC1},\ref{fig:MAC2},\ref{fig:MAC3} nedan.
     MAC-adresserna är åtkomstpunkternas unika namn.
 
@@ -697,14 +698,14 @@ Därefter adderas resultaten för analysen av referenspunkt2: $$ 20 + 20 = 40$$
 Vi ser då att referenspunkt 1 genererar ett lägre slutvärde än referenspunkt 2. Därmed antas referenspunkt 1 befinna sig närmare klientenheten och klientenhetens position uppskattas till samma position som för referenspunkt 1.
 
 \subsection{Uppdatera databasen med klientenhetens position}
-Efter det att klientenhetens position är bestämmd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av MySQLdb (se sektion \ref{HamtaInfoDB}).
+Efter det att klientenhetens position är bestämmd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av PyMySQL (se sektion \ref{HamtaInfoDB}).
 
 \subsection{Databasens uppbyggnad}\label{databasen}
 Databasen är hjärtat och den enda resursen som egentligen behöver delas mellan enheter i vårt system. Den håller data om referenspunkter och data om användare samt deras position.
-Varje delsystem som vi har konstruerat gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positions bestämning kontrollerar att man är en användare som finns och sedan lägger den in vilken position man har i de relationella tabellerna för vilken position varje användare samt historik. webbapplikationen som ska presentera datan på ett tydligt sätt går in och hämtar varje användare, länkar dessa med vilken position och presenterar detta.
+Varje delsystem som vi har konstruerat gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positionsbestämning kontrollerar att man är en befintlig användare och lägger sedan in vilken position man har. In i de relationella tabellerna som håller vilken position varje användare har, och har haft. Webbapplikationen som ska presentera datan på ett tydligt sätt går in och hämtar varje användare, länkar dessa med vilken position och presenterar detta.
 
 \subsubsection{Tabell för referenspunkter}
-Tabellen för referenspunkterna har vi konstruerat manuellt med SQL direkt in i databasen, se figur [Figur kommer] %TODO figur kommer
+Tabellen för referenspunkterna har vi konstruerat manuellt med SQL direkt in i databasen, se figur ~\ref{fig:db_tabeller}.
 Den är konstruerad som en enskild tabell kontra om man skulle dela upp den i två relationella tabeller vilket hade varit önskvärt om man vill uppnå 3NF [Referens].%TODO referns?
 Detta för att det vi har valt att skanningen ska resultera i en CSV-fil. CSV, står för comma seperated values och det är ett format som gör att man enkelt kan importera mängder av rader automatiskt.
 Tabellens struktur består av
@@ -722,10 +723,10 @@ Tabellens struktur består av
 
 \subsubsection{Relationella tabeller för användare och deras position}
 Tabellerna som med hjälp av en Foreign Key [referens]%TODO referens
-kopplas ihop och håller användare och deras position, se figur [Figur kommer].%TODO figur
-Dessa är två tabeller som Django (se sektion \ref{django}), webbbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. Man skapar en modell, definierar vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
+kopplas ihop och håller användare och deras position, se figur ~\ref{fig:db_tabeller}.
+Dessa är två tabeller som Django (se sektion \ref{django}), webbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. Man skapar en modell, definierar vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
 
-Tabellen som håller användarinformation:s struktur består av
+Tabellen som håller användarinformation är strukturerad enligt följande
 \begin{itemize}
   \item  u\_id - Primary Key som länkar till tabellen för användares position
   \item  u\_username - användarens användarnamn
@@ -733,12 +734,18 @@ Tabellen som håller användarinformation:s struktur består av
   \item  u\_show\_position - huruvida användaren vill visa sin position
 \end{itemize}
 
-Tabellen som håller en användares positions struktur består av
+Tabellen som håller en användares position är strukturerad enligt följande
 \begin{itemize}
   \item u\_id - Foreign Key som länkar till tabellen för användarinformation
   \item u\_position - Användarens position
   \item u\_datetime - Datum och tid som användarens position lades in i tabellen
 \end{itemize}
+
+\begin{figure}[H]
+  \includegraphics[width=15cm]{media/db_tabeller.png}
+  \caption{Tabeller i databasen}
+  \label{fig:db_tabeller}
+\end{figure}
 
 
 \subsection{Applikation för scanning vid referenspunkter}
