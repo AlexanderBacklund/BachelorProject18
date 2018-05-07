@@ -126,7 +126,7 @@ def nearestRP(relRPs, myAPs, lengthAP , numberOfMatchingRefs):
 
 
 def getRefListFromDB(cur):
-    cur.execute("SELECT * FROM SEBBE") # TODO: Change to reftable
+    cur.execute("SELECT * FROM SEBBE") 
     return cur.fetchall()
 
 
