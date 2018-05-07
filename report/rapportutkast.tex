@@ -590,7 +590,7 @@ För att åstadkomma detta har vi använt två typer av positionsbestämningsmet
 Metod 1 bygger på teorin att de referenspunkter som har åtkommstpunkter sparade som överensstämmer med de åtkommstpunkter med högst RSSI-värde i klientenhetens lista (se exempel i sektion \ref{scanning}) är de referenspunkter som befinner sig närmast klientenheten. Om det går att finna en referenspunkt vars tre åtkommstpunkter återfinns som top tre åtkommstpunkter i klientenhetens lista bör denna referenspunkt i teorin befinna sig i nära anslutning till klientenheten.
 Metod 1:s syfte är alltså att finna referenspunkter som har samma närmast intilliggande åtkomstpunkter som klientenheten.
 
-Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinner sig närmast klientenheten ser ut som följer:
+Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinner sig närmast klientenheten ser ut på följande sätt:
 
   \begin{itemize}
     \item \textbf{Steg 1}
@@ -604,7 +604,7 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
 
     \item \textbf{Steg 3}
     \newline
-    I steg 3 poängges alla kvarvarande referenspunkter baserat på hur väl ordningen i de åtkomstpunkter som finns lagrade för referenspunkten överensstämmer med ordningen för åtkomstpunkterna som är scannade av klientenheten. Eftersom både referenspunkternas och klientenhetens åtkomstpunkter är sorterade baserat på RSSI-värdet (signalstyrkan) kan detta ett poängsystem användas för att avgöra vilken referenspunkt som troligtvis är den som befinner sig närmast klientenheten.
+    I steg 3 ges alla kvarvarande referenspunkter poäng baserat på hur väl ordningen i de åtkomstpunkter som finns lagrade för referenspunkten överensstämmer med ordningen för åtkomstpunkterna som är scannade av klientenheten. Eftersom både referenspunkternas och klientenhetens åtkomstpunkter är sorterade baserat på RSSI-värdet (signalstyrkan) kan detta poängsystem användas för att avgöra vilken referenspunkt som troligtvis är den som befinner sig närmast klientenheten.
     Högsta möjliga poäng tilldelas en referenspunkt vars 3 lagrade åtkomstpunkter återfinns bland de tre åtkomstpunkerna med bäst signalstyrka hos klientenheten samt med samma inbördes ordning. Varje åtkomstpunkt hos referenspunkten jämförs med varje åtkomstpunkt i klientenhetens lista. Ju högre upp i listan åtkomstpunkten befinner sig, både i referenspunkten och i klientlistan, ju högra poäng tilldelas referenspunkten. När varje åtkomstpunkt i referenslistan jämförts läggs poängen för varje åtkomstpunkt ihop och ger referenspunktens slutgiltiga poäng.
     Den referenspunkt som fått högst totalpoäng bedömms vara den referenspunkt som befinner sig närmast klientenheten varvid klientenhetens position bestäms till samma position som för den vinnande referenspunkten.
     En illustration av poängutdelningsprocessen ges i figurerna \ref{fig:MAC1},\ref{fig:MAC2},\ref{fig:MAC3} nedan.
@@ -628,7 +628,7 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
   	\caption{Poängsystem för åtkomstpunkt 3}
   	\label{fig:MAC3}
   \end{figure}
-
+%TODO Till och med jag har lite svårt att förstå dina bilder. Alla klienenheter har ju samma macaddress som referenspunkten. Är det en typo eller har det med RSSI att göra? om det har med RSSI bör man nog visa det också!
   \item \textbf{Steg 4}
   \newline
   Om fler än en referenspunkt slutar på samma poäng i steg 3 av algoritmen betyder det att vi inte bara med hjälp av att undersöka den inbördes ordningen för åtkommstpunkterna kan avgöra vilken som teoretiskt sett bör vara den som bäst överensstämmer med klientenhetens position. Vid de fall som detta uppstår vill vi ändå kunna utse en referenspunkt som den bäst matchande. Det gör vi genom att övergå till Metod 2 för positionsbestämning.
