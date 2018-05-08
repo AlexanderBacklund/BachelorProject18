@@ -147,11 +147,7 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
 
 % \end{description}
 
-
-\section*{Att göra}
-Femte utkast: Resultat, slutsatser och diskussion. Kolla gärna igenom introduktion också.
-
-\newpage %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen (men inte \mainmatter)
+ %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen (men inte \mainmatter)
 
 \section{Introduktion}
 \iffalse Beskriv åtminstone samma saker som i abstract, men mer utförligt. Spara tekniska detaljer till senare.
@@ -167,7 +163,13 @@ Introduktionen bör vara begriplig för t.ex.~en student i årskursen under, och
 
 Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktivitetsbaserade arbetsplatser. Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. Ett problem med denna typ av miljö är att det är svårt att veta vart sina medarbetare befinner sig. Lösningen till problemet är vårt system. Systemet fungerar så att när en medarbetare startar sin dator kommer den att skanna av nätverksinformationen i närheten och bestämma medarbetarens position. Denna position kommer att visas på en hemsida så att andra medarbetare snabbt kan se vart sina kollegor befinner sig. Som användare kommer man även kunna välja att inte visa sin position.
 
+Systemet består av en mobilapplikation som används för att installera systemet på arbetsplatsen, därefter kommer applikationen inte att användas mer. Systemet består även av ett datorprogram som varje användare av systemet kommer att köra i bakgrunden på sina egna datorer. Detta program positionerar arbetaren och skickar positionen till en datorbas. Slutligen består systemet av en hemsida som alla användare av systemet kan komma åt. På hemsidan kan man se sin egen position samt se andra användares positioner.
+% BEhövs detta, känns överflödigt men det förtydligar vad alla delar gör vilket var en feedback punkt. Man kan även ta upp lite resultat här antar jag.
+
+
 \section{Bakgrund}
+I bakgrunden förklaras först vad en aktivitetsbaserad verksamhet, följt beskrivs den externa intressenten vilket är Uppsala kommun. Uppsala kommun har under de senaste åren övergått till aktivitetsbaserad verksamhet vilket är anledningen till projektet. Följt kommer Skype for buisness vilket är ett verktyg som Uppsala kommuns använder dagligen. Följt kommer information om inumhuspositionering vilket är en stor del av vårat projekt. avslutningsvis tas de icketekniska aspekterna upp.
+
 \subsection{Aktivitetsbaserad verksamhet (ABV)}
 Madeleine Stjärne, \iffalse författaren till skriften "Aktivitetsbaserade
 arbetsplatser i offentliga sektor"\fi  beskriver aktivitetsbaserade arbetsplatser på så sätt att de erbjuder medarbetare en varierad arbetsmiljö \cite{ABV}. Hon hävdar att syftet med ABV är att medarbetarna inte ska behöva vara bundna till ett specifikt skrivbord utan istället kunna välja den mest ändamålsenliga arbetsplatsen utifrån den aktuella arbetsuppgiften. % variationen för den individa arbetaren.
@@ -206,7 +208,6 @@ Då vårt system har som uppgift att göra det lättare att lokalisera personal 
 
 Detta innebär att det i vårt system är viktigt att det är möjligt att välja att inte visa sin position för andra. Det är också viktigt att personer utanför organisationen inte kan ta del av information om vart personal befinner sig.
 
-\newpage
 \subsubsection{Etiska aspekter}
 Ur ett etiskt perspektiv finns också vissa frågeställningar som blir viktiga att ha i åtanke under systemets utveckling. Ska systemet till exempel göra det möjligt att öka kontrollen över medarbetarna genom att deras position alltid är känd? Är det lämpligt att föra statistik över vart medarbetare befinner sig vid olika tidpunkter?
 Målet med vårt system är inte att det ska användas som ett maktmedel utan för att underlätta för medarbetarna.
@@ -228,7 +229,7 @@ Några av de viktigaste nyheterna som detta innebär för den enskilda individen
   \item Sanktionsavgifter vid överträdelse
   \item Missbruksregeln upphör.
 \end{itemize}
-\newpage
+
 Nedan följer Datainspektionens \cite{GDPRdatainspektionen} förtydligande gällande ovan nämnda begrepp.
 
 \textbf{Dataportabilitet} innebär att individer ska ha rätten att få ut de personuppgifter de lämnat för att kunna flytta de till en annan tjänst.
@@ -244,7 +245,6 @@ Nedan följer Datainspektionens \cite{GDPRdatainspektionen} förtydligande gäll
 \textbf{Missbruksregeln} är en regel som funnits i PUL och har inneburit att vissa personuppgifter får behandlas så länge de inte anses kunna vara kränkande för någon. Denna regel försvinner i och med att GDPR börjar gälla.
 
 Enligt en av IT-strategerna hos Uppsala Kommun innebär den här nya lagen att många företag och organisationer, inklusive Uppsala Kommun, kommer behöva genomgå ett omfattande arbete för att säkerställa att man uppfyller de nya kraven för hantering av personuppgifter. Därmed har det också varit vår avsikt att vårt system ska uppfylla alla de krav på personuppgiftshantering som den nya lagen ställer. Den kritiska delen i vårt projekt är att sambandet mellan en person och en plats kommer lagras i en databas och sedan presenteras för deras kollegor. Därför bör alla anställda dels kunna välja att inte finnas med i systemet över huvud taget och dels kunna välja att deras plats inte ska visas för andra. De personuppgifter som vi då hanterar är namn och avdelning på arbetsplatsen. Då vårt system ställer dessa krav på samtycke uppfyller vi kraven mot GDPR i det avseendet.
-\newpage
 
 \subsubsection{Fackliga aspekter}
 Under ett möte med en företrädare för Uppsala Kommun uppkom även frågan om hur Fackförbunden kan tänkas ställa sig till att medarbetares position registreras.
@@ -257,7 +257,7 @@ Den frågeställningen är svår för oss att besvara. Den slutsats som vi drog 
 %Tänk på att bakgrunden kan se längre tillbaka -- hur löste man problemet förr? Ibland är det både viktigt och intressant (men ibland inte).
 
 %Efter att ha läst bakgrunden ska det vara uppenbart/lätt att förstå att syfte/mål är viktiga.
-\newpage
+
 \section{Syfte, mål, och motivation}
 \subsection{Syfte}
 Syftet med det här projektet är att utveckla ett enkelt och effektivt positioneringssystem för företag och organisationer som vill övergå till aktivitetsbaserade arbetsplatser(ABV). Systemet ska möjliggöra för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig. I första hand ämnar vi att undersöka huruvida det är möjligt att utveckla ett system som går att integrera med Skype for Buisness(SFB). SFB´s roll blir isåfall att vara del den av systemet som presenterar information om vart användare befinner sig. Visar det sig att en integration med SFB inte är genomförbar är andrahandsalternativet att utveckla ett eget system för att presentera informationen.
@@ -797,10 +797,11 @@ Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande 
 Relatera till mål och syften etc i avsnitt~\ref{sec:syfte}.
 \fi
 
+\iffalse
 Vi har ett fullt fungerande system som kan visa vart en medarbetare befinner sig inom ett område som har blivit nätverksskannad innan. Personen ska även finnas med i vår databas där alla referenspunkter och användare är sparade. Medarbetarnas position visas i en webbapplikation där man även kan välja att inte delge sin egen position. Vi kan uppskatta en medarbetares position med en radie på \ldots %TODO fyll i med verkliga siffror
 
 Vår initiala plan var att interagera vår positionsbestämningsalgoritm med Skype for buisness. Detta visade sig vara omöjligt att göra då den version av Skype for Business som vår intressent hade inte hade denna funktionalitet som krävdes. Detta medförde att vår plan förändrades och blev istället att göra ett eget system oberoende av Skype.
-
+\fi
 
 \section{Slutsatser}
 \iffalse Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och förklarar dess vikt och användning.  Vad var viktigt/nytt/intressant?  (INTE i termer av vad ni lärde er, utan för den som läser rapporten, funderar på att göra ett liknande system, vidareutveckla ert, etc.)
