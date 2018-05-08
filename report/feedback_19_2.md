@@ -34,3 +34,21 @@
 
 ## Metode
 - Kanske ska göra lite mer generella namn på underrubrikerna?
+- Förutom rubrikerna snyggt och bra.
+
+## Systemstruktur
+- "Kopplingar" som underrubrik kanske bör ändras till något tydligare
+- Refererar någonstans till database som molnet..
+
+## Simluering
+- Rubrik simulering bör kanske vara simulering av lalala eller bara Vår produkt.
+- Texten just under rubriken och rubriken "simulering "hänger kanske inte helt ihop, Stycket bör kanske ligga i bakgrund eller med rubrik förutsättningar för investering eller dyl.
+ - Bra beskrivet med algoritmerna
+ - Välsrivet och bra men det vore kul med någon bild av hemsidan även om det kanske bara är en betaversion. Då skulle man få en ännu högre förståelse för det ni förklara med ord.
+
+## Krav och utvärderingsmetoder
+- I framtida arbete skriver ni att front-end är en del. Men utvärderingen ska testa användarvänligeheten
+
+## Framtida arbete
+- Bra!
+- Hur mycket av front end kommer ni göra? hur vad i front-end är framtida arbete
