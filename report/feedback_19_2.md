@@ -30,6 +30,7 @@
 
 ## Relaterat arbete
 - Solar aid, Hur skiljer de sig från ERT projekt? lite för mycket ur seeding solars perspektiv.
+- Kan kanske nämna andra typer av simuleringar? Hur kan man simulera det på olika sätt?
 
 ## Metode
 - Kanske ska göra lite mer generella namn på underrubrikerna?
