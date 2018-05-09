@@ -711,8 +711,8 @@ Varje delsystem som vi har konstruerat gör anrop till databasen. Skanningsappli
 
 \subsubsection{Tabell för referenspunkter}
 Tabellen för referenspunkterna har vi konstruerat manuellt med SQL direkt in i databasen, se figur ~\ref{fig:db_tabeller}.
-Den är konstruerad som en enskild tabell kontra om man skulle dela upp den i två relationella tabeller vilket hade varit önskvärt om man vill uppnå 3NF [Referens].%TODO referns? här är Alex. Konstig mening, byt ur kontra.
-Detta för att det vi har valt att skanningen ska resultera i en CSV-fil. CSV, står för comma seperated values och det är ett format som gör att man enkelt kan importera mängder av rader automatiskt.
+Den är konstruerad som en enskild tabell kontra om den skulle delas upp i två relationella tabeller. För att uppnå 3NF bör man dela upp tabellerna som tidigare beskrivet [Referens]. Men enskild tabell i det här fallet underlättar importeringen. %TODO referns? Konstig mening, byt ut kontra.
+Detta för att det vi har valt att skanningen ska resultera i en CSV-fil. CSV, står för comma seperated values och det är ett format som gör det enkelt att importera mängder av rader automatiskt.
 Tabellens struktur består av
 
 \begin{itemize}
