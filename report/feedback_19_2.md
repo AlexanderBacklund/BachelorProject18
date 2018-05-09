@@ -51,3 +51,24 @@
 ## Framtida arbete
 - Bra!
 - Hur mycket av front end kommer ni göra? hur vad i front-end är framtida arbete
+
+## Vår Feedback
+- Hur är systemet uppbyget bör förklaras tidigare. Inledning!!!!
+- python, mysql. vad hur.
+- etiska aspekter- hur löser vi?
+- Fackliga aspekter, inte under ett möte.
+- Längre utförligare introduktion
+- Lite rörig,
+- Åtgärder mot fackliga aspekter beskriva i annat.
+- Flytta probelm med GPS till bakgrund.
+- Generella metoder ta bort.
+- mysqldB flytta till metod
+- Nutid när pratar om användaren kan. Ta bort "man".
+- Konsist med förkortningar, fixa.
+- VAr,vart
+- Ta bort rubriken vår produkt.
+- Ej underrubrik under rubrik.
+- Skriva om resultat och disskution helt.
+- Återkoppla till icketekniska aspekter
+- Tilde i referenser..
+- Figurtexter som beskriver figurerna. 
