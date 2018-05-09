@@ -273,14 +273,31 @@ def main():
         time.sleep(10)
         sys.exit()
 
+    try:
+        f = open('log.txt', 'w')
+    except:
+        print("logfile log.txt arent present")
+    f.write("")
+    f.close()
+    try:
+        f = open('log.txt', 'a')
+
+    except:
+        print("logfile log.txt arent present")
+
     #Mainloop that never dies
     while(True):
         rplist = createObjectsFromDB(getRefListFromDB(cur))
         l = scanNetworks()
+        #f.write(str(l))
+        #f.write(str(rplist))
+
         numberOfNetworksToScanAroundMe = 10
         myAPs = sortNetworksReturnAmount(numberOfNetworksToScanAroundMe,l)
         relRPs, biggestNumberOfMatches = listOfRelRPs(rplist, myAPs, numberOfNetworksToScanAroundMe)
         myPosition = whichPosition(relRPs, myAPs, numberOfNetworksToScanAroundMe, biggestNumberOfMatches)
+        f.write(username+" - "+myPosition+" ")
+        f.write(str(datetime.datetime.now())+"\n")
         print myPosition
 
         userList = getUsersFromDB(cur)
@@ -292,6 +309,7 @@ def main():
         lastposition = myPosition
     #Leave me be
     ###############################################
+    f.close()
     db.close()
 
 if __name__ == "__main__":
