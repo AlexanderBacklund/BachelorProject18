@@ -107,7 +107,7 @@ Many companies and organisations nowadays chose to transfer from an office struc
 %
 % Abstract ska vara förståeligt utan att läsa resten av rapporten, och resten av rapporten ska kunna läsas utan att läsa abstract. Man kan återanvända text från introduktionen.
 Många företag och organisationer väljer nuförtiden att övergå från en kontorsstruktur bestående av dedikerade kontorsplatser för var och en av medarbetarna, till en öppnare och mer kontorsfri struktur. %TODO kanske skriva om meningen då den är ganska lång, dock tycker jag om den...
-Med den övergången tillkommer vissa problem med att hitta enskilda medarbetare som du vill träffa eftersom de nu har möjlighet att välja arbetsplats friare. På grund av detta tappar de anställda i produktivitet eftersom de behöver spendera onödig tid på att lokalisera sina kollegor. En kontorsstruktur där medarbetarna väljer arbetsplats utifrån arbetsuppgift kallas för en aktivitetsbaserad arbetsplats. Det här projektets intention är att göra övergången till en aktivitetsbaserad arbetsplats enkel, icke tidskrävande och möjlig genom att endast använda befintlig teknik och information på arbetsplatsen. Medarbetarnas position kommer presenteras via en lokaliseringsplattform där varje användare enkelt kan lokalisera sina medarbetare.
+Med den övergången tillkommer vissa problem med att hitta enskilda medarbetare som du vill träffa eftersom de nu har möjlighet att välja arbetsplats friare. På grund av detta tappar de anställda i produktivitet eftersom de behöver spendera onödig tid på att lokalisera sina kollegor. En kontorsstruktur där medarbetarna väljer arbetsplats utifrån arbetsuppgift kallas för en aktivitetsbaserad arbetsplats. Det här projektets intention är att göra övergången till en aktivitetsbaserad arbetsplats enkel, icke tidskrävande och möjlig genom att endast använda befintlig teknik och information på arbetsplatsen. Medarbetarnas position kommer att presenteras via en lokaliseringsplattform där varje användare enkelt kan lokalisera sina medarbetare.
 %TODO skriv hur väl vi löste problemet.
 \end{sammanfattning}
 
@@ -147,11 +147,7 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
 
 % \end{description}
 
-
-\section*{Att göra}
-Femte utkast: Resultat, slutsatser och diskussion. Kolla gärna igenom introduktion också.
-
-\newpage %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen (men inte \mainmatter)
+ %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen (men inte \mainmatter)
 
 \section{Introduktion}
 \iffalse Beskriv åtminstone samma saker som i abstract, men mer utförligt. Spara tekniska detaljer till senare.
@@ -165,57 +161,66 @@ Se till att ni \emph{kommer till kritan snabbt} – man vill inte läsa igenom t
 Introduktionen bör vara begriplig för t.ex.~en student i årskursen under, och gärna för en ännu bredare läsarkrets.
 \fi
 
-Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktivitetsbaserade arbetsplatser. Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. Ett problem med denna typ av miljö är att det är svårt att veta vart sina medarbetare befinner sig. Lösningen till problemet är vårt system. Systemet fungerar så att när en medarbetare startar sin dator kommer den att skanna av nätverksinformationen i närheten och bestämma medarbetarens position. Denna position kommer att visas på en hemsida så att andra medarbetare snabbt kan se vart sina kollegor befinner sig. Som användare kommer man även kunna välja att inte visa sin position.
+Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktivitetsbaserade arbetsplatser. Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. Ett problem med denna typ av miljö är att det är svårt att veta vart sina medarbetare befinner sig. Lösningen till problemet är systemet som presenteras i denna rapport. Systemet fungerar så att när en medarbetare startar sin dator kommer den att skanna av nätverksinformationen i närheten och bestämma medarbetarens position. Denna position kommer att visas på en hemsida så att andra medarbetare snabbt kan se var sina kollegor befinner sig. Som användare finns möjligheter att även kunna välja att inte visa sin position.
+
+Systemet består av en mobilapplikation som används för att installera systemet på arbetsplatsen, därefter kommer applikationen inte att användas mer. Systemet består även av ett datorprogram som varje användare av systemet kommer att köra i bakgrunden på sina egna datorer. Detta program positionerar arbetaren och skickar positionen till en datorbas. Slutligen består systemet av en hemsida som alla användare av systemet kan komma åt. På hemsidan finns möjligheten att se sin egen position samt se andra användares positioner.
+% BEhövs detta, känns överflödigt men det förtydligar vad alla delar gör vilket var en feedback punkt. Man kan även ta upp lite resultat här antar jag.
+
+
 
 \section{Bakgrund}
-\subsection{Aktivitetsbaserad verksamhet (ABV)}
+I bakgrunden förklaras först vad en aktivitetsbaserad verksamhet, följt beskrivs den externa intressenten vilket är Uppsala kommun. Uppsala kommun har under de senaste åren övergått till aktivitetsbaserad verksamhet vilket är anledningen till projektet. Följt kommer Skype for buisness vilket är ett verktyg som Uppsala kommuns använder dagligen. Följt kommer information om inumhuspositionering vilket är en stor del av vårat projekt. avslutningsvis tas de icketekniska aspekterna upp.
+
+\subsection{Aktivitetsbaserad verksamhet}
 Madeleine Stjärne, \iffalse författaren till skriften "Aktivitetsbaserade
-arbetsplatser i offentliga sektor"\fi  beskriver aktivitetsbaserade arbetsplatser på så sätt att de erbjuder medarbetare en varierad arbetsmiljö \cite{ABV}. Hon hävdar att syftet med ABV är att medarbetarna inte ska behöva vara bundna till ett specifikt skrivbord utan istället kunna välja den mest ändamålsenliga arbetsplatsen utifrån den aktuella arbetsuppgiften. % variationen för den individa arbetaren.
+arbetsplatser i offentliga sektor"\fi  beskriver aktivitetsbaserade arbetsplatser på så sätt att de erbjuder medarbetare en varierad arbetsmiljö \cite{ABV}. Hon hävdar att syftet med aktivitetsbaserad verksamhet (ABV) är att medarbetarna inte ska behöva vara bundna till ett specifikt skrivbord utan istället kunna välja den mest ändamålsenliga arbetsplatsen utifrån den aktuella arbetsuppgiften. % variationen för den individa arbetaren.
 
 Då en organisation väljer att övergå till en aktivitetsbaserad arbetsplats
 delas arbetsplatsen in i olika miljöer som stödjer de olika arbetsuppgifterna som ska utföras, såväl individuella arbeten som grupparbeten. En sådan uppdelning görs baserat på resultatet av en verksamhetsanalys. I en verksamhetsanalys analyseras hur arbetsplatsen har använts tidigare. De viktigaste parametrarna att undersöka vid en verksamhetsanalys är vilka arbetsuppgifter som utförs, vart de utförs och hur ofta de utförs \cite{ABV}.
 Det är vanligt att arbetsplatsen delas upp i olika zoner. Exempel på zoner kan vara tysta zoner och möteszoner. Medarbetarna söker sig då till den zon de tycker passar bäst för dagens arbete.
 
-Enligt Lisbeth Slunga Järvholm, forskare vid Umeå universitet passar inte ett aktivitetsbaserat kontor alla. Inte alla sorters arbetsuppgifter fungerar optimalt då man lätt kan bli störd. Vissa arbetsuppgifter kräver en högre koncentrationsnivå, vilket kan vara svårt i ett öppet landskap \cite{passarInteAlla}.
+Enligt Lisbeth Slunga Järvholm, forskare vid Umeå universitet, passar inte ett aktivitetsbaserat kontor alla. Inte alla sorters arbetsuppgifter fungerar optimalt då arbetarna lätt kan bli störd. Vissa arbetsuppgifter kräver en högre koncentrationsnivå, vilket kan vara svårt i ett öppet landskap \cite{passarInteAlla}.
 %TODO Fördelar med ett aktivitetsbaserat kontor
 
 \subsection{Uppsala Kommun}
-Uppsala Kommun agerar i det här projektet extern intressent. De är i ett skede där de övergår till aktivitetsbaserade arbetsplatser på många av deras kontor runt om i Uppsala. Det innebär att %TODO kolla upp antal
-ett par tusen personer kommer att kunna välja friare vart de vill utföra sina arbetsuppgifter. Uppsala Kommun har uttryckt ett behov av att deras medarbetare snabbt ska kunna se vart deras kollegor befinner sig. Det är vår förhoppning att de ska kunna utnyttja vårt system för att kunna uppfylla deras behov.
+Uppsala Kommun agerar i det här projektet som extern intressent. De är i ett skede där de övergår till aktivitetsbaserade arbetsplatser på många av deras kontor runt om i Uppsala. Det innebär att %TODO kolla upp antal
+ett par tusen personer kommer att kunna välja friare var de vill utföra sina arbetsuppgifter. Uppsala Kommun har uttryckt ett behov av att deras medarbetare snabbt ska kunna se var deras kollegor befinner sig. Det är vår förhoppning att de ska kunna utnyttja systemet för att kunna uppfylla deras behov.
 
 \subsection{Skype for Business}
-Skype for Business är ett kommunikationsmedel som används av många företag och organisationer. Skype for Business(SFB) erbjuder funktionalitet såsom realtidssamtal, videomöten och chattfunktioner. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFB´s server \cite{Microsoft-Office}. Det är en funktion som har undersökts om den är lämpligt att använda i detta projekt. När SFB´s platsdatabas är populerad med nätverksinformation för varje område på organisationens arbetsplatser kan en medarbetares position bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i Skypes användargränssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
+Skype for Business är ett kommunikationsmedel som används av många företag och organisationer. Skype for Business(SFB) erbjuder funktionalitet såsom realtidssamtal, videomöten och chattfunktioner. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFBs server \cite{Microsoft-Office}. Det är en funktion som har undersökts om den är lämpligt att använda i detta projekt. När SFB´s platsdatabas är populerad med nätverksinformation för varje område på organisationens arbetsplatser kan en medarbetares position bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i Skypes användargränssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
 
 Skype erbjuder två olika versioner av tjänsten Skype for Business. Den ena varianten, Skype for Business \textit{Online} är en molnbaserad tjänst som inte kräver några fysiska servrar hos användaren \cite{SFBonline}.
-Den andra varianten, Skype for Business \textit{Server} kräver fysiska servrar hos användaren \cite{SFBserver}. Funktionaliteten för de två olika versionerna skiljer sig delvis åt och intressenten i det här projektet (Uppsala Kommun) hade som önskemål att vi skulle undersöka om funktionen med en platsdatabas i SFB var möjligt i deras fall. Uppsala kommun använder Skype for Business Online.
+Den andra varianten, Skype for Business \textit{Server} kräver fysiska servrar hos användaren \cite{SFBserver}. Funktionaliteten för de två olika versionerna skiljer sig delvis åt och intressenten i det här projektet (Uppsala Kommun) hade som önskemål att det utfördes en undersökning om funktionen med en platsdatabas i SFB var möjligt i deras fall. Uppsala kommun använder Skype for Business Online.
 
 \subsection{Inomhuspositionering}
 Inomhuspositionering är jämfört med utomhuspositionering ett problem med fler komplikationer. GPS-tekniken(Global Position System) som ger en mycket liten felmarginal vid utomhuspositionering är sällan användbar för inomhuspositionering. Anledningen är att GPS-tekniken kräver en oblockerad signal till de satelliter som GPS använder sig av för positionsbestämning \cite{GPS_US_ACCURACY}.
 
-I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. Även om GPS-tekniken kan användas för att bestämma en enhets höjd över marken är den inte tillräckligt tillförlitlig då man vill avgöra på vilket våningsplan i en byggnad en enhet befinner sig.
+I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. Även om GPS-tekniken kan användas för att bestämma en enhets höjd över marken är den inte tillräckligt tillförlitlig för att bestämma vilket våningsplan enheten befinner sig på.
 
-En av skillnaderna är att det vid positionsbestämning inomhus tillkommer en faktor som komplicerar positionsbestämningen. Problemet är att man vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt koordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
+En av skillnaderna är att det vid positionsbestämning inomhus tillkommer en faktor som komplicerar positionsbestämningen. Problemet är att vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt koordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
+%TODO Säger du typ inte samma sak här som på förra stycket?
+
 
 %\subsection{Dataskyddsförordningen}
 %https://www.datainspektionen.se/dataskyddsreformen/dataskyddsforordningen/introduktion-till-dataskyddsforordningen/ TODO: skriv om detta!
 \subsection{Icketekniska aspekter vid inomhuspositionering på \\arbetsplatser}
 
 \subsubsection{Säkerhetsmässiga aspekter}
-Då många företag och organisationer har säkerhetsmässiga överväganden att ta hänsyn till är det viktigt att vårt system inte bidrar till att säkerheten för medarbetarna i en organisation försämras vid användning av vårt system.
-Då vårt system har som uppgift att göra det lättare att lokalisera personal på arbetsplatser kan säkerhetsrisker uppstå. Om det är möjligt för utomstående personer att ta del av information om vart personal befinner sig kan det leda till säkerhetsproblem. I Uppsala kommuns fall finns ett konkret exempel på den typen av säkerhetsproblem. Det arbetar många politiker inom Uppsala kommun och politiker är en yrkesgrupp som ofta får motta våld eller hot om våld. Ifall vårt system bidrar till att det går att tillskansa sig deras exakta position utsätter vi eventuellt dem för risker som inte skulle uppstå utan vårt system.
+Då många företag och organisationer har säkerhetsmässiga överväganden att ta hänsyn till är det viktigt att systemet inte bidrar till att säkerheten för medarbetarna i en organisation försämras vid användning av systemet.
+Då systemet har som uppgift att göra det lättare att lokalisera personal på arbetsplatser kan säkerhetsrisker uppstå. Om det är möjligt för utomstående personer att ta del av information om var personal befinner sig kan det leda till säkerhetsproblem. I Uppsala kommuns fall finns ett konkret exempel på den typen av säkerhetsproblem. Det arbetar många politiker inom Uppsala kommun och politiker är en yrkesgrupp som ofta får motta våld eller hot om våld. Ifall systemet bidrar till att det går att tillskansa sig deras exakta position utsätter systemet eventuellt dem för risker som inte skulle uppstå utan systemet.
 
-Detta innebär att det i vårt system är viktigt att det är möjligt att välja att inte visa sin position för andra. Det är också viktigt att personer utanför organisationen inte kan ta del av information om vart personal befinner sig.
+Detta innebär att det i systemet är viktigt att det är möjligt att välja att inte visa sin position för andra. Det är också viktigt att personer utanför organisationen inte kan ta del av information om var personal befinner sig.
 
-\newpage
 \subsubsection{Etiska aspekter}
-Ur ett etiskt perspektiv finns också vissa frågeställningar som blir viktiga att ha i åtanke under systemets utveckling. Ska systemet till exempel göra det möjligt att öka kontrollen över medarbetarna genom att deras position alltid är känd? Är det lämpligt att föra statistik över vart medarbetare befinner sig vid olika tidpunkter?
-Målet med vårt system är inte att det ska användas som ett maktmedel utan för att underlätta för medarbetarna.
+Ur ett etiskt perspektiv finns också vissa frågeställningar som blir viktiga att ha i åtanke under systemets utveckling. Ska systemet till exempel göra det möjligt att öka kontrollen över medarbetarna genom att deras position alltid är känd? Är det lämpligt att föra statistik över var medarbetare befinner sig vid olika tidpunkter?
+Målet med systemet är inte att det ska användas som ett maktmedel utan för att underlätta för medarbetarna.
 
 \subsubsection{General Data Protection Regulation, GDPR}
 GDPR är en ny Europeisk Lagstiftning som gäller alla medlemsländer i EU och träder i kraft den 25 maj 2018.
 Lagstiftningen reglerar hantering av personuppgifter och har som syfte att stärka individens rättigheter då företag och organisationer hanterar personuppgifter \cite{GDPRibm} \cite{GDPRdatainspektionen}.
 Individer har nu rätt att ta ett ärende som gäller personuppgiftshantering till en rättsprocess mot företag som de anser ha brutit mot de krav som GDPR innebär.
-Myndigheten Datainspektionen i Sverige har nu möjlighet att utdela böter till organisationer och företag som de anser bryter mot de nya lagarna. Det högsta bötesbeloppet som kan utdömas är 4\% eller 20 miljoner Euro \cite{GDPRibm}.
+Myndigheten Datainspektionen i Sverige har nu möjlighet att utdela böter till organisationer och företag som de anser bryter mot de nya lagarna. Det högsta bötesbeloppet som kan utdömas är 4\% %TODO 4% av VAD???
+eller 20 miljoner Euro \cite{GDPRibm}.
 
 GDPR eller Dataskyddsförordningen på svenska har vissa regler som i Sverige sedan tidigare reglerats i personuppgiftslagen (PUL). De likheter som finns är bland annat kravet på samtycke och rätten för en individ att få ta del av hur personuppgifter behandlas. PUL utgår den 25 maj 2018 i sin helhet och ersätts av GDPR \cite{GDPRdatainspektionen}.
 
@@ -228,14 +233,14 @@ Några av de viktigaste nyheterna som detta innebär för den enskilda individen
   \item Sanktionsavgifter vid överträdelse
   \item Missbruksregeln upphör.
 \end{itemize}
-\newpage
+
 Nedan följer Datainspektionens \cite{GDPRdatainspektionen} förtydligande gällande ovan nämnda begrepp.
 
 \textbf{Dataportabilitet} innebär att individer ska ha rätten att få ut de personuppgifter de lämnat för att kunna flytta de till en annan tjänst.
 
 \textbf{Konsekvensbedömning} innebär att innan någon planerar att hantera personuppgifter ska det undersökas vilka risker hanteringen skulle kunna innebära för individen och hur dessa risker ska kunna förebyggas.
 
-\textbf{Anmälningsskyldighet} innebär att vid dataintrång eller dataförlust måste de drabbade informeras och an anmälning måste göras till Datainspektionen inom 72 timmar.
+\textbf{Anmälningsskyldighet} innebär att vid dataintrång eller dataförlust måste de drabbade informeras och en anmälning måste göras till Datainspektionen inom 72 timmar.
 
 \textbf{Dataskyddsombud.} Innebörden av kravet på ett dataskyddsombud är att varje företag eller organisation som hanterar känsliga personuppgifter måste ha ett dataskyddsombud som hanterar frågor gällande dataskydd.
 
@@ -243,12 +248,12 @@ Nedan följer Datainspektionens \cite{GDPRdatainspektionen} förtydligande gäll
 
 \textbf{Missbruksregeln} är en regel som funnits i PUL och har inneburit att vissa personuppgifter får behandlas så länge de inte anses kunna vara kränkande för någon. Denna regel försvinner i och med att GDPR börjar gälla.
 
-Enligt en av IT-strategerna hos Uppsala Kommun innebär den här nya lagen att många företag och organisationer, inklusive Uppsala Kommun, kommer behöva genomgå ett omfattande arbete för att säkerställa att man uppfyller de nya kraven för hantering av personuppgifter. Därmed har det också varit vår avsikt att vårt system ska uppfylla alla de krav på personuppgiftshantering som den nya lagen ställer. Den kritiska delen i vårt projekt är att sambandet mellan en person och en plats kommer lagras i en databas och sedan presenteras för deras kollegor. Därför bör alla anställda dels kunna välja att inte finnas med i systemet över huvud taget och dels kunna välja att deras plats inte ska visas för andra. De personuppgifter som vi då hanterar är namn och avdelning på arbetsplatsen. Då vårt system ställer dessa krav på samtycke uppfyller vi kraven mot GDPR i det avseendet.
-\newpage
+Enligt en av IT-strategerna hos Uppsala Kommun innebär den nya lagen att många företag och organisationer, inklusive Uppsala Kommun, kommer behöva genomgå ett omfattande arbete för att säkerställa att de nya kraven för hantering av personuppgifter uppfylls. %TODO lång mening, vet dock inte hur man kan förkorta den
+Därmed har det också varit vår avsikt att systemet ska uppfylla alla de krav på personuppgiftshantering som den nya lagen ställer. Den kritiska delen i projektet är att sambandet mellan en person och en plats kommer lagras i en databas och sedan presenteras för deras kollegor. Därför bör alla anställda dels kunna välja att inte finnas med i systemet över huvud taget och dels kunna välja att deras plats inte ska visas för andra. De personuppgifter som då hanteras är namn och avdelning på arbetsplatsen. Då systemet ställer dessa krav på samtycke uppfylls kraven mot GDPR i det avseendet.
 
 \subsubsection{Fackliga aspekter}
 Under ett möte med en företrädare för Uppsala Kommun uppkom även frågan om hur Fackförbunden kan tänkas ställa sig till att medarbetares position registreras.
-Den frågeställningen är svår för oss att besvara. Den slutsats som vi drog var att oavsett hur olika fackförbund kan komma att ta ställning till registrering av medarbetares position så innebär det att det är en frågeställning vi behöver ha i åtanke när vi designar systemet. Vår förhoppning är såklart att ett användande av vårt system ska stöta på så få fackliga hinder som möjligt. Vi anser att eftersom möjligheten finns för personal att överhuvudtaget inte behöva använda sig av vårt system så borde eventuella fackliga problem kunna minska. Det är vår ståndpunkt att valfriheten för medarbetare och personal att använda vårt system är ett val som måste erbjudas av företagsledningen eller organisationsledningen. Det är endast vår förhoppning och rekommendation att så blir fallet. Därmed blir också eventuella fackliga hinder en fråga för de personer i organisationen som eventuellt beslutar om användningen av vårt system.
+Denna frågeställning är svår att besvara. Den slutsats som drogs var att oavsett hur olika fackförbund kan komma att ta ställning till registrering av medarbetares position så innebär det att det är en frågeställning som bör reflekteras över när systemet designas. Förhoppningen är såklart att ett användande av systemet ska stöta på så få fackliga hinder som möjligt. Eftersom möjligheten för personal att överhuvudtaget inte använda sig av vårt system så borde eventuella fackliga problem kunna minska. Det är vår ståndpunkt att valfriheten för medarbetare och personal att använda systemet är ett val som måste erbjudas av företagsledningen eller organisationsledningen. Därmed blir också eventuella fackliga hinder en fråga för de personer i organisationen som eventuellt beslutar om användningen av systemet.
 
 
 
@@ -257,32 +262,25 @@ Den frågeställningen är svår för oss att besvara. Den slutsats som vi drog 
 %Tänk på att bakgrunden kan se längre tillbaka -- hur löste man problemet förr? Ibland är det både viktigt och intressant (men ibland inte).
 
 %Efter att ha läst bakgrunden ska det vara uppenbart/lätt att förstå att syfte/mål är viktiga.
-\newpage
+
 \section{Syfte, mål, och motivation}
 \subsection{Syfte}
-Syftet med det här projektet är att utveckla ett enkelt och effektivt positioneringssystem för företag och organisationer som vill övergå till aktivitetsbaserade arbetsplatser(ABV). Systemet ska möjliggöra för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig. I första hand ämnar vi att undersöka huruvida det är möjligt att utveckla ett system som går att integrera med Skype for Buisness(SFB). SFB´s roll blir isåfall att vara del den av systemet som presenterar information om vart användare befinner sig. Visar det sig att en integration med SFB inte är genomförbar är andrahandsalternativet att utveckla ett eget system för att presentera informationen.
+Syftet med projektet är att utveckla ett enkelt och effektivt positioneringssystem för företag och organisationer som vill övergå till ABV. Systemet ska möjliggöra för medarbetare att enkelt och i realtid kunna se var deras kollegor befinner sig. I första hand ämnar vi att undersöka huruvida det är möjligt att utveckla ett system som går att integrera med SFB. SFBs roll blir isåfall att vara den del av systemet som presenterar information om vart användare befinner sig. Visar det sig att en integration med SFB inte är genomförbar är andrahandsalternativet att utveckla ett separat system för att presentera informationen.
 
 \subsection{Motivation}
-Projektet motiveras av att många företag och organisationer övergår till aktivitetsbaserade arbetsplatser (ABV). Uppsala Kommun har påbörjat en sådan övergång och har uttryckt ett behov av att medarbetare bör kunna se vart deras kollegor befinner sig. Uppsala kommun har arbetsplatser på ett flertal adresser i Uppsala och beroende på arbetsuppgift ska deras medarbetare själva kunna bestämma var de vill utföra sina arbetsuppgifter. Uppsala Kommuns medarbetare använder sig av Skype for Business(SFB) som kommunikationsmedel och har framfört ett önskemål att det direkt i SFB-applikationen ska gå att se vart en användare befinner sig.
+Projektet motiveras av att många företag och organisationer övergår till ABV. Uppsala Kommun har påbörjat en sådan övergång och har uttryckt ett behov av att medarbetare bör kunna se var deras kollegor befinner sig. Uppsala kommun har arbetsplatser på ett flertal adresser i Uppsala och beroende på arbetsuppgift ska arbetarna själva kunna bestämma var de vill utföra sina arbetsuppgifter. Uppsala Kommuns medarbetare använder sig av SFB som kommunikationsmedel och har framfört ett önskemål att det direkt i SFB-applikationen ska gå att se var en medarbetare befinner sig.
 
-\subsection{Mål}
+\subsection{Mål}\label{mål}
+Målet är att erbjuda ett system som såväl Uppsala Kommun som andra företag och organisationer som vill övergå till ABV ska kunna använda sig av. Systemet ska vara enkelt att introducera, enkelt att använda och enkelt att underhålla.
 
-Vårt mål är att erbjuda ett system som såväl Uppsala Kommun som andra företag och organisationer som vill övergå till ABV ska kunna använda sig av. Systemet ska vara enkelt att introducera, enkelt att använda och enkelt att underhålla.
-
-Vårt målsättning i ett prestandamässigt avseende är att då vårt system är integrerat på arbetsplatsen ska användarna kunna se på vilken adress, vilken våning och i vilket område på den våningen som en kollega befinner sig. Uppsala Kommun har önskat en precision med max 10 meters felmarginal. Även om bättre precision än så inte anses nödvändig hoppas vi kunna uppnå en felmarginal på maximalt 5 meter. Målet är också att erbjuda en möjlighet för alla medarbetare att via en webb-baserad portal se hur många medarbetare som befinner sig på en specifik arbetsyta. webbportalens syfte är att göra det enkelt för medarbetarna att välja arbetsplats genom att kunna se vart det finns lediga platser utan att behöva gå genom varje lokal och leta.
+Målsättningen i ett prestandamässigt avseende är att då systemet är integrerat på arbetsplatsen ska användarna kunna se på vilken adress, vilken våning och i vilket område på den våningen som en kollega befinner sig. Uppsala Kommun har önskat en precision med max 10 meters felmarginal. Även om bättre precision än så inte anses vara nödvändig hoppas vi kunna uppnå en felmarginal på maximalt 5 meter. Målet är också att erbjuda en möjlighet för alla medarbetare att via en webbapplikation kunna se hur många medarbetare som befinner sig på en specifik arbetsyta. Webbapplikationen syfte är att göra det enkelt för medarbetarna att välja arbetsplats genom att kunna se var det finns lediga platser utan att fysiskt behöva gå igenom varje lokal och leta.
 %TODO ibland säger vi att webbapplikationen inte kommer användas av arbetarana och ibland säger vi att dom kommer använda det.
 
-Vår förhoppning är att det här systemet löser några av de dagliga praktiska problemen hos företag och organisationer som övergår till aktivitetsbaserade arbetsplatser. Förhoppningsvis kan detta också leda till att företag som överväger att övergå till ABV kommer känna mindre oro över att det dagliga arbetet behöver störas av problem med att hitta sina medarbetare.
+Förhoppningen är att det här systemet löser några av de dagliga praktiska problemen hos företag och organisationer som övergår till aktivitetsbaserade arbetsplatser. Förhoppningsvis kan detta också leda till att företag som överväger att övergå till ABV kommer känna mindre oro över att det dagliga arbetet behöver störas av problem med att hitta sina medarbetare.
 
 \iffalse
 Det finns sedan tidigare andra system som erbjuder inomhuspositionering. Vissa av dessa använder sig av extra hårdvara såsom Bluetooth Beacons. Vid användning av Bluetooth Beacons installeras först bluetoothenheter runt om på arbetsplatsen. Därefter sker positionsbestämningen med hjälp av analys av signaler från dessa Beacons(enheter). \fi
-För att göra vårt system attraktivt vill vi det ska vara ett system som inte kräver extra hårdvara och som inte heller kräver nya applikationer för användarna. Vårt system ska istället använda medel och teknik som redan finns på arbetsplatserna, framför allt trådlösa internetanslutningar.
-
-
-
-
-
-
+För att göra systemet attraktivt ska system inte kräva extra hårdvara och inte heller kräva nya applikationer för användarna. Systemet ska istället använda medel och teknik som redan finns på arbetsplatserna, framförallt trådlösa internetanslutningar.
 
 %\label{sec:syfte}
 %Här beskriver ni i princip er problemformulering.  I detta avsnitt ska framgå syfte, mål, och motivation med projektet.
@@ -301,18 +299,16 @@ För att göra vårt system attraktivt vill vi det ska vara ett system som inte 
 %\end{itemize}
 
 \section{Avgränsningar}
-På grund av den begränsade tid vi har haft att arbeta på det här projektet har vi varit tvungna att göra vissa avgränsningar.
-Vi har valt att endast använda oss Fingerprintingtekniken för positionsbestämning (se sektion \ref{fingerprinting}). Det finns ett ytterligare tekniker som vi skulle kunnat använda oss av i kombination med fingerprintingtekniken, till exempel Trilateration (se sektion \ref{triangulering}).
+På grund av begränsad tid har vissa avgränsningar skett. Systemet använder endast fingerprintingtekniken för positionsbestämning (se sektion \ref{fingerprinting}). Det finns ytterligare tekniker som skulle kunnat användas i kombination med fingerprintingtekniken, till exempel trilateration (se sektion \ref{triangulering}).
 
+För att utföra positionsbestämning med hjälp av referenspunkter (se sektion \ref{referenspunkter}) så exakt som möjligt bör, enligt J. Jun m. fl., varje geografisk plats representeras med fler än en referenspunkt\cite{jun2018low}.
+Anledningen till detta är att olika typer av nätverkskort kan utläsa olika RSSI-värden (se sektion \ref{RSSI}) mot samma åtkomspunkt\cite{problem_with_RSSI}. Om varje planerad plats för en referenspunkt representeras med fler referenspunkter baserade på mätningar utföra av enheter med olika typer av nätverkskort kan det därmed fungera som en kompensation för att olika nätverkskort kan generera olika RSSI-värden\cite{jun2018low}.
+%TODO bra mening men väldigt lång.
+Ytterligare en avgränsning är att mobilapplikationen endast fungerar för Androidtelefoner. Även om det finns enheter som har olika typer av nätverkskort men som ändå använder Andriod täcker vi inte in enheter med andra typer av nätverkskort och som inte kan köras med Android.
 
-För att utföra positionsbestämning med hjälp av referenspunkter (se sektion \ref{referenspunkter}) så exakt som möjligt bör man enligt J. Jun m. fl. representera varje geografisk plats med fler än referenspunkt\cite{jun2018low}.
-%TODO Jag förstår inte den här meningen.
-Anledningen till det är att olika typer av nätverkskort kan utläsa olika RSSI-värden (se sektion \ref{RSSI}) mot samma åtkomspunkt\cite{problem_with_RSSI}. Om man representerar varje planerad plats för en referenspunkt med fler referenspunkter baserade på mätningar utföra av enheter med olika typer av nätverkskort kan det därmed fungera som en kompensation för att olika nätverkskort kan generera olika RSSI-värden\cite{jun2018low}.
-En avgränsning vi valde att göra är att mobilapplikationen endast fungerar för Androidtelefoner. Även om det finns enheter som har olika typer av nätverkskort men som ändå använder Andriod täcker vi inte in enheter med andra typer av nätverkskort och som inte kan köras med Android.
+Avgränsningen med att endast utveckla scanningsapplikationen för Android gjordes dels på grund av tidsbrist med också eftersom applikationen endast kommer att användas ett fåtal gånger, dvs då systemet installeras på arbetsplatsen. Eftersom applikationen inte kommer användas regelbundet ansågs det att Android var lämpligare eftersom det är enligt vår uppfattning är enklare och smidigare att publicera en Andoidapplikation än till exempel en Iphoneapplikation. Den enda åtgärden som krävs för att publisera en Androidapplikation är att ladda upp sin fungerande android package kit, vilket är ett filformat som används för att distribuera applikationsprogram. Ytterligare en åtgärd som krävs är att betala en mindre engångssumma \cite{android} \cite{guidePublish}. För att kunna publicera en Iphoneapplikation behöver applikationen genomgå fler steg och applikationen har en risk att bli nekad. Applikationen måste fungera enligt vissa kriterier samt att det tillkommer en årlig avgift som måste betalas \cite{submitIphone} \cite{guidePublish}.
 
-Avgränsningen med att endast utveckla scanningsapplikationen för Android gjordes dels på grund av tidsbrist med också eftersom applikationen endast kommer att användas ett fåtal gånger, dvs när man ska installera systemet på sin arbetsplats. Eftersom applikationen inte kommer användas regelbundet ansåg vi att android var lämpligare eftersom det är enligt vår uppfattning är enklare och smidigare att publicera en Andoidapplikation än till exempel en Iphoneapplikation. Det enda man behöver göra för är att ladda upp sin fungerande APK (android package kit) och betala en mindre engångssumma \cite{android} \cite{guidePublish}. För att kunna publicera en Iphoneapplikation behöver applikationen genomgå fler steg och applikationen har en risk att bli nekad. Applikationen måste fungera enligt vissa kriterier samt att det tillkommer en årlig avgift som man måste betala \cite{submitIphone} \cite{guidePublish}.
-
-En avgränsning gällande vår webbapplikation är att den endast kommer vara utrustad med de mest väsentliga funktionaliteterna då den endast kommer att användas för demonstration. Vår intressent har redan en intern webbportal som de använder för andra arbetsuppgifter och som de i händelse av användning vill använda även för presentation av positioneringsinformation. Det information som kommer vara synlig i vårt interface är användarnas position.
+En avgränsning gällande webbapplikationen är att den endast kommer vara utrustad med de mest väsentliga funktionaliteterna då den endast kommer att användas för demonstration. Vår intressent har redan en intern webbportal som de använder för andra arbetsuppgifter och som de i händelse av användning vill använda även för presentation av positioneringsinformation. Det information som kommer vara synlig i webbapplikationen är användarnas position.
 
 \iffalse Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er, och motiverar dessa avgränsningar. Detta förtydligar för läsaren som kanske hade förväntningar ni inte uppfyllt.
 
@@ -321,7 +317,7 @@ En avgränsning gällande vår webbapplikation är att den endast kommer vara ut
 
 \section{Relaterat arbete}
 Det generella problemet med inomhuspositionering har lösts på olika sätt.
-Beroende på vilket specifikt problem som har gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande när man studerar de system som finns idag och som erbjuder en inomhuspositioneringsservice (IPS)\cite{IP1}.
+Beroende på vilket specifikt problem som har gjort att inomhuspositionering varit relevant har angreppssättet för att lösa problemet varierat. Det finns vissa specifika tekniker som är återkommande bland andra system som finns idag och som erbjuder en inomhuspositioneringsservice (IPS)\cite{IP1}.
 En av de vanligaste teknikerna vid IPS är trilateration\cite{cook2005indoor}, triangulering på svenska. Vid triangulering uppskattas minst tre avstånd till basstationer med kända koordinater och med hjälp av geometriska beräkningar uppskattas sedan en position. Trilateration beskrivs utförligare i sektion \ref{triangulering}
  nedan. En annan teknik som är vanligt förekommande i befintliga system för IPS är fingerprinting\cite{IP1}\cite{jun2018low}. Fingerprintingtekniken bygger i korthet på att den enhet som ska positionsbestämmas mäter signalstyrkor i närheten och jämför med en databas. Fingerprinting beskrivs utförligare i sektion \ref{fingerprinting}.
 
@@ -336,6 +332,7 @@ om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i for
 Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från satelliterna reflekteras när de kommer i kontakt med byggnader. De anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord \cite{GPS_US_ACCURACY}. Detta gör att andra tekniker måste användas för inomhuspositionering.
 
 \subsection{Vanliga tekniker vid inomhuspositionering}
+%TODO skriv vad sektionen handlar om!
 
 \subsubsection{Trilateration}\label{triangulering}
 Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf \cite{cook2005indoor}.
@@ -352,10 +349,10 @@ $ d $ = avståndet mellan mottagare och sändare
 En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. %TODO % fixa figur.. kan man sno? Ja sno på du men säg att du har snott den!!!!
 Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i inexaktheter i positionsbestämningen.
 
-I detta projekt är trilateration en teknik som vi inte har utnyttjat. Eftersom precisionen i det här projektet har en accepterad felmarginal på 5 meter har vi valt att begränsa oss till fingerprintingtekniken vilken ensam ger tillräckligt god precision.
+I projektet är trilateration en teknik som inte har utnyttjats. Eftersom precisionen i projektet har en accepterad felmarginal på 5 meter begränsas projektet till fingerprintingtekniken vilken ensam ger tillräckligt god precision.
 
 \subsection{Liknande system}
-Här beskrivs system som i viss mån liknar vårt system och som vi tycker är värda att nämna.
+Här beskrivs system som i viss mån liknar systemet och som är i viss mån relevanta.
 
 \subsubsection{AnyPlace}
 AnyPlace är ett befintligt system som erbjuder inomhuspositioneringsservice samt inomhusnavigeringsservice. För positionering av enheter vid inomhusnavigering använder sig AnyPlace främst av tekniken Fingerprinting (se sektion \ref{fingerprinting}) och uppger att de åstadkom en noggrannhet på 1.96 meter vid tävlingen Microsoft Indoor Localization Competition \cite{anyplace}
@@ -364,7 +361,7 @@ För navigeringssystemet använder AnyPlace en karta baserat på Google Maps fö
 
 AnyPlace har också integrerat en metod som de kallar Crowdsurfing \cite{anyplace}. Crowdsurfing bygger på användarna av systemet ges en möjlighet att förbättra systemet. Användarna av systemet kan använda deras applikation (på mobiltelefoner) för att samla data om WiFi-information i närheten. Denna information läggs sedan in i AnyPlaces databas för att få vidare stöd för navigering på platser som inte hade det tidigare. Crowdsurfing innebär att stora mängder data kan inhämtas samtidigt och att inlärningsprocessen med Fingerprintingtekniken kan förkortas jämfört med om AnyPlace hade varit tvungna att inhämta den informationen själva.
 
-Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vill göra det möjligt att se andra enheters position snarare än att erbjuda någon navigeringsservice. Att AnyPlace har lyckats uppnå en såpass lite felmarginal som ca 2 meter visar på att Fingerprinting är ett bra val av metod även i det här projektet då samma felmarginal i vårt system skulle innebära mer än tillräcklig precision utifrån de krav som vi har.
+Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vill göra det möjligt att se andra enheters position snarare än att erbjuda någon navigeringsservice. Att AnyPlace har lyckats uppnå en såpass lite felmarginal som ca 2 meter visar på att Fingerprinting är ett bra val av metod även i det här projektet då samma felmarginal i vårt system skulle innebära mer än tillräcklig precision utifrån de krav som bestämdes tidigare (se sektion \ref{mål}).
 
 %Här beskriver ni liknande system eller projekt, och förklarar hur de relaterar till ert.  Alltså: vad vet ni om läget när det gäller ``det större problemet'' som projektet ska lösa?  Vilka andra har försökt lösa liknande/närliggande problem, eller gjort relaterade/liknande saker/system? Referera! (Se Appendix~\ref{sec:referenser} för mer om hur.)
 
@@ -398,9 +395,6 @@ Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vil
 
 I följande del av rapporten redogörs för vilka tekniker och metoder som användes för att bygga systemet.
 
-\subsection{Generella metoder}
-I början av projektplaneringen togs en gemensam beskrivning över systemet fram så att alla parter hade samma bild. I denna beskrivning gjordes tydliga separationer mellan de olika delsystem samt en prioriteringslista över vilka delsystem som var tvungna att fungera först. När denna beskrivning var klar togs en tidsplanering fram och tilldelning av arbetsuppgifter sinsemellan alla gruppmedlemmar.
-
 \subsection{Recieved Signal Strength Indication - RSSI}\label{RSSI}
 RSSI är ett mått på signalstyrkan från en trådlös åtkomstpunkt. RSSI mäts i enheten decibel(dB) och anger hur mycket styrkan av en signal har avtagit innan den signalen uppfångas av en mottagarenhet. RSSI-värdet varierar generellt mellan 0 och -100 dB hos en mottagarenhet. Ett RSSI-värde nära 0 antyder att förlusten i signalstyrka mellan åtkomstpunkt och mottagare är låg. Ett lägre RSSI-värde indikerar en större förlust i signalstyrka mellan åtkomstpunkt och mottagare och därmed också sämre anslutningsmöjlighet.
 
@@ -408,43 +402,42 @@ RSSI är ett mått på signalstyrkan från en trådlös åtkomstpunkt. RSSI mät
 Fingerprinting bygger precis som trilateration på positionsbestämning utifrån existerande trådlösa nätverkspunkter (här benämnt åtkomstpunkter). Fingerprinting består av en inledande lärandefas där första steget är att ett antal referenspunkter väljs ut beroende på lokalens planritning (se sektion \ref{referenspunkter}). Därefter mäts signalstyrkan vid alla specifika referenspunkter och lagras i en databas. %TODO: fixa en bild
 Då en enhets position ska bestämmas mäter enheten signalstyrkan och jämför den med värdena för referenspunkterna i databasen. Den referenspunkt som bäst matchar är den troliga positionen för enheten \cite{IP1}\cite{jun2018low}.
 Binghao Li m. fl. understryker att trots att fingerprinting är en vanlig och accepterad metod i system för inomhuspositionering finns det vissa problem med den här tekniken\cite{IP1}.
-Ett problem som benämns består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten \cite{IP1}. Ett annat problem med Fingerprintingtekniken och som beskrivs av Lui m. fl \cite{problem_with_RSSI} är att mätningar av RSSI-värdet till olika åtkomstpunkter kan variera beroende på vilken hårdvara som används för mätningarna. Det betyder att olika RSSI-värden kan uppkomma för samma åtkomstpunkt vid samma mätningsplats. Detta kan leda till att jämförelsen av RSSI-värden för referenspunkter och klientenheter kan bli icke tillförlitlig i de fall hårdvaruskillnader i de olika enheterna förekommer. Därmed kan dessa hårvaruskillnader göra att precisionen försämras då en klientenhet ska positionsbestämmas\cite{problem_with_RSSI}. En övervägande fördel med Fingerprintingtekniken är däremot att ingen extra hårdvara behöver installeras i lokalerna. Fingerprintingtekniken utnyttjar endast befintlig nätverksinformation i lokalerna.
+Ett problem som angavs består i ju högre den önskvärda precisionen är ju tätare bör referenspunkterna vara. Då detta innebär fler referenspunkter leder detta till en längre inlärningsfas. Ett annat faktum är att med utförligare mätningar i varje referenspunkt kommer precisionen öka. Problemet som uppstår med utförligare mätningar är att detta leder till ökad inlärningstid, större databas och längre beräkningstider för klientenheten \cite{IP1}. Ett annat problem med Fingerprintingtekniken och som beskrivs av Lui m. fl \cite{problem_with_RSSI} är att mätningar av RSSI-värdet till olika åtkomstpunkter kan variera beroende på vilken hårdvara som används för mätningarna. Det betyder att olika RSSI-värden kan uppkomma för samma åtkomstpunkt vid samma mätningsplats. Detta kan leda till att jämförelsen av RSSI-värden för referenspunkter och klientenheter kan bli icke tillförlitlig i de fall hårdvaruskillnader i de olika enheterna förekommer. Därmed kan dessa hårvaruskillnader göra att precisionen försämras då en klientenhet ska positionsbestämmas\cite{problem_with_RSSI}. En övervägande fördel med Fingerprintingtekniken är däremot att ingen extra hårdvara behöver installeras i lokalerna. Fingerprintingtekniken utnyttjar endast befintlig nätverksinformation i lokalerna.
 
 \subsection{Referenspunkter i samband med Fingerprintingmetoden}\label{referenspunkter}
 När Fingerprintingmetoden används vid inomhuspositionering uppmäts ett antal referenspunkter i de lokaler där inomhuspositionering ska kunna tillämpas\cite{yiu2017wireless}\cite{IP1}.
-En referenspunkt bestäms som en specifik position i en lokal där man gör mätningar av den trådlösa nätverksinformationen. Det som analyseras vid dessa mätningar är vilka trådlösa åtkomstpunkter, vanligvis routrar, som går att ansluta till vid referenspunktens position. För varje åtkomstpunkt som upptäcks vid analysen av den trådlösa nätverksmiljön mäts även signalstyrkan till respektive åtkomstpunkt. Signalstyrkan mäts i form av ett RSSI-värde. När referenspunkterna utmätts sparar man information om ett visst antal åtkomstpunkter vid den specifika referenspunkten samt RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Vanligtvis sparas information om de åtkomstpunkter som anses befinna sig närmast referenspunkten, detta baserat på RSSI-värdet för respektive åtkomstpunkt\cite{IP1}.
+En referenspunkt bestäms som en specifik position i en lokal där mätningar utförs av den trådlösa nätverksinformationen. Det som analyseras vid dessa mätningar är vilka trådlösa åtkomstpunkter, vanligvis routrar, som går att ansluta till vid referenspunktens position. För varje åtkomstpunkt som upptäcks vid analysen av den trådlösa nätverksmiljön mäts även signalstyrkan till respektive åtkomstpunkt. Signalstyrkan mäts i form av ett RSSI-värde. När referenspunkterna utmätts sparas information om ett visst antal åtkomstpunkter vid den specifika referenspunkten samt RSSI-värdet för respektive åtkomstpunkt\cite{IP1}. Vanligtvis sparas information om de åtkomstpunkter som anses befinna sig närmast referenspunkten, detta baserat på RSSI-värdet för respektive åtkomstpunkt\cite{IP1}.
 %TODO Förstår inte riktigt meningen ovan menar du samma sak som meningen ovan den eller vad menar du?
-Denna information i kombination med information om vart i lokalen referenspunkten är utmätt lagras i en databas. Referenspunkter utmäts i ett rutmönster, med en area på 1-4 $m^2$ för bästa resultat\cite{yiu2017wireless}, i de lokaler där man vill kunna utföra inomhuspositionering\cite{IP1}. När mätningar är utförda vid varje referenspunkt finns det tillräckligt med information för att kunna utföra positionsbestämning med den lagrade informationen i databasen. Denna lagrade nätverksinformation i referenspunkterna används som referenser till olika platser i lokalerna för att kunna positionsbestämma enheter som befinner sig i byggnaden\cite{yiu2017wireless}\cite{IP1}.
+Denna information i kombination med information om vart i lokalen referenspunkten är utmätt lagras i en databas. Referenspunkter utmäts i ett rutmönster, med en area på 1-4 $m^2$ för bästa resultat\cite{yiu2017wireless}, i de lokaler där inomhuspositionering vill utföras\cite{IP1}. När mätningar är utförda vid varje referenspunkt finns det tillräckligt med information för att kunna utföra positionsbestämning med den lagrade informationen i databasen. Denna lagrade nätverksinformation i referenspunkterna används som referenser till olika platser i lokalerna för att kunna positionsbestämma enheter som befinner sig i byggnaden\cite{yiu2017wireless}\cite{IP1}.
 Att mäta ut referenspunkter och utföra mätningar är något som sker i en inlärningsfas av ett positioneringssystem\cite{tian2013fingerprint}. Nackdelen med detta är att det kan vara tidskrävande arbete samt att nya mätningar måste utföras om den trådlösa infrastrukturen i byggnaden förändras\cite{IP1}.
 
 \subsection{Metod för positionsbestämning, K Nearest Neighbor - KNN}\label{KNN}
 När metoden fingerprinting\footnote{Se sektion \ref{fingerprinting}} används för positionsbestämning krävs en algoritm för att analysera värden på Received Signal Strength Indikation (RSSI) för klientenheten i förhållande till RSSI-värden för referenspunkterna. Vid olika tillämpningar av fingerprinting kan olika algoritmer användas \cite{tian2013fingerprint}\cite{jun2018low}. En av de vanligaste typerna av algoritmer är versioner av KNN \cite{tian2013fingerprint}.
-Bokstaven k står för antalet "nearest neighbors"(närmaste grannar). Vid den mest simpla varianten, då k = 1 (1NN), görs en RSSI-scanning hos klientenheten av vilken närliggande åtkomstpunkt som har lägst försvagning av signalstyrka. Den åtkomstpunkt med lägst försvagning antas vara den som är finns närmast. Därefter jämför man med RSSI-värdet för de referenspunkter som finns registrerade och finner den referenspunkt vars lagrade RSSI-värde matchar bäst. Klientenhetens position uppskattas till samma position som för den referenspunkt som matchade bäst.
+Bokstaven k står för antalet "nearest neighbors"(närmaste grannar). Vid den mest simpla varianten, då k = 1 (1NN), görs en RSSI-scanning hos klientenheten av vilken närliggande åtkomstpunkt som har lägst försvagning av signalstyrka. Den åtkomstpunkt med lägst försvagning antas vara den som är finns närmast. Samma åtkomstpunkt jämförs med RSSI-värdet för de referenspunkter som finns registrerade och finner den referenspunkt vars lagrade RSSI-värde matchar bäst. Klientenhetens position uppskattas till samma position som för den referenspunkt som matchade bäst.
 Ju högre värde av \textit{k} som används vid analysen desto tillförlitligare blir positioneringen\cite{yiu2017wireless}.
 En nackdel med KNN är att RSSI-värdet för de olika åtkomstpunkterna kan variera över tid \cite{tian2013fingerprint}. Detta medför att för att upprätthålla en godtagbar exakthet bör varje referenspunkt scannas av vid jämna intervall.
 En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik position kan förändras om till exempel möbleringen av rummen ändras radikalt\cite{zanca2008experimental}. Då något sådant sker bör också intilliggande referenspunkter scannas om.
 
 \subsection{Applikationsutveckling, Android}
-Systemet är uppbyggd av bland annat en Androidapplikation. Applikationen används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av applikationen användes Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar applikationen i Android är för att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är för att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder. Ytterligare en anledning är då publiceringen av Androidapplikation är enklare än för bland annat iOS \cite{submitIphone}\cite{android}.
+Systemet är uppbyggd av bland annat en Androidapplikation. Applikationen används för att kartlägga internetinformation i relation till en position i en byggnad. I utvecklingen av applikationen användes Android studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt Windowstelefoner. Den största anledningen till att vi utvecklar applikationen i Android är för att Uppsala Kommun använder sig av Androidtelefoner. En annan anledning till att vi gör vår applikation för Android är för att programmeringsspråket Kotlin erbjuder många användbara bibliotek för de funktioner vi använder. Ytterligare en anledning är då publiceringen av Androidapplikation är enklare än för bland annat iOS \cite{submitIphone}\cite{android}.
 
 \subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna}
-Vi har skrivit skriptet som körs på klientenheterna i programmeringsspråket Python.
-En av anledningarna till att vi använder detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Detta är i vårat fall användbart eftersom vi vill ha en körbar fil på operativsystemet Windows då en klar majoritet av medarbetarna hos vår intressent använder det. Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter en producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek och sätta oss in i Windows-utveckling till ett skript som inte ska vara särskilt omfattande.
+Skriptet som körs på klientenheterna är programmerat i programmeringsspråket Python. En av anledningarna till att vi använder detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Detta är i vårat fall användbart eftersom vi vill ha en körbar fil på operativsystemet Windows då en klar majoritet av medarbetarna hos vår intressent använder det. Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter programmeraren producera lättläst kod. Dessa argument har varit anledningen till valet av Python. Vi ville inte ägna alldeles för mycket tid på att jaga bibliotek och sätta oss in i Windows-utveckling till ett skript som inte ska vara särskilt omfattande.
 
-\subsection{webbapplikation för presentation av positionsinformation}\label{django}
-Django är ett webbapplikationsramverk som är skrivet i Python. Vi har valt att använda detta ramverk till att bygga våran användarhemsida. Django kommer med en rad fördelar. Det är ett ramverk som utgår från MVC layout\cite{djangoMVC},
-detta innebär att man delar upp webbapplikationen i models, views och controllers. I Djangos fall betyder det att koden blir väldigt välstrukturerad och lätt att hitta i.
+\subsection{Webbapplikation för presentation av positionsinformation}\label{django}
+Django är ett webbapplikationsramverk som är skrivet i Python. Webbapplikationen använder detta ramverk. Django kommer med en rad fördelar.
 
-En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Bland en mängd andra säkerhetsåtgärder som Django erbjuder automatiskt så är det skyddat för SQL-injections \cite{securityInDjango}
-vilket innebär att man inte kan utnyttja databaskommandon i användarinput för att ta sig in i databasen. Django erbjuder även session security \cite{securityInDjango} som skyddar för att bara användare som verkligen har loggat in har tillgång till data som inloggade ska ha tillgång till.
-Eftersom vi hanterar känslig data så är detta väldigt viktiga aspekter för oss. Att det är inbyggt i Django är en stor fördel.
+Det är ett ramverk som utgår från ett arkitekturmönster som kallas model-view-controller (MVC)\cite{djangoMVC}, detta innebär att webbapplikationen delas upp i models, views och controllers. Detta betyder att koden blir väldigt välstrukturerad och lätt att hitta i.
 
-En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att man delar in varje sajt i mindre delar. Detta medför att man enkelt kan återanvända kod som man skrivit för en sajt på en annan sajt\cite{djangoMVC}. Ett sista argument är att eftersom vårt systems skript är skrivet i Python och Django bygger på Python skulle man i framtiden enkelt kunna integrera de två.
+En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt \cite{securityInDjango}. Bland en mängd andra säkerhetsåtgärder som Django erbjuder automatiskt så är det skyddat för SQL-injections \cite{securityInDjango} vilket innebär att databaskommandon inte kan utnyttjas i användarinput för att ta sig in i databasen. Django erbjuder även session security \cite{securityInDjango} som skyddar för att bara användare som verkligen har loggat in har tillgång till data som inloggade ska ha tillgång till.
+Eftersom systemet hanterar känslig data så är detta en väldigt viktiga aspekter. Att det är inbyggt i Django är en stor fördel.
+
+En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att dela in varje hemsida i mindre delar. Skalbarheten och moduleringen medför att det är enklare att återanvända kod. En kod som skrivits för en viss hemsida kan enkelt användas av en annan hemsida\cite{djangoMVC}. Ett sista argument är att eftersom systemets skript är skrivet i Python och Django bygger på Python bör integration mellan dessa två vara enklare i framtiden.
 
 \section{Systemstruktur}
 I denna del av rapporten beskriver vi våra system och hur de samverkar.
-Systemet som vi konstruerat kan delas in i tre delsystem samt en databas. Det första delsystemet där man kopplar nätverksinformation till en specifik plats. Det andra delsystemet som utför en algoritm för att bestämma en ungefärlig position. Det tredje delsystemet som presenterar all relevant information på ett tydligt sätt, och slutligen databasen som håller all data som är relevant för vårt samlade system.
-I följande figur \ref{fig:systemStruktur} ses systemet i sin helhet.
+Systemet kan delas in i tre delsystem samt en databas. Det första delsystemet där nätverksinformation kopplas till en specifik plats. Det andra delsystemet som utför en algoritm för att bestämma en ungefärlig position. Det tredje delsystemet som presenterar all relevant information på ett tydligt sätt, och slutligen databasen som håller all data som är relevant för vårt samlade system.
+I följande figur \ref{fig:systemStruktur} presenteras systemet i sin helhet.
 
 \begin{figure}[H]
 	\includegraphics[width=15cm]{media/systemStruktur.png}
@@ -453,18 +446,17 @@ I följande figur \ref{fig:systemStruktur} ses systemet i sin helhet.
 \end{figure}
 
 \subsection{Delsystem som kopplar nätverksinformation med en plats}
-Detta delsystem innefattar en Androidapplikation. Den ska användas av it-tekniker före användning av systemet. Applikationen används i förutbestämda referenspunkter i den aktivitetsbaserade verksamheten för att scanna nätverksinformation. Denna information kan användas för att användarenheter ska kunna beräkna sin position i förhållande till dessa referenspunkter. Nätverksinformationen importeras därefter till en databas. När referenspunkterna är inlagda kan man börja använda nästa delsystem.
+Detta delsystem innefattar en Androidapplikation. Den ska användas av it-tekniker före användning av systemet. Applikationen används i förutbestämda referenspunkter med ett mellanrum på ungefär 2 meter i den aktivitetsbaserade verksamheten för att scanna nätverksinformation. Denna information kan användas för att användarenheter ska kunna beräkna sin position i förhållande till dessa referenspunkter. Nätverksinformationen importeras därefter till en databas. När referenspunkterna är inlagda kan nästa delsystem börja användas.
 
 \subsection{Delsystem som beräknar positionen}
-Detta delsystem innefattar en Python-klient som ska köras i bakgrunden på användardatorn.
-Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata som finns i databasen, som Androidapplikationen från förra delsystemet har tillhandahållit. När Python-klienten har bestämt positionen för användaren av klienten ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användaridentitet. Detta delsystem kommer ligga i bakgrunden och inte presentera något viktigt visuellt.
+Detta delsystem innefattar en Python-klient som ska köras i bakgrunden på användardatorn. Python-klientens syfte är att utföra en positionsbestämningsalgoritm med den referensdata som finns i databasen, som Androidapplikationen från förra delsystemet har tillhandahållit. När Python-klienten har bestämt positionen för användaren av klienten ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användaridentitet. Ny bestämning av position utförs var 20e minut. Detta delsystem kommer ligga i bakgrunden och inte presentera något viktigt visuellt.
 
 \subsection{Delsystem som presenterar position}
 Slutligen så finns det ett webb-interface. Detta system använder data som Python-klienten har lagt in i databasen för att i en webbaserad applikation visa platsinformation om kollegor i verksamheten. Systemet har också stöd för att presentera beläggning i olika områden samt eventuellt annan intressant information.
 
 \subsection{Databasen som håller användare och positionsinformation}
 Databasen är av typen MySQL och den kommer samspela med alla de tre delsystemen. Den håller information om referenspunkter, användare och deras position.
-Mellan systemet som it-teknikern använder och databasen så måste data förflyttas manuellt. Detta med risk för att en automatiserad uppkoppling kan förstöra referenspunkter samt att inläggning in princip endast kommer ske en gång. Python-klienten använder sig av SQL-anrop till databasen för att extrahera referenspunkter, samt för att lägga in sin position kontinuerligt. Detsamma gäller webb-interfacet, den kör SQL-anrop till databasen för att presentera relevant information.
+Mellan systemet som it-teknikern använder och databasen så måste referenspunktsdata förflyttas manuellt. Då det finns en risk för att referenspunkter kan förstöras om en automatisk uppkoppling utförs bör detta steg göras manuellt. Samt att inläggning av referenspunktsdata in princip endast kommer att ske en gång. Python-klienten använder sig av SQL-anrop till databasen för att extrahera referenspunkter, samt för att lägga in sin position kontinuerligt. Detsamma gäller webbapplikationen, den använder SQL-anrop till databasen för att erhålla och presentera relevant information.
 
 %\subsection{Alternativa lösningar}
 % Alternativa lösningar
@@ -503,13 +495,13 @@ Mellan systemet som it-teknikern använder och databasen så måste data förfly
 %
 % Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, en\-käter, fokusgrupper\ldots).
 % Beskriv hur externa intressenter involveras i utvärderingen.
-Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot kraschar, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. Vårt krav är att systemet i minst 95\% av fallen lyckas ska positionera användaren rätt. På grund av tidsbrist kommer vi att endast utföra 1000 manuella tester på vår intressents arbetsplats. Utifrån dessa tester kan vi se hur stor procent av testerna som lyckades beräkna rätt position. \iffalse Vi har även tänkt stresstesta och belastningstesta våran databas.\fi % TODO Hur och vad förväntar vi oss?
+Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot kraschar, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. Vårt krav är att systemet i minst 95\% av de totala antalet fall ska lyckas positionera användaren rätt. På grund av tidsbrist kommer vi att endast utföra två typer av tester på endast en av kommunens byggnader. Ett våningstest samt ett positioneringstest. Våningstestet utförs genom att kolla positioneringen i platser där systemet har integrerats på två våningar. Statistik om antalet lyckade positioneringar, det vill säga när systemet positionerar användaren rätt. Positioneringstestet utför genom att användaren går omkring i byggnaden där systemet är integrerat. Användaren sätter sig vid en arbetsplats i en minut sedan går användaren vidare till nästa arbetsplats. Statistiken om de antal lyckade positioneringar sparas och presenteras i sektion (\ref{resultat}).
 
 \subsection{Skanningsapplikation för referenspunkter}
 Scannsingsapplikationen ska vara ett lättförståeligt och lättanvänt system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till en aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker och måste göras innan någon positionsbestämmning kan ske. Vi vill att det ska vara enkelt att använda vår scanningsapplikation eftersom det kan vara ett övertygande argument för att använda vårt system i sin helhet. Användarvänligheten kommer utvärderas genom att personal från vår intressent får gå med och använda applikationen när vi utför våra övriga tester och därefter ge feedback på användarvänligheten.
 
 \subsection{Positionsbestämning}
-Vår intressent har en vision om att man ska kunna se vilket kontor, vilken våning och i vilket område på våningen en medarbetare befinner sig. Detta med en felmarginal på max 10 meter. Vi har själva satt upp krav på en felmarginal på max 5 meter eftersom vi tror att det att möjligt att uppnå. Kraven på exakthet finns eftersom det precisionen i positionsbestämmningen är en förutsättning för att systemet i sin helet ska fylla någon funktion. Vi kommer utföra två precisionstester av vårt system. Det ena formella testet kommer utföras i vår klients, Uppsala Komuns, lokaler. Det andra, mer informella testet, kommer ske i Uppsala Universitets lokaler på Pollacksbacken. Utvärderingen kommer ske på så sätt att vi kommer positionsbestämma en enhet 1000 gånger och för varje gång granska om den beräknade positionen överensstämmer med den faktiska.
+Vår intressents vison är att kontorsplats, vilken våning och i vilket område på våningen en medarbetare befinner sig på ska kunna visas. Detta med en felmarginal på max 10 meter. Vi har själva satt upp krav på en felmarginal på max 5 meter eftersom vi tror att det att möjligt att uppnå. Kraven på exakthet finns eftersom det precisionen i positionsbestämmningen är en förutsättning för att systemet i sin helet ska fylla någon funktion. Vi kommer utföra två precisionstester av vårt system. Det ena formella testet kommer utföras i vår klients, Uppsala Komuns, lokaler. Det andra, mer informella testet, kommer ske i Uppsala Universitets lokaler på Pollacksbacken. Utvärderingen kommer ske på så sätt att vi kommer positionsbestämma en enhet 1000 gånger och för varje gång granska om den beräknade positionen överensstämmer med den faktiska.
 
 \subsection{Användarerfarenheter av webapplikation}
 Kraven på presentationen av medarbetarnas position är att det ska vara enkelt att i vår webapplikation se vart en medarbetare befinner sig. Detta är ett krav som vi bedömmer vara viktigt för att kunna demonstrera vårt system på ett bra sätt. För vår intressent kommer detta inte vara ett prioriterat krav eftersom de vid eventuell lansering planerar att presentera positionsinformationen via en medarbetarportal på deras interna nät. Vi kommer utvärdera denna del av systemet genom att låte en extern person navigera i vår webapplikation och därigenom utvärdera användarvänligheten.
@@ -520,9 +512,9 @@ I följande delavsnitt beskrivs implementationen av de olika komponenterna av v�
 \subsection{Applikation för scanning vid referenspunkter}
 Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
 
-Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de tre mac-adresserna med högst RSSI-värde. Namnet på positionen samt de tre mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet med lämpligt många referenspunkter, (se sektion \ref{referenspunkter}). För att sedan populera databasen importerar man csv filen in till databasen.
+Applikationenen fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen användaren befinner sig i. Därefter skannas nätverket för att hitta de tre mac-adresserna med högst RSSI-värde. Namnet på positionen samt de tre mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills arbetsområdet har fyllts med lämpligt många referenspunkter, (se sektion \ref{referenspunkter}). För att sedan populera databasen importeras csv filen in till databasen manuellt.
 
-Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på mobilen. När detta förekommer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv filen och ersätta å:et med ett a eller liknande.
+Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på mobilen. När detta förekommer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan å:et ersättas med ett a eller liknande manuellt i csv filen.
 
 \subsection{Skript för positionsbestämning}
 Då en klientenhet ska kunna positionsbestämmas behöver klientenheten köra det skript som vi har utvecklat. För att genomföra positionsbestämningen av en klientenhet utför skriptet följande uppgifter:
@@ -542,7 +534,8 @@ I den nuvarande versionen av systemet kommer skriptet be användaren om ett anv�
 Användarnamnet verifieras därefter mot alla registrerade användare som finns i databasen (se sektion \ref{databasen}). Om användarnamnet som användaren anger inte matchar något användarnamn i databasen termineras skriptet. Anledningen är att endast godkända användare ska ha möjlighet att göra skriptet och ladda upp sin positionsinformation i databasen. Användare läggs till av systemadministratören från webbinterfacet (se sektion ~\ref{webbinterface}). I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår "proof of concept" version att be användaren om ett användarnamn.
 
 \subsection{Hämta information om referenspunkter från databasen}\label{HamtaInfoDB}
-För att kunna utföra positionsbestämningen behöver klientenheten hämta information om referenspunkterna från databasen. Positionsbestämningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många användare ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter MySQLdb\cite{mysqldb}. MySQLdb erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
+För att kunna utföra positionsbestämningen behöver klientenheten hämta information om referenspunkterna från databasen. Positionsbestämningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara genomföra alla beräkningar för positionsbestämningen på serversidan av systemet. Om vi gjort så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till att valde att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom vi inte vet hur många användare ett eventuellt lanserat system skulle innefatta ville vi inte riskera att belasta servern med för många beräkningar av användares positioner. Eftersom databasen är MySQL-baserad har vi använt ett interface för Python som heter PyMySQL\cite{mysqldb}%TODO byt referens
+. PyMySQL erbjuder ett API som ger oss möjlighet att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtar vi information om referenspunkter och sparar i en temporär lista.
 
 Nedan följer ett exempel på informationen om en referenspunkt som vi hämtar från databasen:
 \begin{itemize}
@@ -606,7 +599,7 @@ Algoritmen för metod 1, med syfte att uppskatta vilken referenspunkt som befinn
     \newline
     I steg 3 ges alla kvarvarande referenspunkter poäng baserat på hur väl ordningen i de åtkomstpunkter som finns lagrade för referenspunkten överensstämmer med ordningen för åtkomstpunkterna som är scannade av klientenheten. Eftersom både referenspunkternas och klientenhetens åtkomstpunkter är sorterade baserat på RSSI-värdet (signalstyrkan) kan detta poängsystem användas för att avgöra vilken referenspunkt som troligtvis är den som befinner sig närmast klientenheten.
     Högsta möjliga poäng tilldelas en referenspunkt vars 3 lagrade åtkomstpunkter återfinns bland de tre åtkomstpunkerna med bäst signalstyrka hos klientenheten samt med samma inbördes ordning. Varje åtkomstpunkt hos referenspunkten jämförs med varje åtkomstpunkt i klientenhetens lista. Ju högre upp i listan åtkomstpunkten befinner sig, både i referenspunkten och i klientlistan, ju högra poäng tilldelas referenspunkten. När varje åtkomstpunkt i referenslistan jämförts läggs poängen för varje åtkomstpunkt ihop och ger referenspunktens slutgiltiga poäng.
-    Den referenspunkt som fått högst totalpoäng bedömms vara den referenspunkt som befinner sig närmast klientenheten varvid klientenhetens position bestäms till samma position som för den vinnande referenspunkten.
+    Den referenspunkt som fått högst totalpoäng bedöms vara den referenspunkt som befinner sig närmast klientenheten varvid klientenhetens position bestäms till samma position som för den vinnande referenspunkten.
     En illustration av poängutdelningsprocessen ges i figurerna \ref{fig:MAC1},\ref{fig:MAC2},\ref{fig:MAC3} nedan.
     MAC-adresserna är åtkomstpunkternas unika namn.
 
@@ -697,16 +690,16 @@ Därefter adderas resultaten för analysen av referenspunkt2: $$ 20 + 20 = 40$$
 Vi ser då att referenspunkt 1 genererar ett lägre slutvärde än referenspunkt 2. Därmed antas referenspunkt 1 befinna sig närmare klientenheten och klientenhetens position uppskattas till samma position som för referenspunkt 1.
 
 \subsection{Uppdatera databasen med klientenhetens position}
-Efter det att klientenhetens position är bestämmd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av MySQLdb (se sektion \ref{HamtaInfoDB}).
+Efter det att klientenhetens position är bestämmd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av PyMySQL (se sektion \ref{HamtaInfoDB}).
 
 \subsection{Databasens uppbyggnad}\label{databasen}
 Databasen är hjärtat och den enda resursen som egentligen behöver delas mellan enheter i vårt system. Den håller data om referenspunkter och data om användare samt deras position.
-Varje delsystem som vi har konstruerat gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positions bestämning kontrollerar att man är en användare som finns och sedan lägger den in vilken position man har i de relationella tabellerna för vilken position varje användare samt historik. webbapplikationen som ska presentera datan på ett tydligt sätt går in och hämtar varje användare, länkar dessa med vilken position och presenterar detta.
+Varje delsystem som vi har konstruerat gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positionsbestämning kontrollerar att användaren är en befintlig användare och lägger sedan in vilken position användaren har. In i de relationella tabellerna som håller vilken position varje användare har, och har haft. Webbapplikationen som ska presentera datan på ett tydligt sätt går in och hämtar varje användare, länkar dessa med vilken position och presenterar detta.
 
 \subsubsection{Tabell för referenspunkter}
-Tabellen för referenspunkterna har vi konstruerat manuellt med SQL direkt in i databasen, se figur [Figur kommer] %TODO figur kommer
-Den är konstruerad som en enskild tabell kontra om man skulle dela upp den i två relationella tabeller vilket hade varit önskvärt om man vill uppnå 3NF [Referens].%TODO referns?
-Detta för att det vi har valt att skanningen ska resultera i en CSV-fil. CSV, står för comma seperated values och det är ett format som gör att man enkelt kan importera mängder av rader automatiskt.
+Tabellen för referenspunkterna har vi konstruerat manuellt med SQL direkt in i databasen, se figur ~\ref{fig:db_tabeller}.
+Den är konstruerad som en enskild tabell kontra om den skulle delas upp i två relationella tabeller. För att uppnå 3NF bör uppdelningen göras som tidigare beskrivet [Referens]. Men enskild tabell i det här fallet underlättar importeringen. %TODO referns? Konstig mening, byt ut kontra.
+Detta för att det vi har valt att skanningen ska resultera i en CSV-fil. CSV, står för comma seperated values och det är ett format som gör det enkelt att importera mängder av rader automatiskt.
 Tabellens struktur består av
 
 \begin{itemize}
@@ -722,10 +715,10 @@ Tabellens struktur består av
 
 \subsubsection{Relationella tabeller för användare och deras position}
 Tabellerna som med hjälp av en Foreign Key [referens]%TODO referens
-kopplas ihop och håller användare och deras position, se figur [Figur kommer].%TODO figur
-Dessa är två tabeller som Django (se sektion \ref{django}), webbbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. Man skapar en modell, definierar vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
+kopplas ihop och håller användare och deras position, se figur ~\ref{fig:db_tabeller}.
+Dessa är två tabeller som Django (se sektion \ref{django}), webbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. En modell skapas, sedan definieras vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
 
-Tabellen som håller användarinformation:s struktur består av
+Tabellen som håller användarinformation är strukturerad enligt följande
 \begin{itemize}
   \item  u\_id - Primary Key som länkar till tabellen för användares position
   \item  u\_username - användarens användarnamn
@@ -733,28 +726,34 @@ Tabellen som håller användarinformation:s struktur består av
   \item  u\_show\_position - huruvida användaren vill visa sin position
 \end{itemize}
 
-Tabellen som håller en användares positions struktur består av
+Tabellen som håller en användares position är strukturerad enligt följande
 \begin{itemize}
   \item u\_id - Foreign Key som länkar till tabellen för användarinformation
   \item u\_position - Användarens position
   \item u\_datetime - Datum och tid som användarens position lades in i tabellen
 \end{itemize}
 
+\begin{figure}[H]
+  \includegraphics[width=15cm]{media/db_tabeller.png}
+  \caption{Tabeller i databasen}
+  \label{fig:db_tabeller}
+\end{figure}
+
 
 \subsection{Applikation för scanning vid referenspunkter}
 Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
 
-Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de fem MAC-adresserna med högst RSSI-värde. Namnet på positionen samt de fem MAC-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet ett lämpligt antal referenspunkter, vilket är med en till två meters mellanrum (se sektion \ref{referenspunkter}). För att sedan populera databasen importerar man csv-filen in till databasen.
+Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen användaren befinner sig i. Därefter skannas nätverket för att hitta de fem MAC-adresserna med högst RSSI-värde. Namnet på positionen samt de 10 MAC-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills arbetsområdet har fyllts med ett lämpligt antal referenspunkter, vilket är med en till två meters mellanrum (se sektion \ref{referenspunkter}). För att sedan populera databasen importeras csv-filen in till databasen manuellt.
 
-Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv-filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv-filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv-filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv-filen och ersätta å:et med ett a eller liknande.
+Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv-filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv-filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv-filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan redigering av csv-filen utföras. Då ersätts å:et med ett a eller liknande.
 
 \subsection{webbinterface för presentation av användares position} \label{webbinterface}
 Vi byggde detta i webbapplikationsramverket Django samt Materialize%TODO referens
-för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som man enkelt kan starta lokalt. I vår implementation kan man köra den servern både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
+för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som enkeltt kan startas lokalt. I vår implementation kan servern köras både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
 
-webbapplikationen utgörs initial av en loginsida, där medarbetare på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När man har loggat in så har man möjlighet att se all medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
+webbapplikationen utgörs initial av en loginsida, där arbetaren på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När arbetaren har loggat in så har arbetaren möjlighet att se all medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
 
-webbapplikationen erbjuder även en admin sida. Här kan man se alla användare, man kan ge behörigheter till olika användare. Om man är admin på webbapplikationen kan man tex ge andra användare behörighet till att se adminsidan alternativt ändra i adminsidan.
+webbapplikationen erbjuder även en administrativ hemsida. För att få tillgång till denna hemsida måste användaren ha ett särskild behörighet. Behörigheten har skaparen av hemsidan som i sin tur kan dela med sig av behörigheten till andra användare. I den administrativa hemsidan kan användaren se alla användare, ge behörigheter till olika andra användare bland annat behörigheten till att kolla i administrativa sidan alternativt även ändra.
 
 \iffalse
 \section{DEL x}\label{sec:delX}
@@ -773,11 +772,15 @@ Beskriv gärna felhantering och riskanalys: vad kan gå fel när systemet kör/a
 \fi
 Systemet består även av ett skript som ska skanna av nätverksinformation om nätverk i närheten. Skriptet ska även ansluta till en databas för att hämta information om sparad nätverksinformation om organisationens byggnader. Därefter utförs en algoritm som jämför nätverksinformationen hos klienten med nätverksinformationen i databasen. Algoritmen avgör då vart i byggnaden klientenheten befinner sig.
 
-\section{Utvärderingsresultat}
+\section{Utvärderingsresultat}\label{utvärderingsresultat}
 \iffalse Beskriv resultaten av utvärderingen, när ni tillämpar de utvärderingsmetoder ni beskrivit i avsnitt~\ref{sec:krav}, och relatera utvärderingsresultaten till kraven i samma avsnitt.
 \fi
 
-\section{Resultat och diskussion}
+Följande sektion består av resultat från de tester beskrivna i sektion (\ref{krav}). I våningstestet fick systemet 100\% träffsäkerhet, det vill säga att vart användaren än var på en våning så visade systemet varenda gång att användaren var på samma våning. %TODO inforga bild och fortsätt att snacka om detta
+
+I positioneringstestet fick systemet lite sämre resultat, då i vissa gränsområden där ett område övergår till ett annat område kunde systemet ange fel position. Denna felaktiga positionering blev alltid det angränsande området. Om användaren befann sig minsta fem meter in i området så gav systemt nästan bara lyckade positioneringar. %TODO infoga bilden och ange mer konkreta siffror
+
+\section{Resultat och diskussion}\label{resultat}
 \iffalse Här beskriver ni först era resultat, vad ni åstadkommit.  Hur bra blev det?
 Sedan granskar ni era resultat kritiskt.  Varför blev det som det blev?  Var resultaten rimliga/bra/dåliga/o\-vän\-ta\-de\ldots?
 Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande arbeten?
@@ -790,10 +793,15 @@ Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande 
 Relatera till mål och syften etc i avsnitt~\ref{sec:syfte}.
 \fi
 
+\iffalse
 Vi har ett fullt fungerande system som kan visa vart en medarbetare befinner sig inom ett område som har blivit nätverksskannad innan. Personen ska även finnas med i vår databas där alla referenspunkter och användare är sparade. Medarbetarnas position visas i en webbapplikation där man även kan välja att inte delge sin egen position. Vi kan uppskatta en medarbetares position med en radie på \ldots %TODO fyll i med verkliga siffror
 
 Vår initiala plan var att interagera vår positionsbestämningsalgoritm med Skype for buisness. Detta visade sig vara omöjligt att göra då den version av Skype for Business som vår intressent hade inte hade denna funktionalitet som krävdes. Detta medförde att vår plan förändrades och blev istället att göra ett eget system oberoende av Skype.
+\fi
 
+Som beskrivet i sektion (\ref{utvärderingsresultat}) kan användare av systemet positioneras korrekt utifrån vilken våning de befinner sig på. Användaren kan positioneras i förhållande till vilket område användaren befinner sig i om användaren är minst 4 meter in i området. Om användaren är mindre än 4 meter kan positionen variera mellan rätt område och det angränsande området.
+
+För att få mer verklighetstrogna resultat bör systemet testas på olika byggnade då internetinformationen kan se väldigt olika ut. En annan sak som skulle förbättra testerna är att använda sig av olika datorer för att testa positetioneringen. Anledningen till detta är då olika datorer har olika nätverkskort, detta medför att skanningen kan skilja sig och därav positionen.
 
 \section{Slutsatser}
 \iffalse Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och förklarar dess vikt och användning.  Vad var viktigt/nytt/intressant?  (INTE i termer av vad ni lärde er, utan för den som läser rapporten, funderar på att göra ett liknande system, vidareutveckla ert, etc.)

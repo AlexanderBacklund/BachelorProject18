@@ -30,14 +30,16 @@
 
 ## Relaterat arbete
 - Solar aid, Hur skiljer de sig från ERT projekt? lite för mycket ur seeding solars perspektiv.
+- Kan kanske nämna andra typer av simuleringar? Hur kan man simulera det på olika sätt?
 
 ## Metode
 - Kanske ska göra lite mer generella namn på underrubrikerna?
 - Förutom rubrikerna snyggt och bra.
+- Refererar någonstans till database som molnet.. (7.2 andra stycket)
 
 ## Systemstruktur
 - "Kopplingar" som underrubrik kanske bör ändras till något tydligare
-- Refererar någonstans till database som molnet..
+- Kanske ska flytta lite saker hit från metoden... osäker.
 
 ## Simluering
 - Rubrik simulering bör kanske vara simulering av lalala eller bara Vår produkt.
@@ -47,6 +49,7 @@
 
 ## Krav och utvärderingsmetoder
 - I framtida arbete skriver ni att front-end är en del. Men utvärderingen ska testa användarvänligeheten
+- Hur ska ni testa er simulering, dvs går det att ändra typen av simulering?
 
 ## Framtida arbete
 - Bra!
