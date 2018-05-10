@@ -167,6 +167,7 @@ Systemet består av en mobilapplikation som används för att installera systeme
 % BEhövs detta, känns överflödigt men det förtydligar vad alla delar gör vilket var en feedback punkt. Man kan även ta upp lite resultat här antar jag.
 
 
+
 \section{Bakgrund}
 I bakgrunden förklaras först vad en aktivitetsbaserad verksamhet, följt beskrivs den externa intressenten vilket är Uppsala kommun. Uppsala kommun har under de senaste åren övergått till aktivitetsbaserad verksamhet vilket är anledningen till projektet. Följt kommer Skype for buisness vilket är ett verktyg som Uppsala kommuns använder dagligen. Följt kommer information om inumhuspositionering vilket är en stor del av vårat projekt. avslutningsvis tas de icketekniska aspekterna upp.
 
@@ -508,7 +509,7 @@ Mellan systemet som it-teknikern använder och databasen så måste data förfly
 %
 % Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, en\-käter, fokusgrupper\ldots).
 % Beskriv hur externa intressenter involveras i utvärderingen.
-Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot kraschar, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. Vårt krav är att systemet i minst 95\% av fallen lyckas ska positionera användaren rätt. På grund av tidsbrist kommer vi att endast utföra 1000 manuella tester på vår intressents arbetsplats. Utifrån dessa tester kan vi se hur stor procent av testerna som lyckades beräkna rätt position. \iffalse Vi har även tänkt stresstesta och belastningstesta våran databas.\fi % TODO Hur och vad förväntar vi oss?
+Kraven för det här projektet är något som vi tillsammans med vår intressent under första mötet kommit fram till. Utöver det som vår intressent kräver så har vi några generella krav på vår produkt. Det ska vara lättanvänt, robust mot kraschar, hantera känslig information på ett säkert sätt och vara välskriven samt väldokumenterad kod. Vårt krav är att systemet i minst 95\% av de totala antalet fall ska lyckas positionera användaren rätt. På grund av tidsbrist kommer vi att endast utföra två typer av tester på endast en av kommunens byggnader. Ett våningstest samt ett positioneringstest. Våningstestet utförs genom att kolla positioneringen i platser där systemet har integrerats på två våningar. Statistik om antalet lyckade positioneringar, det vill säga när systemet positionerar användaren rätt. Positioneringstestet utför genom att användaren går omkring i byggnaden där systemet är integrerat. Användaren sätter sig vid en arbetsplats i en minut sedan går användaren vidare till nästa arbetsplats. Statistiken om de antal lyckade positioneringar sparas och presenteras i sektion (\ref{resultat}).
 
 \subsection{Skanningsapplikation för referenspunkter}
 Scannsingsapplikationen ska vara ett lättförståeligt och lättanvänt system som ska förenkla förarbetet inför en flytt från kontorsbaserad verksamhet till en aktivitetsbaserad. Detta system kommer enligt vår intressent användas av en it-tekniker och måste göras innan någon positionsbestämmning kan ske. Vi vill att det ska vara enkelt att använda vår scanningsapplikation eftersom det kan vara ett övertygande argument för att använda vårt system i sin helhet. Användarvänligheten kommer utvärderas genom att personal från vår intressent får gå med och använda applikationen när vi utför våra övriga tester och därefter ge feedback på användarvänligheten.
@@ -711,7 +712,7 @@ Varje delsystem som vi har konstruerat gör anrop till databasen. Skanningsappli
 
 \subsubsection{Tabell för referenspunkter}
 Tabellen för referenspunkterna har vi konstruerat manuellt med SQL direkt in i databasen, se figur ~\ref{fig:db_tabeller}.
-Den är konstruerad som en enskild tabell kontra om den skulle delas upp i två relationella tabeller. För att uppnå 3NF bör man dela upp tabellerna som tidigare beskrivet [Referens]. Men enskild tabell i det här fallet underlättar importeringen. %TODO referns? Konstig mening, byt ut kontra.
+Den är konstruerad som en enskild tabell kontra om den skulle delas upp i två relationella tabeller. För att uppnå 3NF bör uppdelningen göras som tidigare beskrivet [Referens]. Men enskild tabell i det här fallet underlättar importeringen. %TODO referns? Konstig mening, byt ut kontra.
 Detta för att det vi har valt att skanningen ska resultera i en CSV-fil. CSV, står för comma seperated values och det är ett format som gör det enkelt att importera mängder av rader automatiskt.
 Tabellens struktur består av
 
@@ -729,7 +730,7 @@ Tabellens struktur består av
 \subsubsection{Relationella tabeller för användare och deras position}
 Tabellerna som med hjälp av en Foreign Key [referens]%TODO referens
 kopplas ihop och håller användare och deras position, se figur ~\ref{fig:db_tabeller}.
-Dessa är två tabeller som Django (se sektion \ref{django}), webbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. Man skapar en modell, definierar vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
+Dessa är två tabeller som Django (se sektion \ref{django}), webbapplikations-ramverket som vi använder, konstruerar när vi definierar våra modeller i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. En modell skapas, sedan definieras vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
 
 Tabellen som håller användarinformation är strukturerad enligt följande
 \begin{itemize}
@@ -756,17 +757,17 @@ Tabellen som håller en användares position är strukturerad enligt följande
 \subsection{Applikation för scanning vid referenspunkter}
 Målet med vår applikation är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Vi valde att göra detta med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
 
-Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen man befinner sig i. Därefter skannas nätverket för att hitta de fem MAC-adresserna med högst RSSI-värde. Namnet på positionen samt de fem MAC-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills man har fyllt arbetsområdet ett lämpligt antal referenspunkter, vilket är med en till två meters mellanrum (se sektion \ref{referenspunkter}). För att sedan populera databasen importerar man csv-filen in till databasen.
+Applikationens fungerar genom att användaren anger en position, tex "toaletterna" vilket blir namnet på positionen användaren befinner sig i. Därefter skannas nätverket för att hitta de fem MAC-adresserna med högst RSSI-värde. Namnet på positionen samt de 10 MAC-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens intern lagring. Detta repeteras tills arbetsområdet har fyllts med ett lämpligt antal referenspunkter, vilket är med en till två meters mellanrum (se sektion \ref{referenspunkter}). För att sedan populera databasen importeras csv-filen in till databasen manuellt.
 
-Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv-filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv-filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv-filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan man manuellt gå in i csv-filen och ersätta å:et med ett a eller liknande.
+Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv-filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på telefonen. När detta händer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv-filen då de steget utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv-filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva ett å i ett av namnen kan redigering av csv-filen utföras. Då ersätts å:et med ett a eller liknande.
 
 \subsection{webbinterface för presentation av användares position} \label{webbinterface}
 Vi byggde detta i webbapplikationsramverket Django samt Materialize%TODO referens
-för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som man enkelt kan starta lokalt. I vår implementation kan man köra den servern både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
+för att snabbt och enkelt göra webbapplikationen responsiv och designad. Med django så kommer automatiskt en server som enkeltt kan startas lokalt. I vår implementation kan servern köras både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
 
-webbapplikationen utgörs initial av en loginsida, där medarbetare på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När man har loggat in så har man möjlighet att se all medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
+webbapplikationen utgörs initial av en loginsida, där arbetaren på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När arbetaren har loggat in så har arbetaren möjlighet att se all medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
 
-webbapplikationen erbjuder även en admin sida. Här kan man se alla användare, man kan ge behörigheter till olika användare. Om man är admin på webbapplikationen kan man tex ge andra användare behörighet till att se adminsidan alternativt ändra i adminsidan.
+webbapplikationen erbjuder även en administrativ hemsida. För att få tillgång till denna hemsida måste användaren ha ett särskild behörighet. Behörigheten har skaparen av hemsidan som i sin tur kan dela med sig av behörigheten till andra användare. I den administrativa hemsidan kan användaren se alla användare, ge behörigheter till olika andra användare bland annat behörigheten till att kolla i administrativa sidan alternativt även ändra.
 
 \iffalse
 \section{DEL x}\label{sec:delX}
@@ -785,11 +786,15 @@ Beskriv gärna felhantering och riskanalys: vad kan gå fel när systemet kör/a
 \fi
 Systemet består även av ett skript som ska skanna av nätverksinformation om nätverk i närheten. Skriptet ska även ansluta till en databas för att hämta information om sparad nätverksinformation om organisationens byggnader. Därefter utförs en algoritm som jämför nätverksinformationen hos klienten med nätverksinformationen i databasen. Algoritmen avgör då vart i byggnaden klientenheten befinner sig.
 
-\section{Utvärderingsresultat}
+\section{Utvärderingsresultat}\label{utvärderingsresultat}
 \iffalse Beskriv resultaten av utvärderingen, när ni tillämpar de utvärderingsmetoder ni beskrivit i avsnitt~\ref{sec:krav}, och relatera utvärderingsresultaten till kraven i samma avsnitt.
 \fi
 
-\section{Resultat och diskussion}
+Följande sektion består av resultat från de tester beskrivna i sektion (\ref{krav}). I våningstestet fick systemet 100\% träffsäkerhet, det vill säga att vart användaren än var på en våning så visade systemet varenda gång att användaren var på samma våning. %TODO inforga bild och fortsätt att snacka om detta
+
+I positioneringstestet fick systemet lite sämre resultat, då i vissa gränsområden där ett område övergår till ett annat område kunde systemet ange fel position. Denna felaktiga positionering blev alltid det angränsande området. Om användaren befann sig minsta fem meter in i området så gav systemt nästan bara lyckade positioneringar. %TODO infoga bilden och ange mer konkreta siffror
+
+\section{Resultat och diskussion}\label{resultat}
 \iffalse Här beskriver ni först era resultat, vad ni åstadkommit.  Hur bra blev det?
 Sedan granskar ni era resultat kritiskt.  Varför blev det som det blev?  Var resultaten rimliga/bra/dåliga/o\-vän\-ta\-de\ldots?
 Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande arbeten?
@@ -807,6 +812,10 @@ Vi har ett fullt fungerande system som kan visa vart en medarbetare befinner sig
 
 Vår initiala plan var att interagera vår positionsbestämningsalgoritm med Skype for buisness. Detta visade sig vara omöjligt att göra då den version av Skype for Business som vår intressent hade inte hade denna funktionalitet som krävdes. Detta medförde att vår plan förändrades och blev istället att göra ett eget system oberoende av Skype.
 \fi
+
+Som beskrivet i sektion (\ref{utvärderingsresultat}) kan användare av systemet positioneras korrekt utifrån vilken våning de befinner sig på. Användaren kan positioneras i förhållande till vilket område användaren befinner sig i om användaren är minst 4 meter in i området. Om användaren är mindre än 4 meter kan positionen variera mellan rätt område och det angränsande området.
+
+För att få mer verklighetstrogna resultat bör systemet testas på olika byggnade då internetinformationen kan se väldigt olika ut. En annan sak som skulle förbättra testerna är att använda sig av olika datorer för att testa positetioneringen. Anledningen till detta är då olika datorer har olika nätverkskort, detta medför att skanningen kan skilja sig och därav positionen.  
 
 \section{Slutsatser}
 \iffalse Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och förklarar dess vikt och användning.  Vad var viktigt/nytt/intressant?  (INTE i termer av vad ni lärde er, utan för den som läser rapporten, funderar på att göra ett liknande system, vidareutveckla ert, etc.)
