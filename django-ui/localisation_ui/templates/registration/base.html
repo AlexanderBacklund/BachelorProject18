@@ -30,11 +30,11 @@
 {% block content %}
 {% endblock %}
 
-<div class="container center-align">
-
-  <a href="{% url 'login' %}" class="waves-effect waves-light btn cyan lighten-2">Go to login page</a>
-  <a href="{% url 'signup' %}" class="waves-effect waves-light btn cyan lighten-2">Go to signup page</a>
-
+<div class="container">
+  <div class="row">
+    <a href="{% url 'login' %}" class="col s12 offset-m3 m3 waves-effect waves-light btn-large cyan lighten-2">Go to login page</a>
+    <a href="{% url 'signup' %}" class="col s12 m3 waves-effect waves-light btn-large cyan lighten-2">Go to signup page</a>
+  </div>
 </div>
 
 </body>

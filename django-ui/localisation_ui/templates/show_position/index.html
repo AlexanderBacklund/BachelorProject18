@@ -3,23 +3,25 @@
 
 {% if user.is_authenticated %}
 
-<h3 class="center-align">Sök efter medarbetare</h3>
+<h4 class="center-align">Sök efter medarbetare</h4>
 <div class="container">
 
 <form class="center-align" action="" method="GET">
   <input class="grey lighten-3" type="text" placeholder="Search" name="query" value="{{request.GET.query}}">
-  <input type="submit" name="" value="Search">
+  <input class="waves-effect waves-light btn grey darken-2" type="submit" name="" value="Search">
 </form>
 </div>
 
 
-<h3 class="center-align">Lista av alla positioner</h3>
+<h4 class="center-align">Medarbetarnas position</h4>
 <div class="row">
   {% for u in user_positions  %}
   <div class="col s12 m6 l4">
     <div class="card horizontal">
       <div class="card-image">
-        {% if u.u_id == 1 %}
+        {% load static %}
+        <img src="{% static "images/account_pic.png" %}" alt="" class="hoverZoomLink">
+        <!-- {% if u.u_id == 1 %}
         {% load static %}
         <img src="{% static "images/alex.jpg" %}"  alt="" class="hoverZoomLink">
         {% endif %}
@@ -30,7 +32,7 @@
         {% if u.u_id == 3 %}
         {% load static %}
         <img src="{% static "images/albin.jpg" %}"  alt="" class="hoverZoomLink">
-        {% endif %}
+        {% endif %}-->
       </div>
       <div class="card-stacked">
         <div class="card-content">

@@ -14,14 +14,14 @@
         {% for field in form %}
      <div>
         <div class="row">
-        <div class="col s11">
-          {{ field.label }}<br class="black-text">
-          {{ field }}
-        </div>
+          <div class="col s10 m11">
+            {{ field.label }}<br class="black-text">
+            {{ field }}
+          </div>
           {% if field.help_text %}
-        <div class="col s1">
-          <a class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="{{ field.help_text }}"><i style="margin-top: 20px" class="material-icons">help</i></a>
-        </div>
+          <div class="col s2 m1">
+            <a class="tooltipped" data-position="bottom" data-delay="1" data-tooltip="{{ field.help_text }}"><i style="margin-top: 20px" class="material-icons">help</i></a>
+          </div>
           {% endif %}
 
       </div>
@@ -30,7 +30,8 @@
        {% endfor %}
      </div>
    {% endfor %}
-        <button class="waves-effect waves-light btn  light-green accent-4"type="submit">Sign up</button>
+      
+        <button class="waves-effect waves-light btn-large  light-green accent-4"type="submit">Sign up</button>
       </form>
     </div>
   </div>
