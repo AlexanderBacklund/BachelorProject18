@@ -773,6 +773,8 @@ Positioneringstestet gav i ett par fall resultat som måste uppfattas som felakt
 Sedan granskar ni era resultat kritiskt.  Varför blev det som det blev?  Var resultaten rimliga/bra/dåliga/o\-vän\-ta\-de\ldots?
 Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande arbeten?
 
+
+
 \begin{itemize}
 \item Visa att utvärderingen är rimlig.
 \item Visa att utvärderingen, resultatet och analysen är vetenskapliga och ingenjörsmässiga.
@@ -790,6 +792,16 @@ Vår initiala plan var att interagera vår positionsbestämningsalgoritm med SFB
 Som beskrivet i sektion (\ref{utvarderingsresultat}) kan användare av systemet positioneras korrekt utifrån vilken våning de befinner sig på. Användaren kan positioneras i förhållande till vilket område användaren befinner sig i om användaren är minst 4 meter in i området. Om användaren är mindre än 4 meter kan positionen variera mellan rätt område och det angränsande området.
 
 För att få mer verklighetstrogna resultat bör systemet testas på olika byggnade då internetinformationen kan se väldigt olika ut. En annan sak som skulle förbättra testerna är att använda sig av olika datorer för att testa positetioneringen. Anledningen till detta är då olika datorer har olika nätverkskort, detta medför att skanningen kan skilja sig och därav positionen.
+
+\subsection{Våningstest hos Uppsala kommun}
+När systemet testades i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala var ett av två tester som utfördes ett våningstest. Syftet med våningstestet var att undersöka om systemet skulle klara av att skilja på våningsplan vid positionsbestämningen. Testet utfördes på så sätt att referenspunkter utmättes på delar av våningsplan 6 och våningsplan 5 i lokalerna på Stationsgatan 12. Där våningstesterna utfördes uppmättes referenspunkterna i områden på de båda våningsplanen som befann sig precis över respektive under varandra. Efter att referenspunkterna var utmätta och inlagda i databasen utfördes positionsbestämning i de områden på våningsplan 6 vars motsvarande område också var representerade i databasen i form av referenspunkter. Därefter analyserades resultatet av positionsbestämningen i dessa områden med syfte att se huruvida positioneringssystemet hade möjlighet att skilja på de olika våningsplanen. I figur \ref{fig:vanings_test} ses en bild av området Trädgåden och området Torget på våningsplan 6. De röda ringarna motsvarar de positioner i vilka positioneringsbestämningen utfördes. Under ringarna visas ett klockslag som anger vid vilken tidpunkt positionsbestämningen utfördes vid just den positionen.    
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{media/vaningstest_uppsala_kommun_2.png}
+  \caption{Resultat av våningstest på Uppsala Kommun}
+  \label{fig:vanings_test}
+\end{figure}
 
 \section{Slutsatser}
 \iffalse Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och förklarar dess vikt och användning.  Vad var viktigt/nytt/intressant?  (INTE i termer av vad ni lärde er, utan för den som läser rapporten, funderar på att göra ett liknande system, vidareutveckla ert, etc.)
