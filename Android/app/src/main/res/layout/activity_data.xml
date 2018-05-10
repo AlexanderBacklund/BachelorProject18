@@ -11,8 +11,8 @@
         android:id="@+id/APet"
         android:layout_width="330dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Name of the new access point"
         android:inputType="textPersonName"
@@ -50,14 +50,14 @@
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/APet"
-        app:layout_constraintVertical_bias="0.205" />
+        app:layout_constraintVertical_bias="0.461" />
 
     <ListView
         android:id="@+id/APlv"
         android:layout_width="333dp"
         android:layout_height="266dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"

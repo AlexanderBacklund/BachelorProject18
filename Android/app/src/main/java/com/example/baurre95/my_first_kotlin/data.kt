@@ -24,8 +24,8 @@ import kotlinx.android.synthetic.main.activity_data.*
 import java.io.File
 
 class data : AppCompatActivity() {
-    val filenameToDB = "accesspointsToDb.csv"
-    val filenameToUsers = "ReferencePointsToUser.csv"
+    val filenameToDB = "referencePointsToDb.csv"
+    val filenameToUsers = "referencePointsToUser.csv"
     var myList =  listOf<String>()
     var showList = listOf<String>()
     val REQUEST_FINE_LOCATION: Int=0
