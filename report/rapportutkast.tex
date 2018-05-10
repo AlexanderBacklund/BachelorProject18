@@ -789,19 +789,35 @@ Vi har ett fullt fungerande system som kan visa var en medarbetare befinner sig 
 Vår initiala plan var att interagera vår positionsbestämningsalgoritm med SFB. Detta visade sig vara omöjligt att göra då den version av SFB som vår intressent hade inte hade denna funktionalitet som krävdes. Detta medförde att vår plan förändrades och blev istället att göra ett eget system oberoende av SFB.
 \fi
 
-Som beskrivet i sektion (\ref{utvarderingsresultat}) kan användare av systemet positioneras korrekt utifrån vilken våning de befinner sig på. Användaren kan positioneras i förhållande till vilket område användaren befinner sig i om användaren är minst 4 meter in i området. Om användaren är mindre än 4 meter kan positionen variera mellan rätt område och det angränsande området.
+Som beskrivet i sektion (\ref{utvarderingsresultat}) kan användare av systemet positioneras korrekt utifrån vilken våning de befinner sig på. Användaren kan med säkerhet positioneras i förhållande till vilket område användaren befinner sig i då användaren är minst fem meter in i området. Om användaren är mindre än fem meter kan positionen ibland variera mellan rätt område och det angränsande området.
+För att testa systemets prestanda utfördes två olika tester, ett våningstest och ett områdestest (se sektion \ref{krav}). Resultaten för de olika testerna beskrivs nedan.
 
-För att få mer verklighetstrogna resultat bör systemet testas på olika byggnade då internetinformationen kan se väldigt olika ut. En annan sak som skulle förbättra testerna är att använda sig av olika datorer för att testa positetioneringen. Anledningen till detta är då olika datorer har olika nätverkskort, detta medför att skanningen kan skilja sig och därav positionen.
 
 \subsection{Våningstest hos Uppsala kommun}
-När systemet testades i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala var ett av två tester som utfördes ett våningstest. Syftet med våningstestet var att undersöka om systemet skulle klara av att skilja på våningsplan vid positionsbestämningen. Testet utfördes på så sätt att referenspunkter utmättes på delar av våningsplan 6 och våningsplan 5 i lokalerna på Stationsgatan 12. Där våningstesterna utfördes uppmättes referenspunkterna i områden på de båda våningsplanen som befann sig precis över respektive under varandra. Efter att referenspunkterna var utmätta och inlagda i databasen utfördes positionsbestämning i de områden på våningsplan 6 vars motsvarande område också var representerade i databasen i form av referenspunkter. Därefter analyserades resultatet av positionsbestämningen i dessa områden med syfte att se huruvida positioneringssystemet hade möjlighet att skilja på de olika våningsplanen. I figur \ref{fig:vanings_test} ses en bild av området Trädgåden och området Torget på våningsplan 6. De röda ringarna motsvarar de positioner i vilka positioneringsbestämningen utfördes. Under ringarna visas ett klockslag som anger vid vilken tidpunkt positionsbestämningen utfördes vid just den positionen.    
+När systemet testades i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala var ett av två tester som utfördes ett våningstest. Syftet med våningstestet var att undersöka om systemet skulle klara av att skilja på våningsplan vid positionsbestämningen. Testet utfördes på så sätt att referenspunkter utmättes på delar av våningsplan 6 och våningsplan 5 i lokalerna på Stationsgatan 12. Där våningstesterna utfördes uppmättes referenspunkterna i områden på de båda våningsplanen som befann sig precis över respektive under varandra. Efter att referenspunkterna var utmätta och inlagda i databasen utfördes positionsbestämning i de områden på våningsplan 6 vars motsvarande område på våning 5 också var representerade i databasen. Därefter analyserades resultatet av positionsbestämningen i dessa områden med syfte att se huruvida positioneringssystemet hade möjlighet att skilja på de olika våningsplanen. I figur \ref{fig:vanings_test} ses en bild av området Trädgården och området Torget på våningsplan 6. De röda ringarna motsvarar de positioner där användaren befann sig vid en viss tidpunkt. Under ringarna visas ett klockslag som anger vid vilken tidpunkt användaren befann sig vid just den positionen. Under den tid som användaren förflyttade sig mellan dessa positioner utfördes positionsbestämning på en dator som användaren hade med sig under hela tiden. På datorn loggades information om resultaten av varje positionsbestämning kopplat till en specifik tidpunkt. Resultaten av loggningen kan ses i figur ~\ref{fig:logg_vaningstest}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=15cm]{media/vaningstest_uppsala_kommun_2.png}
-  \caption{Resultat av våningstest på Uppsala Kommun}
+  \caption{Våningstest på Uppsala Kommun}
   \label{fig:vanings_test}
 \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{media/logg_vaningstest.png}
+  \caption{Logg för våningstest på Uppsala Kommun}
+  \label{fig:logg_vaningstest}
+\end{figure}
+
+Resultatet av våningstestet går att utläsa vid jämförelse av uppskattad position av systemet vid en viss tidpunkt (se loggen i figur \ref{fig:logg_vaningstest)} och tidpunkt samt verklig position i figur \ref{fig:logg_vaningstest}. Alla positionsbestämmelser i det här testet gav en position på våning 6. Detta indikerar att systemet har möjlighet att skilja på områden på olika våningsplan vilket också var vår förhoppning.
+
+\subsection{Områdestest hos Uppsala Kommun}
+%TODO göra liknandde som ovan
+
+\subsection{Diskussion}
+
+För att få mer verklighetstrogna resultat bör systemet testas på olika byggnade då internetinformationen kan se väldigt olika ut. En annan sak som skulle förbättra testerna är att använda sig av olika datorer för att testa positetioneringen. Anledningen till detta är då olika datorer har olika nätverkskort, detta medför att skanningen kan skilja sig och därav positionen.
 
 \section{Slutsatser}
 \iffalse Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och förklarar dess vikt och användning.  Vad var viktigt/nytt/intressant?  (INTE i termer av vad ni lärde er, utan för den som läser rapporten, funderar på att göra ett liknande system, vidareutveckla ert, etc.)
