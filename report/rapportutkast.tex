@@ -163,9 +163,9 @@ Introduktionen bör vara begriplig för t.ex.~en student i årskursen under, och
 
 Fler och fler företag och organisationer väljer idag att övergå från kontorsbaserade till aktivitetsbaserade arbetsplatser. Iden med en aktivitetsbaserad arbetsplats är att arbetsytorna öppnas upp och delas in i områden snarare än mindre kontor. Ett problem med denna typ av miljö är att det är svårt att veta var sina medarbetare befinner sig. Lösningen till problemet är systemet som presenteras i denna rapport. Systemet fungerar så att när en medarbetare startar sin dator kommer den att skanna av nätverksinformationen i närheten och bestämma medarbetarens position. Denna position kommer att visas på en hemsida så att andra medarbetare snabbt kan se var sina kollegor befinner sig. Som användare finns möjligheter att även kunna välja att inte visa sin position.
 
-Systemet består av en mobilapplikation som används för att installera systemet på arbetsplatsen, därefter kommer applikationen inte att användas mer. Systemet består även av ett datorprogram som varje användare av systemet kommer att köra i bakgrunden på sina egna datorer. Detta program positionerar arbetaren och skickar positionen till en datorbas. Slutligen består systemet av en hemsida som alla användare av systemet kan komma åt. På hemsidan finns möjligheten att se sin egen position samt se andra användares positioner.
-% BEhövs detta, känns överflödigt men det förtydligar vad alla delar gör vilket var en feedback punkt. Man kan även ta upp lite resultat här antar jag.
+Det färdiga Systemet består av en mobilapplikation som används för att installera systemet på arbetsplatsen, därefter kommer applikationen inte att användas mer. Systemet består även av ett datorprogram som varje användare av systemet kommer att köra i bakgrunden på sina egna datorer. Detta program positionerar arbetaren och skickar positionen till en datorbas. Slutligen består systemet av en hemsida som alla användare av systemet kan komma åt. På hemsidan finns möjligheten att se sin egen position samt se andra användares %TODO BEhövs detta, känns överflödigt men det förtydligar vad alla delar gör vilket var en feedback punkt. Man kan även ta upp lite resultat här antar jag.
 
+Systemet kan positionera en användare utifrån vilken våning de sitter i med en träffsäkerhet på 100 \% i de lokaler som testerna gjordes. Systemet kan, dock sämre, positionera en användare utifrån ett olika områden på samma plan. Om användaren är fem meter in i ett dedikerat område fungerar systemet som tänkt dock om användaren är mindre än fem meter in i ett dedikerat område kan systemet positionera användaren till det närliggande området.
 
 
 \section{Bakgrund}
@@ -735,9 +735,23 @@ Tabellen som håller en användares position är strukturerad enligt följande
 \subsection{Webbapplikation för presentation av användares position} \label{webbinterface}
 Webbapplikationen byggdes i webbapplikationsramverket Django samt Materialize
 för att snabbt och enkelt göra webbapplikationen responsiv och designad. %TODO referens
- Med django kommer automatiskt en server som enkelt kan startas lokalt. I implementationen kan servern köras både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
+Med django kommer automatiskt en server som enkelt kan startas lokalt. I implementationen kan servern köras både lokalt eller delat, och det drabbar inte funktionaliteten i systemet. Det enda som behöver vara delat mellan alla användare är databasen.
 
-Webbapplikationen utgörs initialt av en inloggningssida, där arbetaren på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När arbetaren har loggat in så har arbetaren möjlighet att se dess medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position.
+Webbapplikationen utgörs initialt av en inloggningssida se figur \ref{fig:comp_log_in}, där arbetaren på arbetsplatsen måste logga in för att se positioner för andra medarbetare. När arbetaren har loggat in så har arbetaren möjlighet att se dess medarbetares position, söka efter specifika medarbetare och göra valet att dölja sin position, se figur \ref{fig:comp_show_position}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=14cm, height=12cm]{media/comp_log_in.png}
+  \caption{En bild på hur inloggning till webbapplikationen ser ut ifrån en dator.}
+  \label{fig:comp_log_in}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=14cm, height=12cm]{media/comp_show_position.png}
+  \caption{En bild på hur inloggning till webbapplikationen ser ut ifrån en dator.}
+  \label{fig:comp_show_position}
+\end{figure}
 
 Webbapplikationen erbjuder även en administrativ hemsida. För att få tillgång till denna hemsida måste användaren ha ett särskild behörighet. Behörigheten har skaparen av hemsidan som i sin tur kan dela med sig av behörigheten till andra användare. I den administrativa hemsidan kan användaren se alla användare, ge behörigheter till olika andra användare, bland annat behörigheten till att se den administrativa hemsidan alternativt även ändra i den administrativ hemsidan.
 
