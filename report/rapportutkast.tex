@@ -519,28 +519,28 @@ När applikationen startas kommer användaren till en startsida, se figur \ref{f
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=14cm]{media/mob_main.jpg}
+  \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_main.jpg}}
   \caption{En bild på hur startsidan på den mobila applikationen ser ut.}
   \label{fig:mob_main}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=14cm]{media/mob_scan_cal.jpg}
+  \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_cal.jpg}}
   \caption{En bild på hur "WIFI SCAN" på den mobila applikation ser ut.}
   \label{fig:mob_scan_cal}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=14cm]{media/mob_scan_ref.jpg}
+  \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_ref.jpg}}
   \caption{En bild på hur "ADD REFERENCE POINTS" på den mobila applikationen ser ut.}
   \label{fig:mob_scan_ref}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=14cm]{media/mob_scan_ref_option.jpg}
+  \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_ref_option.jpg}}
   \caption{En bild på hur valen för en referenspunkt på den mobila applikation ser ut.}
   \label{fig:mob_scan_ref_option}
 \end{figure}
@@ -770,21 +770,21 @@ Webbapplikationen utgörs initialt av en inloggningssida se figur \ref{fig:comp_
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=12cm]{media/comp_log_in.png}
+  \fbox{\includegraphics[width=10cm, height=12cm]{media/comp_log_in.png}}
   \caption{En bild på hur inloggning till webbapplikationen ser ut ifrån en dator.}
   \label{fig:comp_log_in}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=12cm]{media/comp_sign_in.png}
+  \fbox{\includegraphics[width=10cm, height=12cm]{media/comp_sign_in.png}}
   \caption{En bild på hur registrering till webbapplikationen ser ut ifrån en dator.}
   \label{fig:comp_sign_in.png}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=14cm, height=12cm]{media/comp_show_position.png}
+  \fbox{\includegraphics[width=14cm, height=12cm]{media/comp_show_position.png}}
   \caption{En bild på en inloggad användares vy ifrån en dator.}
   \label{fig:comp_show_position}
 \end{figure}
@@ -792,7 +792,7 @@ Webbapplikationen utgörs initialt av en inloggningssida se figur \ref{fig:comp_
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=14cm]{media/comp_not_logged_in.png}
+  \fbox{\includegraphics[width=14cm]{media/comp_not_logged_in.png}}
   \caption{En bild på en icke inloggad användares vy ifrån en dator.}
   \label{fig:comp_not_logged_in}
 \end{figure}
@@ -803,21 +803,21 @@ Webbapplikationen är även tillgänglig för mobila enheter. Inloggning och reg
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=14cm]{media/mob_login.jpg}
+  \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_login.jpg}}
   \caption{En bild på hur inloggning till webbapplikationen ser ut ifrån en mobiltelefon.}
   \label{fig:mob_login}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=14cm]{media/mob_sign_up.jpg}
+  \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_sign_up.jpg}}
   \caption{En bild på hur registrering till webbapplikationen ser ut ifrån en mobiltelefon.}
   \label{fig:mob_sign_up}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm, height=14cm]{media/mob_show_position.jpg}
+  \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_show_position.jpg}}
   \caption{En bild på en inloggad användares vy ifrån en mobiltelefon.}
   \label{fig:mob_show_position}
 \end{figure}
@@ -875,12 +875,12 @@ Som beskrivet i sektion (\ref{utvarderingsresultat}) kan användare av systemet 
 För att testa systemets prestanda utfördes två olika tester, ett våningstest och ett områdestest (se sektion \ref{krav}). Resultaten för de olika testerna beskrivs nedan.
 
 
-\subsection{Våningstest hos Uppsala kommun}
+\subsection{Våningstest hos Uppsala kommun}\label{vaningstest}
 När systemet testades i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala var ett av två tester som utfördes ett våningstest. Syftet med våningstestet var att undersöka om systemet skulle klara av att skilja på våningsplan vid positionsbestämningen. Testet utfördes på så sätt att referenspunkter utmättes på delar av våningsplan 6 och våningsplan 5 i lokalerna på Stationsgatan 12. Där våningstesterna utfördes uppmättes referenspunkterna i områden på de båda våningsplanen som befann sig precis över respektive under varandra. Efter att referenspunkterna var utmätta och inlagda i databasen utfördes positionsbestämning i de områden på våningsplan 6 vars motsvarande område på våning 5 också var representerade i databasen. Därefter analyserades resultatet av positionsbestämningen i dessa områden med syfte att se huruvida positioneringssystemet hade möjlighet att skilja på de olika våningsplanen. I figur \ref{fig:vanings_test} ses en bild av området Trädgården och området Torget på våningsplan 6. De röda ringarna motsvarar de positioner där användaren befann sig vid en viss tidpunkt. Under ringarna visas ett klockslag som anger vid vilken tidpunkt användaren befann sig vid just den positionen. Under den tid som användaren förflyttade sig mellan dessa positioner utfördes positionsbestämning på en dator som användaren hade med sig under hela tiden. På datorn loggades information om resultaten av varje positionsbestämning kopplat till en specifik tidpunkt. Resultaten av loggningen kan ses i figur ~\ref{fig:logg_vaningstest}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=15cm]{media/vaningstest_uppsala_kommun_2.png}
+  \fbox{\includegraphics[width=15cm]{media/vaningstest_uppsala_kommun_2.png}}
   \caption{Våningstest på Uppsala Kommun}
   \label{fig:vanings_test}
 \end{figure}
@@ -895,6 +895,21 @@ När systemet testades i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala 
 Resultatet av våningstestet går att utläsa vid jämförelse av uppskattad position av systemet vid en viss tidpunkt (se loggen i figur \ref{fig:logg_vaningstest}) och tidpunkt samt verklig position i figur \ref{fig:logg_vaningstest}. Alla positionsbestämmelser i det här testet gav en position på våning 6. Detta indikerar att systemet har förmåga att skilja på områden på olika våningsplan vilket också var vår förhoppning.
 
 \subsection{Områdestest hos Uppsala Kommun}
+Utöver ett våningstest utfördes även ett områdestest. Områdestestet utfördes även det på i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala. Syftet med områdestestet var att analysera precisionen för positionsbestämningen (se sektion ~\ref{krav}). Referenspunkterna som utmättes för våningstestet (se sektion ~\ref{vaningstest}) användes även för områdestestet men utökades även med referenspunkter för fler områden på våningsplan 6. En bild på testområdet för områdestestet kan ses i figur (~\ref{blahblah}). Samma tillvägagångssätt användes vid områdestestet som vid våningstestet. De röda ringarna och tillhörande klockslag i figur ~\ref{blahblah} anger användarens position vid ett specifikt klockslag. Positionsbestämning utfördes löpande på en dator som användaren hade med sig vid varje tillfälle. Resultaten för varje positionsbestämning sparades i en logg som går att se i figur ~\ref{logglogg}. Vid varje röd cirkel i figur ~\ref{blahblah} stannade användaren i minst en minut. Eftersom positionsbestämningen utfördes löpande på användarens medhavda dator är vissa resultat från loggningen resultat som uppkommit under användarens förflyttning mellan olika cirklar i figur ~\ref{blahblah}.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=15cm]{media/vaningstest_uppsala_kommun_2.png}}
+  \caption{Våningstest på Uppsala Kommun}
+  \label{fig:vanings_test}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{media/logg_vaningstest.png}
+  \caption{Logg för våningstest på Uppsala Kommun}
+  \label{fig:logg_vaningstest}
+\end{figure}
 %TODO göra liknandde som ovan
 
 \subsection{Diskussion}
