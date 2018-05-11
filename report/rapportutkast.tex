@@ -9,7 +9,7 @@
 % Use the template for thesis reports
 \usepackage{UppsalaExjobb}
 \usepackage{float}
-
+\usepackage{cleveref}
 
 \usepackage[bottom]{footmisc}
 
@@ -185,20 +185,34 @@ Enligt Lisbeth Slunga Järvholm, forskare vid Umeå universitet, passar inte ett
 \subsection{Uppsala Kommun}
 Uppsala Kommun agerar i det här projektet som extern intressent. De är i ett skede där de övergår till aktivitetsbaserade arbetsplatser på många av deras kontor runt om i Uppsala. Det innebär att %TODO kolla upp antal
 ett par tusen personer kommer att kunna välja friare var de vill utföra sina arbetsuppgifter. Uppsala Kommun har uttryckt ett behov av att deras medarbetare snabbt ska kunna se var deras kollegor befinner sig. Det är vår förhoppning att de ska kunna utnyttja systemet för att kunna uppfylla deras behov.
-
-\subsection{Skype for Business}
-SFB är ett kommunikationsmedel som används av många företag och organisationer. SFB erbjuder funktionalitet såsom realtidssamtal, videomöten och chattfunktioner. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFBs server \cite{Microsoft-Office}. Det är en funktion som har undersökts om den är lämpligt att använda i detta projekt. När SFB´s platsdatabas är populerad med nätverksinformation för varje område på organisationens arbetsplatser kan en medarbetares position bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i SFBs användargränssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
-
-Skype erbjuder två olika versioner av tjänsten SFB. Den ena varianten, SFB \textit{Online} är en molnbaserad tjänst som inte kräver några fysiska servrar hos användaren\cite{SFBonline}.
-Den andra varianten, SFB \textit{Server} kräver fysiska servrar hos användaren\cite{SFBserver}. Funktionaliteten för de två olika versionerna skiljer sig delvis åt och intressenten i det här projektet (Uppsala Kommun) hade som önskemål att det utfördes en undersökning om funktionen med en platsdatabas i SFB var möjligt i deras fall. Uppsala kommun använder SFB Online.
-
+\iffalse
 \subsection{Inomhuspositionering}
 Inomhuspositionering är jämfört med utomhuspositionering ett problem med fler komplikationer. GPS-tekniken(Global Position System) som ger en mycket liten felmarginal vid utomhuspositionering är sällan användbar för inomhuspositionering. Anledningen är att GPS-tekniken kräver en oblockerad signal till de satelliter som GPS använder sig av för positionsbestämning \cite{GPS_US_ACCURACY}.
 
 I fallet med inomhuspositionering i kombination med en aktivitetsbaserad arbetsplats ser kraven på precision något annorlunda ut jämfört med precisionskraven för utomhuspositionering. Även om GPS-tekniken kan användas för att bestämma en enhets höjd över marken är den inte tillräckligt tillförlitlig för att bestämma vilket våningsplan enheten befinner sig på.
 
 En av skillnaderna är att det vid positionsbestämning inomhus tillkommer en faktor som komplicerar positionsbestämningen. Problemet är att vid inomhuspositionering måste ta hänsyn till ett visst antal våningsplan i en byggnad. Även om GPS-tekniken skulle kunna leverera lika god precision inomhus som utomhus (i förhållande till ett globalt koordinatsystem) skulle detta vara otillräckligt i och med att informationen inte anger huruvida den fastställda enhetens position befinner sig på våning 1 eller 15.
-%TODO Säger du typ inte samma sak här som på förra stycket?
+%TODO Säger du typ inte samma sak här som på förra stycket?\subsection{Problem med GPS-tekniken}
+Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en position med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
+Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USA:s flygvapen. GPS är ett system bestående av 24 satelliter som kretsar kring Jorden. Satelliterna sänder ut radiosignaler med information
+om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de satelliterna som befinner sig inom räckhåll och använder sig av satelliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig \cite{GPS_US_HOW}.
+
+Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från satelliterna reflekteras när de kommer i kontakt med byggnader. De anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord \cite{GPS_US_ACCURACY}. Detta gör att andra tekniker måste användas för inomhuspositionering.
+\fi
+\subsection{Skype for Business}
+SFB är ett kommunikationsmedel som används av många företag och organisationer. SFB erbjuder funktionalitet såsom realtidssamtal, videomöten och chattfunktioner. SFB kommer med en möjlighet att konfigurera en egen platsdatabas på SFBs server \cite{Microsoft-Office}. Det är en funktion som har undersökts om den är lämpligt att använda i detta projekt. När SFB´s platsdatabas är populerad med nätverksinformation för varje område på organisationens arbetsplatser kan en medarbetares position bestämmas med hjälp av vilket nätverk medarbetaren är ansluten till. Denna information visas under användarens namn i SFBs användargränssnitt och är då synlig för andra Skypeanvändare i samma SFB-organisation. Detta gör att användare i SFB enkelt kan lokalisera varandra.
+
+Skype erbjuder två olika versioner av tjänsten SFB. Den ena varianten, SFB \textit{Online} är en molnbaserad tjänst som inte kräver några fysiska servrar hos användaren\cite{SFBonline}.
+Den andra varianten, SFB \textit{Server} kräver fysiska servrar hos användaren\cite{SFBserver}. Funktionaliteten för de två olika versionerna skiljer sig delvis åt och intressenten i det här projektet (Uppsala Kommun) hade som önskemål att det utfördes en undersökning om funktionen med en platsdatabas i SFB var möjligt i deras fall. Uppsala kommun använder SFB Online.
+
+
+
+\subsection{Problem med GPS-tekniken}
+Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en position med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
+Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USA:s flygvapen. GPS är ett system bestående av 24 satelliter som kretsar kring Jorden. Satelliterna sänder ut radiosignaler med information
+om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de satelliterna som befinner sig inom räckhåll och använder sig av satelliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig \cite{GPS_US_HOW}.
+
+Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från satelliterna reflekteras när de kommer i kontakt med byggnader. De anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord \cite{GPS_US_ACCURACY}. Detta gör att andra tekniker måste användas för inomhuspositionering.
 
 
 %\subsection{Dataskyddsförordningen}
@@ -324,18 +338,11 @@ En av de vanligaste teknikerna vid IPS är trilateration\cite{cook2005indoor}, t
 Binghao Li m. fl. analyserade i en studie \cite{IP1} olika tekniker som utgår från WiFi för inomhuspositionering och kom fram till att fingerprinting var en av de metoder som enskilt genererade mest precisa resultat.
 
 
-\subsection{Problem med GPS-tekniken}
-Vid utomhuspositionering har GPS-tekniken utgjort en generell möjlighet till att bestämma en position med i de flesta fall godtagbar precision, ca 4 meters felmarginal\cite{GPS_US_ACCURACY}.
-Global Positioning System (GPS) är en teknik som ägs av den Amerikanska staten och underhålls av USA:s flygvapen. GPS är ett system bestående av 24 satelliter som kretsar kring Jorden. Satelliterna sänder ut radiosignaler med information
-om deras position och en exakt tidpunkt då de sänder signalen. Mottagare i form av smartphones och liknande apparater fångar upp signaler från de satelliterna som befinner sig inom räckhåll och använder sig av satelliternas tid och plats-information för att med hjälp av geometri avgöra var på planeten de befinner sig \cite{GPS_US_HOW}.
 
-Problemen med GPS-tekniken är att precisionen försämras då mottagarna befinner sig i närheten av byggnader. Anledningen är enligt National Coordination Office for Space-Based Positioning att signalerna från satelliterna reflekteras när de kommer i kontakt med byggnader. De anser inte GPS-positionering som tillförlitlig då mottagaren befinner sig inomhus eller under jord \cite{GPS_US_ACCURACY}. Detta gör att andra tekniker måste användas för inomhuspositionering.
 
-\subsection{Vanliga tekniker vid inomhuspositionering}
-%TODO skriv vad sektionen handlar om!
 
-\subsubsection{Trilateration}\label{triangulering}
-Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf \cite{cook2005indoor}.
+\subsection{Trilateration}\label{triangulering}
+Trilateration är en teknik som återkommer i flertalet system för inomhuspositioneringsservice (IPS). Vid Trilateration mäter enheten som ska positionsbestämmas signalstyrkan för tre stycken intilliggande åtkomstpunkter eller routrar med bekanta koordinater. Genom att mäta signalstyrkan kan ett avstånd till varje åtkomstpunkt uppskattas. Formeln för att uppskatta detta avstånd är enligt B Cook m. lf \cite{cook2005indoor}.
 \newline
 $$ P_r = P_t + 20log(\frac{\lambda}{4\pi}) + 10nlog(\frac{1}{d})$$
 där:\\
@@ -346,10 +353,9 @@ $ n $ = 2 i fria utrymmen\\ %TODO vad är n annars?
 $ d $ = avståndet mellan mottagare och sändare
 \bigskip
 \newline
-En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. %TODO % fixa figur.. kan man sno? Ja sno på du men säg att du har snott den!!!!
-Teoretiskt befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i inexaktheter i positionsbestämningen.
+En cirkel konstrueras därefter runt varje åtkomstpunkt med en radie motsvarande det uppmätta avståndet. Teoretiskt sett befinner sig då enheten där cirklarna sammanstrålar. Ett problem med den här tekniken är att signalstyrkan påverkas av fysiska hinder i lokalerna och kan därmed resultera i inexaktheter i positionsbestämningen.
 
-I projektet är trilateration en teknik som inte har utnyttjats. Eftersom precisionen i projektet har en accepterad felmarginal på 5 meter begränsas projektet till fingerprintingtekniken vilken ensam ger tillräckligt god precision.
+I projektet är Trilateration en teknik som inte har utnyttjats.
 
 \subsection{Liknande system}
 Här beskrivs system som i viss mån liknar systemet och som är i viss mån relevanta.
@@ -361,7 +367,7 @@ För navigeringssystemet använder AnyPlace en karta baserat på Google Maps fö
 
 AnyPlace har också integrerat en metod som de kallar Crowdsurfing \cite{anyplace}. Crowdsurfing bygger på användarna av systemet ges en möjlighet att förbättra systemet. Användarna av systemet kan använda deras applikation (på mobiltelefoner) för att samla data om WiFi-information i närheten. Denna information läggs sedan in i AnyPlaces databas för att få vidare stöd för navigering på platser som inte hade det tidigare. Crowdsurfing innebär att stora mängder data kan inhämtas samtidigt och att inlärningsprocessen med Fingerprintingtekniken kan förkortas jämfört med om AnyPlace hade varit tvungna att inhämta den informationen själva.
 
-Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vill göra det möjligt att se andra enheters position snarare än att erbjuda någon navigeringsservice. Att AnyPlace har lyckats uppnå en såpass lite felmarginal som ca 2 meter visar på att Fingerprinting är ett bra val av metod även i det här projektet då samma felmarginal i vårt system skulle innebära mer än tillräcklig precision utifrån de krav som bestämdes tidigare (se sektion \ref{mal}).
+Skillnaderna mellan AnyPlace´s system och vårt system är att vårt system vill göra det möjligt att se andra enheters position snarare än att erbjuda någon navigeringsservice. Att AnyPlace har lyckats uppnå en såpass liten felmarginal som 2 meter visar på att Fingerprinting är ett bra val av metod även i det här projektet då samma felmarginal i vårt system skulle innebära mer än tillräcklig precision utifrån de krav som bestämdes tidigare (se sektion \ref{mal}).
 
 %Här beskriver ni liknande system eller projekt, och förklarar hur de relaterar till ert.  Alltså: vad vet ni om läget när det gäller ``det större problemet'' som projektet ska lösa?  Vilka andra har försökt lösa liknande/närliggande problem, eller gjort relaterade/liknande saker/system? Referera! (Se Appendix~\ref{sec:referenser} för mer om hur.)
 
@@ -779,7 +785,7 @@ Webbapplikationen utgörs initialt av en inloggningssida se figur \ref{fig:comp_
   \centering
   \fbox{\includegraphics[width=10cm, height=12cm]{media/comp_sign_in.png}}
   \caption{En bild på hur registrering till webbapplikationen ser ut ifrån en dator.}
-  \label{fig:comp_sign_in.png}
+  \label{fig:comp_sign_in}
 \end{figure}
 
 \begin{figure}[H]
@@ -843,9 +849,9 @@ Beskriv gärna felhantering och riskanalys: vad kan gå fel när systemet kör/a
 \iffalse Beskriv resultaten av utvärderingen, när ni tillämpar de utvärderingsmetoder ni beskrivit i avsnitt~\ref{sec:krav}, och relatera utvärderingsresultaten till kraven i samma avsnitt.
 \fi
 
-Följande sektion består av resultat från de tester beskrivna i sektion (\ref{krav}). Vid våningstestet hade systemet 100\% träffsäkerhet. Det betyder att då användaren befann sig på en våning så visade systemet varenda gång att användaren var på den våning. En av farhågorna vi hade var att signalstyrkorna från åtkomstpunkterna inte skulle avta tillräckligt mycket mellan våningsplan och att systemet därigenom skulle ha svårt att urskilja vilket våningsplan en användare befann sig på. Resultatet (se sektion/fig \ref{blahblah}) av våningstestet visar tydligt att en användares position aldrig uppskattades till fel våningsplan.        %TODO inforga bild och fortsätt att snacka om detta
+Följande sektion består av resultat från de tester beskrivna i sektion (\ref{krav}). Vid våningstestet hade systemet 100\% träffsäkerhet. Det betyder att då användaren befann sig på en våning så visade systemet varenda gång att användaren var på den våning. En av farhågorna vi hade var att signalstyrkorna från åtkomstpunkterna inte skulle avta tillräckligt mycket mellan våningsplan och att systemet därigenom skulle ha svårt att urskilja vilket våningsplan en användare befann sig på. Resultatet av våningstestet (se sektion \ref{vaningstest}) visar tydligt att en användares position aldrig uppskattades till fel våningsplan.
 
-Positioneringstestet gav i ett par fall resultat som måste uppfattas som felaktiga. Dessa felaktiga resultat uppkom dock endast i vissa gränsområden där ett område övergår till ett annat område (se sektion \ref{resultat}). Uppskattningsvis uppstod felaktiga resultat endast då användaren befann sig inom fem till sex meter till ett angränsande område. I de fallen då en felaktig position uppskattades var resultatet alltid det angränsande området. I relation till de uppsatta kraven var intressenten nöjd med dessa resultat. Intressenten hade en önskad felmarginal om maximalt tio meter och därmed anser vi oss ha uppnått de kraven. Vi hade själva en önskad felmarginal om maximalt fem meter. Vid något enstaka fall blev det uppskattade området ett område som befann sig något längre än fem meter bort (ca sex meter). Då en användare befann sig inom fem meter till en angränsande område ökade antalet felaktiga positionsuppskattningar ju närmare gränslinjen användaren befann sig. I sin helhet anser vi oss nöjda med resultaten och vi anser oss ha uppfyllt de krav på precision som beskrivs i sektion (\ref{krav})    %TODO infoga bilden och ange mer konkreta siffror
+Positioneringstestet gav i ett par fall resultat som måste uppfattas som felaktiga. Dessa felaktiga resultat uppkom dock endast i vissa gränsområden där ett område övergår till ett annat område (se sektion \ref{resultat}). Uppskattningsvis uppstod felaktiga resultat endast då användaren befann sig inom fem till sex meter till ett angränsande område. I de fallen då en felaktig position uppskattades var resultatet alltid det angränsande området. I relation till de uppsatta kraven var intressenten nöjd med dessa resultat. Intressenten hade en önskad felmarginal om maximalt tio meter och därmed anser vi oss ha uppnått de kraven. Vi hade själva en önskad felmarginal om maximalt fem meter. Vid något enstaka fall blev det uppskattade området ett område som befann sig något längre än fem meter bort (ca sex meter). Då en användare befann sig inom fem meter till en angränsande område ökade antalet felaktiga positionsuppskattningar ju närmare gränslinjen användaren befann sig. I sin helhet anser vi oss nöjda med resultaten och vi anser oss ha uppfyllt de krav på precision som beskrivs i sektion (\ref{krav}).
 
 %TODO utvärdering av Användarvänligheten... måndag?
 %TODO utvärdering av hemsidan.. måndag?
@@ -871,12 +877,12 @@ Vi har ett fullt fungerande system som kan visa var en medarbetare befinner sig 
 Den initiala planen var att interagera positionsbestämningsalgoritm med SFB. Detta visade sig vara omöjligt att göra då den version av SFB som intressenten hade inte hade denna funktionalitet som krävdes. Detta medförde att planen förändrades och blev istället att göra ett eget system oberoende av SFB.
 \fi
 
-Som beskrivet i sektion (\ref{utvarderingsresultat}) kan användare av systemet positioneras korrekt utifrån vilken våning de befinner sig på. Användaren kan med säkerhet positioneras i förhållande till vilket område användaren befinner sig i då användaren är minst fem meter in i området. Om användaren är mindre än fem meter kan positionen ibland variera mellan rätt område och det angränsande området.
-För att testa systemets prestanda utfördes två olika tester, ett våningstest och ett områdestest (se sektion \ref{krav}). Resultaten för de olika testerna beskrivs nedan.
+Som beskrivet i sektion (\ref{utvarderingsresultat}) resultatet av positioneringstesterna sammanfattas som att användare av systemet kan positioneras korrekt utifrån vilken våning de befinner sig på. Användaren kan med säkerhet positioneras i förhållande till vilket område användaren befinner sig i då användaren är minst fem meter in i området. Om användaren är mindre än fem meter kan positionen ibland variera mellan rätt område och det angränsande området.
+För att testa systemets prestanda utfördes två olika tester, ett våningstest och ett områdestest (se sektion \ref{krav}). Dessa två tester utfördes samtidigt som personal arbetade i lokalerna. Detta gjorde att vi i vissa fall var något begränsade både i arbetet med att scanna referenspunkter samt då en användare skulle positionsbestämmas. Anledningen till detta var att vi inte ville störa den arbetande personalen. Konsekvenserna av att vi inte ville störa arbetande personal blev att vi inte utmätte referenspunkter eller positionsbestämde användaren i vissa mindre kontorsrum där möten pågick. Vi upplever inte att dessa begränsningar innebar att resultaten påverkades eftersom vi ändå hade tillgång till de merparten av de olika områdena i lokalerna. Resultaten för de två olika testerna beskrivs nedan.
 
 
 \subsection{Våningstest hos Uppsala kommun}\label{vaningstest}
-När systemet testades i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala var ett av två tester som utfördes ett våningstest. Syftet med våningstestet var att undersöka om systemet skulle klara av att skilja på våningsplan vid positionsbestämningen. Testet utfördes på så sätt att referenspunkter utmättes på delar av våningsplan 6 och våningsplan 5 i lokalerna på Stationsgatan 12. Där våningstesterna utfördes uppmättes referenspunkterna i områden på de båda våningsplanen som befann sig precis över respektive under varandra. Efter att referenspunkterna var utmätta och inlagda i databasen utfördes positionsbestämning i de områden på våningsplan 6 vars motsvarande område på våning 5 också var representerade i databasen. Därefter analyserades resultatet av positionsbestämningen i dessa områden med syfte att se huruvida positioneringssystemet hade möjlighet att skilja på de olika våningsplanen. I figur \ref{fig:vanings_test} ses en bild av området Trädgården och området Torget på våningsplan 6. De röda ringarna motsvarar de positioner där användaren befann sig vid en viss tidpunkt. Under ringarna visas ett klockslag som anger vid vilken tidpunkt användaren befann sig vid just den positionen. Under den tid som användaren förflyttade sig mellan dessa positioner utfördes positionsbestämning på en dator som användaren hade med sig under hela tiden. På datorn loggades information om resultaten av varje positionsbestämning kopplat till en specifik tidpunkt. Resultaten av loggningen kan ses i figur ~\ref{fig:logg_vaningstest}.
+När systemet testades i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala var ett av två tester som utfördes ett våningstest. Syftet med våningstestet var att undersöka om systemet skulle klara av att skilja på våningsplan vid positionsbestämningen. Testet utfördes på så sätt att referenspunkter utmättes på delar av våningsplan 6 och våningsplan 5 i lokalerna på Stationsgatan 12. Referenspunkterna uppmättes med samma struktur i alla lokaler, i ett rutmönster med två meters mellanrum. Där våningstesterna utfördes uppmättes referenspunkterna i områden på de båda våningsplanen som befann sig precis över respektive under varandra. Efter att referenspunkterna var utmätta och inlagda i databasen utfördes positionsbestämning i de områden på våningsplan 6 vars motsvarande område på våning 5 också var representerade i databasen. Därefter analyserades resultatet av positionsbestämningen i dessa områden med syfte att se huruvida positioneringssystemet hade möjlighet att skilja på de olika våningsplanen. I figur \ref{fig:vanings_test} ses en bild av området Trädgården och området Torget på våningsplan 6. De röda ringarna motsvarar de positioner där användaren befann sig vid en viss tidpunkt. Under ringarna visas ett klockslag som anger vid vilken tidpunkt användaren befann sig vid just den positionen. Under den tid som användaren förflyttade sig mellan dessa positioner utfördes positionsbestämning på en dator som användaren hade med sig under hela tiden. På datorn loggades information om resultaten av varje positionsbestämning kopplat till en specifik tidpunkt. Resultaten av loggningen kan ses i figur ~\ref{fig:logg_vaningstest}.
 
 \begin{figure}[H]
   \centering
@@ -895,22 +901,38 @@ När systemet testades i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala 
 Resultatet av våningstestet går att utläsa vid jämförelse av uppskattad position av systemet vid en viss tidpunkt (se loggen i figur \ref{fig:logg_vaningstest}) och tidpunkt samt verklig position i figur \ref{fig:logg_vaningstest}. Alla positionsbestämmelser i det här testet gav en position på våning 6. Detta indikerar att systemet har förmåga att skilja på områden på olika våningsplan vilket också var vår förhoppning.
 
 \subsection{Områdestest hos Uppsala Kommun}
-Utöver ett våningstest utfördes även ett områdestest. Områdestestet utfördes även det på i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala. Syftet med områdestestet var att analysera precisionen för positionsbestämningen (se sektion ~\ref{krav}). Referenspunkterna som utmättes för våningstestet (se sektion ~\ref{vaningstest}) användes även för områdestestet men utökades även med referenspunkter för fler områden på våningsplan 6. En bild på testområdet för områdestestet kan ses i figur (~\ref{blahblah}). Samma tillvägagångssätt användes vid områdestestet som vid våningstestet. De röda ringarna och tillhörande klockslag i figur ~\ref{blahblah} anger användarens position vid ett specifikt klockslag. Positionsbestämning utfördes löpande på en dator som användaren hade med sig vid varje tillfälle. Resultaten för varje positionsbestämning sparades i en logg som går att se i figur ~\ref{logglogg}. Vid varje röd cirkel i figur ~\ref{blahblah} stannade användaren i minst en minut. Eftersom positionsbestämningen utfördes löpande på användarens medhavda dator är vissa resultat från loggningen resultat som uppkommit under användarens förflyttning mellan olika cirklar i figur ~\ref{blahblah}.
+Utöver ett våningstest utfördes även ett områdestest. Områdestestet utfördes även det på i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala. Syftet med områdestestet var att analysera precisionen för positionsbestämningen (se sektion ~\ref{krav}). Referenspunkterna som utmättes för våningstestet (se sektion ~\ref{vaningstest}) användes även för områdestestet men utökades även med referenspunkter för fler områden på våningsplan 6. En bild på testområdet för områdestestet kan ses i figur (~\ref{fig:omrades_test}). Samma tillvägagångssätt användes vid områdestestet som vid våningstestet. De röda ringarna och tillhörande klockslag i figur ~\ref{fig:omrades_test} anger användarens position vid ett specifikt klockslag. Positionsbestämning utfördes löpande på en dator som användaren hade med sig vid varje tillfälle. Resultaten för varje positionsbestämning sparades i en logg som går att se i figur \cref{fig:logg_omradestest1,fig:logg_omradestest2}. Vid varje röd cirkel i figur ~\ref{fig:omrades_test} stannade användaren i minst en minut. Eftersom positionsbestämningen utfördes löpande på användarens medhavda dator är vissa resultat från loggningen resultat som uppkommit under användarens förflyttning mellan olika cirklar i figur ~\ref{fig:omrades_test}.
 
 \begin{figure}[H]
   \centering
-  \fbox{\includegraphics[width=15cm]{media/vaningstest_uppsala_kommun_2.png}}
-  \caption{Våningstest på Uppsala Kommun}
-  \label{fig:vanings_test}
+  \fbox{\includegraphics[width=15cm, height=13cm]{media/test_omrade_u_k.png}}
+  \caption{Områdestest på Uppsala Kommun}
+  \label{fig:omrades_test}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{media/logg_vaningstest.png}
-  \caption{Logg för våningstest på Uppsala Kommun}
-  \label{fig:logg_vaningstest}
+  \fbox{\includegraphics[width=10cm]{media/logg_omrade_del_1.png}}
+  \caption{Logg del 1 efter områdestest på Uppsala Kommun}
+  \label{fig:logg_omradestest1}
 \end{figure}
-%TODO göra liknandde som ovan
+
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=10cm]{media/logg_omrade_del_2.png}}
+  \caption{Logg del 2 efter områdestest på Uppsala Kommun}
+  \label{fig:logg_omradestest2}
+\end{figure}
+
+Vid analys av loggarna i ~\cref{fig:logg_omradestest1,fig:logg_omradestest2} i förhållande till kartan i \cref{fig:omrades_test} uppkommer par viktiga poster i loggen som är viktiga att uppmärksamma.
+Vi kan se en tydlig felpositionering. Den uppkommer vid tidpunkt 13:11:11 i del 2 av loggen och motsvaras av cirkeln med tidpunkt 13:11 i \cref{fig:omrades_test}. Användarens position är tydligt i området Trädgården men positionsbestämningen resulterade i positionen Torget. Det är den enda uppenbara felpositioneringen som går att utläsa ur områdestestet.
+
+Utöver en uppenbar felpositionering går det att utläsa några felpositioneringar då användaren befinner sig precis vid en gräns mellan två områden. Några exempel på detta är:
+Positionsbestämningarna med tidpunkter mellan 13:01 och 13:02 i del 1 av loggen. Användarens position motsvaras i dessa fall av cirkeln i \cref{fig:omrades_test} med tidpunkt 13:01 angav att användaren befann sig i Galleriet. Användarens verkliga position var i dessa fall området Biblioteket men precis på gränsen till området Galleriet.
+Ett annat liknande exempel går att finna vid tidpunkterna mellan 13:05 och 13:06 i del 2 av loggen. Användarens position motsvaras i dessa fall av cirkeln i \cref{fig:omrades_test} med tidpunkt 13:05. Användarens position bestäms under detta tidsintervall till området Galleriet. Användarens verkliga position var i området \textit{Galleriet-konferens} men precis på gränsen till området Galleriet (se \cref{fig:omrades_test}).
+
+Utöver ett uppenbart felaktigt resultat och ett fåtal felpositioneringar som berodde på att användaren befann sig inom fem meter från gränslinje mellan två områden gav systemet för positionsbestämning enbart korrekta resultat. Totalt gjordes 51 stycken positionsbestämningar vid områdestestet. Ett fall av tydlig felpositionering innebär att vid ungefär 98\% av fallen vid områdestestet gav positionsbestämningen ett resultat med mindre felmarginal än fem meter. Tas fallen med felpositioneringar inom fem meter mot en gränslinje med i beräkningarna sjunker procentsatsen till ungefär 85\% korrekta positionsbestämmelser vid detta områdestest.   
 
 \subsection{Diskussion}
 
