@@ -515,11 +515,35 @@ I följande delavsnitt beskrivs implementationen av de olika komponenterna av sy
 \subsection{Applikation för scanning vid referenspunkter}
 Målet med applikationen är att kunna populera databasen med referenspunkter, som sedan användas i bestämning av position. Detta gjordes med en mobilapplikation då det är enklare för användarna att gå runt i byggnaden med en mobil och skanna av nätverket istället för en dator.
 
-När applikationen startas kommer användaren till en startsida, se figur \ref{fig:mob_main}. Här kan användaren välja att skanna nätverksinformationen genom att klicka på "WIFI SCAN". Då kommer användaren till en sida där man kan skanna av nätverksinformation och se 11 accesspunkter, se figur \ref{mob_scan_cal}. Användaren kan istället välja "ADD REFERENCE POINTS" på startsida. När användaren valt "ADD REFERENCE POINTS" kommer användaren till en sida där användaren skriver ett namn på sin referenspunkt och sedan lägger till den, se figur \ref{mob_scan_ref}. Därefter kan användaren klicka på den nyss tillagda referenspunkten för att få upp två alternativ, "scan this RP" och "Delete", se figur \ref{mob_scan_ref_option}. "Scan this RP" betyder att applikationen skannar nätverket för att hitta de tre mac-adresserna med högst RSSI-värde. Namnet på positionen samt de tre mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens interna lagring. CSV, står för comma seperated values och det är ett format som gör det enkelt att importera mängder av rader automatiskt. Valet "Delete". %håller på här med bilderna
+När applikationen startas kommer användaren till en startsida, se figur \ref{fig:mob_main}. Här kan användaren välja att skanna nätverksinformationen genom att klicka på "WIFI SCAN". Då kommer användaren till en sida där man kan skanna av nätverksinformation och se 11 accesspunkter, se figur \ref{fig:mob_scan_cal}. Användaren kan istället välja "ADD REFERENCE POINTS" på startsida. När användaren valt "ADD REFERENCE POINTS" kommer användaren till en sida där användaren skriver ett namn på sin referenspunkt och sedan lägger till den, se figur \ref{fig:mob_scan_ref}. Därefter kan användaren klicka på den nyss tillagda referenspunkten för att få upp två alternativ, "scan this RP" och "Delete", se figur \ref{fig:mob_scan_ref_option}. "Scan this RP" betyder att applikationen skannar nätverket för att hitta de tre mac-adresserna med högst RSSI-värde. Namnet på positionen samt de tre mac-adresser kallas för en referenspunkt. Referenspunkten sparas sedan i en csv fil på telefonens interna lagring. CSV, står för comma seperated values och det är ett format som gör det enkelt att importera mängder av rader automatiskt. Detta repeteras tills arbetsområdet har fyllts med lämpligt många referenspunkter, (se sektion \ref{referenspunkter}). För att sedan populera databasen importeras csv filen in till databasen manuellt. Valet "Delete" tar bort referenspunkten samt alla macaddress och RSSI som är kopplade till namnet av referenspunkten. Slutligen har vi en "GUIDE" knapp på startsidan som beskriver följande information fast i applikationen.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm, height=14cm]{media/mob_main.jpg}
+  \caption{En bild på hur startsidan på den mobila applikationen ser ut.}
+  \label{fig:mob_main}
+\end{figure}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm, height=14cm]{media/mob_scan_cal.jpg}
+  \caption{En bild på hur "WIFI SCAN" på den mobila applikation ser ut.}
+  \label{fig:mob_scan_cal}
+\end{figure}
 
- Detta repeteras tills arbetsområdet har fyllts med lämpligt många referenspunkter, (se sektion \ref{referenspunkter}). För att sedan populera databasen importeras csv filen in till databasen manuellt.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm, height=14cm]{media/mob_scan_ref.jpg}
+  \caption{En bild på hur "ADD REFERENCE POINTS" på den mobila applikationen ser ut.}
+  \label{fig:mob_scan_ref}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm, height=14cm]{media/mob_scan_ref_option.jpg}
+  \caption{En bild på hur valen för en referenspunkt på den mobila applikation ser ut.}
+  \label{fig:mob_scan_ref_option}
+\end{figure}
 
 Fel kan förekomma i både skanningen samt inskrivningen av referenspunkterna till csv filen. I båda fallen meddelas användare om detta i form av en "toast" vilket är en typ av popup meddelande längst ner på mobilen. När detta förekommer i skanningen behöver användaren skanna om den enskilda positionen som inte fungerade första gången. Detsamma gäller för inskrivningen i csv filen då inskrivningen utförts i samband med skanningen. Ytterligare ett fel som kan uppstå är importeringen av csv filen in till databasen. Då databasen inte klarar av å,ä eller ö och inte heller mellanslag i namnet av positionen. Detta fel kan enklast undvikas genom att inte ange namn med dessa bokstäver eller mellanrum. Om det skulle förekomma att användaren råkade skriva in ett å i ett av namnen kan å:et ersättas med ett a eller liknande manuellt i csv filen.%TODO ska sista 2 meningarna vara här eller i avgränsning/future work?
 
