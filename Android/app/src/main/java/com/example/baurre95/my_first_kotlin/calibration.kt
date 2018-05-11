@@ -42,15 +42,6 @@ class calibration : AppCompatActivity() {
         scan.setOnClickListener {
             startScanning()
         }
-
-        export.setOnClickListener{
-            val intent = Intent(this, file::class.java)
-            if(axisList.size != 0) {
-                intent.putExtra("array_list", axisList)
-            }
-            startActivity(intent)
-        }
-
     }
 
 
