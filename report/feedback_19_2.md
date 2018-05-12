@@ -74,4 +74,4 @@
 - Skriva om resultat och disskution helt.
 - Återkoppla till icketekniska aspekter
 - Tilde i referenser..
-- Figurtexter som beskriver figurerna. 
+- Figurtexter som beskriver figurerna.
