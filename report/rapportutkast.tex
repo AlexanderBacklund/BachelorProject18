@@ -646,7 +646,7 @@ Då en klientenhet ska positionsbestämmas kör skriptet en scanning för att se
         \newline MAC 10 = JJ:JJ:JJ:JJ:JJ:JJ,  RSSI = -65
   \end{itemize}
 
-\subsubsection{Algoritmer för positionsbestämmning}
+\subsubsection{Algoritmer för positionsbestämmning}\label{algoritm}
 För att utföra positionsbestämningen av klientenheten körs en algoritm i skriptet. Den algoritm som valdes för positionsbestämning är en variant av KNN (se sektion \ref{KNN}). Vid algoritmer av typer KNN analyseras ett antal (K) Nearest Neigbours (NN). Eftersom informationen om tre åtkomstpunkter för varje sparad referenspunkt finns tillgänglig analyseras de tre närmaste grannarna.
 Målet med algoritmen är att avgöra vilken sparad referenspunkt som befinner sig närmast klientenhetens fysiska position. Då algoritmen för att positionsbestämma en klientenhet körs kommer resultatet bli samma position som positionen för den bäst matchande referenspunkten. För att åstadkomma detta har två typer av positionsbestämningsmetoder använts. Dessa två beskrivs nedan.
 
@@ -982,6 +982,9 @@ För att få mer verklighetstrogna resultat bör systemet testas på olika byggn
 
 Observera att risk\-be\-döm\-ning, tids\-planering, relation till kursmål \emph{inte} hör hemma i slutrapporten.
 \fi
+
+En potentiell framtida utveckling är att i algoritmen (se sektion \ref{algoritm}) använda sig av
+fler referenspunkter, dvs istället för att jämför klientenhetens närmaste \textbf{tre} referenspunkter så jämför man istället fler. Denna utveckling skulle hjälpa systemet att eventuellt klara av de gränsfall som ställs på systemet. Ytterligare en utveckling skulle kunna vara att varje referenspunkt hade fler MAC-adresser kopplade till sig. Detta skulle leda till ännu mer unika referenspunkter som i sin tur skulle leda till en bättre positionering. En stor utveckling ifrån intressenten perspektiv vore att integrera positioneringsalgoritmen med intressentens interna webbapplikation. Om detta utförs kommer systemets webbapplikation vara onödig och man kan istället endast använda de tekniker som intressenten redan använder.  
 \newpage
 % Here comes the bibliography/references.
 \bibliography{refs}
