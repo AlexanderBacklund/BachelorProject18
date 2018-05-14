@@ -453,8 +453,16 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
  förutom många användbara bibliotek också kan reducera mängden kod som behöver skrivas för att uppnå en viss funktionalitet jämfört med exempelvis programmeringsspråket Java \cite{kotlin}.
  En annan anledning till att vi utvecklar applikationen för Android är att publiceringen av Androidapplikation är enklare än för bland annat iOS \cite{submitIphone}\cite{android}.
 
- \subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna}
+ \subsection{Programmeringsspråk vid utveckling av skriptet för klientenheterna}\label{pythonskript}
  Skriptet som körs på klientenheterna är programmerat i programmeringsspråket Python. En av anledningarna till att vi använder detta språk är för att det finns många färdiga bibliotek som underlättar både nätverksskanning samt anslutning till databaser\cite{python}. Python erbjuder också enkla verktyg för att paketera koden och bygga exekverbara filer för olika operativsystem. Detta är användbart eftersom en körbar fil på operativsystemet Windows är ett måste då en klar majoritet av medarbetarna hos intressenten använder det. Utöver tidigare argument är det väldokumenterat, enkelt och snabbt att komma igång med samt att syntaxen låter programmeraren producera lättläst kod. Dessa argument har varit anledningen till valet av Python.
+
+\subsection{Relationella databaser samt python-interface för \\databasåtkomst} \label{relationella_databaser}
+Huvuduppgiften för en databas är att lagra information. En relationell databas är en databas som använder tabeller som består av rader och kolumner för att lagra information~\cite{database_fundamentals}. Den relationella modellen för en databas anvisar att varje rad i en tabell ska vara unik. För att en rad i en tabell ska vara unik krävs det att ett värde i en kolumn eller en kombination av fler än en kolumn inte existerar i någon annan rad~\cite{database_fundamentals}. Den kolumn eller de kolumner som gör varje rad i en tabell unik kallas för tabellens \textit{Primary Key}.
+För att koppla ihop information mellan olika tabeller används i en relationell databas pekare till andra tabellers Primary Keys. Dessa pekare kallas för \textit{Foreign Keys}~\cite{database_fundamentals}.
+
+För att skriva kod för relationella databaser används vanligtvis programmeringsspråket SQL som står för Structured Query Language~\cite{sql}.
+Eftersom skriptet för klientenheterna är skrivet i Python (se sektion \ref{pythonskript}) använder vi ett interface för Python som heter PyMySQL\cite{pymysql}. PyMySQL erbjuder ett API som ger möjligheten att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen.
+
 
  \subsection{Webbapplikation för presentation av positionsinformation}\label{django}
  Django är ett webbapplikationsramverk som är skrivet i Python och vår webbapplikationen använder sig av detta ramverk. Django är ett ramverk som utgår från ett arkitekturmönster som kallas model-view-controller (MVC)\cite{djangoMVC}. Detta innebär att webbapplikationen delas upp i models, views och controllers vilket gör att koden kan göras välstrukturerad och lätt att hitta i.
@@ -465,7 +473,7 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
 
  En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att dela in varje hemsida i mindre delar. Skalbarheten och moduleringen medför att det är enklare att återanvända kod. En kod som skrivits för en viss hemsida kan enkelt användas av en annan hemsida\cite{djangoMVC}. Ett sista argument är att eftersom systemets skript är skrivet i Python och Django bygger på Python blir integrationen mellan dessa enklare.
 
- \section{Systemstruktur}
+ \section{Systemstruktur}\label{sysstruktur}
  I denna del av rapporten beskriver vi systemet och hur de olika delsystemen samverkar.
  Systemet kan delas in i tre delsystem samt en databas. Det första delsystemet är en applikation som används för att koppla nätverksinformation kopplas till en specifik plats. Det andra delsystemet är ett skript som körs på en användarenhet och utför en algoritm för att bestämma en ungefärlig position. Det tredje delsystemet består av en webbapplikation som presenterar information om andra användares position. Slutligen består systemet även av en databas där all data som är relevant för systemet sparas.
  I följande figur (~\cref{fig:systemStruktur}) presenteras systemet i sin helhet.
@@ -604,8 +612,10 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
  Denna evenuella och senare funktionalitet anser vi bör vara individuellt utfromad efter en specifik användare av systemet i sin helhet. Därmed nöjer vi oss i vår ``proof of concept'' version att be användaren om ett användarnamn. %TODO ska sista 2 meningarna vara här eller ska de vara i framtida arbete/avgrändningar? JA!
 
  \subsubsection{Hämta information om referenspunkter från databasen}\label{HamtaInfoDB}
- För att kunna utföra positionsbestämningen behöver klientenheten hämta information om referenspunkterna från databasen. Positionsbestämningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara att genomföra alla beräkningar för positionsbestämningen på serversidan av systemet. Om detta hade varit fallet så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till valet att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom antalet användare är odefinierat vid en eventuell användning av systemet medför det en osäkerhet om servern klarar av den belastning som förekommer om alla användare ska utföra beräkningar på servern för att bestämma dess position. Eftersom databasen är MySQL-baserad används ett interface för Python som heter PyMySQL\cite{mysqldb}%TODO byt referens
+ För att kunna utföra positionsbestämningen behöver klientenheten hämta information om referenspunkterna från databasen. Positionsbestämningen utförs genom vissa beräkningar som vi har valt att genomföra på klientsidan av systemet. Alternativet hade kunnat vara att genomföra alla beräkningar för positionsbestämningen på serversidan av systemet. Om detta hade varit fallet så hade det inte varit nödvändigt att hämta information om referenspunkterna till klienten. Anledningen till valet att utföra beräkningarna på klientsidan var att fördela beräkningsarbetet. Eftersom antalet användare är odefinierat vid en eventuell användning av systemet medför det en osäkerhet om servern klarar av den belastning som förekommer om alla användare ska utföra beräkningar på servern för att bestämma dess position.
+ \iffalse Eftersom databasen är MySQL-baserad används ett interface för Python som heter PyMySQL\cite{mysqldb}%TODO byt referens
  . PyMySQL erbjuder ett API som ger möjligheten att direkt i pythonkoden skriva funktioner som kan hantera tabeller i databasen. På så sätt hämtas information om referenspunkter och sparar i en temporär lista. %TODO referens
+ \fi
 
  Nedan följer ett exempel på informationen om en referenspunkt som hämtats från databasen:
  \begin{itemize}
@@ -754,30 +764,32 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
  Det resulterar i att referenspunkt 1 genererar ett lägre slutvärde än referenspunkt 2. Därmed antas referenspunkt 1 befinna sig närmare klientenheten och klientenhetens position uppskattas till samma position som för referenspunkt 1.
 
  \subsubsection{Uppdatera databasen med klientenhetens position}
- Efter det att klientenhetens position är bestämd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av PyMySQL (se sektion \ref{HamtaInfoDB}).
+ Efter det att klientenhetens position är bestämd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av PyMySQL (se sektion \ref{relationella_databaser}).
 
  \subsection{Databasens uppbyggnad}\label{databasen}
- Databasen är hjärtat och den enda resursen som egentligen behöver delas mellan alla enheter i systemet. Den håller data om referenspunkter samt data om användare samt deras position. Varje delsystem som konstruerats gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positionsbestämning kontrollerar att användaren är en befintlig användare och lägger sedan in vilken position användaren har. Insättningen sätts in i de relationella tabellerna som håller vilken position varje användare har, och har haft. Webbapplikationen som ska presentera datan på ett tydligt sätt går in och hämtar varje användare, länkar dessa med vilken position och presenterar detta.
+ Databasen är hjärtat och den enda resursen som delas mellan alla delsystem. Den håller data om referenspunkter, data om användare samt deras position. Varje delsystem som konstruerats gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positionsbestämning kontrollerar att användaruppgifterna är godkända och lägger in användarens position. Insättningen sker i de relationella tabellerna (se sektion ~\ref{relationella_databaser}) som håller vilken position varje användare har, och har haft. Webbapplikationen som ska presentera datan hämtar information om användarna, kopplar användarna med deras position och presenterar därefter resultatet grafiskt.
+ I den här implementationen av systemet har vi valt att använda en databas på Uppsala Universitets nätverk. Valet av att använda en databas på Uppsala Universitets nätverk motiveras av att det vid en implementation av systemet på en arbetsplats är tänkt att databasen ska placeras på företagets interna nätverk. Då vi inte har haft tillgång till vår intressents interna nätverk valde vi således använda en databas som vi har tillgång till genom tidigare studier på Uppsala Universitet.   
+
 
  \subsubsection{Tabell för referenspunkter}
- Tabellen för referenspunkterna har konstruerats manuellt med SQL direkt in i databasen, se figur ~\ref{fig:db_tabeller}.
+ Databasen är uppbyggt som en relationell databas och tabellen för referenspunkterna har konstruerats manuellt med SQL-kod direkt i databasen, se figur ~\ref{fig:db_tabeller}.
  Den är konstruerad som en enskild tabell. Anledningen till att vi endast använder en enskild tabell i det här fallet är för att det underlättar importeringen av .csv-filen från scanningsapplikationen. Tabellens struktur ser ut som följer.
 
  \begin{itemize}
-   \item id - som bara autinkrementeras, ingen speciell funktion.
-   \item position - positionen som referenspunkten ska innebära.
-   \item address1 - MAC-adressen för den starkaste accesspunkten sorterat enligt RSSI.
-   \item address2 - MAC-adressen för den näst starkaste accesspunkten sorterat enligt RSSI.
-   \item address3 - MAC-adressen för den tredje starkaste accesspunkten sorterat enligt RSSI.
-   \item rssi1 - RSSI för den starkaste accesspunkten sorterat enligt RSSI.
-   \item rssi2 - RSSI för den näst starkaste accesspunkten sorterat enligt RSSI.
-   \item rssi3 - RSSI för den tredje starkaste accesspunkten sorterat enligt RSSI.
+   \item Id - inkrementeras autokamtiskt, används som Primary Key.
+   \item Position - positionen som referenspunkten ska innebära.
+   \item Adress1 - MAC- adressen för den starkaste accesspunkten sorterat enligt RSSI.
+   \item Adress2 - MAC-adressen för den näst starkaste accesspunkten sorterat enligt RSSI.
+   \item Adress3 - MAC-adressen för den tredje starkaste accesspunkten sorterat enligt RSSI.
+   \item Rssi1 - RSSI för den starkaste accesspunkten sorterat enligt RSSI.
+   \item Rssi2 - RSSI för den näst starkaste accesspunkten sorterat enligt RSSI.
+   \item Rssi3 - RSSI för den tredje starkaste accesspunkten sorterat enligt RSSI.
  \end{itemize}
  %TODO ska det vara stora bokstäver i början av varje item?
 
  \subsubsection{Relationella tabeller för användare och deras position}
  Databasen innehåller även två tabeller som
- kopplas ihop med hjälp av Foreign Keys respektive Primary Keys och håller användare och deras position, se figur ~\ref{fig:db_tabeller}.
+ kopplas ihop med hjälp av Foreign Keys respektive Primary Keys och håller information om användare och deras position, se figur ~\ref{fig:db_tabeller}.
  Dessa två tabeller konstrueras av Django (se sektion \ref{django}), webbapplikations-ramverket som används, när modeller definieras i webbapplikationen. Att definiera modeller är ett objektorienterat sätt att skapa tabeller på. En modell skapas, sedan definieras vilka fält modellen ska ha på enskilda rader och sedan översätter Django detta till SQL-kod samt migrerar det till databasen.
 
  Tabellen som håller användarinformation är strukturerad enligt följande
