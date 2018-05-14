@@ -543,7 +543,7 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
 
  Testet för att undersöka precisionen av positioneringssystemet i relation till ett specifikt område kommer utföras på ett snarlikt sätt som för våningstestet. Skillnaden mot våningstestet kommer vara att referenspunkter kommer utmätas på en hel våning och matchas till respektive område på den våningen. Därefter sker utvärderingen med en logg av resultatet samt registrering av användarens verkliga position på samma sätt som vid våningstestet.
 
- \subsection{Användarvänlighet i webbapplikationen}
+ \subsection{Användarvänlighet i webbapplikationen}\label{krav_anv}
  Kraven på presentationen av medarbetarnas position är att det ska vara enkelt att i webbapplikationen se vart en medarbetare befinner sig. Detta är ett krav som vi bedömer vara viktigt för att kunna demonstrera systemet på ett bra sätt. För intressenten kommer detta inte vara ett prioriterat krav eftersom de vid eventuell lansering planerar att presentera positionsinformationen via en medarbetarportal på deras interna nät. Vi kommer utvärdera denna del av systemet genom att låta en extern person navigera i webbapplikationen och därigenom utvärdera användarvänligheten.
 
  \section{Implementation av systemet}
@@ -806,7 +806,7 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
  för att snabbt och enkelt göra webbapplikationen responsiv och designad. %TODO referens
  Med django kommer automatiskt en webbserver som kan startas lokalt på en användares dator. I implementationen kan servern köras både lokalt eller delat. Att webbserver körs lokalt drabbar inte funktionaliteten i systemet eftersom det enda som behöver vara delat mellan alla användare är databasen.
 
- Webbapplikationen utgörs initialt av en inloggningssida (se figur \ref{fig:comp_log_in}) där användaren på arbetsplatsen måste logga in för att se positioner för andra användare. Användare kan även registrera ett konto, se figur \ref{fig:comp_sign_in}. När användaren har loggat in så har denne möjlighet att se andra användares position, söka efter specifika användare samt välja att dölja sin position, se figur \ref{fig:comp_show_position}. I den föregående figuren såg vi att alla förutom Nils Wik valde att visa sin position. Om en användare inte är inloggad kommer endast en text visas, se figur \ref{fig:comp_not_logged_in}.
+ Webbapplikationen utgörs initialt av en inloggningssida (se figur \ref{fig:comp_log_in}) där användaren på arbetsplatsen måste logga in för att se positioner för andra användare. Användare kan även registrera ett konto, se figur \ref{fig:comp_sign_in}. När användaren har loggat in så har denne möjlighet att se andra användares position, söka efter specifika användare samt välja att dölja sin position, se \ref{fig:comp_search} . I den föregående figuren såg vi att alla förutom Nils Wik valde att visa sin position. Om en användare inte är inloggad kommer endast en text visas, se figur \ref{fig:comp_not_logged_in}.
 
  \begin{figure}[H]
    \centering
@@ -824,11 +824,11 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
 
  \begin{figure}[H]
    \centering
-   \fbox{\includegraphics[width=14cm, height=12cm]{media/comp_show_position.png}}
-   \caption{En bild på en inloggad användares vy ifrån en dator.}
-   \label{fig:comp_show_position}
+   \fbox{\includegraphics[width=14cm, height=10cm]{media/comp_search.png}}
+   \caption{En bild på en sökninga av en medarbetare ifrån en dator.}
+   \label{fig:comp_search}
  \end{figure}
- \leavevmode\\
+ \leavevmode
 
  \begin{figure}[H]
    \centering
@@ -886,6 +886,8 @@ Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:
  Följande sektion består av resultat från de tester beskrivna i sektion (\ref{krav}). Vid våningstestet hade systemet 100\% träffsäkerhet. Det betyder att då användaren befann sig på en våning så visade systemet varenda gång att användaren var på den våning. En av farhågorna vi hade var att signalstyrkorna från åtkomstpunkterna inte skulle avta tillräckligt mycket mellan våningsplan och att systemet därigenom skulle ha svårt att urskilja vilket våningsplan en användare befann sig på. Resultatet av våningstestet (se sektion \ref{vaningstest}) visar tydligt att en användares position aldrig uppskattades till fel våningsplan.
 
  Positioneringstestet gav i ett par fall resultat som måste uppfattas som felaktiga. Dessa felaktiga resultat uppkom dock endast i vissa gränsområden där ett område övergår till ett annat område (se sektion \ref{resultat}). Uppskattningsvis uppstod felaktiga resultat endast då användaren befann sig inom fem till sex meter till ett angränsande område. I de fallen då en felaktig position uppskattades var resultatet alltid det angränsande området. I relation till de uppsatta kraven var intressenten nöjd med dessa resultat. Intressenten hade en önskad felmarginal om maximalt tio meter och därmed anser vi oss ha uppnått de kraven. Vi hade själva en önskad felmarginal om maximalt fem meter. Vid något enstaka fall blev det uppskattade området ett område som befann sig något längre än fem meter bort (ca sex meter). Då en användare befann sig inom fem meter till en angränsande område ökade antalet felaktiga positionsuppskattningar ju närmare gränslinjen användaren befann sig. I sin helhet anser vi oss nöjda med resultaten och vi anser oss ha uppfyllt de krav på precision som beskrivs i sektion (\ref{krav}).
+
+ Användarvänlighetstesterna på både mobilapplikationen samt webbapplikationen var positiva och följde de krav som beskrivs i sektion (\ref{krav_anv}). Det finns saker som kan förbättras med menyerna i webbapplikationen på datorn samt på mobilen. En del av testpersonerna tyckte att det var svårt att veta vad "logga in" och "logga ut" symbolerna betydde, en text hade troligtvis hjälpt. Användarvänligheten på mobilapplikationen var positiv då applikationen är simpel och fyller dess funktion. Den enda kritiken mobilapplikationen fick var det att när mobilapplikationen skannar av nätverksinformationen så kan en laddningslogga visas. I nuläge ser mobilapplikationen likadan ut i fem sekunder innan den är klar och presenterar resultatet av skanningen.   
 
  %TODO utvärdering av Användarvänligheten... måndag?
  %TODO utvärdering av hemsidan.. måndag?
