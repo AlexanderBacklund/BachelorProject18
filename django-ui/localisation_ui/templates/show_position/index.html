@@ -36,8 +36,8 @@
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <span class="title">{{u.u_fullname}}</span>
-          {% if u.u_show_position %}
+          <span class="title">{{u.get_full_name}}</span>
+          {% if u.users_script.u_show_position %}
           <p>{{u.position}}</p>
           {% endif %}
           <a href="#!" class="secondary-content"><i class="material-icons small">chat</i></a>

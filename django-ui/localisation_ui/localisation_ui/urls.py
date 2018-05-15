@@ -21,6 +21,7 @@ urlpatterns = [
     #url('', TemplateView.as_view(template_name='registration/login.html'), name='login2'),
     url(r'^admin/', admin.site.urls),
     url('', include('django.contrib.auth.urls')),
+    url('', include('show_position.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^show_position/', include('show_position.urls')),
 ]

@@ -24,11 +24,27 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         {% if user.is_authenticated %}
+        <li><h5>{{user.username}}</h5></li>
+        <li>
+        <form class="center-align" action="/show_position/" method="post">
+          {%csrf_token%}
+            {% if not user.is_staff and user.users_script.u_show_position %}
+            <input type="hidden" name="info" value="{{user.username}}">
+            <input type="hidden" name="decs" value="False">
+            <input class="waves-effect waves-light btn green darken-5" type="submit" value="Hide my position">
+            {% elif not user.is_staff and not user.users_script.u_show_position %}
+            <input type="hidden" name="info" value="{{user.username}}">
+            <input type="hidden" name="decs" value="True">
+            <input class="waves-effect waves-light btn green darken-5" type="submit" value="Show my position">
+            {% endif %}
+          </form>
+        </li>
         <li><a href="{% url 'logout' %}"><i class="material-icons">lock_open</i></a></li>
+
         {% else %}
         <li><a href="{% url 'login' %}"><i class="material-icons">lock</i></a></li>
         {% endif %}
-        <li><h5>{{user.username}}</h5></li>
+
 
       </ul>
       <ul class="side-nav" id="mobile-demo">
@@ -38,20 +54,20 @@
         {% else %}
         <li><a href="{% url 'login' %}"><i class="material-icons">lock</i></a></li>
         {% endif %}  </ul>
+      </div>
+    </nav>
+
+    <div>
+      {% block content %}
+      {% endblock %}
     </div>
-  </nav>
 
-  <div>
-    {% block content %}
-    {% endblock %}
-  </div>
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
     $(".button-collapse").sideNav();
-  </script>
+    </script>
 
-</body>
-</html>
+  </body>
+  </html>

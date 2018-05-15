@@ -227,7 +227,7 @@ def readMySQLCredentials():
 
 def getUsersFromDB(cur):
     userList = []
-    cur.execute("SELECT * FROM show_position_users_script")
+    cur.execute("SELECT id,username FROM auth_user")
     users = cur.fetchall()
     for user in users:
         userList.append((user[0],user[1]))
