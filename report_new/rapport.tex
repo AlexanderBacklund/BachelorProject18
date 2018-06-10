@@ -410,7 +410,7 @@ Eftersom skriptet för klientenheterna är skrivet i Python (se sektion ~\ref{py
 
  \begin{figure}[H]
  	\includegraphics[width=15cm]{media/systemStruktur.png}
- 	\caption{Systemstruktur}
+ 	\caption{Överblicksbild av systemet. Det består av tre delsystem och en central databas.}
  	\label{fig:systemStruktur}
  \end{figure}
 
@@ -421,7 +421,7 @@ Eftersom skriptet för klientenheterna är skrivet i Python (se sektion ~\ref{py
  Detta delsystem innefattar en Python-klient som körs i bakgrunden på användarens dator. Python-klientens syfte är att utföra en positionsbestämningsalgoritm med hjälp av de referenspunkter som finns i databasen och som Androidapplikationen från förra delsystemet har tillhandahållit. Positionen bestäms genom att Python-skriptet skannar av nätverksmiljön  för att hitta de åtkomstpunkter som datorn befinner sig närmast. Dessa åtkomstpunkter jämförs sedan med de åtkomstpunkter referenspunkterna har tillhandahållits i föregående delsystem. När Python-klienten har bestämt positionen för användaren ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användaridentitet. Ny bestämning av position utförs kontinuerligt. Anledningen till att delsystem körs i bakgrunden på en användares dator är att användaren inte aktivt ska behöva vara involverad i positionsbestämningen.
 
  \subsection{Delsystem som presenterar position}
- Slutligen består systemet även av en webbapplikation. Detta system använder data som Python-klienten har lagt in i databasen för att i webbapplikationen visa positionsinformation om kollegor i verksamheten. I webbapplikationen finns det två typer av användare, medarbetare och administratör. Som medarbetare är man tvungen att logga in  på webbapplikationen för att få tillgång till informationen som tillhandahålls. Om medarbetaren är inloggad kan användaren se sina medarbetare, söka efter andra medarbetare samt gör sig osynlig. Om en administratör loggar in kan administratören ändra i databasen, lägga till och ta bort medarbetare samt lägga till ytterligare referenspunkter.
+ Slutligen består systemet även av en webbapplikation. Detta system använder data som Python-klienten har lagt in i databasen för att i webbapplikationen visa positionsinformation om kollegor i verksamheten. I webbapplikationen finns det två typer av användare, medarbetare och administratör. Som medarbetare är man tvungen att logga in  på webbapplikationen för att få tillgång till informationen som tillhandahålls. Om medarbetaren är inloggad kan användaren se sina medarbetare, söka efter andra medarbetare samt göra sig osynlig. Om en administratör loggar in kan administratören ändra i databasen, lägga till och ta bort medarbetare samt lägga till ytterligare referenspunkter.
 
  \subsection{Databasen som håller användare och positionsinformation}
  Databasen är ett delsystem som kommer samspela med alla de andra delsystemen. Den håller information om referenspunkter, användare och deras position.
@@ -495,28 +495,28 @@ Eftersom skriptet för klientenheterna är skrivet i Python (se sektion ~\ref{py
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_main.jpg}}
-   \caption{En bild på hur startsidan på den mobila applikationen ser ut.}
+   \caption{En bild på hur startsidan på den mobila applikationen ser ut. Här kan användaren trycka på de gråa knapparna för att ta sig vidare till olika funktioner.}
    \label{fig:mob_main}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_cal.jpg}}
-   \caption{En bild på hur \textbf{WIFI SCAN} på den mobila applikation ser ut.}
+   \caption{En bild på hur \textbf{WIFI SCAN} på den mobila applikation ser ut. Denna funktion kan användaren använda för att skanna av nätverksmiljön där mobilen befinner sig. Den listar de åtkomstpunkter som ligger närmast mobilen, sorterat efter RSSI \cite{RSSI_expl}.}
    \label{fig:mob_scan_cal}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_ref.jpg}}
-   \caption{En bild på hur \textbf{ADD REFERENCE POINTS} på den mobila applikationen ser ut.}
+   \caption{En bild på hur \textbf{ADD REFERENCE POINTS} på den mobila applikationen ser ut. Här skriver användaren in namnet på referenspunkten i textfältet och trycker på \textbf{Add RP}. Efter det hamnar referenspunkten som en knapp i listan.}
    \label{fig:mob_scan_ref}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_ref_option.jpg}}
-   \caption{En bild på hur valen för en referenspunkt på den mobila applikation ser ut.}
+   \caption{En bild på hur valen för en referenspunkt på den mobila applikation ser ut. När användaren har tryckt på en referenspunkt kan personen välja att antingen skanna nätverksmiljön för den specifika referenspunkten eller radera den.}
    \label{fig:mob_scan_ref_option}
  \end{figure}
 
@@ -640,7 +640,7 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \includegraphics[width=10cm]{media/TeoriMetod2.png}
-   \caption{Illustration av teorin bakom Metod 2 för positionsbestämning}
+   \caption{Illustration av teorin bakom Metod 2 för positionsbestämning. Här befinner sig klientenheten på samma avstånd från åtkomstpunkten som referenspunkten när en tittar på RSSI-värdet.}
    \label{fig:TEO2}
  \end{figure}
 
@@ -729,7 +729,7 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
 
  \begin{figure}[H]
    \includegraphics[width=15cm]{media/db_tabeller.png}
-   \caption{Tabeller i databasen}
+   \caption{Tabellerna i databasen. Tabellen för referenspunkter är fristående. Tabellerna som håller användares position och användarinformation är sammankopplade genom en foreign key.}
    \label{fig:db_tabeller}
  \end{figure}
 
@@ -741,21 +741,21 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=12cm]{media/comp_log_in.png}}
-   \caption{Bild på hur inloggning till webbapplikationen ser ut ifrån en dator.}
+   \caption{Bild på hur inloggning till webbapplikationen ser ut ifrån en dator. Här fyller användaren in sitt användarnamn och lösenord för att logga in.}
    \label{fig:comp_log_in}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=12cm]{media/comp_sign_in.png}}
-   \caption{Bild på hur registrering till webbapplikationen ser ut ifrån en dator.}
+   \caption{Bild på hur registrering till webbapplikationen ser ut ifrån en dator. Här kan användaren skapa ett konto i systemet för att få tillgång.}
    \label{fig:comp_sign_in}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=14cm, height=10cm]{media/comp_search.png}}
-   \caption{Bild på en sökninga av en medarbetare ifrån en dator.}
+   \caption{Bild på en sökning av en medarbetare ifrån en dator. Här kan användaren med hjälp av sökfältet söka efter medarbetare.}
    \label{fig:comp_search}
  \end{figure}
  \leavevmode
@@ -768,21 +768,21 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_login.jpg}}
-   \caption{Hur inloggning till webbapplikationen ser ut ifrån en mobiltelefon.}
+   \caption{Hur inloggning till webbapplikationen ser ut ifrån en mobiltelefon. Här fyller användaren in sitt användarnamn och lösenord för att logga in.}
    \label{fig:mob_login}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_sign_up.jpg}}
-   \caption{Hur registrering till webbapplikationen ser ut ifrån en mobiltelefon.}
+   \caption{Hur registrering till webbapplikationen ser ut ifrån en mobiltelefon. Här kan användaren skapa ett konto i systemet för att få tillgång.}
    \label{fig:mob_sign_up}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_show_position.jpg}}
-   \caption{Bild på en inloggad användares vy ifrån en mobiltelefon.}
+   \caption{Bild på en inloggad användares vy ifrån en mobiltelefon. Här listas alla medarbetare och deras position. Användaren kan också med hjälp av sökfältet söka efter medarbetare. }
    \label{fig:mob_show_position}
  \end{figure}
 
@@ -844,14 +844,14 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=15cm]{media/vaningstest_uppsala_kommun_2.png}}
-   \caption{Våningstest på Uppsala Kommun}
+   \caption{Våningstest på Uppsala Kommun. De röda ringarna representerar den fysiska positionen som användaren var vid en viss tidpunkt, som presenteras precis under de röda ringarna.}
    \label{fig:vanings_test}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \includegraphics[width=10cm]{media/logg_vaningstest.png}
-   \caption{Logg för våningstest på Uppsala Kommun}
+   \caption{Logg för våningstest på Uppsala Kommun. Denna logg visar positionen som algoritmen beräknade fram vid olika tidpunkter under våningstestet.}
    \label{fig:logg_vaningstest}
  \end{figure}
 
@@ -863,14 +863,14 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=15cm, height=13cm]{media/test_omrade_u_k.png}}
-   \caption{Områdestest på Uppsala Kommun}
+   \caption{Områdestest på Uppsala Kommun. De röda ringarna representerar den fysiska positionen som användaren var vid en viss tidpunkt, som presenteras precis under de röda ringarna.}
    \label{fig:omrades_test}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm]{media/logg_omrade_del_1.png}}
-   \caption{Logg del 1 efter områdestest på Uppsala Kommun}
+   \caption{Logg del 1 efter områdestest på Uppsala Kommun. Denna logg visar positionen som algoritmen beräknade fram vid olika tidpunkter under områdestestet.}
    \label{fig:logg_omradestest1}
  \end{figure}
 
@@ -878,7 +878,7 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm]{media/logg_omrade_del_2.png}}
-   \caption{Logg del 2 efter områdestest på Uppsala Kommun}
+   \caption{Logg del 2 efter områdestest på Uppsala Kommun. Denna logg visar positionen som algoritmen beräknade fram vid olika tidpunkter under områdestestet.}
    \label{fig:logg_omradestest2}
  \end{figure}
 
