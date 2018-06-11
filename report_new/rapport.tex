@@ -383,7 +383,7 @@ Vi ansåg att det var lämpligare att utveckla applikationen för Android efters
  En annan nackdel är att RSSI-värdet för en åtkomstpunkt vid en specifik position kan förändras om till exempel möbleringen av rummen förändras radikalt~\cite{zanca2008experimental}. Då något sådant sker bör också intilliggande referenspunkter skannas om.
 
  \subsection{Applikationsutveckling för Android}
- Systemet är uppbyggd av bland annat en Androidapplikation. Applikationen används för att mäta ut referenspunkter. I utvecklingen av applikationen användes Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt till Windowstelefoner. En anledning till att applikationen utvecklas för Android är för att vi kunde använda programmeringsspråket Kotlin som erbjuder många användbara bibliotek för de funktioner vi använder. Kotlin är ett programmeringsspråk som kan användas för utveckling av Androidapplikationen och som
+ Systemet är uppbyggd av bland annat en Androidapplikation. Applikationen används för att mäta ut referenspunkter. I utvecklingen av applikationen användes Android Studios vilket är en integrerad utvecklingsmiljö för att utveckla Androidapplikationer. Alternativ till Androidapplikationer är applikationer till iOS samt till Windowstelefoner. En anledning till att applikationen utvecklas för Android är för att vi kunde använda programmeringsspråket Kotlin som erbjuder många användbara bibliotek för de funktioner vi använder~\cite{kotlin}. Kotlin är ett programmeringsspråk som kan användas för utveckling av Androidapplikationen och som
  förutom många användbara bibliotek också kan reducera mängden kod som behöver skrivas för att uppnå en viss funktionalitet jämfört med exempelvis programmeringsspråket Java ~\cite{kotlin}.
  En annan anledning till att vi utvecklar applikationen för Android är att publiceringen av Androidapplikation är enklare än för bland annat iOS ~\cite{submitIphone}~\cite{android}.
 
@@ -399,32 +399,32 @@ Eftersom skriptet för klientenheterna är skrivet i Python (se Sektion~\ref{pyt
 
 
  \subsection{Webbapplikation för presentation av positionsinformation}\label{django}
- Django är ett webbapplikationsramverk som är skrivet i Python och vår webbapplikationen använder sig av detta ramverk. Django är ett ramverk som utgår från ett arkitekturmönster som kallas model-view-controller (MVC)~\cite{djangoMVC}. Denna arkitektur gör att koden kan göras välstrukturerad och lätt att hitta i. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder genom att dela in varje hemsida i mindre delar. Skalbarheten och moduleringen medför att det är enklare att återanvända kod. En kod som skrivits för en viss hemsida kan enkelt användas av en annan hemsida~\cite{djangoMVC}.
+ Django är ett webbapplikationsramverk som är skrivet i Python och vår webbapplikationen använder sig av detta ramverk. Django är ett ramverk som utgår från ett arkitekturmönster som kallas model-view-controller (MVC)~\cite{djangoMVC}. Denna arkitektur gör att koden kan göras välstrukturerad och lätt att hitta i. En annan anledningen till valet av ramverk är skalbarheten och moduleringen som Django erbjuder. Skalbarheten och moduleringen medför att det är enklare att återanvända kod. En kod som skrivits för en viss hemsida kan enkelt användas för en annan hemsida~\cite{djangoMVC}.
 
 
  En annan viktig anledningen till att vi använder Django är att det är bra i säkerhetsavseende. Django kommer med väldigt många olika säkerhetsåtgärder inbyggt och det finns mycket säkerhetsrelaterad information dokumenterat på deras hemsida~\cite{securityInDjango}. Det gör att vi kan använda oss av detta för att göra säkerheten på hemsidan så bra som möjligt. Bland en mängd andra säkerhetsåtgärder som Django erbjuder automatiskt så är det skyddat för SQL-injections ~\cite{securityInDjango} vilket innebär att databaskommandon inte kan attackeras genom användarinput för att ta sig in i databasen. Django erbjuder även Session Security ~\cite{securityInDjango} som skyddar för att bara användare som verkligen har loggat in har tillgång till data som inloggade ska ha tillgång till.
- Eftersom det system som vi utvecklar hanterar känslig data så är detta en viktiga aspekt för oss.
+ Eftersom det system som vi utvecklar hanterar känslig data så är detta en viktig aspekt för oss.
  Eftersom systemets skript är skrivet i Python och Django bygger på Python kan även integrationen mellan dessa göras enklare.
 
  \section{Systemstruktur}\label{sysstruktur}
  I denna del av rapporten beskriver vi systemet och hur de olika delsystemen samverkar.
- Systemet kan delas in i tre delsystem samt en databas. Det första delsystemet är en applikation som används för att koppla nätverksinformation kopplas till en specifik plats. Det andra delsystemet är ett skript som körs på en användarenhet och utför en algoritm för att bestämma en ungefärlig position. Det tredje delsystemet består av en webbapplikation som presenterar information om andra användares position. Slutligen består systemet även av en databas där all data som är relevant för systemet sparas.
- I följande figur (figur ~\ref{fig:systemStruktur}) presenteras systemet i sin helhet.
+ Systemet kan delas in i tre delsystem samt en databas. Det första delsystemet är en applikation som används för att koppla nätverksinformation till en specifik plats. Det andra delsystemet är ett skript som körs på en användarenhet och utför en algoritm för att bestämma en ungefärlig position. Det tredje delsystemet består av en webbapplikation som presenterar information om andra användares position. Slutligen består systemet även av en databas där all data som är relevant för systemet sparas.
+ I figur ~\ref{fig:systemStruktur} presenteras systemet i sin helhet.
 
  \begin{figure}[H]
  	\includegraphics[width=15cm]{media/systemStruktur.png}
- 	\caption{Systemstruktur}
+ 	\caption{Överblicksbild av systemet. Det består av tre delsystem och en central databas.}
  	\label{fig:systemStruktur}
  \end{figure}
 
  \subsection{Delsystem som kopplar nätverksinformation med en plats}
- Detta delsystem innefattar en Androidapplikation. Den är tänkt att användas av it-tekniker före användning av systemet. Applikationen används för att skanna nätverksinformation i förutbestämda referenspunkter med ett mellanrum på ungefär två meter. Denna information används senare för att användarenheter ska kunna beräkna sin position i förhållande till dessa referenspunkter. Nätverksinformationen exporteras därefter till en databas. När referenspunkterna är inlagda kan nästa delsystem börja användas.
+ Detta delsystem innefattar en Androidapplikation. Den är tänkt att användas av it-tekniker före användning av systemet. Applikationen används för att skanna nätverksinformation i förutbestämda referenspunkter med ett mellanrum på ungefär två meter. Denna information används senare för att användarenheter ska kunna beräkna sin position i förhållande till dessa referenspunkter. Nätverksinformationen exporteras därefter till en databas. När referenspunkterna är inlagda kan de resterande delsystemen börja användas.
 
  \subsection{Delsystem som beräknar positionen}
- Detta delsystem innefattar en Python-klient som körs i bakgrunden på användarens dator. Python-klientens syfte är att utföra en positionsbestämningsalgoritm med hjälp av de referenspunkter som finns i databasen och som Androidapplikationen från förra delsystemet har tillhandahållit. När Python-klienten har bestämt positionen för användaren ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användaridentitet. Ny bestämning av position utförs var tjugonde minut. Anledningen till att delsystem körs i bakgrunden på en användares dator är att användaren inte aktivt ska behöva vara involverad i positionsbestämningen.
+ Detta delsystem innefattar en Python-klient som körs i bakgrunden på användarens dator. Python-klientens syfte är att utföra en positionsbestämningsalgoritm med hjälp av de referenspunkter som finns i databasen och som Androidapplikationen från förra delsystemet har tillhandahållit. Positionen bestäms genom att Python-skriptet skannar av nätverksmiljön  för att hitta de åtkomstpunkter som datorn befinner sig närmast. Dessa åtkomstpunkter jämförs sedan med de åtkomstpunkter referenspunkterna har tillhandahållits i föregående delsystem. När Python-klienten har bestämt positionen för användaren ska den automatiskt lägga in den informationen i databasen kopplat till Python-klientens användaridentitet. Ny bestämning av position utförs kontinuerligt. Anledningen till att delsystem körs i bakgrunden på en användares dator är att användaren inte aktivt ska behöva vara involverad i positionsbestämningen.
 
  \subsection{Delsystem som presenterar position}
- Slutligen består systemet även av en webbapplikation. Detta system använder data som Python-klienten har lagt in i databasen för att i webbapplikationen visa positionsinformation om kollegor i verksamheten.
+ Slutligen består systemet även av en webbapplikation. Detta system använder data som Python-klienten har lagt in i databasen för att i webbapplikationen visa positionsinformation om kollegor i verksamheten. I webbapplikationen finns det två typer av användare, medarbetare och administratör. Som medarbetare är man tvungen att logga in  på webbapplikationen för att få tillgång till informationen som tillhandahålls. Om medarbetaren är inloggad kan användaren se sina medarbetare, söka efter andra medarbetare samt göra sig osynlig. Om en administratör loggar in kan administratören ändra i databasen, lägga till och ta bort medarbetare samt lägga till ytterligare referenspunkter.
 
  \subsection{Databasen som håller användare och positionsinformation}
  Databasen är ett delsystem som kommer samspela med alla de andra delsystemen. Den håller information om referenspunkter, användare och deras position.
@@ -476,7 +476,7 @@ Eftersom skriptet för klientenheterna är skrivet i Python (se Sektion~\ref{pyt
 
 
  \subsection{Krav på positionsbestämning} \label{positionstest}
- Uppsala Kommuns vision är att positioneringssystemet ska kunna visa i vilken byggnad, på vilken våning och i vilket område på den våningen som en medarbetare befinner sig. Detta med en felmarginal på max 10 meter. Vi har själva satt upp krav på en felmarginal på max 5 meter eftersom vi tror att det kommer vara möjligt att uppnå. Kraven på exakthet existerar eftersom en godtagbar precision vid positionsbestämningen är en förutsättning för att systemet i sin helhet ska fylla någon funktion. Vi kommer utföra två precisionstester av systemet. Båda testerna kommer utföras i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala. Det ena testet går ut på att testa hur väl systemet kan skilja på olika våningsplan i byggnaden. Det andra testet kommer gå ut på att testa hur väl en användare kan positionsbestämmas till ett specifikt arbetsområde. Uppsala Kommun har en kontorsmiljö uppdelad i arbetsområden av olika storlekar och med olika namn. Vi i samråd med dem valt att definiera en lyckad positionsuppskattning som att positionen uppskattas till namnet för det arbetsområde där användaren befinner sig.
+ Uppsala Kommuns vision är att positioneringssystemet ska kunna visa i vilken byggnad, på vilken våning och i vilket område på den våningen som en medarbetare befinner sig. Detta med en felmarginal på max 10 meter. Vi har själva satt upp krav på en felmarginal på max 5 meter eftersom vi tror att det kommer vara möjligt att uppnå. Kraven på exakthet existerar eftersom en godtagbar precision vid positionsbestämningen är en förutsättning för att systemet i sin helhet ska fylla någon funktion. Vi kommer utföra två precisionstester av systemet. Båda testerna kommer utföras i Uppsala Kommuns lokaler på Stationsgatan 12 i Uppsala. Det ena testet går ut på att testa hur väl systemet kan skilja på olika våningsplan i byggnaden. Det andra testet kommer gå ut på att testa hur väl en användare kan positionsbestämmas till ett specifikt arbetsområde. Uppsala Kommun har en kontorsmiljö uppdelad i arbetsområden av olika storlekar och med olika namn. Vi i samråd med dem har valt att definiera en lyckad positionsuppskattning som att positionen uppskattas till namnet för det arbetsområde där användaren befinner sig.
 
  Våningstestet kommer gå till så att referenspunkter utmäts på två olika angränsande våningsplan och läggs in i en databas. Därefter kommer en användare sätta sig ner vid en arbetsplats i en minut och går därefter vidare till nästa arbetsplats. Vid varje arbetsplats utförs en positionsbestämning. För varje positionsbestämning loggas resultatet och användarens verkliga position registreras. Därefter undersöker vi resultaten och ser huruvida systemet kan skilja på olika våningsplan.
  Testet för att undersöka precisionen av positioneringssystemet i relation till ett specifikt område kommer utföras på ett snarlikt sätt som för våningstestet. Skillnaden mot våningstestet kommer vara att referenspunkter kommer utmätas på en hel våning och matchas till respektive område på den våningen. Därefter sker utvärderingen med en logg av resultatet samt registrering av användarens verkliga position på samma sätt som vid våningstestet.
@@ -498,28 +498,28 @@ Eftersom skriptet för klientenheterna är skrivet i Python (se Sektion~\ref{pyt
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_main.jpg}}
-   \caption{En bild på hur startsidan på den mobila applikationen ser ut.}
+   \caption{En bild på hur startsidan på den mobila applikationen ser ut. Här kan användaren trycka på de gråa knapparna för att ta sig vidare till olika funktioner.}
    \label{fig:mob_main}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_cal.jpg}}
-   \caption{En bild på hur \textbf{WIFI SCAN} på den mobila applikation ser ut.}
+   \caption{En bild på hur \textbf{WIFI SCAN} på den mobila applikation ser ut. Denna funktion kan användaren använda för att skanna av nätverksmiljön där mobilen befinner sig. Den listar de åtkomstpunkter som ligger närmast mobilen, sorterat efter RSSI \cite{RSSI_expl}.}
    \label{fig:mob_scan_cal}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_ref.jpg}}
-   \caption{En bild på hur \textbf{ADD REFERENCE POINTS} på den mobila applikationen ser ut.}
+   \caption{En bild på hur \textbf{ADD REFERENCE POINTS} på den mobila applikationen ser ut. Här skriver användaren in namnet på referenspunkten i textfältet och trycker på \textbf{Add RP}. Efter det hamnar referenspunkten som en knapp i listan.}
    \label{fig:mob_scan_ref}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_scan_ref_option.jpg}}
-   \caption{En bild på hur valen för en referenspunkt på den mobila applikation ser ut.}
+   \caption{En bild på hur valen för en referenspunkt på den mobila applikation ser ut. När användaren har tryckt på en referenspunkt kan personen välja att antingen skanna nätverksmiljön för den specifika referenspunkten eller radera den.}
    \label{fig:mob_scan_ref_option}
  \end{figure}
 
@@ -599,7 +599,7 @@ Eftersom skriptet för klientenheterna är skrivet i Python (se Sektion~\ref{pyt
      \item \textbf{Steg 2}
      \newline
      I steg 2 görs en ny filtrering. Nu undersöks vilka referenspunkter som har högst antal matchande åtkomstpunkter. Det högsta möjliga antalet matchande åtkomstpunkter är 3 eftersom det finns 3 åtkomstpunkter lagrade för varje referenspunkt. Alla de referenspunkter som har samma högsta antal matchande referenspunkter filtreras ut och sparas.
-     Om det till exempel finns fyra referenspunkter vars alla tillhörande åtkomstpunkter finns med i klientenhetens lista sparas dessa fyra referenspunkter för vidare beräkningar. Syftet med detta steg är det samma som syftet i steg 1.
+     Om det till exempel finns fyra referenspunkter vars alla tillhörande åtkomstpunkter finns med i klientenhetens lista sparas dessa fyra referenspunkter för vidare beräkningar. Syftet med detta steg är det samma som syftet i steg 1 vilket var att filtrera referenspunkterna för att undvika fler irrelevanta beräkningar.
 
      \item \textbf{Steg 3}
      \newline
@@ -643,7 +643,7 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \includegraphics[width=10cm]{media/TeoriMetod2.png}
-   \caption{Illustration av teorin bakom Metod 2 för positionsbestämning}
+   \caption{Illustration av teorin bakom Metod 2 för positionsbestämning. Här befinner sig klientenheten på samma avstånd från åtkomstpunkten som referenspunkten när en tittar på RSSI-värdet.}
    \label{fig:TEO2}
  \end{figure}
 
@@ -691,7 +691,7 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  Efter det att klientenhetens position är bestämd är det sista som sker i skriptet att databasen uppdateras med användarens nya position. Detta görs med hjälp av samma API som vi får tillgång till genom användandet av PyMySQL (se Sektion~\ref{relationella_databaser}).
 
  \subsection{Databasens uppbyggnad}\label{databasen}
- Databasen är hjärtat och den enda resursen som delas mellan alla delsystem. Den håller data om referenspunkter, data om användare samt deras position. Varje delsystem som konstruerats gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positionsbestämning kontrollerar att användaruppgifterna är godkända och lägger in användarens position. Insättningen sker i de relationella tabellerna (se Sektion~\ref{relationella_databaser}) som håller vilken position varje användare har, och har haft. Webbapplikationen som ska presentera datan hämtar information om användarna, kopplar användarna med deras position och presenterar därefter resultatet grafiskt.
+ Databasen är den centrala delen av systemet och den enda resursen som delas mellan alla delsystem. Den håller data om referenspunkter, data om användare samt deras position. Varje delsystem som konstruerats gör anrop till databasen. Skanningsapplikationen producerar referenspunkter som läggs in i en tabell. Skriptet för positionsbestämning kontrollerar att användaruppgifterna är godkända och lägger in användarens position. Insättningen sker i de relationella tabellerna (se sektion ~\ref{relationella_databaser}) som håller vilken position varje användare har, och har haft. Webbapplikationen som ska presentera datan hämtar information om användarna, kopplar användarna med deras position och presenterar därefter resultatet grafiskt.
 
 
 
@@ -732,7 +732,7 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
 
  \begin{figure}[H]
    \includegraphics[width=15cm]{media/db_tabeller.png}
-   \caption{Tabeller i databasen}
+   \caption{Tabellerna i databasen. Tabellen för referenspunkter är fristående. Tabellerna som håller användares position och användarinformation är sammankopplade genom en foreign key.}
    \label{fig:db_tabeller}
  \end{figure}
 
@@ -744,21 +744,21 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=12cm]{media/comp_log_in.png}}
-   \caption{Bild på hur inloggning till webbapplikationen ser ut ifrån en dator.}
+   \caption{Bild på hur inloggning till webbapplikationen ser ut ifrån en dator. Här fyller användaren in sitt användarnamn och lösenord för att logga in.}
    \label{fig:comp_log_in}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=12cm]{media/comp_sign_in.png}}
-   \caption{Bild på hur registrering till webbapplikationen ser ut ifrån en dator.}
+   \caption{Bild på hur registrering till webbapplikationen ser ut ifrån en dator. Här kan användaren skapa ett konto i systemet för att få tillgång.}
    \label{fig:comp_sign_in}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=14cm, height=10cm]{media/comp_search.png}}
-   \caption{Bild på en sökninga av en medarbetare ifrån en dator.}
+   \caption{Bild på en sökning av en medarbetare ifrån en dator. Här kan användaren med hjälp av sökfältet söka efter medarbetare.}
    \label{fig:comp_search}
  \end{figure}
  \leavevmode
@@ -771,21 +771,21 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_login.jpg}}
-   \caption{Hur inloggning till webbapplikationen ser ut ifrån en mobiltelefon.}
+   \caption{Hur inloggning till webbapplikationen ser ut ifrån en mobiltelefon. Här fyller användaren in sitt användarnamn och lösenord för att logga in.}
    \label{fig:mob_login}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_sign_up.jpg}}
-   \caption{Hur registrering till webbapplikationen ser ut ifrån en mobiltelefon.}
+   \caption{Hur registrering till webbapplikationen ser ut ifrån en mobiltelefon. Här kan användaren skapa ett konto i systemet för att få tillgång.}
    \label{fig:mob_sign_up}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm, height=14cm]{media/mob_show_position.jpg}}
-   \caption{Bild på en inloggad användares vy ifrån en mobiltelefon.}
+   \caption{Bild på en inloggad användares vy ifrån en mobiltelefon. Här listas alla medarbetare och deras position. Användaren kan också med hjälp av sökfältet söka efter medarbetare. }
    \label{fig:mob_show_position}
  \end{figure}
 
@@ -810,7 +810,8 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \iffalse Beskriv resultaten av utvärderingen, när ni tillämpar de utvärderingsmetoder ni beskrivit i avsnitt~\ref{sec:krav}, och relatera utvärderingsresultaten till kraven i samma avsnitt.
  \fi
 
- Följande Sektionbestår av resultat från de tester beskrivna i Sektion~\ref{krav}. Vid våningstestet hade systemet 100\% träffsäkerhet. Det betyder att då användaren befann sig på en våning så visade systemet varje gång att användaren var på rätt våning. En av farhågorna vi hade var att signalstyrkorna från åtkomstpunkterna inte skulle avta tillräckligt mycket mellan våningsplan och att systemet därigenom skulle ha svårt att urskilja vilket våningsplan en användare befann sig på. Resultatet av våningstestet (se Sektion~\ref{vaningstest}) visar tydligt att en användares position aldrig uppskattades till fel våningsplan.
+ Följande sektion består av resultat från de tester beskrivna i sektion ~\ref{krav}.
+ Vid våningstestet hade systemet 100\% träffsäkerhet. Vid alla de 50 våningstesterna resulterade positioneringen i en position på rätt våningsplan. Det betyder att då användaren befann sig på en våning så visade systemet varje gång att användaren var på rätt våning. En av farhågorna vi hade var att signalstyrkorna från åtkomstpunkterna inte skulle avta tillräckligt mycket mellan våningsplan och att systemet därigenom skulle ha svårt att urskilja vilket våningsplan en användare befann sig på. Resultatet av våningstestet (se sektion ~\ref{vaningstest}) visar tydligt att en användares position aldrig uppskattades till fel våningsplan.
 
  Positioneringstestet gav i ett par fall felaktiga resultat. Dessa felaktiga resultat uppkom endast i vissa gränsområden där ett område övergår till ett annat område (se Sektion~\ref{resultat}). Uppskattningsvis uppstod felaktiga resultat endast då användaren befann sig inom fem till sex meter intill ett angränsande område. I de fall som en felaktig position uppskattades var resultatet alltid det angränsande området. I relation till de uppsatta kraven var intressenten nöjd med dessa resultat. Intressenten hade en önskad felmarginal om maximalt tio meter och därmed anser vi oss ha uppnått de kraven. Vi hade själva en önskad felmarginal om maximalt fem meter. Vid något enstaka fall blev det uppskattade området ett område som befann sig något längre än fem meter bort (ca sex meter). Då en användare befann sig inom fem meter till en angränsande område ökade antalet felaktiga positionsuppskattningar ju närmare gränslinjen användaren befann sig. I sin helhet anser vi oss nöjda med resultaten och vi anser oss ha uppfyllt de krav på precision som beskrivs i Sektion~\ref{krav}.
 
@@ -846,14 +847,14 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=15cm]{media/vaningstest_uppsala_kommun_2.png}}
-   \caption{Våningstest på Uppsala Kommun}
+   \caption{Våningstest på Uppsala Kommun. De röda ringarna representerar den fysiska positionen som användaren var vid en viss tidpunkt, som presenteras precis under de röda ringarna.}
    \label{fig:vanings_test}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \includegraphics[width=10cm]{media/logg_vaningstest.png}
-   \caption{Logg för våningstest på Uppsala Kommun}
+   \caption{Logg för våningstest på Uppsala Kommun. Denna logg visar positionen som algoritmen beräknade fram vid olika tidpunkter under våningstestet.}
    \label{fig:logg_vaningstest}
  \end{figure}
 
@@ -865,14 +866,14 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=15cm, height=13cm]{media/test_omrade_u_k.png}}
-   \caption{Områdestest på Uppsala Kommun}
+   \caption{Områdestest på Uppsala Kommun. De röda ringarna representerar den fysiska positionen som användaren var vid en viss tidpunkt, som presenteras precis under de röda ringarna.}
    \label{fig:omrades_test}
  \end{figure}
 
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm]{media/logg_omrade_del_1.png}}
-   \caption{Logg del 1 efter områdestest på Uppsala Kommun}
+   \caption{Logg del 1 efter områdestest på Uppsala Kommun. Denna logg visar positionen som algoritmen beräknade fram vid olika tidpunkter under områdestestet.}
    \label{fig:logg_omradestest1}
  \end{figure}
 
@@ -880,7 +881,7 @@ Teorin illustreras i figur ~\ref{fig:TEO2} nedan.
  \begin{figure}[H]
    \centering
    \fbox{\includegraphics[width=10cm]{media/logg_omrade_del_2.png}}
-   \caption{Logg del 2 efter områdestest på Uppsala Kommun}
+   \caption{Logg del 2 efter områdestest på Uppsala Kommun. Denna logg visar positionen som algoritmen beräknade fram vid olika tidpunkter under områdestestet.}
    \label{fig:logg_omradestest2}
  \end{figure}
 
@@ -911,9 +912,9 @@ Frågan om en integrering av detta system kan stöta på synpunkter från olika 
 Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och förklarar dess vikt och användning.  Vad var viktigt/nytt/intressant?  (INTE i termer av vad ni lärde er, utan för den som läser rapporten, funderar på att göra ett liknande system, vidareutveckla ert, etc.)
 \fi
 Vi har utvecklat ett system för inomhuspositionering med syfte att användas på aktivitetsbaserade arbetsplatser. Systemet kan positionsbestämma en användare på ett område i en lokal med en felmarginal på cirka fem meter. Enligt vår intressent, Uppsala Kommun, är detta en godtagbar precision för att systemet ska vara användbart på deras arbetsplatser. Målet med projektet har varit att underlätta för personal som arbetar på aktivitetsbaserade arbetsplatser att lokalisera varandra. Enligt de tester som vi har utfört kan det system som vi har utvecklat vara en hjälp i det avseendet.
-Då detta system är är känsligt för variationer i både nätverksmiljö och fysisk struktur bör systemet testat i fler typer av både byggnader och nätverksmiljöer för att det ska vara möjligt att göra en exakt utvärdering av systemets prestanda.
+Då detta system är känsligt för variationer i både nätverksmiljö och fysisk struktur bör systemet testat i fler typer av både byggnader och nätverksmiljöer för att det ska vara möjligt att göra en exakt utvärdering av systemets prestanda.
 
-Sammanfattningsvis är vi nöjda med systemets utformning och anpassning till de krav som fastställdes vid projektets början. Systemet erbjuder en möjlighet att integrera ett fungerande inomhuspositioneringssystem på en arbetsplats och kräver inte någon extra hårdvara. För att förbättra systemet ytterligare finns många möjliga vidareutvecklingar som innefattar både presentationen av informationen i webbapplikationen samt precisionen i positionsbestämningen. Förhoppningsvis kan detta projekt ses både som ett ``proof of concept`` och eventuellt en grund för ett system som ska kunna fungera på en verklig arbetsplats.
+Sammanfattningsvis är vi nöjda med systemets utformning och anpassning till de krav som fastställdes vid projektets början. Systemet erbjuder en möjlighet att integrera ett fungerande inomhuspositioneringssystem på en arbetsplats och kräver inte någon extra hårdvara förutom en befintlig internetmiljö. För att förbättra systemet ytterligare finns många möjliga vidareutvecklingar som innefattar både presentationen av informationen i webbapplikationen samt precisionen i positionsbestämningen. Förhoppningsvis kan detta projekt ses både som ett ``proof of concept`` och eventuellt en grund för ett system som ska kunna fungera på en verklig arbetsplats.
 
 \section{Framtida arbete}
 \iffalse
@@ -923,7 +924,7 @@ Observera att risk\-be\-döm\-ning, tids\-planering, relation till kursmål \emp
 \fi
 På grund av en begränsad tidsram för det här projektet finns många möjligheter till vidareutveckling av de olika delsystemen som ingår i detta system.
 
-En möjlig vidareutveckling är att varje referenspunkt kan lagra information om fler angränsande åtkomstpunkter. Fler lagrade åtkomstpunkter för varje referenspunkt skulle leda till bättre förutsättningar för att kunna göra positionsbestämningen mer exakt. En annan möjlig vidareutveckling för att förbättra precisionen i positionsbestämningen är utföra skanningen av en och samma referenspunkt flertalet gånger och med olika typer av hårdvara. För att kunna göra detta måste skanningsapplikationen utökas med stöd för fler typer av enheter. Ett annat förslag på vidareutveckling skulle kunna vara att utveckla algoritmen för positionsbestämningen så att fler metoder för positionsbestämning inkluderas. Om fler metoder inkluderas ges en större möjlighet att anpassa systemet till olika typer av byggnader där systemet kan tänkas användas.
+En möjlig vidareutveckling är att varje referenspunkt kan lagra information om fler angränsande åtkomstpunkter. Fler lagrade åtkomstpunkter för varje referenspunkt skulle leda till bättre förutsättningar för att kunna göra positionsbestämningen mer exakt. En annan möjlig vidareutveckling för att förbättra precisionen i positionsbestämningen är utföra skanningen av en och samma referenspunkt flertalet gånger och med olika typer av hårdvara. För att kunna göra detta måste skanningsapplikationen utökas med stöd för fler typer av enheter speciellt för iOS. Ett annat förslag på vidareutveckling skulle kunna vara att utveckla algoritmen för positionsbestämningen så att fler positionsbetsämmningsmetoder inkluderas. Om fler metoder inkluderas ges en större möjlighet att anpassa systemet till olika typer av byggnader där systemet kan tänkas användas.
 
 I en eventuell senare version av systemet bör skriptet installeras på alla godkända användares enheter och startas så fort användaren loggar in. Då skulle  skriptet kunna läsa av dessa användaruppgifter och köra positionsbestämningen och populeringen av databasen i bakgrunden. Om detta implementeras skulle användandet av systemet kunna ske helt utan interaktion med användaren. Denna eventuellt framtida funktionalitet anser vi bör vara individuellt utformad efter en specifik användares behov. Därmed nöjer vi oss i vår ``proof of concept'' version att be användaren om ett användarnamn.
 
