@@ -2,7 +2,8 @@
 This project was made to help companies move from a office focused workspace into a more activity based workspace. The goal of this system is to make it possible to locate your co-workers with an webapplication. You can see the whole report in the report.pdf file
 
 ## Report
-You can read the full report at: http://uu.diva-portal.org/smash/record.jsf?pid=diva2%3A1220545&dswid=5383
+The report is named report.pdf in the repo.
+You can also read the report at: http://uu.diva-portal.org/smash/record.jsf?pid=diva2%3A1220545&dswid=5383
 
 ## Parts
 ### Mobile application
